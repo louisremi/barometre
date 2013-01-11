@@ -30,6 +30,14 @@ var AppView = Backbone.View.extend({
 		this.assign({
 			".year-menu": this.testYearMenuView
 		});
+	},
+
+	displayQuestion: function(type,year,month) {
+		this.type = type;
+		this.year = year;
+		this.month = month;
+
+		this.render();
 	}
 });
 
