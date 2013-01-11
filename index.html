@@ -109,7 +109,9 @@
 <script src="script/lodash.js"></script>
 <script src="script/backbone.js"></script>
 <script src="script/bpce.backbone.js"></script>
+<script src="script/model.js"></script>
 <script src="script/app.js"></script>
+<script src="script/router.js"></script>
 <script>
 
 (function(window) {
@@ -127,7 +129,8 @@ while ( i-- ) {
 
 App.view = new App.AppView;
 
-App.view.render();
+App.router = new App.BarometreRouter({appView:App.view});
+Backbone.history.start();
 
 })(window);
 

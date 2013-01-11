@@ -27,6 +27,8 @@ var AppView = Backbone.View.extend({
 	el : $("body"),
 
 	initialize: function() {
+		this.questions = new App.QuestionCollection();
+
 		this.testYearMenuView = new YearMenuView({
 			model: new Backbone.Model({
 				years: App.years
@@ -44,6 +46,17 @@ var AppView = Backbone.View.extend({
 		this.assign({
 			".year-menu": this.testYearMenuView
 		});
+	},
+
+	displayQuestion: function(type,year,month) {
+		this.type = type;
+		this.year = year;
+		this.month = month;
+
+		this.questions.setUrl( type, year, month );
+		this.questions.fetch();
+
+		this.render();
 	}
 });
 
