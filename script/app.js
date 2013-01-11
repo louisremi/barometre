@@ -24,6 +24,8 @@ var AppView = Backbone.View.extend({
 				years: App.years
 			})
 		});
+
+		this.questions = new App.QuestionCollection();
 	},
 
 	render: function() {
