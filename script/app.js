@@ -6,11 +6,19 @@ var YearMenuView = Backbone.View.extend({
 	events: {
 		"click a": "switchDisplay"
 	},
-	switchDisplay: function() {
-
+	switchDisplay: function(e) {
+		console.log(e.currentTarget)
 	},
 	render: function() {
 		this.$el.html( this.template( this.model.toJSON() ) );
+		return this;
+	}
+});
+
+var AnswerView = Backbone.View.extend({
+	model: Backbone.Model,
+	render: function() {
+		this.$el.text( this.model.value );
 		return this;
 	}
 });
@@ -23,6 +31,12 @@ var AppView = Backbone.View.extend({
 			model: new Backbone.Model({
 				years: App.years
 			})
+		});
+
+		this.testAnswerView = new AnswerView({
+			model: {
+				value: 10
+			}
 		});
 	},
 

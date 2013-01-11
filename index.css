@@ -339,7 +339,7 @@ h3 {
 	content: "";
 }
 
-.answers .number:before {
+.answers .percentage:before {
 	display: block;
 	content: "";
 
@@ -350,14 +350,14 @@ h3 {
 	background: url(images/symbols.png);
 }
 
-.answers .number {
+.answers .percentage {
 	display: block;
 	height: 150px;
 
 	font-family: "Sentinel", serif;
 }
 
-.answers .number span {
+.answers .percentage span {
 	vertical-align: bottom;
 }
 
