@@ -3,7 +3,7 @@
 var $hiddenHandle,
 	$draggedHandle,
 	monthsOffsetLeft,
-	monthsWidth = 540;
+	monthsWidth = 530;
 
 $(document).on("mousedown", ".handle", function() {
 	var offset = $(this).offset(),
