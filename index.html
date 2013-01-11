@@ -24,13 +24,50 @@
 			><li><a href="#">Actualité</a></li
 			><li><a href="#">À propos</a></li>
 		</ul>
-		<div class="tab">
+		
+		<div id="current-month" class="tab">
+			<div class="banner">
+				<h2><span>&Eacute;volution du pouvoir d'achat</span></h2>
+			</div>
+
 			<ul class="display-menu" data-activable>
+				<li><a href="#">Affichage par année</a></li>
+				<li class="active"><a href="#">Affichage par mois</a></li>
+				<li><a href="#">Affichage par évolution</a></li>
 			</ul>
 
 			<ul class="year-menu" data-activable>
+				
 			</ul>
-		</div>
+
+			<h3>Au cours des trois prochains mois, votre pouvoir d'achat va-t-il…</h3>
+
+			<div class="month-menu">
+				<div class="slider">
+				</div>
+				<ul class="months" data-activable>
+					<li><div class="handle"></div><a href="#"><abbr title="Janvier">Jan.</abbr></a></li>
+					<li><div class="handle"></div><a href="#"><abbr title="Février">Fev.</abbr></a></li>
+					<li><div class="handle"></div><a href="#"><abbr title="Mars">Mar.</abbr></a></li>
+					<li class="active"><div class="handle"></div><a href="#"><abbr title="Avril">Avr.</abbr></a></li>
+					<li><div class="handle"></div><a href="#"><abbr title="Mai">Mai.</abbr></a></li>
+					<li><div class="handle"></div><a href="#"><abbr title="Août">Aou.</abbr></a></li>
+					<li><div class="handle"></div><a href="#"><abbr title="Septembre">Sep.</abbr></a></li>
+					<li><div class="handle"></div><a href="#"><abbr title="Octobre">Oct.</abbr></a></li>
+					<li><div class="handle"></div><a href="#"><abbr title="Novembre">Nov.</abbr></a></li>
+					<li><div class="handle"></div><a href="#"><abbr title="Décembre">Dec.</abbr></a></li>
+				</ul>
+			</div>
+
+			<ul class="answers">
+				<li class="increase"><div class="number"><span>10</span></div> <span class="heading"><b>…augmenter (%)</b></span></li>
+				<li class="stable"><div class="number"><span>34</span></div> <span class="heading"><b>…diminuer (%)</b></span></li>
+				<li class="decrease"><div class="number"><span>52</span></div> <span class="heading"><b>…rester stable (%)</b></span></li>
+				<li class="nspp"><div class="number"><span>4</span></div> <span class="heading">…ne se prononce pas (%)</span></li>
+			</ul>
+
+			<p class="more"><a href="#" class="compare">Comparer ce même mois sur les autres années</a></p>
+		</div><!-- .tab -->
 
 	</div><!-- #center -->
 </div><!-- #main -->
@@ -61,6 +98,11 @@
 	</ul>
 </script>
 
+<script type="text/template" id="item-year-menu-template">
+	<% for ( var year in years ) { %><li class="<%= years[year].className %>"><a href="#<%= years[year].url %>"><%= year %></a></li><% } %>
+</script>
+
+<script>window.App = {};</script>
 <script src="script/activable.js"></script>
 <script src="script/jquery.js"></script>
 <script src="script/bpce.slider.js"></script>
@@ -70,9 +112,26 @@
 <script src="script/app.js"></script>
 <script src="script/model.js"></script>
 <script>
-	var appView = new AppView();
 
-	appView.render();
+(function(window) {
+
+var currentYear = (new Date).getFullYear(),
+	i = 3;
+
+App.years = {};
+while ( i-- ) {
+	App.years[ currentYear-- ] = {
+		className: i == 2 ? "active" : "",
+		url: ""
+	}
+}
+
+App.view = new App.AppView;
+
+App.view.render();
+
+})(window);
+
 </script>
 </body>
 </html>

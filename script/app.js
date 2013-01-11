@@ -1,5 +1,42 @@
 (function($, Backbone, _, window) {
 
+var YearMenuView = Backbone.View.extend({
+	template: _.template( $("#item-year-menu-template").html() ),
+	model: Backbone.Model,
+	events: {
+		"click a": "switchDisplay"
+	},
+	switchDisplay: function() {
+
+	},
+	render: function() {
+		this.$el.html( this.template( this.model.toJSON() ) );
+		return this;
+	}
+});
+
+var AppView = Backbone.View.extend({
+	el : $("body"),
+
+	initialize: function() {
+		this.testYearMenuView = new YearMenuView({
+			model: new Backbone.Model({
+				years: App.years
+			})
+		});
+	},
+
+	render: function() {
+		this.assign({
+			".year-menu": this.testYearMenuView
+		});
+	}
+});
+
+window.App.AppView = AppView;
+
+/*
+
 var DisplayItemMenuView = Backbone.View.extend({
 	template: _.template( $("#button-display-menu-template").html() ),
 	tagName: "li",
@@ -97,6 +134,6 @@ var AppView = Backbone.View.extend({
 	}
 });
 
-window.AppView = AppView;
+window.AppView = AppView; */
 
 })(jQuery, Backbone, _, window);
