@@ -24,23 +24,8 @@ var AnswerView = Backbone.View.extend({
 		// initial render
 		this.$el.html( this.template( this.model.toJSON() ) );
 
-		//this.percentage = this.$el.find("span")[0];
-		//this.wrapper = this.percentage.parentNode;
-
 		return this;
-	}/*,
-	render: function() {
-		var data = this.model.toJSON();
-
-		this.percentage.innerHTML = data.value < 10 ?
-			"\u2008" + data.value + "\u2008" :
-			data.value;
-
-		this.wrapper.style.fontSize = Math.round( data.value * 0.7 + 14 ) + "px";
-		this.wrapper.style.top = Math.round( 85 - data.value * 0.4 ) + "px";
-
-		return this;
-	}*/
+	}
 });
 
 var AnswerCollection = Backbone.Collection.extend({
@@ -61,10 +46,6 @@ var AnswerCollectionView = Backbone.View.extend({
 			});
 
 			self._answerViews.push( answerView );
-
-			/*answer.on("change:value", function() {
-				answerView.render();
-			});*/
 		});
 
 		this.collection.bind("reset", this.render);
@@ -76,12 +57,7 @@ var AnswerCollectionView = Backbone.View.extend({
 			self.$el.append( answerView.el );
 		});
 
-	}/*
-	render: function() {
-		_(this._answerViews).each(function( answerView ) {
-			answerView.render();
-		});
-	}*/
+	}
 });
 
 var PercentageView = Backbone.View.extend({
@@ -101,6 +77,11 @@ var PercentageView = Backbone.View.extend({
 });
 
 var PercentageCollectionView = Backbone.View.extend({
+	initialize: function() {
+		var self= this;
+
+		this.collection.on( "reset", this.render, this );
+	},
 	render: function() {
 		var self = this;
 
@@ -113,6 +94,54 @@ var PercentageCollectionView = Backbone.View.extend({
 	}
 });
 
+var QuestionView = Backbone.View.extend({
+	initialize: function() {
+		var testAnswerCollection = new AnswerCollection([
+			{
+				className: "increase",
+				value: 10,
+				title: "<b>…augmenter (%)</b>",
+				background: "#427324"
+			},
+			{
+				className: "decrease",
+				value: 34,
+				title: "<b>…diminuer (%)</b>",
+				background: "#f4a700"
+			},
+			{
+				className: "stable",
+				value: 52,
+				title: "<b>…rester stable (%)</b>",
+				background: "#f4c8d5"
+			},
+			{
+				className: "nspp",
+				value: 4,
+				title: "…ne se prononce pas (%)",
+				background: "#581e75"
+			}
+		]);
+
+		new YearMenuView({
+			model: new Backbone.Model({
+				years: App.years
+			}),
+			el: this.el.querySelector(".year-menu")
+		}).render();
+
+		new AnswerCollectionView({
+			collection: testAnswerCollection,
+			el: this.el.querySelector(".answers")
+		});
+
+		new PercentageCollectionView({
+			collection: testAnswerCollection,
+			el: this.el.querySelector(".answers")
+		}).render();
+	}
+});
+
 var AppView = Backbone.View.extend({
 	el : $("body"),
 
@@ -121,13 +150,11 @@ var AppView = Backbone.View.extend({
 
 		this.questions = new App.QuestionCollection();
 
-		this.testYearMenuView = new YearMenuView({
-			model: new Backbone.Model({
-				years: App.years
-			})
-		});
+		var testQuestionView = new QuestionView({
+			el: document.querySelector("#question-pouvoir")
+		}).render();
 
-		var testAnswerCollection = new AnswerCollection([
+		/*var testAnswerCollection = new AnswerCollection([
 			{
 				className: "increase",
 				value: 10,
@@ -162,7 +189,7 @@ var AppView = Backbone.View.extend({
 		var testPercentageCollectionView = new PercentageCollectionView({
 			collection: testAnswerCollection,
 			el: document.getElementById("test-answers-view")
-		}).render();
+		}).render();*/
 
 		/*testAnswerCollection.on("change:value", function( answer ) {
 			testAnswerCollectionView._answerViews[  ]
@@ -198,9 +225,9 @@ var AppView = Backbone.View.extend({
 	},
 
 	render: function() {
-		this.assign({
+		/*this.assign({
 			".year-menu": this.testYearMenuView
-		});
+		});*/
 	},
 
 	displayQuestion: function(type,year,month) {
@@ -216,106 +243,5 @@ var AppView = Backbone.View.extend({
 });
 
 window.App.AppView = AppView;
-
-/*
-
-var DisplayItemMenuView = Backbone.View.extend({
-	template: _.template( $("#button-display-menu-template").html() ),
-	tagName: "li",
-	model: Backbone.Model,
-
-	events: {
-		"click a": "switchDisplay"
-	},
-
-	switchDisplay: function() {
-
-	},
-
-	render: function() {
-		this.$el.html( this.template(this.model.toJSON()) );
-		return this;
-	}
-});
-
-var YearItemMenuView = Backbone.View.extend({
-	template: _.template( $("#button-year-menu-template").html() ),
-	tagName: "li",
-	model: Backbone.Model,
-
-	events: {
-		"click a": "switchYear"
-	},
-
-	switchYear: function() {
-
-	},
-
-	render: function() {
-		this.$el.html( this.template(this.model.toJSON()) );
-		return this;
-	}
-});
-
-var MonthMenuView = Backbone.View.extend({
-	template: ""
-});
-
-var AppView = Backbone.View.extend({
-	el : $("body"),
-
-	initialize: function() {
-		this.displayMenu = [
-			this.displayMenuView = new DisplayItemMenuView({
-				model: new Backbone.Model({
-					url: "#",
-					name: "prouts"
-				})
-			}),
-			this.displayMenuView = new DisplayItemMenuView({
-				model: new Backbone.Model({
-					url: "#",
-					name: "caca"
-				})
-			}),
-			this.displayMenuView = new DisplayItemMenuView({
-				model: new Backbone.Model({
-					url: "#",
-					name: "hello"
-				})
-			})
-		];
-
-		this.yearMenu = [
-			this.yearMenuView = new YearItemMenuView({
-				model: new Backbone.Model({
-					url: "#",
-					name: "2013"
-				})
-			}),
-			this.yearMenuView = new YearItemMenuView({
-				model: new Backbone.Model({
-					url: "#",
-					name: "2012"
-				})
-			}),
-			this.yearMenuView = new YearItemMenuView({
-				model: new Backbone.Model({
-					url: "#",
-					name: "2011"
-				})
-			})
-		];
-	},
-
-	render: function() {
-		this.assign({
-			".display-menu": this.displayMenu,
-			".year-menu": this.yearMenu
-		});
-	}
-});
-
-window.AppView = AppView; */
 
 })(jQuery, Backbone, _, window);
