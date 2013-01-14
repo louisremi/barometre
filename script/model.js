@@ -1,6 +1,6 @@
 (function(window,Backbone,_,$) {
 
-	var baseUrl = "http://127.0.0.1/api"
+	var baseUrl = "http://bpce.herokuapp.com/api"
 
 	var AnswerModel = Backbone.Model.extend({
 
@@ -22,7 +22,7 @@
 	var QuestionModel = Backbone.Model.extend({
 
 		parse: function(response) {
-			response.answers = new AnswerCollection(respose.answers);
+			response.answers = new AnswerCollection(response.answers);
 		},
 	});
 

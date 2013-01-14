@@ -59,11 +59,14 @@
 				</ul>
 			</div>
 
-			<ul class="answers">
-				<li class="increase"><div class="percentage"><span id="test-number">10</span></div> <span class="heading"><b>…augmenter (%)</b></span></li>
-				<li class="stable"><div class="percentage"><span>34</span></div> <span class="heading"><b>…diminuer (%)</b></span></li>
-				<li class="decrease"><div class="percentage"><span>52</span></div> <span class="heading"><b>…rester stable (%)</b></span></li>
-				<li class="nspp"><div class="percentage"><span>4</span></div> <span class="heading">…ne se prononce pas (%)</span></li>
+			<!--<ul class="answers">
+				<li id="test-percentage" class="increase"><div class="percentage"><div><span>10</span></div></div> <span class="heading"><b>…augmenter (%)</b></span></li>
+				<li class="stable"><div class="percentage"><div>34</div></div> <span class="heading"><b>…diminuer (%)</b></span></li>
+				<li class="decrease"><div class="percentage"><div>52</div></div> <span class="heading"><b>…rester stable (%)</b></span></li>
+				<li class="nspp"><div class="percentage"><div>4</div></div> <span class="heading">…ne se prononce pas (%)</span></li>
+			</ul>-->
+
+			<ul id="test-answers-view" class="answers">
 			</ul>
 
 			<p class="more"><a href="#" class="compare">Comparer ce même mois sur les autres années</a></p>
@@ -72,7 +75,7 @@
 	</div><!-- #center -->
 </div><!-- #main -->
 
-<script type="text/template" id="button-display-menu-template">
+<!--<script type="text/template" id="button-display-menu-template">
 	<a href="#<%= url %>"><%= name %></a>
 </script>
 
@@ -96,10 +99,14 @@
 		<li><a href="#"><abbr title="Novembre">Nov.</abbr></a></li>
 		<li><a href="#"><abbr title="Décembre">Dec.</abbr></a></li>
 	</ul>
-</script>
+</script>-->
 
 <script type="text/template" id="item-year-menu-template">
 	<% for ( var year in years ) { %><li class="<%= years[year].className %>"><a href="#<%= years[year].url %>"><%= year %></a></li><% } %>
+</script>
+
+<script type="text/template" id="answer-template">
+	<div class="percentage"><div><span style="background:<%= background %>;"></span></div></div> <span class="heading"><%= title %></span>
 </script>
 
 <script>window.App = {};</script>

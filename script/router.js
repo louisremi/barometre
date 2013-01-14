@@ -13,7 +13,7 @@
 		},
 
 		question: function(type,year,month) {
-			if (!!type) {
+			if (!type) {
 				var now = new Date();
 				type = 'pouvoir';
 				year = now.getFullYear();

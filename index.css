@@ -352,17 +352,33 @@ h3 {
 
 .answers .percentage {
 	display: block;
+	position: relative;
+	z-index: 1;
 	height: 150px;
 
 	font-family: "Sentinel", serif;
 }
 
+.answers .percentage div {
+	position: absolute;
+	z-index: -1;
+	width: 100%;
+	top: 80px;
+	font-size: 14px;
+
+	transition: font-size .5s ease, top .5s ease;
+}
+
 .answers .percentage span {
-	vertical-align: bottom;
+	background-color: #900;
+	border-radius: 50%;
+	padding: .3em;
 }
 
 .answers .heading {
 	display: block;
+	position: relative;
+	z-index: 1;
 
 	font-size: 12px;
 	text-transform: uppercase;
@@ -372,31 +388,31 @@ h3 {
 /* .increase, .stable, .decrease, .irrelevant, .nspp, .yes, .no
 ----------------------------------------------------------------------------- */
 
-.answers .increase .number:before {
+.answers .increase .percentage:before {
 	background-position: 0 0;
 }
 
-.answers .stable .number:before {
+.answers .stable .percentage:before {
 	background-position: -48px 0;
 }
 
-.answers .decrease .number:before {
+.answers .decrease .percentage:before {
 	background-position: -96px 0;
 }
 
-.answers .irrelevant .number:before {
+.answers .irrelevant .percentage:before {
 	background-position: -144px 0;
 }
 
-.answers .nspp .number:before {
+.answers .nspp .percentage:before {
 	background-position: -192px 0;
 }
 
-.answers .yes .number:before {
+.answers .yes .percentage:before {
 	background-position: -240px 0;
 }
 
-.answers .no .number:before {
+.answers .no .percentage:before {
 	background-position: -288px 0;
 }
 
