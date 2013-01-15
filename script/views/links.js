@@ -22,7 +22,7 @@ App.LinksView = Backbone.View.extend({
 	}
 });
 
-App.dispatcher.on("routeChange", function() {
+App.dispatcher.on("routeChanged", function() {
 	App.linksView.render();
 });
 

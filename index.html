@@ -14,7 +14,7 @@
 	<div id="center">
 		<h1><img src="images/le-barometre.png" alt="Le baromètre des projets des français" /></h1>
 
-		<ul id="tab-menu">
+		<ul id="bm-tab-menu">
 			<li><a href="#" data-href=":display/courant/:year/:month">Mois en cours</a></li
 			><li><a href="#" data-href=":display/pouvoir/:year/:month">Pouvoir d'achat</a></li
 			><li><a href="#" data-href=":display/epargne/:year/:month">&Eacute;pargne</a></li
@@ -26,7 +26,7 @@
 		</ul>
 		
 		<div id="bm-tabs">
-			<div id="current-month" class="tab">
+			<div id="tab-pouvoir" class="tab">
 				<div class="banner">
 					<h2><span>&Eacute;volution du pouvoir d'achat</span></h2>
 				</div>
@@ -40,16 +40,17 @@
 				</div><!-- .question -->
 			</div><!-- .tab -->
 
-			<div id="epargne" class="tab">
+			<div id="tab-epargne" class="tab">
 				<div class="banner">
 					<h2><span>Intentions d'épargne</span></h2>
 				</div>
 
 				<div id="question-epargne" class="question">
+
 				</div><!-- .question -->
 			</div><!-- .tab -->
 
-			<div id="consommation" class="tab">
+			<div id="tab-consocourante" class="tab">
 				<div class="banner">
 					<h2><span>Intention de consommation courante</span></h2>
 				</div>
@@ -58,7 +59,7 @@
 				</div><!-- .question -->
 			</div><!-- .tab -->
 
-			<div id="immobilier" class="tab">
+			<div id="tab-immo" class="tab">
 				<div class="banner">
 					<h2><span>Intention achat immobilier</span></h2>
 				</div>
@@ -67,7 +68,7 @@
 				</div><!-- .question -->
 			</div><!-- .tab -->
 
-			<div id="automobile" class="tab">
+			<div id="tab-auto" class="tab">
 				<div class="banner">
 					<h2><span>Intention achat automobile</span></h2>
 				</div>
@@ -76,7 +77,7 @@
 				</div><!-- .question -->
 			</div><!-- .tab -->
 
-			<div id="actualite" class="tab">
+			<div id="tab-actu" class="tab">
 				<div class="banner alt">
 					<h2><span>Actualité</span></h2>
 				</div>
@@ -85,7 +86,7 @@
 				</div><!-- .question -->
 			</div><!-- .tab -->
 
-			<div id="apropos" class="tab">
+			<div id="tab-apropos" class="tab">
 				<p>Des propos bien à propos.</p>
 			</div><!-- .tab -->
 		</div><!-- #bm-tabs -->
@@ -94,7 +95,7 @@
 </div><!-- #main -->
 
 <script type="text/template" id="question-template">
-	<ul class="display-menu" data-activable>
+	<ul class="display-menu">
 		<li><a href="#" data-href="year/:tab/:year/:month">Affichage par année</a></li>
 		<li><a href="#" data-href="month/:tab/:year/:month">Affichage par mois</a></li>
 		<li><a href="#" data-href="evolution/:tab/:year/:month">Affichage par évolution</a></li>
@@ -111,7 +112,7 @@
 	<div class="month-menu">
 		<div class="slider">
 		</div>
-		<ul class="months" data-activable><%
+		<ul class="months"><%
 			for ( var month in months ) {
 				%><li><div class="handle"></div><a href="#" data-href=":display/:tab/:year/<%= month %>"><abbr title="<%= months[month][1] %>"><%= months[month][0] %>.</abbr></a></li><%
 			}
@@ -166,6 +167,7 @@
 <script src="script/app.js"></script>
 <script src="script/router.js"></script>
 <script src="script/views/links.js"></script>
+<script src="script/views/tabs.js"></script>
 <script>
 
 (function(window) {
@@ -179,9 +181,12 @@ App.linksView = new App.LinksView({
 	el: $("#center")[0]
 });
 
-Backbone.history.start({
-	//root: "/index.html"
+App.tabsView = new App.TabsView({
+	model: App.ui.model,
+	el: $("#bm-tab-menu")[0]
 });
+
+Backbone.history.start();
 
 })(window);
 
