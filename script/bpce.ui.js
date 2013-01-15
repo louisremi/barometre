@@ -22,24 +22,24 @@ var now = new Date(),
 
 ui.now = usefulDate;
 
-ui.years = {};
+ui.years = [];
 while ( i-- ) {
-	ui.years[ currentYear-- + "" ] = 1;
+	ui.years[2 - i] = currentYear--;
 }
 
 ui.months = {
-	"01": [ "Jan", "Janvier" ],
-	"02": [ "Fev", "Février" ],
-	"03": [ "Mar", "Mars" ],
-	"04": [ "Avr", "Avril" ],
-	"05": [ "Mai", "Mai" ],
+	1: [ "Jan", "Janvier" ],
+	2: [ "Fev", "Février" ],
+	3: [ "Mar", "Mars" ],
+	4: [ "Avr", "Avril" ],
+	5: [ "Mai", "Mai" ],
 	//5: [ "Jun", "Juin" ],
 	//6: [ "Jul", "Juillet" ],
-	"08": [ "Aou", "Août" ],
-	"09": [ "Sep", "Septembre" ],
-	"10": [ "Oct", "Octobre" ],
-	"11": [ "Nov", "Novembre" ],
-	"12": [ "Dec", "Décembre" ]
+	8: [ "Aou", "Août" ],
+	9: [ "Sep", "Septembre" ],
+	10: [ "Oct", "Octobre" ],
+	11: [ "Nov", "Novembre" ],
+	12: [ "Dec", "Décembre" ]
 };
 
 ui.displays = {
@@ -113,125 +113,5 @@ ui.initialize = function() {
 ui.draw = function() {
 
 };
-
-/*
-
-var data = {};
-
-// find current month:
-// we only have data for last month, and we don't have data for June and July
-var now = new Date,
-	usefulDate = new Date( now.getFullYear(), now.getMonth() - ( now.getMonth() == 7 ? 3 : now.getMonth() == 6 ? 2 : 1 ), now.getDate() ),
-	currentYear = usefulDate.getFullYear(),
-	i = 3;
-
-data.years = {};
-while ( i-- ) {
-	data.years[ currentYear-- ] = {
-		className: i == 2 ? "active" : "",
-		url: ""
-	};
-}
-
-data.activeTab
-
-data.colors = [
-	"#427324",
-	"#f6a800",
-	"#f7c9d6",
-	"#afd7d7",
-	"#571d74"
-];
-
-data.tabs = {
-	courant: [ "pouvoir", "conso", "epargne", "immo", "auto", "actu" ],
-	pouvoir: [ "pouvoir", "conso" ],
-	epargne: [ "epargne" ],
-	immo: ["immo"],
-	auto: ["auto"],
-	actu: ["actu"]
-};
-
-var display = data.displays = {};
-
-displays.month = [{
-	id: "pouvoir",
-	answers: [{
-		id: "augmenter",
-		title: "<b>…augmenter (%)</b>",
-		background: "#427324"
-	}, {
-		id: "stable",
-		title: "<b>…rester stable (%)</b>",
-		background: "#f6a800"
-	}, {
-		id: "diminuer",
-		title: "<b>…diminuer (%)</b>",
-		background: "#f7c9d6"
-	}, {
-		id: "nsp",
-		title: "…ne se prononce pas (%)",
-		background: "#571d74"
-	}]
-//}, {
-//	id: "conso",
-//	answers: [
-//	}]
-}, {
-	id: "epargne",
-	answers: [{
-		id: "augmenter",
-		title: "mettre <b>plus d'argent de côté</b> que ces derniers mois (%)",
-		background: "#427324"
-	}, {
-		id: "stable",
-		title: "mettre <b>autant d'argent de côté</b> que ces derniers mois",
-		background: "#f6a800"
-	}, {
-		id: "diminuer",
-		title: "mettre <b>moins d'argent de côté</b> que ces derniers mois (%)",
-		background: "#f7c9d6"
-	}, {
-		id: "non",
-		title: "je ne met pas d'argent de côté (%)",
-		background: "#afd7d7"
-	}, {
-		id: "nsp",
-		title: "…ne se prononce pas (%)",
-		background: "#571d74"
-	}]
-}, {
-	id: "immo",
-	answers: [{
-		id: "oui",
-		title: "<b>oui</b>",
-		background: "#427324"
-	}, {
-		id: "non",
-		title: "<b>non</b>",
-		background: "#f6a800"
-	}, {
-		id: "nsp",
-		title: "…ne se prononce pas (%)",
-		background: "#571d74"
-	}]
-}, {
-	id: "auto",
-	answers: [{
-		id: "oui",
-		title: "<b>oui</b>",
-		background: "#427324"
-	}, {
-		id: "non",
-		title: "<b>non</b>",
-		background: "#f6a800"
-	}, {
-		id: "nsp",
-		title: "…ne se prononce pas (%)",
-		background: "#571d74"
-	}]
-}];
-
-App.data = data;*/
 
 })( window, window.App, jQuery, _ );

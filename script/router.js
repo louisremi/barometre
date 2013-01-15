@@ -43,9 +43,9 @@
 
 				App.collections.questions = new App.collections.QuestionCollection();
 				App.collections.questions.setUrl(
-					App.ui.tabs[ model.get("tab") ].join("/"),
-					model.get("year"),
-					model.get("month")
+					App.ui.tabs[self.model.get("tab")].join("/"),
+					self.model.get("year"),
+					("0"+self.model.get("month")).slice(-2)
 				);
 				App.collections.questions.fetch();
 			});

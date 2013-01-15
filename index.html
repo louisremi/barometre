@@ -101,9 +101,9 @@
 		<li><a href="#" data-href="evolution/:tab/:year/:month">Affichage par évolution</a></li>
 	</ul>
 
-	<ul class="year-menu"><%
-		for ( var year in years ) { 
-			%><li><a href="" data-href=":display/:tab/<%= year %>/:month"><%= year %></a></li><%
+	<ul class="year-menu" data-activable><%
+		for ( var i=0,j=years.length;i<j;i++ ) { 
+			%><li><a href="" data-href=":display/:tab/<%= years[i] %>/:month"><%= years[i] %></a></li><%
 		}
 	%></ul>
 
