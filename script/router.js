@@ -32,7 +32,13 @@
 
 				}*/
 
-
+				App.collections.questions = new App.collections.QuestionCollection();
+				App.collections.questions.setUrl(
+					App.ui.tabs[this.model.get("tab")].join("/"),
+					this.model.get("year"),
+					this.model.get("month")
+				);
+				App.collections.questions.fetch();
 			});
 		},
 
@@ -43,7 +49,7 @@
 		},
 
 		barometre: function( display, tab, year, month ) {
-			if ( arguments.length ) {
+			if ( !arguments.length ) {
 				this.model.set({
 					display: "month",
 					tab: "courant",
@@ -58,10 +64,6 @@
 					month: month || ""
 				});
 			}
-
-			App.collections.questions = new QuestionCollection();
-			App.collections.questions.setUrl(App.ui.tabs[this.model.get("tab")].join("/"),this.model.get("year"),this.model.get("year"));
-			App.collections.questions.fetch();
 		}
 	});
 

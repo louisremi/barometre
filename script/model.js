@@ -1,8 +1,11 @@
-(function(window,Backbone,_,$) {
+(function(window,Backbone,_,$,App) {
+
+	var model = App.model = {};
+	var collections = App.collections = {};
 
 	var baseUrl = "http://bpce.herokuapp.com/api"
 
-	var AnswerModel = Backbone.Model.extend({
+	model.AnswerModel = Backbone.Model.extend({
 
 		validKeys: ['id','title','value','attribute'],
 
@@ -15,23 +18,21 @@
 		}
 	});
 
-	var AnswerCollection = Backbone.Collection.extend({
-		model:AnswerModel,
+	collections.AnswerCollection = Backbone.Collection.extend({
+		model:model.AnswerModel,
 	});
 
-	var QuestionModel = Backbone.Model.extend({
+	model.QuestionModel = Backbone.Model.extend({
 
 		parse: function(response) {
-			response.answers = new AnswerCollection(response.answers);
+			response.answers = new collections.AnswerCollection(response.answers);
 		},
 	});
 
-	var QuestionCollection = Backbone.Collection.extend({
+	collections.QuestionCollection = Backbone.Collection.extend({
 		setUrl: function(type,year,month) {
 			this.url = baseUrl+'/'+type+'/'+year+'/'+(!!month ? month+'/' : '');
 		}
 	});
 
-	window.App.QuestionCollection = QuestionCollection;
-
-})(window,Backbone,_,jQuery)
+})(window,Backbone,_,jQuery,window.App)
