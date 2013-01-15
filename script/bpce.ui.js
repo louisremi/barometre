@@ -28,18 +28,18 @@ while ( i-- ) {
 }
 
 ui.months = {
-	0: [ "Jan", "Janvier" ],
-	1: [ "Fev", "Février" ],
-	2: [ "Mar", "Mars" ],
-	3: [ "Avr", "Avril" ],
-	4: [ "Mai", "Mai" ],
+	"01": [ "Jan", "Janvier" ],
+	"02": [ "Fev", "Février" ],
+	"03": [ "Mar", "Mars" ],
+	"04": [ "Avr", "Avril" ],
+	"05": [ "Mai", "Mai" ],
 	//5: [ "Jun", "Juin" ],
 	//6: [ "Jul", "Juillet" ],
-	7: [ "Aou", "Août" ],
-	8: [ "Sep", "Septembre" ],
-	9: [ "Oct", "Octobre" ],
-	10: [ "Nov", "Novembre" ],
-	11: [ "Dec", "Décembre" ]
+	"08": [ "Aou", "Août" ],
+	"09": [ "Sep", "Septembre" ],
+	"10": [ "Oct", "Octobre" ],
+	"11": [ "Nov", "Novembre" ],
+	"12": [ "Dec", "Décembre" ]
 };
 
 ui.displays = {
