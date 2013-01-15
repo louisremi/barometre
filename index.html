@@ -15,14 +15,14 @@
 		<h1><img src="images/le-barometre.png" alt="Le baromètre des projets des français" /></h1>
 
 		<ul id="tab-menu">
-			<li><a href="#">Mois en cours</a></li
-			><li><a href="#">Pouvoir d'achat</a></li
-			><li><a href="#">&Eacute;pargne</a></li
-			><li><a href="#">Consommation</a></li
-			><li><a href="#">Achat immo</a></li
-			><li><a href="#">Achat auto</a></li
-			><li><a href="#">Actualité</a></li
-			><li><a href="#">À propos</a></li>
+			<li><a href="#" data-href=":display/courant/:year/:month">Mois en cours</a></li
+			><li><a href="#" data-href=":display/pouvoir/:year/:month">Pouvoir d'achat</a></li
+			><li><a href="#" data-href=":display/epargne/:year/:month">&Eacute;pargne</a></li
+			><li><a href="#" data-href=":display/consocourante/:year/:month">Consommation</a></li
+			><li><a href="#" data-href=":display/immo/:year/:month">Achat immo</a></li
+			><li><a href="#" data-href=":display/auto/:year/:month">Achat auto</a></li
+			><li><a href="#" data-href=":display/actu/:year/:month">Actualité</a></li
+			><li><a href="#" data-href=":display/apropos/:year/:month">À propos</a></li>
 		</ul>
 		
 		<div id="bm-tabs">
@@ -95,14 +95,14 @@
 
 <script type="text/template" id="question-template">
 	<ul class="display-menu" data-activable>
-		<li><a href="#">Affichage par année</a></li>
-		<li><a href="#">Affichage par mois</a></li>
-		<li><a href="#">Affichage par évolution</a></li>
+		<li><a href="#" data-href="year/:tab/:year/:month">Affichage par année</a></li>
+		<li><a href="#" data-href="month/:tab/:year/:month">Affichage par mois</a></li>
+		<li><a href="#" data-href="evolution/:tab/:year/:month">Affichage par évolution</a></li>
 	</ul>
 
 	<ul class="year-menu" data-activable><%
 		for ( var year in years ) { 
-			%><li><a href=""><%= year %></a></li><%
+			%><li><a href="" data-href=":display/:tab/<%= year %>/:month"><%= year %></a></li><%
 		}
 	%></ul>
 
@@ -113,7 +113,7 @@
 		</div>
 		<ul class="months" data-activable><%
 			for ( var month in months ) {
-				%><li><div class="handle"></div><a href="#"><abbr title="<%= months[month][1] %>"><%= months[month][1] %>.</abbr></a></li><%
+				%><li><div class="handle"></div><a href="#" data-href=":display/:tab/:year/<%= month %>"><abbr title="<%= months[month][1] %>"><%= months[month][0] %>.</abbr></a></li><%
 			}
 		%></ul>
 	</div>
@@ -132,7 +132,7 @@
 </script>
 
 <script>window.App = {};</script>
-<script src="script/activable.js"></script>
+<!--<script src="script/activable.js"></script>-->
 <script src="script/jquery.js"></script>
 <script src="script/lodash.js"></script>
 <script src="script/bpce.ui.js"></script>
@@ -142,6 +142,7 @@
 <script src="script/model.js"></script>
 <script src="script/app.js"></script>
 <script src="script/router.js"></script>
+<script src="script/views/links.js"></script>
 <script>
 
 (function(window) {
@@ -149,7 +150,15 @@
 App.ui.initialize();
 
 App.router = new App.BarometreRouter({appView:App.view});
-Backbone.history.start();
+
+App.linksView = new App.LinksView({
+	model: App.ui.model,
+	el: $("#center")[0]
+});
+
+console.log( Backbone.history.start({
+	root: "/index.html"
+}) );
 
 })(window);
 

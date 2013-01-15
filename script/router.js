@@ -44,12 +44,11 @@
 
 		routes: {
 			"": "barometre",
-			":display/:tab/:year/?": "barometre",
-			":display/:tab/:year/:month/?": "barometre"
+			"bm/:display/:tab/:year/(:month)": "barometre"
 		},
 
 		barometre: function( display, tab, year, month ) {
-			if ( !arguments.length ) {
+			if ( !display ) {
 				this.model.set({
 					display: "month",
 					tab: "courant",
