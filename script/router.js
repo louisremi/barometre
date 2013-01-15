@@ -5,7 +5,9 @@
 	var BarometreRouter = Backbone.Router.extend({
 
 		initialize: function(options) {
-			this.model = App.ui.model = new Backbone.Model({
+			var self= this;
+
+			var model = this.model = App.ui.model = new Backbone.Model({
 				display: null,
 				tab: null,
 				year: null,
@@ -13,17 +15,24 @@
 			});
 
 			// we use a model as a router because we want to now what changed
-			this.model.on("change", function() {
-				if ( this.model.hasChanged("display") ) {
+			model.on("change", function() {
+				App.dispatcher.trigger("routeChange");
+
+				/*if ( model.hasChanged("tab") ) {
+					App.ui.selectTab();
+				}
+				/*if ( model.hasChanged("display") ) {
 					App.ui.draw();
 
-				} else if ( this.model.hasChanged("tab") ) {
+				} else if ( model.hasChanged("tab") ) {
 					App.ui.selectTab();
 
-				} else if ( this.model.hasChanged("year") || this.model.hasChanged("month") ) {
+				} else if ( model.hasChanged("year") || model.hasChanged("month") ) {
 					// I don't know, find something to do!
 
-				}
+				}*/
+
+
 			});
 		},
 
@@ -36,20 +45,18 @@
 		barometre: function( display, tab, year, month ) {
 			if ( arguments.length ) {
 				this.model.set({
-					display: App.ui.tabs.courant,
-					tab: App.ui.displays.month,
-					year: App.ui.years[ App.ui.now.getFullYear() ],
-					month: App.ui.months[ App.ui.now.getMonth() ]
+					display: "courant",
+					tab: "month",
+					year: App.ui.now.getFullYear(),
+					month: App.ui.now.getMonth()
 				});
 			} else {
 				this.model.set({
-					display: App.ui.tabs[ tab ],
-					tab: App.ui.displays[ display ],
-					year: App.ui.years[ year ]
+					display: display,
+					tab: tab,
+					year: year,
+					month: month || ""
 				});
-				if ( month ) {
-					this.model.set( "month", App.ui.months[ month ] );
-				}
 			}
 		}
 	});
