@@ -32,7 +32,13 @@
 
 				}*/
 
-
+				App.collections.questions = new App.collections.QuestionCollection();
+				App.collections.questions.setUrl(
+					App.ui.tabs[this.model.get("tab")].join("/"),
+					this.model.get("year"),
+					this.model.get("month")
+				);
+				App.collections.questions.fetch();
 			});
 		},
 
