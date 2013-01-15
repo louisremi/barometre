@@ -45,8 +45,8 @@
 		barometre: function( display, tab, year, month ) {
 			if ( arguments.length ) {
 				this.model.set({
-					display: "courant",
-					tab: "month",
+					display: "month",
+					tab: "courant",
 					year: App.ui.now.getFullYear(),
 					month: App.ui.now.getMonth()
 				});
@@ -58,6 +58,10 @@
 					month: month || ""
 				});
 			}
+
+			App.collections.questions = new QuestionCollection();
+			App.collections.questions.setUrl(App.ui.tabs[this.model.get("tab")].join("/"),this.model.get("year"),this.model.get("year"));
+			App.collections.questions.fetch();
 		}
 	});
 
