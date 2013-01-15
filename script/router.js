@@ -18,19 +18,30 @@
 			model.on("change", function() {
 				App.dispatcher.trigger("routeChange");
 
-				/*if ( model.hasChanged("tab") ) {
-					App.ui.selectTab();
+				if ( model.hasChanged("tab") ) {
+					//App.ui.selectTab();
 				}
-				/*if ( model.hasChanged("display") ) {
-					App.ui.draw();
+				if ( model.hasChanged("display") ) {
+					// supprimer toutes le contenu des .question
+					// trouver quel mode de display.
+					// pour chaque type question on doit retrouver quelle objet vue correpond a ce mode de display
+
+					$('.answers').empty();
+
+					var questionViews = {}
+					_.each(App.ui.tabs[model.get('tab')],function(value) {
+						questionViews[value] = new (App.ui.questions[value].display[model.get('display')])();
+					});
+
+					App.views.Manager.draw(questionViews);
 
 				} else if ( model.hasChanged("tab") ) {
-					App.ui.selectTab();
+					//App.ui.selectTab();
 
 				} else if ( model.hasChanged("year") || model.hasChanged("month") ) {
 					// I don't know, find something to do!
 
-				}*/
+				}
 
 				App.collections.questions = new App.collections.QuestionCollection();
 				App.collections.questions.setUrl(

@@ -72,7 +72,7 @@
 					<h2><span>Intention achat automobile</span></h2>
 				</div>
 
-				<div id="question-automobile" class="question">
+				<div id="question-auto" class="question">
 				</div><!-- .question -->
 			</div><!-- .tab -->
 
@@ -81,7 +81,7 @@
 					<h2><span>Actualité</span></h2>
 				</div>
 
-				<div id="question-actualite" class="question">
+				<div id="question-actu" class="question">
 				</div><!-- .question -->
 			</div><!-- .tab -->
 
@@ -131,14 +131,37 @@
 	<div class="percentage"><div><span style="background:<%= background %>;"></span></div></div> <span class="heading"><%= title %></span>
 </script>
 
+<script id="bm-conso-answer-month-template" type="text/template">
+<li id="first" class="graph-container">
+	<div class="conso-graph">
+		<object class="logo-conso" data="images/gas.svg" type="image/svg+xml"></object>
+		<div class="texte-conso">
+			<span class="cercle-conso"></span>
+			<div class="percentage-conso"><span>%</span></div>
+			<div class="label-conso"></div>
+		</div>
+	</div>
+</li>
+</script>
+
 <script>window.App = {};</script>
 <!--<script src="script/activable.js"></script>-->
 <script src="script/jquery.js"></script>
 <script src="script/lodash.js"></script>
-<script src="script/bpce.ui.js"></script>
-<script src="script/bpce.slider.js"></script>
+<script src="script/backbone.js"></script>
 <script src="script/backbone.js"></script>
 <script src="script/bpce.backbone.js"></script>
+<script src="script/views/actualite_views.js"></script>
+<script src="script/views/conso_views.js"></script>
+<script src="script/views/apropos_views.js"></script>
+<script src="script/views/automobile_views.js"></script>
+<script src="script/views/consocourante_views.js"></script>
+<script src="script/views/epargne_views.js"></script>
+<script src="script/views/immo_views.js"></script>
+<script src="script/views/pouvoir_views.js"></script>
+<script src="script/views/manager.js"></script>
+<script src="script/bpce.ui.js"></script>
+<script src="script/bpce.slider.js"></script>
 <script src="script/model.js"></script>
 <script src="script/app.js"></script>
 <script src="script/router.js"></script>

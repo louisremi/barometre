@@ -456,3 +456,57 @@ h3 {
 	color: #000;
 	text-decoration: none;
 }
+
+/* .month-menu, .slider, .handle
+----------------------------------------------------------------------------- */
+
+.conso-graph {
+	position:absolute;
+	background-color:#eee;
+	bottom:0px;
+	width:100%;
+}
+
+.graph-container {
+	position:relative;
+}
+
+.logo-conso {
+	position:relative;
+	top:-110px;
+	width:100%;
+}
+
+.texte-conso {
+	position:absolute;
+	width:100%;
+	top:-12px;
+}
+
+.percentage-conso {
+	font-family:"Sentinel",serif;
+	font-size:46px;
+}
+
+.percentage-conso span {
+	font-size:24px;
+}
+
+.label-conso {
+	font-family: "Univers",sans-serif;
+	position:relative;
+	top:-7px;
+	font-size: 12px;
+	font-weight: 600;
+}
+
+.cercle-conso {
+	background:#571d74;
+	border-radius: 50%;
+	font-size:23px;
+	color:#fff;
+	padding: .2em .6em;
+	font-family:"Sentinel",serif;
+}
+
+/*--------------------------------------------------------------------------- */
