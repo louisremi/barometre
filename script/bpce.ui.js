@@ -3,9 +3,10 @@
 var ui = App.ui = {};
 
 ui.tabs = {
-	courant: [ "pouvoir", "conso", "epargne", "immo", "auto", "actu", "apropos" ],
+	courant: [ "pouvoir", "conso", "epargne", "consocourante", "immo", "auto", "actu", "apropos" ],
 	pouvoir: [ "pouvoir", "conso" ],
 	epargne: [ "epargne" ],
+	consocourante: [ "consocourante" ],
 	immo: ["immo"],
 	auto: ["auto"],
 	actu: ["actu"],
