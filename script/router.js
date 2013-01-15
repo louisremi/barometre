@@ -36,7 +36,7 @@
 				App.collections.questions.setUrl(
 					App.ui.tabs[self.model.get("tab")].join("/"),
 					self.model.get("year"),
-					self.model.get("month")
+					("0"+self.model.get("month")).slice(-2)
 				);
 				App.collections.questions.fetch();
 			});

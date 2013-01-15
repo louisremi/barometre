@@ -22,24 +22,24 @@ var now = new Date(),
 
 ui.now = usefulDate;
 
-ui.years = {};
+ui.years = [];
 while ( i-- ) {
-	ui.years[ currentYear-- ] = 1;
+	ui.years[2 - i] = currentYear--;
 }
 
 ui.months = {
-	"01": [ "Jan", "Janvier" ],
-	"02": [ "Fev", "Février" ],
-	"03": [ "Mar", "Mars" ],
-	"04": [ "Avr", "Avril" ],
-	"05": [ "Mai", "Mai" ],
+	1: [ "Jan", "Janvier" ],
+	2: [ "Fev", "Février" ],
+	3: [ "Mar", "Mars" ],
+	4: [ "Avr", "Avril" ],
+	5: [ "Mai", "Mai" ],
 	//5: [ "Jun", "Juin" ],
 	//6: [ "Jul", "Juillet" ],
-	"08": [ "Aou", "Août" ],
-	"09": [ "Sep", "Septembre" ],
-	"10": [ "Oct", "Octobre" ],
-	"11": [ "Nov", "Novembre" ],
-	"12": [ "Dec", "Décembre" ]
+	8: [ "Aou", "Août" ],
+	9: [ "Sep", "Septembre" ],
+	10: [ "Oct", "Octobre" ],
+	11: [ "Nov", "Novembre" ],
+	12: [ "Dec", "Décembre" ]
 };
 
 ui.displays = {
