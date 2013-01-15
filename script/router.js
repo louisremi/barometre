@@ -5,7 +5,7 @@
 	var BarometreRouter = Backbone.Router.extend({
 
 		initialize: function(options) {
-			this.model = App.ui.model = new Backbone.Model({
+			var model = this.model = App.ui.model = new Backbone.Model({
 				display: null,
 				tab: null,
 				year: null,
@@ -13,17 +13,17 @@
 			});
 
 			// we use a model as a router because we want to now what changed
-			this.model.on("change", function() {
-				if ( this.model.hasChanged("display") ) {
+			model.on("change", function() {
+				/*if ( model.hasChanged("display") ) {
 					App.ui.draw();
 
-				} else if ( this.model.hasChanged("tab") ) {
+				} else if ( model.hasChanged("tab") ) {
 					App.ui.selectTab();
 
-				} else if ( this.model.hasChanged("year") || this.model.hasChanged("month") ) {
+				} else if ( model.hasChanged("year") || model.hasChanged("month") ) {
 					// I don't know, find something to do!
 
-				}
+				}*/
 			});
 		},
 
