@@ -20,6 +20,7 @@ $(document).on("mousedown", ".handle", function() {
 
 	monthsOffsetLeft = $(this.parentNode.parentNode).offset().left;
 
+	return false;
 });
 
 $(document).on("mousemove", function(e) {
@@ -36,6 +37,8 @@ $(document).on("mousemove", function(e) {
 	}
 
 	$draggedHandle.css({left: x});
+
+	return false;
 });
 
 $(document).on("mouseup", function() {

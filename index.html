@@ -15,7 +15,7 @@
 		<h1><img src="images/le-barometre.png" alt="Le baromètre des projets des français" /></h1>
 
 		<ul id="tab-menu">
-			<li class="active"><a href="#">Mois en cours</a></li
+			<li><a href="#">Mois en cours</a></li
 			><li><a href="#">Pouvoir d'achat</a></li
 			><li><a href="#">&Eacute;pargne</a></li
 			><li><a href="#">Consommation</a></li
@@ -25,242 +25,103 @@
 			><li><a href="#">À propos</a></li>
 		</ul>
 		
-		<div id="current-month" class="tab">
-			<div class="banner">
-				<h2><span>&Eacute;volution du pouvoir d'achat</span></h2>
-			</div>
-
-			<div id="question-pouvoir" class="question">
-				<ul class="display-menu" data-activable>
-					<li><a href="#">Affichage par année</a></li>
-					<li class="active"><a href="#">Affichage par mois</a></li>
-					<li><a href="#">Affichage par évolution</a></li>
-				</ul>
-
-				<ul class="year-menu" data-activable></ul>
-
-				<h3>Au cours des trois prochains mois, votre pouvoir d'achat va-t-il…</h3>
-
-				<div class="month-menu">
-					<div class="slider">
-					</div>
-					<ul class="months" data-activable>
-						<li><div class="handle"></div><a href="#"><abbr title="Janvier">Jan.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Février">Fev.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Mars">Mar.</abbr></a></li>
-						<li class="active"><div class="handle"></div><a href="#"><abbr title="Avril">Avr.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Mai">Mai.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Août">Aou.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Septembre">Sep.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Octobre">Oct.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Novembre">Nov.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Décembre">Dec.</abbr></a></li>
-					</ul>
+		<div id="bm-tabs">
+			<div id="current-month" class="tab">
+				<div class="banner">
+					<h2><span>&Eacute;volution du pouvoir d'achat</span></h2>
 				</div>
 
-				<ul id="test-answers-view" class="answers"></ul>
+				<div id="question-pouvoir" class="question">
+				</div><!-- .question -->
 
-				<p class="more"><a href="#" class="compare">Comparer ce même mois sur les autres années</a></p>
-			</div><!-- .question -->
-		</div><!-- .tab -->
+				<hr style="border-width: 1px 0 0 0; margin-top: 20px;" />
 
-		<div id="epargne" class="tab">
-			<div class="banner">
-				<h2><span>Intentions d'épargne</span></h2>
-			</div>
+				<div id="question-conso" class="question">
+				</div><!-- .question -->
+			</div><!-- .tab -->
 
-			<div id="question-epargne" class="question">
-				<ul class="display-menu" data-activable>
-					<li><a href="#">Affichage par année</a></li>
-					<li class="active"><a href="#">Affichage par mois</a></li>
-					<li><a href="#">Affichage par évolution</a></li>
-				</ul>
-
-				<ul class="year-menu" data-activable></ul>
-
-				<h3>Envisagez-vous de…</h3>
-
-				<div class="month-menu">
-					<div class="slider">
-					</div>
-					<ul class="months" data-activable>
-						<li><div class="handle"></div><a href="#"><abbr title="Janvier">Jan.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Février">Fev.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Mars">Mar.</abbr></a></li>
-						<li class="active"><div class="handle"></div><a href="#"><abbr title="Avril">Avr.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Mai">Mai.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Août">Aou.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Septembre">Sep.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Octobre">Oct.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Novembre">Nov.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Décembre">Dec.</abbr></a></li>
-					</ul>
+			<div id="epargne" class="tab">
+				<div class="banner">
+					<h2><span>Intentions d'épargne</span></h2>
 				</div>
 
-				<ul id="test-answers-view" class="answers"></ul>
+				<div id="question-epargne" class="question">
+				</div><!-- .question -->
+			</div><!-- .tab -->
 
-				<p class="more"><a href="#" class="compare">Comparer ce même mois sur les autres années</a></p>
-			</div><!-- .question -->
-		</div><!-- .tab -->
-
-		<div id="consommation" class="tab">
-			<div class="banner">
-				<h2><span>Intention de consommation courante</span></h2>
-			</div>
-
-			<div id="question-consommation" class="question">
-				<ul class="display-menu" data-activable>
-					<li><a href="#">Affichage par année</a></li>
-					<li class="active"><a href="#">Affichage par mois</a></li>
-					<li><a href="#">Affichage par évolution</a></li>
-				</ul>
-
-				<ul class="year-menu" data-activable></ul>
-
-				<h3>Au cours des trois prochains mois, pour l'alimentation ou l'habillement, envisagez vous de…</h3>
-
-				<div class="month-menu">
-					<div class="slider">
-					</div>
-					<ul class="months" data-activable>
-						<li><div class="handle"></div><a href="#"><abbr title="Janvier">Jan.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Février">Fev.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Mars">Mar.</abbr></a></li>
-						<li class="active"><div class="handle"></div><a href="#"><abbr title="Avril">Avr.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Mai">Mai.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Août">Aou.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Septembre">Sep.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Octobre">Oct.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Novembre">Nov.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Décembre">Dec.</abbr></a></li>
-					</ul>
+			<div id="consommation" class="tab">
+				<div class="banner">
+					<h2><span>Intention de consommation courante</span></h2>
 				</div>
 
-				<ul id="test-answers-view" class="answers"></ul>
+				<div id="question-consocourante" class="question">
+				</div><!-- .question -->
+			</div><!-- .tab -->
 
-				<p class="more"><a href="#" class="compare">Comparer ce même mois sur les autres années</a></p>
-			</div><!-- .question -->
-		</div><!-- .tab -->
-
-		<div id="consommation" class="tab">
-			<div class="banner">
-				<h2><span>Intention achat immobilier</span></h2>
-			</div>
-
-			<div id="question-consommation" class="question">
-				<ul class="display-menu" data-activable>
-					<li><a href="#">Affichage par année</a></li>
-					<li class="active"><a href="#">Affichage par mois</a></li>
-					<li><a href="#">Affichage par évolution</a></li>
-				</ul>
-
-				<ul class="year-menu" data-activable></ul>
-
-				<h3>Au cours des trois prochains mois, envisagez vous d'acheter une maison ou un appartement ?</h3>
-
-				<div class="month-menu">
-					<div class="slider">
-					</div>
-					<ul class="months" data-activable>
-						<li><div class="handle"></div><a href="#"><abbr title="Janvier">Jan.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Février">Fev.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Mars">Mar.</abbr></a></li>
-						<li class="active"><div class="handle"></div><a href="#"><abbr title="Avril">Avr.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Mai">Mai.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Août">Aou.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Septembre">Sep.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Octobre">Oct.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Novembre">Nov.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Décembre">Dec.</abbr></a></li>
-					</ul>
+			<div id="immobilier" class="tab">
+				<div class="banner">
+					<h2><span>Intention achat immobilier</span></h2>
 				</div>
 
-				<ul id="test-answers-view" class="answers"></ul>
+				<div id="question-immo" class="question">
+				</div><!-- .question -->
+			</div><!-- .tab -->
 
-				<p class="more"><a href="#" class="compare">Comparer ce même mois sur les autres années</a></p>
-			</div><!-- .question -->
-		</div><!-- .tab -->
-
-		<div id="automobile" class="tab">
-			<div class="banner">
-				<h2><span>Intention achat automobile</span></h2>
-			</div>
-
-			<div id="question-automobile" class="question">
-				<ul class="display-menu" data-activable>
-					<li><a href="#">Affichage par année</a></li>
-					<li class="active"><a href="#">Affichage par mois</a></li>
-					<li><a href="#">Affichage par évolution</a></li>
-				</ul>
-
-				<ul class="year-menu" data-activable></ul>
-
-				<h3>Au cours des trois prochains mois, envisagez vous d'acheter ou de changer de voiture ?</h3>
-
-				<div class="month-menu">
-					<div class="slider">
-					</div>
-					<ul class="months" data-activable>
-						<li><div class="handle"></div><a href="#"><abbr title="Janvier">Jan.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Février">Fev.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Mars">Mar.</abbr></a></li>
-						<li class="active"><div class="handle"></div><a href="#"><abbr title="Avril">Avr.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Mai">Mai.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Août">Aou.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Septembre">Sep.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Octobre">Oct.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Novembre">Nov.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Décembre">Dec.</abbr></a></li>
-					</ul>
+			<div id="automobile" class="tab">
+				<div class="banner">
+					<h2><span>Intention achat automobile</span></h2>
 				</div>
 
-				<ul id="test-answers-view" class="answers"></ul>
+				<div id="question-automobile" class="question">
+				</div><!-- .question -->
+			</div><!-- .tab -->
 
-				<p class="more"><a href="#" class="compare">Comparer ce même mois sur les autres années</a></p>
-			</div><!-- .question -->
-		</div><!-- .tab -->
-
-		<div id="actualite" class="tab">
-			<div class="banner">
-				<h2><span>Intention achat automobile</span></h2>
-			</div>
-
-			<div id="question-actualite" class="question">
-				<ul class="display-menu" data-activable>
-					<li><a href="#">Affichage par année</a></li>
-					<li class="active"><a href="#">Affichage par mois</a></li>
-					<li><a href="#">Affichage par évolution</a></li>
-				</ul>
-
-				<ul class="year-menu" data-activable></ul>
-
-				<h3>Intentions de dépenses pour les fêtes de fin d'année</h3>
-
-				<div class="month-menu">
-					<div class="slider">
-					</div>
-					<ul class="months" data-activable>
-						<li><div class="handle"></div><a href="#"><abbr title="Janvier">Jan.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Février">Fev.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Mars">Mar.</abbr></a></li>
-						<li class="active"><div class="handle"></div><a href="#"><abbr title="Avril">Avr.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Mai">Mai.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Août">Aou.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Septembre">Sep.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Octobre">Oct.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Novembre">Nov.</abbr></a></li>
-						<li><div class="handle"></div><a href="#"><abbr title="Décembre">Dec.</abbr></a></li>
-					</ul>
+			<div id="actualite" class="tab">
+				<div class="banner alt">
+					<h2><span>Actualité</span></h2>
 				</div>
 
-				<ul id="test-answers-view" class="answers"></ul>
+				<div id="question-actualite" class="question">
+				</div><!-- .question -->
+			</div><!-- .tab -->
 
-				<p class="more"><a href="#" class="compare">Comparer ce même mois sur les autres années</a></p>
-			</div><!-- .question -->
-		</div><!-- .tab -->
+			<div id="apropos" class="tab">
+				<p>Des propos bien à propos.</p>
+			</div><!-- .tab -->
+		</div><!-- #bm-tabs -->
 
 	</div><!-- #center -->
 </div><!-- #main -->
+
+<script type="text/template" id="question-template">
+	<ul class="display-menu" data-activable>
+		<li><a href="#">Affichage par année</a></li>
+		<li><a href="#">Affichage par mois</a></li>
+		<li><a href="#">Affichage par évolution</a></li>
+	</ul>
+
+	<ul class="year-menu" data-activable><%
+		for ( var year in years ) { 
+			%><li><a href=""><%= year %></a></li><%
+		}
+	%></ul>
+
+	<h3><%= question %></h3>
+
+	<div class="month-menu">
+		<div class="slider">
+		</div>
+		<ul class="months" data-activable><%
+			for ( var month in months ) {
+				%><li><div class="handle"></div><a href="#"><abbr title="<%= months[month][1] %>"><%= months[month][1] %>.</abbr></a></li><%
+			}
+		%></ul>
+	</div>
+
+	<ul class="answers"></ul>
+
+	<p class="more"><a href="#" class="<%= moreClassName %>"><%= moreLabel %></a></p>
+</script>
 
 <script type="text/template" id="item-year-menu-template">
 	<% for ( var year in years ) { %><li class="<%= years[year].className %>"><a href="#<%= years[year].url %>"><%= year %></a></li><% } %>
@@ -273,8 +134,9 @@
 <script>window.App = {};</script>
 <script src="script/activable.js"></script>
 <script src="script/jquery.js"></script>
-<script src="script/bpce.slider.js"></script>
 <script src="script/lodash.js"></script>
+<script src="script/bpce.ui.js"></script>
+<script src="script/bpce.slider.js"></script>
 <script src="script/backbone.js"></script>
 <script src="script/bpce.backbone.js"></script>
 <script src="script/model.js"></script>
@@ -284,22 +146,7 @@
 
 (function(window) {
 
-// find current month:
-// we only have data for last month, and we don't have data for June and July
-var now = new Date,
-	usefulDate = new Date( now.getFullYear(), now.getMonth() - ( now.getMonth() == 7 ? 3 : now.getMonth() == 6 ? 2 : 1 ), now.getDate() ),
-	currentYear = usefulDate.getFullYear(),
-	i = 3;
-
-App.years = {};
-while ( i-- ) {
-	App.years[ currentYear-- ] = {
-		className: i == 2 ? "active" : "",
-		url: ""
-	}
-}
-
-App.view = new App.AppView;
+App.ui.initialize();
 
 App.router = new App.BarometreRouter({appView:App.view});
 Backbone.history.start();
