@@ -38,15 +38,14 @@
 
 		routes: {
 			"": "barometre",
-			":display/:tab/:year/?": "barometre",
-			":display/:tab/:year/:month/?": "barometre"
+			"bm/:display/:tab/:year/(:month)": "barometre"
 		},
 
 		barometre: function( display, tab, year, month ) {
-			if ( arguments.length ) {
+			if ( !display ) {
 				this.model.set({
-					display: "courant",
-					tab: "month",
+					display: "month",
+					tab: "courant",
 					year: App.ui.now.getFullYear(),
 					month: App.ui.now.getMonth()
 				});
