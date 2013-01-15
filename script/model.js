@@ -16,7 +16,7 @@
 	});
 
 	var AnswerCollection = Backbone.Collection.extend({
-
+		model:AnswerModel,
 	});
 
 	var QuestionModel = Backbone.Model.extend({
