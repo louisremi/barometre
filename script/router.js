@@ -16,7 +16,16 @@
 
 			// we use a model as a router because we want to now what changed
 			model.on("change", function() {
-				App.dispatcher.trigger("routeChange");
+				App.dispatcher.trigger("routeChanged");
+
+				if ( model.hasChanged("display") ) {
+					App.dispatcher.trigger("displayChanged");
+				}
+
+				if ( model.hasChanged("tab") ) {
+					App.dispatcher.trigger("tabChanged");
+				}
+
 
 				/*if ( model.hasChanged("tab") ) {
 					App.ui.selectTab();
@@ -34,9 +43,9 @@
 
 				App.collections.questions = new App.collections.QuestionCollection();
 				App.collections.questions.setUrl(
-					App.ui.tabs[this.model.get("tab")].join("/"),
-					this.model.get("year"),
-					this.model.get("month")
+					App.ui.tabs[ model.get("tab") ].join("/"),
+					model.get("year"),
+					model.get("month")
 				);
 				App.collections.questions.fetch();
 			});

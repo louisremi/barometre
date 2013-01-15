@@ -24,7 +24,7 @@ ui.now = usefulDate;
 
 ui.years = {};
 while ( i-- ) {
-	ui.years[ currentYear-- ] = 1;
+	ui.years[ currentYear-- + "" ] = 1;
 }
 
 ui.months = {
@@ -93,6 +93,8 @@ ui.colors = [
 	"#afd7d7",
 	"#571d74"
 ];
+
+ui.transitionDuration = 300;
 
 ui.initialize = function() {
 	var commonData = {
