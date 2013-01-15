@@ -1,4 +1,4 @@
-(function($,Backbone) {
+(function($,Backbone,App) {
 
 
 	Backbone.View.prototype.assign = function(selector,view) {
@@ -55,17 +55,19 @@
 		removeOne: function(model) {
 			this._viewPointers[model.cid].remove();
 			delete this._viewPointers[model.cid];
-		},
+		}
 	});
 
-	var dispatcher;
-	dispatcher = _.extend({}, Backbone.Events, {
+	var dispatcher = _.extend({}, Backbone.Events, {
 		cid: "dispatcher"
 	});
-	
+
+	App.dispatcher = dispatcher;
+
 	return _.each([Backbone.Collection.prototype, Backbone.Model.prototype, Backbone.View.prototype, Backbone.Router.prototype,Backbone.CollectionView.prototype], function(proto) {
 		return _.extend(proto, {
-  			globalDispatcher: dispatcher
+			globalDispatcher: dispatcher
 		});
 	});
-})(jQuery,Backbone);
+
+})(jQuery,Backbone,App);
