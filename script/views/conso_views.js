@@ -11,7 +11,8 @@ views.ConsoAnswerMonthView =Backbone.View.extend({
 	texteSelector: ".texte-conso",
 	cercleSelector: ".cercle-conso",
 	labelSelector: ".label-conso",
-	percentageSelector: ".percentage-conso",
+	percentageSelector: "#percentage-conso-value",
+	containerSelector: "#question-conso .answers",
 	//-----------------------------------------------------------------#
 
 	texteDict: {
@@ -39,6 +40,7 @@ views.ConsoAnswerMonthView =Backbone.View.extend({
 	},
 
 	hookUp: function(answer,position) {
+		$(this.containerSelector).css({height:"500px"});
 		this.$el.find(this.percentageSelector).prepend(answer.value);
 		this.$el.find(this.labelSelector).text(this.texteDict[answer.title]);
 		this.$el.find(this.cercleSelector).text(position+1);

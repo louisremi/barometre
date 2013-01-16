@@ -7,7 +7,7 @@ App.TabsView = Backbone.View.extend({
 		this.$el.find(".active").removeClass("active");
 		
 		// fade-out all tabs
-		$("#bm-tabs").css({opacity: 0});
+		$("#tabs").css({opacity: 0});
 		setTimeout(function() {
 			var activeTabs = App.ui.tabs[ App.ui.model.get("tab") ];
 			// show all active tabs, hide others
@@ -17,9 +17,12 @@ App.TabsView = Backbone.View.extend({
 				$(this).css({
 					display: _( activeTabs ).contains( label ) ? "block" : "none"
 				});
+
 			});
 
-			$("#bm-tabs").css({opacity: 1});
+			window.parent.postMessage( document.body.offsetHeight, "*" );
+
+			$("#tabs").css({opacity: 1});
 
 		}, App.ui.transitionDuration + 50 );
 

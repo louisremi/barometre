@@ -4,28 +4,34 @@
 	<meta charset="utf-8" />
 	<title>Le baromètre des projets des français</title>
 
-	<link rel="stylesheet" type="text/css" href="normalize.css" />
-	<link rel="stylesheet" type="text/css" href="index.css" />
+	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="css/index.css" />
+	<script>
+		window.App = {};
+		// inline script/frame-bridge.js
+		//
+	</script>
+	<script src="script/frame-bridge.js"></script>
 </head>
 <body>
 
 <div id="main" role="main">
 
 	<div id="center">
-		<h1><img src="images/le-barometre.png" alt="Le baromètre des projets des français" /></h1>
+		<!--<h1><img src="images/le-barometre.png" alt="Le baromètre des projets des français" /></h1>-->
 
-		<ul id="bm-tab-menu">
+		<ul id="tab-menu">
 			<li><a href="#" data-href=":display/courant/:year/:month">Mois en cours</a></li
 			><li><a href="#" data-href=":display/pouvoir/:year/:month">Pouvoir d'achat</a></li
-			><li><a href="#" data-href=":display/epargne/:year/:month">&Eacute;pargne</a></li
-			><li><a href="#" data-href=":display/consocourante/:year/:month">Consommation</a></li
+			><li><a href="#" data-href=":display/epargne/:year/:month">&Eacute;par&#8203;gne</a></li
+			><li><a href="#" data-href=":display/consocourante/:year/:month">Consom&#8203;mation</a></li
 			><li><a href="#" data-href=":display/immo/:year/:month">Achat immo</a></li
 			><li><a href="#" data-href=":display/auto/:year/:month">Achat auto</a></li
-			><li><a href="#" data-href=":display/actu/:year/:month">Actualité</a></li
-			><li><a href="#" data-href=":display/apropos/:year/:month">À propos</a></li>
+			><li><a href="#" data-href=":display/actu/:year/:month">Actu&#8203;alité</a></li
+			><li><a href="#" data-href=":display/apropos/:year/:month">À pro&#8203;pos</a></li>
 		</ul>
 		
-		<div id="bm-tabs">
+		<div id="tabs">
 			<div id="tab-pouvoir" class="tab">
 				<div class="banner">
 					<h2><span>&Eacute;volution du pouvoir d'achat</span></h2>
@@ -101,7 +107,7 @@
 		<li><a href="#" data-href="evolution/:tab/:year/:month">Affichage par évolution</a></li>
 	</ul>
 
-	<ul class="year-menu" data-activable><%
+	<ul class="year-menu"><%
 		for ( var i=0,j=years.length;i<j;i++ ) { 
 			%><li><a href="" data-href=":display/:tab/<%= years[i] %>/:month"><%= years[i] %></a></li><%
 		}
@@ -143,7 +149,7 @@
 		<img class="logo-conso" src="" alt=""></img>
 		<div class="texte-conso">
 			<span class="cercle-conso"></span>
-			<div class="percentage-conso"><span>%</span></div>
+			<div class="percentage-conso"><span id="percentage-conso-value"></span><span class="percentage-conso-small">%</span></div>
 			<div class="label-conso"></div>
 		</div>
 	</div>
@@ -151,7 +157,6 @@
 </script>
 
 <script>window.App = {};</script>
-<!--<script src="script/activable.js"></script>-->
 <script src="script/jquery.js"></script>
 <script src="script/lodash.js"></script>
 <script src="script/backbone.js"></script>
@@ -175,7 +180,17 @@
 <script src="script/views/tabs.js"></script>
 <script>
 
-(function(window) {
+$(function() {
+	App.domLoaded = 1;
+	App.initialize();
+});
+
+App.initialize = function() {
+
+// wait for both events before initializing the app
+if ( App.domLoaded === undefined || App.hashFound === undefined ) {
+	return;
+}
 
 App.ui.initialize();
 
@@ -188,12 +203,12 @@ App.linksView = new App.LinksView({
 
 App.tabsView = new App.TabsView({
 	model: App.ui.model,
-	el: $("#bm-tab-menu")[0]
+	el: $("#tab-menu")[0]
 });
 
 Backbone.history.start();
 
-})(window);
+};
 
 </script>
 </body>
