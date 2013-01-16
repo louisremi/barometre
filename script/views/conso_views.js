@@ -39,27 +39,79 @@ views.ConsoAnswerMonthView =Backbone.View.extend({
 		return this;
 	},
 
+	toggle: function() {
+		this.$el.toggle();
+		return this;
+	},
+
 	hookUp: function(answer,position) {
 		$(this.containerSelector).css({height:"500px"});
-		this.$el.find(this.percentageSelector).prepend(answer.value);
+		this.$el.find(this.percentageSelector).text(answer.value);
 		this.$el.find(this.labelSelector).text(this.texteDict[answer.title]);
 		this.$el.find(this.cercleSelector).text(position+1);
 		this.$el.find(this.graphSelector).css({height: (10+(5-position)*13)+'%'});
+
+		return this;
 	}
 
+});
+
+views.ConsoQuestionMonthAllView = Backbone.View.extend({
+	template: _.template($("#bm-conso-answer-all-template").html()),
+
+	toggle: function() {
+		this.$el.toggle();
+	},
+
+	render: function() {
+		this.$el.html(this.template());
+		return this;
+	},
+
+	hookUp: function() {
+
+	}
 });
 
 views.ConsoQuestionMonthView = Backbone.View.extend({
 	template: _.template($("#bm-conso-question-month-template").html()),
 	answers: ["first","second","third","fourth","fifth"],
+	answersAll: [
+		"alim",
+		"essence",
+		"impot",
+		"elec",
+		"sante",
+		"gaz",
+		"logement",
+		"entretien",
+		"voiture",
+		"ecole",
+		"autres",
+		"transport",
+		"aucun",
+		"ordi",
+		"nsp"
+	],
 	answerViews: {},
+	answerViewsAll: {},
+	allModifierSelector: ".conso-all",
 
 	initialize: function() {
+		var self = this;
+		$(this.allModifierSelector).click(function() {
+			_.each(self.answerViews,function(view) {
+				view.toggle();
+			});
 
+			_.each(self.answerViewsAll,function(view) {
+				view.toggle();
+			});
+		});
 	},
 
 	render: function() {
-		this.$el.html(this.template({places: this.answers}));
+		this.$el.html(this.template({places: this.answers,types:this.answersAll}));
 
 		this.$el.addClass('conso-list-container');
 
@@ -67,6 +119,13 @@ views.ConsoQuestionMonthView = Backbone.View.extend({
 			var view = this.answerViews[this.answers[answer]] = new views.ConsoAnswerMonthView({el:this.$("#"+this.answers[answer])});
 			view.render();
 		}
+
+		for ( answer in this.answersAll) {
+			var view = this.answerViewsAll[this.answersAll[answer]] = new views.ConsoQuestionMonthAllView({el:this.$("#"+this.answersAll[answer])});
+			view.toggle();
+			view.render();
+		}
+
 		return this;
 	},
 
@@ -80,6 +139,10 @@ views.ConsoQuestionMonthView = Backbone.View.extend({
 		_.each(answerToDisplay, function(answer,index) {
 			self.answerViews[self.answers[index]].hookUp(answer,index);
 		});
+	},
+
+	changeDisplay: function() {
+		console.log("modify");
 	}
 });
 
