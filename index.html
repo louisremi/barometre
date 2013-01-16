@@ -155,8 +155,6 @@
 	</div>
 </div>
 </script>
-
-<script>window.App = {};</script>
 <script src="script/jquery.js"></script>
 <script src="script/lodash.js"></script>
 <script src="script/backbone.js"></script>
@@ -186,6 +184,8 @@ $(function() {
 });
 
 App.initialize = function() {
+
+	console.log(App.domLoaded,App.hashFound);
 
 // wait for both events before initializing the app
 if ( App.domLoaded === undefined || App.hashFound === undefined ) {
