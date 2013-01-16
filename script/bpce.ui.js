@@ -56,7 +56,7 @@ ui.questions = {
 		display: {
 			"month": App.views.PouvoirQuestionMonthView,
 			"year": App.views.PouvoirQuestionYearView,
-		}
+		},
 	},
 	conso: {
 		question: "Postes de dépenses les plus préoccupants",

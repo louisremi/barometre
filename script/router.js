@@ -4,6 +4,8 @@
 	// because we won't systematically redraw the UI on each click
 	var BarometreRouter = Backbone.Router.extend({
 
+		questionViews: {},
+
 		initialize: function(options) {
 			var self= this;
 
@@ -37,12 +39,11 @@
 
 					$('.answers').empty();
 
-					var questionViews = {}
 					_.each(App.ui.tabs[model.get('tab')],function(value) {
-						questionViews[value] = new (App.ui.questions[value].display[model.get('display')])();
+						self.questionViews[value] = new (App.ui.questions[value].display[model.get('display')])();
 					});
 
-					App.views.Manager.draw(questionViews);
+					App.views.Manager.draw(self.questionViews);
 
 				} else if ( model.hasChanged("tab") ) {
 					//App.ui.selectTab();
@@ -59,6 +60,20 @@
 					("0"+self.model.get("month")).slice(-2)
 				);
 				App.collections.questions.fetch();
+
+				App.collections.questions.bind('add',function() {
+					App.collections.questions.each(function(question) {
+					if (!!self.questionViews[question.get('type')])
+						self.questionViews[question.get('type')].hookUp(question);
+					})
+				});
+
+				App.collections.questions.bind('reset',function() {
+					App.collections.questions.each(function(question) {
+					if (!!self.questionViews[question.get('type')] && self.questionViews[question.get('type')].hookUp)
+						self.questionViews[question.get('type')].hookUp(question);
+					})
+				});
 			});
 		},
 

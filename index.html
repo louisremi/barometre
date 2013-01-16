@@ -132,17 +132,22 @@
 	<div class="percentage"><div><span style="background:<%= background %>;"></span></div></div> <span class="heading"><%= title %></span>
 </script>
 
+<script id="bm-conso-question-month-template" type="text/template">
+<% for (place in places) { %><li id="<%= places[place] %>" class="graph-container">
+</li><% } %>
+</script>
+
 <script id="bm-conso-answer-month-template" type="text/template">
-<li id="first" class="graph-container">
-	<div class="conso-graph">
-		<object class="logo-conso" data="images/gas.svg" type="image/svg+xml"></object>
+<div class="conso-graph-shell">
+	<div class="conso-graph" >
+		<img class="logo-conso" src="" alt=""></img>
 		<div class="texte-conso">
 			<span class="cercle-conso"></span>
 			<div class="percentage-conso"><span>%</span></div>
 			<div class="label-conso"></div>
 		</div>
 	</div>
-</li>
+</div>
 </script>
 
 <script>window.App = {};</script>

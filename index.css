@@ -479,6 +479,17 @@ h3 {
 	position:relative;
 }
 
+.answers li.graph-container {
+	display:inline-block;
+	height:100%;
+	width:20%;
+}
+
+ul.conso-list-container {
+	display:block;
+	list-style-type: none;
+}
+
 .logo-conso {
 	position:relative;
 	top:-110px;
@@ -506,6 +517,7 @@ h3 {
 	top:-7px;
 	font-size: 12px;
 	font-weight: 600;
+	text-transform: uppercase;
 }
 
 .cercle-conso {
@@ -517,4 +529,12 @@ h3 {
 	font-family:"Sentinel",serif;
 }
 
+.conso-graph-shell {
+	position:relative;
+	height:100%;
+}
+
+#question-conso .answers {
+	height:500px;
+}
 /*--------------------------------------------------------------------------- */
