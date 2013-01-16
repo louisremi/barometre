@@ -100,7 +100,7 @@
 			}
 
 			// proxy url to parent frame
-			window.parent.postMessage( window.location.hash, "*" );
+			window.parent.postMessage( window.location.hash + "", "*" );
 		}
 	});
 
