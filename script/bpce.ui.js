@@ -52,37 +52,74 @@ ui.questions = {
 	pouvoir: {
 		question: "Au cours des trois prochains mois, votre pouvoir d'achat va-t-il…",
 		moreClassName: "compare",
-		moreLabel: "Comparer ce même mois sur les autres années"
+		moreLabel: "Comparer ce même mois sur les autres années",
+		display: {
+			"month": App.views.PouvoirQuestionMonthView,
+			"year": App.views.PouvoirQuestionYearView,
+		},
 	},
 	conso: {
 		question: "Postes de dépenses les plus préoccupants",
 		moreClassName: "all",
-		moreLabel: "Voir l'ensemble des résultats"
+		moreLabel: "Voir l'ensemble des résultats",
+		display: {
+			"month": App.views.ConsoQuestionMonthView,
+			"year": App.views.ConsoQuestionYearView,
+		}
 	},
 	epargne: {
 		question: "Envisagez-vous de…",
 		moreClassName: "compare",
-		moreLabel: "Comparer ce même mois sur les autres années"
+		moreLabel: "Comparer ce même mois sur les autres années",
+		display: {
+			"month": App.views.EpargneQuestionMonthView,
+			"year": App.views.EpargneQuestionYearView,
+		}
 	},
 	consocourante: {
 		question: "Au cours des trois prochains mois, pour l'alimentation ou l'habillement, envisagez vous de…",
 		moreClassName: "compare",
-		moreLabel: "Comparer ce même mois sur les autres années"
+		moreLabel: "Comparer ce même mois sur les autres années",
+		display: {
+			"month": App.views.ConsocouranteQuestionMonthView,
+			"year": App.views.ConsocouranteQuestionYearView,
+		}
 	},
 	immo: {
 		question: "Au cours des trois prochains mois, envisagez vous d'acheter une maison ou un appartement ?",
 		moreClassName: "compare",
-		moreLabel: "Comparer ce même mois sur les autres années"
+		moreLabel: "Comparer ce même mois sur les autres années",
+		display: {
+			"month": App.views.ImmoQuestionMonthView,
+			"year": App.views.ImmoQuestionYearView,
+		}
 	},
-	automobile: {
+	auto: {
 		question: "Au cours des trois prochains mois, envisagez vous d'acheter ou de changer de voiture ?",
 		moreClassName: "compare",
-		moreLabel: "Comparer ce même mois sur les autres années"
+		moreLabel: "Comparer ce même mois sur les autres années",
+		display: {
+			"month": App.views.AutomobileQuestionMonthView,
+			"year": App.views.AutomobileQuestionYearView,
+		}
 	},
-	actualite: {
+	actu: {
 		question: "",
 		moreClassName: "",
-		moreLabel: "Voir la question précédente"
+		moreLabel: "Voir la question précédente",
+		display: {
+			"month": App.views.ActualiteQuestionMonthView,
+			"year": App.views.ActualiteQuestionYearView,
+		}
+	},
+	apropos: {
+		question: "",
+		moreClassName: "",
+		moreLabel: "Voir la question précédente",
+		display: {
+			"month": App.views.AproposView,
+			"year": App.views.AproposView,
+		}
 	}
 };
 

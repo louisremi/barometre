@@ -4,6 +4,8 @@
 	// because we won't systematically redraw the UI on each click
 	var BarometreRouter = Backbone.Router.extend({
 
+		questionViews: {},
+
 		initialize: function(options) {
 			var self= this;
 
@@ -27,19 +29,29 @@
 				}
 
 
-				/*if ( model.hasChanged("tab") ) {
-					App.ui.selectTab();
+				if ( model.hasChanged("tab") ) {
+					//App.ui.selectTab();
 				}
-				/*if ( model.hasChanged("display") ) {
-					App.ui.draw();
+				if ( model.hasChanged("display") ) {
+					// supprimer toutes le contenu des .question
+					// trouver quel mode de display.
+					// pour chaque type question on doit retrouver quelle objet vue correpond a ce mode de display
+
+					$('.answers').empty();
+
+					_.each(App.ui.tabs[model.get('tab')],function(value) {
+						self.questionViews[value] = new (App.ui.questions[value].display[model.get('display')])();
+					});
+
+					App.views.Manager.draw(self.questionViews);
 
 				} else if ( model.hasChanged("tab") ) {
-					App.ui.selectTab();
+					//App.ui.selectTab();
 
 				} else if ( model.hasChanged("year") || model.hasChanged("month") ) {
 					// I don't know, find something to do!
 
-				}*/
+				}
 
 				App.collections.questions = new App.collections.QuestionCollection();
 				App.collections.questions.setUrl(
@@ -48,6 +60,20 @@
 					("0"+self.model.get("month")).slice(-2)
 				);
 				App.collections.questions.fetch();
+
+				App.collections.questions.bind('add',function() {
+					App.collections.questions.each(function(question) {
+					if (!!self.questionViews[question.get('type')])
+						self.questionViews[question.get('type')].hookUp(question);
+					})
+				});
+
+				App.collections.questions.bind('reset',function() {
+					App.collections.questions.each(function(question) {
+					if (!!self.questionViews[question.get('type')] && self.questionViews[question.get('type')].hookUp)
+						self.questionViews[question.get('type')].hookUp(question);
+					})
+				});
 			});
 		},
 

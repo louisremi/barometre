@@ -123,12 +123,12 @@ var AppView = Backbone.View.extend({
 	initialize: function() {
 		var self = this;
 
-		_( App.questionData ).each(function( questionData, type ) {
+		/*_( App.questionData ).each(function( questionData, type ) {
 			new QuestionView({
 				el: document.querySelector( "#question-" + type ),
 				model: questionData
 			}).render();
-		});
+		});*/
 	},
 
 	render: function() {

@@ -471,3 +471,77 @@ h3 {
 	color: #000;
 	text-decoration: none;
 }
+
+/* .month-menu, .slider, .handle
+----------------------------------------------------------------------------- */
+
+.conso-graph {
+	position:absolute;
+	background-color:#eee;
+	bottom:0px;
+	width:100%;
+}
+
+.graph-container {
+	position:relative;
+}
+
+.answers li.graph-container {
+	display:inline-block;
+	height:100%;
+	width:20%;
+}
+
+ul.conso-list-container {
+	display:block;
+	list-style-type: none;
+}
+
+.logo-conso {
+	position:relative;
+	top:-110px;
+	width:100%;
+}
+
+.texte-conso {
+	position:absolute;
+	width:100%;
+	top:-12px;
+}
+
+.percentage-conso {
+	font-family:"Sentinel",serif;
+	font-size:46px;
+}
+
+.percentage-conso span.percentage-conso-small {
+	font-size:24px;
+}
+
+.label-conso {
+	font-family: "Univers",sans-serif;
+	position:relative;
+	top:-7px;
+	font-size: 12px;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+
+.cercle-conso {
+	background:#571d74;
+	border-radius: 50%;
+	font-size:23px;
+	color:#fff;
+	padding: .2em .6em;
+	font-family:"Sentinel",serif;
+}
+
+.conso-graph-shell {
+	position:relative;
+	height:100%;
+}
+
+#question-conso .answers {
+	height:500px;
+}
+/*--------------------------------------------------------------------------- */
