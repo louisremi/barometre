@@ -127,7 +127,7 @@
 
 	<ul class="answers"></ul>
 
-	<p class="more"><a href="#" class="<%= moreClassName %>"><%= moreLabel %></a></p>
+	<p class="more"><a href="#here" class="<%= moreClassName %>"><%= moreLabel %></a></p>
 </script>
 
 <script type="text/template" id="item-year-menu-template">
@@ -138,8 +138,11 @@
 	<div class="percentage"><div><span style="background:<%= background %>;"></span></div></div> <span class="heading"><%= title %></span>
 </script>
 
+<!-- ####==================== CONSO QUESTION & ANSWER TEMPLATE ====================#### -->
 <script id="bm-conso-question-month-template" type="text/template">
 <% for (place in places) { %><li id="<%= places[place] %>" class="graph-container">
+</li><% } %>
+<% for (type in types) { %><li id="<%= types[type] %>" class="line-container">
 </li><% } %>
 </script>
 
@@ -155,6 +158,17 @@
 	</div>
 </div>
 </script>
+
+<script id="bm-conso-answer-all-template" type="text/template">
+<div>
+	<span class="conso-all-place"></span>
+	<div class="conso-background-label">
+		<div class="conso-label">
+		</div>
+	</div>
+</div>
+</script>
+<!-- ####=========================================================================#### -->
 <script src="script/jquery.js"></script>
 <script src="script/lodash.js"></script>
 <script src="script/backbone.js"></script>
@@ -184,8 +198,6 @@ $(function() {
 });
 
 App.initialize = function() {
-
-	console.log(App.domLoaded,App.hashFound);
 
 // wait for both events before initializing the app
 if ( App.domLoaded === undefined || App.hashFound === undefined ) {

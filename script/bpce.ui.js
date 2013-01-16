@@ -60,7 +60,7 @@ ui.questions = {
 	},
 	conso: {
 		question: "Postes de dépenses les plus préoccupants",
-		moreClassName: "all",
+		moreClassName: "all conso-all",
 		moreLabel: "Voir l'ensemble des résultats",
 		display: {
 			"month": App.views.ConsoQuestionMonthView,
