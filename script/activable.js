@@ -182,7 +182,7 @@ function activeHandler( event ) {
 
 					// if "1 and always 1 is active", check the target is not the same as the previously active
 					if ( dataActivable == "1" && target == previouslyActive ) {
-						return preventDefault( event );
+						return /*preventDefault( event )*/;
 					}
 				}
 
@@ -219,7 +219,7 @@ function activeHandler( event ) {
 			verb, verb == "add" ? "activate" : "deactivate", "active", event
 		);
 
-		preventDefault( event );
+		//preventDefault( event );
 	}
 }
 

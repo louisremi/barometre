@@ -202,7 +202,7 @@ body {
 	color: inherit;
 }
 
-.display-menu .active {
+.month-display .month-display, .year-display .year-display, .evolution-display .evolution-display {
 	font-weight: bold;
 	color: #581E75;
 	border-color: #581E75;
@@ -338,6 +338,15 @@ h3 {
 	left: 20px;
 
 	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAYFBMVEUBAQsCAgkDAg4HBRQYEhw4KkFVQGFoT3dwVYBzV4N2WYZ3WYZ4W4h7XYt9X42AYY+AYpCFZZOLa5iPb5yaeaTIrcrGqsjDp8a/o8O7nsC1l7qyk7itjbOpibCmha2igapvYdtJAAAAFXRSTlMCAwcQLEZYXW92go+ctcjr3/L2+v0busaJAAAABnRFWHRUaXRsZQCo7tInAAAAB3RFWHRBdXRob3IAqa7MSAAAAAx0RVh0RGVzY3JpcHRpb24AEwkhIwAAAAp0RVh0Q29weXJpZ2h0AKwPzDoAAAAHdEVYdEUtbWFpbAB9CJvVAAAABHRFWHRVUkwAeKPTDwAAAJFJREFUGNNlj9sOwyAMQ1EnlUILEQ0td/j/vxyBSdtUP5EjnNiMda1SK1D7yj7awCBaNCBeY1YGay2lNguKiDC25tTVEf3hgCXHEHyMudiDM2lan919OZ9yOwXTZ03xvkghF1SsO5J3A/jUPRPcP+BhGUvJM5fK59lvsEzBlhm9UfRqYR9lls38lxv14dCS0/sNcjkRxzcwnA4AAAAASUVORK5CYII=);
+}
+
+#tabs .month-menu {
+	opacity: 0;
+	transition: opacity .3s ease;
+}
+
+#tabs.month-display .month-menu {
+	opacity: 1;
 }
 
 /* .answers

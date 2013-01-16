@@ -101,9 +101,9 @@
 
 <script type="text/template" id="question-template">
 	<ul class="display-menu">
-		<li><a href="#" data-href="year/:tab/:year/:month">Affichage par année</a></li>
-		<li><a href="#" data-href="month/:tab/:year/:month">Affichage par mois</a></li>
-		<li><a href="#" data-href="evolution/:tab/:year/:month">Affichage par évolution</a></li>
+		<li class="year-display"><a href="#" data-href="year/:tab/:year/:month">Affichage par année</a></li>
+		<li class="month-display"><a href="#" data-href="month/:tab/:year/:month">Affichage par mois</a></li>
+		<li class="evolution-display"><a href="#" data-href="evolution/:tab/:year/:month">Affichage par évolution</a></li>
 	</ul>
 
 	<ul class="year-menu"><%
@@ -175,6 +175,7 @@
 <script src="script/router.js"></script>
 <script src="script/views/links.js"></script>
 <script src="script/views/tabs.js"></script>
+<script src="script/views/displays.js"></script>
 <script>
 
 $(function() {
@@ -183,8 +184,6 @@ $(function() {
 });
 
 App.initialize = function() {
-
-	console.log(App.domLoaded,App.hashFound);
 
 // wait for both events before initializing the app
 if ( App.domLoaded === undefined || App.hashFound === undefined ) {
@@ -203,6 +202,11 @@ App.linksView = new App.LinksView({
 App.tabsView = new App.TabsView({
 	model: App.ui.model,
 	el: $("#tab-menu")[0]
+});
+
+App.displaysView = new App.DisplaysView({
+	model: App.ui.model,
+	el: $("#tabs")[0]
 });
 
 Backbone.history.start();
