@@ -1,6 +1,6 @@
 (function(Backbone,window,$,_,App) {
 
-var views = App.views =(App.views || {});
+var views = App.views = (App.views || {});
 
 views.ConsoAnswerMonthView =Backbone.View.extend({
 	template: _.template($("#bm-conso-answer-month-template").html()),

@@ -1,6 +1,10 @@
 (function( App, Backbone ) {
+	
+if ( !App.Views ) {
+	App.Views = {};
+}
 
-App.TabsView = Backbone.View.extend({
+App.Views.TabMenu = Backbone.View.extend({
 	model: Backbone.Model,
 	render: function() {
 		// desactivate previous tab
@@ -42,7 +46,7 @@ App.TabsView = Backbone.View.extend({
 });
 
 App.dispatcher.on("tabChanged", function() {
-	App.tabsView.render();
+	App.views.tabMenu.render();
 });
 
 })( App, Backbone );

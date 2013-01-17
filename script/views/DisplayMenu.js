@@ -1,6 +1,6 @@
 (function( App, Backbone ) {
 
-App.DisplaysView = Backbone.View.extend({
+App.Views.DisplayMenu = Backbone.View.extend({
 	model: Backbone.Model,
 	render: function() {
 		this.el.className = this.el.className.replace(/\b\w+-display\b/g, "");
@@ -9,7 +9,7 @@ App.DisplaysView = Backbone.View.extend({
 });
 
 App.dispatcher.on("displayChanged", function() {
-	App.displaysView.render();
+	App.views.displayMenu.render();
 });
 
 })( App, Backbone );

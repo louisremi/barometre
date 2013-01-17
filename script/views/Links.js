@@ -1,6 +1,10 @@
 (function( App, Backbone ) {
 
-App.LinksView = Backbone.View.extend({
+if ( !App.Views ) {
+	App.Views = {};
+}
+
+App.Views.Links = Backbone.View.extend({
 	model: Backbone.Model,
 	render: function() {
 		var self = this;
@@ -23,7 +27,7 @@ App.LinksView = Backbone.View.extend({
 });
 
 App.dispatcher.on("routeChanged", function() {
-	App.linksView.render();
+	App.views.links.render();
 });
 
 })( App, Backbone );

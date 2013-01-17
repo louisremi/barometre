@@ -44,7 +44,7 @@
 					$('.answers').empty();
 
 					_.each(App.ui.tabs[model.get('tab')],function(value) {
-						self.questionViews[value] = new (App.ui.questions[value].display[model.get('display')])();
+						self.questionViews[value] = new (App.ui.questions[value].display[model.get('display')])({type:value});
 					});
 
 					App.views.Manager.draw(self.questionViews);

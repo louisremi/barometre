@@ -177,29 +177,40 @@
 </div>
 </script>
 <!-- ####=========================================================================#### -->
+
+<!-- ####====================  ====================#### -->
+<script id="question-month-template" type="text/template"><%
+	for ( var i = -1, j = App.ui.questions[type].answerTitles.length; ++i < j; ) {
+		%><li class="<%= type %>"><div class="percentage"><span style="background:<%= App.ui.colors[i] %>;"></span></div> <span class="heading"><%= App.ui.questions[type].answerTitles[i] %></span></li><%
+	} %>
+</script>
+<!-- ####=========================================================================#### -->
+
+
 <script src="script/libs/jquery.js"></script>
 <script src="script/libs/lodash.js"></script>
 <script src="script/libs/backbone.js"></script>
 <script src="script/bpce.backbone.js"></script>
+
+<!-- Menu views -->
+<script src="script/views/Links.js"></script>
+<script src="script/views/TabMenu.js"></script>
+<script src="script/views/DisplayMenu.js"></script>
+<script src="script/views/YearMenu.js"></script>
+<script src="script/views/MonthMenu.js"></script>
+<!-- Question Views -->
+<script src="script/views/QuestionMonth.js"></script>
+
 <script src="script/views/actualite_views.js"></script>
 <script src="script/views/conso_views.js"></script>
 <script src="script/views/apropos_views.js"></script>
-<script src="script/views/automobile_views.js"></script>
-<script src="script/views/consocourante_views.js"></script>
-<script src="script/views/epargne_views.js"></script>
-<script src="script/views/immo_views.js"></script>
-<script src="script/views/pouvoir_views.js"></script>
+
 <script src="script/views/manager.js"></script>
 <script src="script/bpce.ui.js"></script>
 <script src="script/bpce.slider.js"></script>
 <script src="script/model.js"></script>
-<script src="script/app.js"></script>
+<!--<script src="script/app.js"></script>-->
 <script src="script/router.js"></script>
-<script src="script/views/links.js"></script>
-<script src="script/views/tabs.js"></script>
-<script src="script/views/displays.js"></script>
-<script src="script/views/years.js"></script>
-<script src="script/views/months.js"></script>
 <script>
 
 $(function() {
@@ -218,27 +229,27 @@ App.ui.initialize();
 
 App.router = new App.BarometreRouter({appView:App.view});
 
-App.linksView = new App.LinksView({
+App.views.links = new App.Views.Links({
 	model: App.ui.model,
 	el: $("#center")[0]
 });
 
-App.tabsView = new App.TabsView({
+App.views.tabMenu = new App.Views.TabMenu({
 	model: App.ui.model,
 	el: $("#tab-menu")[0]
 });
 
-App.displaysView = new App.DisplaysView({
+App.views.displayMenu = new App.Views.DisplayMenu({
 	model: App.ui.model,
 	el: $("#tabs")[0]
 });
 
-App.yearsView = new App.YearsView({
+App.views.yearMenu = new App.Views.YearMenu({
 	model: App.ui.model,
 	el: $("#tabs")[0]
 });
 
-App.monthsView = new App.MonthsView({
+App.views.monthMenu = new App.Views.MonthMenu({
 	model: App.ui.model,
 	el: $("#tabs")[0]
 });

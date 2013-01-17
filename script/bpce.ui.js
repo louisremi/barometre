@@ -53,12 +53,17 @@ ui.questions = {
 		question: "Au cours des trois prochains mois, votre pouvoir d'achat va-t-il…",
 		moreClassName: "compare",
 		moreLabel: "Comparer ce même mois sur les autres années",
+		answerTitles: [
+			"<b>…augmenter (%)</b>",
+			"<b>…diminuer (%)</b>",
+			"<b>…rester stable (%)</b>",
+			"…ne se prononce pas (%)"
+		],
 		display: {
-			month: App.views.PouvoirQuestionMonthView,
-			year: App.views.PouvoirQuestionYearView,
-			evolution: $
-
-		},
+			month: App.Views.QuestionMonth,
+			year: App.Views.QuestionYear,
+			evolution: App.Views.QuestionEvolution
+		}
 	},
 	conso: {
 		question: "Postes de dépenses les plus préoccupants",
@@ -74,40 +79,64 @@ ui.questions = {
 		question: "Envisagez-vous de…",
 		moreClassName: "compare",
 		moreLabel: "Comparer ce même mois sur les autres années",
+		answerTitles: [
+			"<b>…augmenter (%)</b>",
+			"<b>…diminuer (%)</b>",
+			"<b>…rester stable (%)</b>",
+			"…ne se prononce pas (%)"
+		],
 		display: {
-			month: App.views.EpargneQuestionMonthView,
-			year: App.views.EpargneQuestionYearView,
-			evolution: $
+			month: App.Views.QuestionMonth,
+			year: App.Views.QuestionYear,
+			evolution: App.Views.QuestionEvolution
 		}
 	},
 	consocourante: {
 		question: "Au cours des trois prochains mois, pour l'alimentation ou l'habillement, envisagez vous de…",
 		moreClassName: "compare",
 		moreLabel: "Comparer ce même mois sur les autres années",
+		answerTitles: [
+			"<b>…augmenter (%)</b>",
+			"<b>…diminuer (%)</b>",
+			"<b>…rester stable (%)</b>",
+			"…ne se prononce pas (%)"
+		],
 		display: {
-			month: App.views.ConsocouranteQuestionMonthView,
-			year: App.views.ConsocouranteQuestionYearView,
-			evolution: $
+			month: App.Views.QuestionMonth,
+			year: App.Views.QuestionYear,
+			evolution: App.Views.QuestionEvolution
 		}
 	},
 	immo: {
 		question: "Au cours des trois prochains mois, envisagez vous d'acheter une maison ou un appartement ?",
 		moreClassName: "compare",
 		moreLabel: "Comparer ce même mois sur les autres années",
+		answerTitles: [
+			"<b>…augmenter (%)</b>",
+			"<b>…diminuer (%)</b>",
+			"<b>…rester stable (%)</b>",
+			"…ne se prononce pas (%)"
+		],
 		display: {
-			month: App.views.ImmoQuestionMonthView,
-			year: App.views.ImmoQuestionYearView,
-			evolution: $
+			month: App.Views.QuestionMonth,
+			year: App.Views.QuestionYear,
+			evolution: App.Views.QuestionEvolution
 		}
 	},
 	auto: {
 		question: "Au cours des trois prochains mois, envisagez vous d'acheter ou de changer de voiture ?",
 		moreClassName: "compare",
 		moreLabel: "Comparer ce même mois sur les autres années",
+		answerTitles: [
+			"<b>…augmenter (%)</b>",
+			"<b>…diminuer (%)</b>",
+			"<b>…rester stable (%)</b>",
+			"…ne se prononce pas (%)"
+		],
 		display: {
-			month: App.views.AutomobileQuestionMonthView,
-			year: App.views.AutomobileQuestionYearView,
-			evolution: $
+			month: App.Views.QuestionMonth,
+			year: App.Views.QuestionYear,
+			evolution: App.Views.QuestionEvolution
 		}
 	},
 	actu: {

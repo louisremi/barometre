@@ -1,6 +1,10 @@
 (function( App, Backbone ) {
 
-App.MonthsView = Backbone.View.extend({
+if ( !App.Views ) {
+	App.Views = {};
+}
+
+App.Views.MonthMenu = Backbone.View.extend({
 	model: Backbone.Model,
 	render: function() {
 		this.el.className = this.el.className.replace(/\bmonth-\d+\b/g, "");
@@ -9,7 +13,7 @@ App.MonthsView = Backbone.View.extend({
 });
 
 App.dispatcher.on("monthChanged", function() {
-	App.monthsView.render();
+	App.views.monthMenu.render();
 });
 
 })( App, Backbone );

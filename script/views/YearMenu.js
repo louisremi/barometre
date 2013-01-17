@@ -1,6 +1,10 @@
 (function( App, Backbone ) {
 
-App.YearsView = Backbone.View.extend({
+if ( !App.Views ) {
+	App.Views = {};
+}
+
+App.Views.YearMenu = Backbone.View.extend({
 	model: Backbone.Model,
 	render: function() {
 		this.el.className = this.el.className.replace(/\byear-\w+\b/g, "");
@@ -9,7 +13,7 @@ App.YearsView = Backbone.View.extend({
 });
 
 App.dispatcher.on("yearChanged", function() {
-	App.yearsView.render();
+	App.views.yearMenu.render();
 });
 
 })( App, Backbone );
