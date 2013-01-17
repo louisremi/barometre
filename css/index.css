@@ -553,4 +553,41 @@ ul.conso-list-container {
 #question-conso .answers {
 	height:500px;
 }
+
+.conso-background-label {
+	width:30%;
+	height:100%;
+	background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAZCAIAAACdLshRAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3QERDhYvCmYZnwAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAABISURBVBjT3dCxEYBADANBibo87t3fkd3AEUAAQwM/bHiZZEBvhz42TzMzM3cDujsiIqK7AQFVZdt2VQG+Zq+1JGWmJP/hiacTPHIpXfsdCRkAAAAASUVORK5CYII=');
+	background-repeat: repeat-x;
+	text-align: left;
+	display:inline-block;
+}
+
+.line-container .conso-label {
+	background-color: #fff;
+	display:inline-block;
+	padding:5px 10px;
+	font-size: 15px;
+	text-transform: uppercase;
+}
+
+
+.answers li.line-container {
+	display:block;
+	height:6.25%;
+	width:100%;
+}
+
+.conso-all-place {
+	background:#571d74;
+	border-radius: 50%;
+	font-size:14px;
+	color:#fff;
+	padding: .2em .6em;
+	font-family:"Sentinel",serif;
+}
+
+.sub-line-container {
+	text-align: left;	
+}
 /*--------------------------------------------------------------------------- */
