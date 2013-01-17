@@ -54,8 +54,10 @@ ui.questions = {
 		moreClassName: "compare",
 		moreLabel: "Comparer ce même mois sur les autres années",
 		display: {
-			"month": App.views.PouvoirQuestionMonthView,
-			"year": App.views.PouvoirQuestionYearView,
+			month: App.views.PouvoirQuestionMonthView,
+			year: App.views.PouvoirQuestionYearView,
+			evolution: $
+
 		},
 	},
 	conso: {
@@ -63,8 +65,9 @@ ui.questions = {
 		moreClassName: "all conso-all",
 		moreLabel: "Voir l'ensemble des résultats",
 		display: {
-			"month": App.views.ConsoQuestionMonthView,
-			"year": App.views.ConsoQuestionYearView,
+			month: App.views.ConsoQuestionMonthView,
+			year: App.views.ConsoQuestionYearView,
+			evolution: $
 		}
 	},
 	epargne: {
@@ -72,8 +75,9 @@ ui.questions = {
 		moreClassName: "compare",
 		moreLabel: "Comparer ce même mois sur les autres années",
 		display: {
-			"month": App.views.EpargneQuestionMonthView,
-			"year": App.views.EpargneQuestionYearView,
+			month: App.views.EpargneQuestionMonthView,
+			year: App.views.EpargneQuestionYearView,
+			evolution: $
 		}
 	},
 	consocourante: {
@@ -81,8 +85,9 @@ ui.questions = {
 		moreClassName: "compare",
 		moreLabel: "Comparer ce même mois sur les autres années",
 		display: {
-			"month": App.views.ConsocouranteQuestionMonthView,
-			"year": App.views.ConsocouranteQuestionYearView,
+			month: App.views.ConsocouranteQuestionMonthView,
+			year: App.views.ConsocouranteQuestionYearView,
+			evolution: $
 		}
 	},
 	immo: {
@@ -90,8 +95,9 @@ ui.questions = {
 		moreClassName: "compare",
 		moreLabel: "Comparer ce même mois sur les autres années",
 		display: {
-			"month": App.views.ImmoQuestionMonthView,
-			"year": App.views.ImmoQuestionYearView,
+			month: App.views.ImmoQuestionMonthView,
+			year: App.views.ImmoQuestionYearView,
+			evolution: $
 		}
 	},
 	auto: {
@@ -99,8 +105,9 @@ ui.questions = {
 		moreClassName: "compare",
 		moreLabel: "Comparer ce même mois sur les autres années",
 		display: {
-			"month": App.views.AutomobileQuestionMonthView,
-			"year": App.views.AutomobileQuestionYearView,
+			month: App.views.AutomobileQuestionMonthView,
+			year: App.views.AutomobileQuestionYearView,
+			evolution: $
 		}
 	},
 	actu: {
@@ -108,8 +115,9 @@ ui.questions = {
 		moreClassName: "",
 		moreLabel: "Voir la question précédente",
 		display: {
-			"month": App.views.ActualiteQuestionMonthView,
-			"year": App.views.ActualiteQuestionYearView,
+			month: App.views.ActualiteQuestionMonthView,
+			year: App.views.ActualiteQuestionYearView,
+			evolution: $
 		}
 	},
 	apropos: {
@@ -117,8 +125,9 @@ ui.questions = {
 		moreClassName: "",
 		moreLabel: "Voir la question précédente",
 		display: {
-			"month": App.views.AproposView,
-			"year": App.views.AproposView,
+			month: App.views.AproposView,
+			year: App.views.AproposView,
+			evolution: $
 		}
 	}
 };
@@ -145,10 +154,8 @@ ui.initialize = function() {
 
 		$(this).html( ( _.template( $("#question-template").html() ) )( data ) );
 	});
-};
 
-ui.draw = function() {
-
+	$("#years-style").html( ( _.template( $("#years-style-template").html() ) )( { years: ui.years } ) );
 };
 
 })( window, window.App, jQuery, _ );
