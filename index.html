@@ -122,7 +122,7 @@
 		</div>
 		<ul class="months"><%
 			for ( var month in months ) {
-				%><li><div class="handle"></div><a href="#" data-href=":display/:tab/:year/<%= month %>"><abbr title="<%= months[month][1] %>"><%= months[month][0] %>.</abbr></a></li><%
+				%><li class="month-<%= month %>"><div class="handle"></div><a href="#" data-href=":display/:tab/:year/<%= month %>"><abbr title="<%= months[month][1] %>"><%= months[month][0] %>.</abbr></a></li><%
 			}
 		%></ul>
 	</div>

@@ -33,7 +33,7 @@
 				}
 
 				if ( model.hasChanged("month") ) {
-					App.dispatcher.trigger("yearChanged");
+					App.dispatcher.trigger("monthChanged");
 				}
 
 				if ( model.hasChanged("display") ) {

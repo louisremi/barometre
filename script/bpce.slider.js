@@ -10,10 +10,11 @@ $(document).on("mousedown", ".handle", function() {
 		$handle = $("<div class='handle'></div>");
 
 	$hiddenHandle = $(this).css({display: "none"});
-	
+
 	$draggedHandle = $handle.appendTo(document.body)
 		.css({
 			display: "block",
+			position: "absolute",
 			top: offset.top,
 			left: offset.left
 		});
@@ -47,9 +48,17 @@ $(document).on("mouseup", function() {
 	var offset = $draggedHandle.offset(),
 		a = document.elementFromPoint( offset.left + 8, offset.top + 20 );
 
+	if ( a.nodeName == "LI" ) {
+		a = a.childNodes[1];
+	}
+
 	$draggedHandle.remove();
-	$hiddenHandle.css({display: ""});
-	$draggedHandle = $hiddenHandle = null;
+	// there's a small delay before the handle is hidden by css,
+	// so don't clear the inline style immediatly
+	setTimeout(function() {
+		$hiddenHandle.css({display: ""});
+		$draggedHandle = $hiddenHandle = null;
+	}, 50);
 
 	a.click();
 });
