@@ -40,11 +40,11 @@ views.ConsoAnswerMonthView =Backbone.View.extend({
 	},
 
 	toggle: function() {
-		this.$el.toggle();
+		this.$el.fadeToggle(300);
 		return this;
 	},
 
-	hookUp: function(answer,position) {;
+	hookUp: function(answer,position,max) {;
 		this.$el.find(this.percentageSelector).text(answer.value);
 		this.$el.find(this.labelSelector).text(this.texteDict[answer.title]);
 		this.$el.find(this.cercleSelector).text(position+1);
@@ -60,6 +60,8 @@ views.ConsoQuestionMonthAllView = Backbone.View.extend({
 	//Element Selector ------------------------------------------------#
 	cercleSelector: ".conso-all-place",
 	labelSelector: ".conso-label",
+	iconSelector: ".conso-icon-ranking",
+	percentageSelector: "#percentage-conso-value",
 	//-----------------------------------------------------------------#
 
 	texteDict: {
@@ -82,7 +84,7 @@ views.ConsoQuestionMonthAllView = Backbone.View.extend({
 	},
 
 	toggle: function() {
-		this.$el.toggle();
+		this.$el.fadeToggle(300);
 	},
 
 	render: function() {
@@ -90,9 +92,17 @@ views.ConsoQuestionMonthAllView = Backbone.View.extend({
 		return this;
 	},
 
-	hookUp: function(answer,index) {
-		this.$el.find(this.cercleSelector).text(index+1);
+	hookUp: function(answer,index,max) {
+		this.$el.find(this.cercleSelector).text((''+(index+1)).length < 2 ? "\u2009"+(index+1)+"\u2009" : index+1);
 		this.$el.find(this.labelSelector).text(this.texteDict[answer.title]);
+		this.$el.css({top:44*index});
+		this.$el.find(this.iconSelector).css({left:(33+(55*(answer.value/max)))+'%'});
+		this.$el.find(this.percentageSelector).text(answer.value);
+
+		if(index > 4)
+			this.$el.find(this.cercleSelector).css({background:"#af62b2"});
+		else
+			this.$el.find(this.cercleSelector).css({background:"#571d74"});
 	}
 });
 
@@ -171,8 +181,12 @@ views.ConsoQuestionMonthView = Backbone.View.extend({
 			self.answerViews[self.answers[index]].hookUp(answer,index);
 		});
 
+		var max = _.max(sortedAnswer,function(answer) {
+			return +answer.value;
+		}).value;
+
 		_.each(sortedAnswer,function(answer,index) {
-			self.answerViewsAll[answer.title].hookUp(answer,index);
+			self.answerViewsAll[answer.title].hookUp(answer,index,max);
 		})
 	},
 
