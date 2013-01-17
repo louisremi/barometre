@@ -152,6 +152,10 @@
 </li><% } %>
 <% for (type in types) { %><li id="<%= types[type] %>" class="line-container">
 </li><% } %>
+<div class="conso-first-bar">
+</div>
+<div class="conso-second-bar">
+</div>
 </script>
 
 <script id="bm-conso-answer-month-template" type="text/template">
@@ -169,11 +173,17 @@
 
 <script id="bm-conso-answer-all-template" type="text/template">
 <div class="sub-line-container">
-	<span class="conso-all-place"></span>
+	<div class="conso-place-cell">
+		<span class="conso-all-place"></span>
+	</div>
 	<div class="conso-background-label">
 		<div class="conso-label">
 		</div>
 	</div>
+	<div class="ruler">
+		<span class="conso-icon-ranking"></span>
+	</div>
+	<div class="percentage-conso-all"><span id="percentage-conso-value"></span><span class="percentage-conso-small">%</span></div>
 </div>
 </script>
 <!-- ####=========================================================================#### -->
