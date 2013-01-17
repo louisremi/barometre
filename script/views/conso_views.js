@@ -12,7 +12,6 @@ views.ConsoAnswerMonthView =Backbone.View.extend({
 	cercleSelector: ".cercle-conso",
 	labelSelector: ".label-conso",
 	percentageSelector: "#percentage-conso-value",
-	containerSelector: "#question-conso .answers",
 	//-----------------------------------------------------------------#
 
 	texteDict: {
@@ -27,6 +26,7 @@ views.ConsoAnswerMonthView =Backbone.View.extend({
 		voiture:"l'achat de la voiture",
 		ecole:"l'école",
 		autres:"autres",
+		habillement:"l'habillement",
 		transport:"les transports en commun",
 		aucun:"aucun",
 		ordi:"les technologies (ordinateur,internet…)",
@@ -44,8 +44,7 @@ views.ConsoAnswerMonthView =Backbone.View.extend({
 		return this;
 	},
 
-	hookUp: function(answer,position) {
-		$(this.containerSelector).css({height:"500px"});
+	hookUp: function(answer,position) {;
 		this.$el.find(this.percentageSelector).text(answer.value);
 		this.$el.find(this.labelSelector).text(this.texteDict[answer.title]);
 		this.$el.find(this.cercleSelector).text(position+1);
@@ -58,6 +57,29 @@ views.ConsoAnswerMonthView =Backbone.View.extend({
 
 views.ConsoQuestionMonthAllView = Backbone.View.extend({
 	template: _.template($("#bm-conso-answer-all-template").html()),
+	//Element Selector ------------------------------------------------#
+	cercleSelector: ".conso-all-place",
+	labelSelector: ".conso-label",
+	//-----------------------------------------------------------------#
+
+	texteDict: {
+		alim:"l'alimentation",
+		essence:"l'essence",
+		impot:"les impôts",
+		elec:"l'électricité",
+		sante:"la santé",
+		gaz:"le gaz",
+		logement:"le logement",
+		entretien:"les travaux et l'entretien de la maison",
+		voiture:"l'achat de la voiture",
+		ecole:"l'école",
+		autres:"autres",
+		habillement:"l'habillement",
+		transport:"les transports en commun",
+		aucun:"aucun",
+		ordi:"les technologies (ordinateur,internet…)",
+		nsp:"ne se prononce pas"
+	},
 
 	toggle: function() {
 		this.$el.toggle();
@@ -68,13 +90,15 @@ views.ConsoQuestionMonthAllView = Backbone.View.extend({
 		return this;
 	},
 
-	hookUp: function() {
-
+	hookUp: function(answer,index) {
+		this.$el.find(this.cercleSelector).text(index+1);
+		this.$el.find(this.labelSelector).text(this.texteDict[answer.title]);
 	}
 });
 
 views.ConsoQuestionMonthView = Backbone.View.extend({
 	template: _.template($("#bm-conso-question-month-template").html()),
+	containerSelector: "#question-conso .answers",
 	answers: ["first","second","third","fourth","fifth"],
 	answersAll: [
 		"alim",
@@ -88,6 +112,7 @@ views.ConsoQuestionMonthView = Backbone.View.extend({
 		"voiture",
 		"ecole",
 		"autres",
+		"habillement",
 		"transport",
 		"aucun",
 		"ordi",
@@ -107,7 +132,13 @@ views.ConsoQuestionMonthView = Backbone.View.extend({
 			_.each(self.answerViewsAll,function(view) {
 				view.toggle();
 			});
+
+			self.toggleSize();
 		});
+	},
+
+	toggleSize: function() {
+		$(this.containerSelector).css($(this.containerSelector).height() > 600 ? {height:"500px"} : {height:"700px"} );
 	},
 
 	render: function() {
@@ -130,15 +161,19 @@ views.ConsoQuestionMonthView = Backbone.View.extend({
 	},
 
 	hookUp: function(question) {
-		var answerToDisplay = _.first(
-			_.sortBy(question.get("answers"), function(answer) {
-				return -answer.value;
-			})
-		,this.answers.length), self = this;
+		var sortedAnswer = _.sortBy(question.get("answers"), function(answer) {
+			return -answer.value;
+		});
+		var answerToDisplay = _.first(sortedAnswer,this.answers.length);
+		var self = this;
 
 		_.each(answerToDisplay, function(answer,index) {
 			self.answerViews[self.answers[index]].hookUp(answer,index);
 		});
+
+		_.each(sortedAnswer,function(answer,index) {
+			self.answerViewsAll[answer.title].hookUp(answer,index);
+		})
 	},
 
 	changeDisplay: function() {
