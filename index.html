@@ -29,6 +29,9 @@
 			><li><a href="#" data-href=":display/actu/:year/:month">Actu&shy;alité</a></li
 			><li><a href="#" data-href=":display/apropos/:year/:month">À pro&shy;pos</a></li>
 		</ul>
+
+		<style id="years-style">
+		</style>
 		
 		<div id="tabs">
 			<div id="tab-pouvoir" class="tab">
@@ -107,8 +110,8 @@
 	</ul>
 
 	<ul class="year-menu"><%
-		for ( var i=0,j=years.length;i<j;i++ ) { 
-			%><li><a href="" data-href=":display/:tab/<%= years[i] %>/:month"><%= years[i] %></a></li><%
+		for ( var i=0,j=years.length;i<j;i++ ) {
+			%><li class="year-<%= years[i] %>"><a href="" data-href=":display/:tab/<%= years[i] %>/:month"><%= years[i] %></a></li><%
 		}
 	%></ul>
 
@@ -129,8 +132,14 @@
 	<p class="more"><a href="#here" class="<%= moreClassName %>"><%= moreLabel %></a></p>
 </script>
 
-<script type="text/template" id="item-year-menu-template">
-	<% for ( var year in years ) { %><li class="<%= years[year].className %>"><a href="#<%= years[year].url %>"><%= year %></a></li><% } %>
+<script type="text/template" id="years-style-template"><%
+	for ( var i=0,j=years.length;i<j;i++ ) {
+		%>.year-<%= years[i] %> .year-<%= years[i] %> > a,<%
+	} %> #null {
+		background: #651878;
+		font-weight: bold;
+		color: #FFF;
+	}
 </script>
 
 <script type="text/template" id="answer-template">
@@ -168,10 +177,9 @@
 </div>
 </script>
 <!-- ####=========================================================================#### -->
-<script src="script/jquery.js"></script>
-<script src="script/lodash.js"></script>
-<script src="script/backbone.js"></script>
-<script src="script/backbone.js"></script>
+<script src="script/libs/jquery.js"></script>
+<script src="script/libs/lodash.js"></script>
+<script src="script/libs/backbone.js"></script>
 <script src="script/bpce.backbone.js"></script>
 <script src="script/views/actualite_views.js"></script>
 <script src="script/views/conso_views.js"></script>
@@ -190,6 +198,8 @@
 <script src="script/views/links.js"></script>
 <script src="script/views/tabs.js"></script>
 <script src="script/views/displays.js"></script>
+<script src="script/views/years.js"></script>
+<script src="script/views/months.js"></script>
 <script>
 
 $(function() {
@@ -219,6 +229,16 @@ App.tabsView = new App.TabsView({
 });
 
 App.displaysView = new App.DisplaysView({
+	model: App.ui.model,
+	el: $("#tabs")[0]
+});
+
+App.yearsView = new App.YearsView({
+	model: App.ui.model,
+	el: $("#tabs")[0]
+});
+
+App.monthsView = new App.MonthsView({
 	model: App.ui.model,
 	el: $("#tabs")[0]
 });

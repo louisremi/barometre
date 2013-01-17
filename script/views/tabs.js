@@ -33,7 +33,7 @@ App.TabsView = Backbone.View.extend({
 		_( App.ui.tabs ).each(function( tab, label ) {
 			if ( label == activeTab ) {
 				// activate current tab
-				self.$el.find("li:eq(" + ( i + 1 ) + ")").addClass("active");
+				self.$el.find("li:eq(" + i + ")").addClass("active");
 				return;
 			}
 			i++;

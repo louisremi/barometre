@@ -3,11 +3,8 @@
 App.DisplaysView = Backbone.View.extend({
 	model: Backbone.Model,
 	render: function() {
-		// desactivate previous display button
-		this.$el.find(".active").removeClass("active");
-
-		this.$el.removeClass("month-display year-display evolution-display")
-			.addClass( App.ui.model.get("display") + "-display" );
+		this.el.className = this.el.className.replace(/\b\w+-display\b/g, "");
+		this.$el.addClass( App.ui.model.get("display") + "-display" );
 	}
 });
 

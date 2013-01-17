@@ -28,10 +28,14 @@
 					App.dispatcher.trigger("tabChanged");
 				}
 
-
-				if ( model.hasChanged("tab") ) {
-					//App.ui.selectTab();
+				if ( model.hasChanged("year") ) {
+					App.dispatcher.trigger("yearChanged");
 				}
+
+				if ( model.hasChanged("month") ) {
+					App.dispatcher.trigger("yearChanged");
+				}
+
 				if ( model.hasChanged("display") ) {
 					// supprimer toutes le contenu des .question
 					// trouver quel mode de display.
