@@ -7,8 +7,8 @@ if ( !App.Views ) {
 App.Views.MonthMenu = Backbone.View.extend({
 	model: Backbone.Model,
 	render: function() {
-		this.el.className = this.el.className.replace(/\bmonth-\d+\b/g, "");
-		this.$el.addClass( "month-" + App.ui.model.get("month") );
+		this.el.className = this.el.className.replace(/\bmonth-\d+\b/g, "") +
+		" " + "month-" + App.ui.model.get("month");
 	}
 });
 

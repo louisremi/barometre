@@ -93,16 +93,15 @@ views.ConsoQuestionMonthAllView = Backbone.View.extend({
 	},
 
 	hookUp: function(answer,index,max) {
-		this.$el.find(this.cercleSelector).text((''+(index+1)).length < 2 ? "\u2009"+(index+1)+"\u2009" : index+1);
+		var tmp = this.$el.find(this.cercleSelector).text((''+(index+1)).length < 2 ? "\u2009"+(index+1)+"\u2009" : index+1);
+		tmp[0].className = tmp[0].className.replace(/\b\w+-circle\b/g, "") + " " + ( index > 4 ?
+				"pink" :
+				"purple"
+			) + "-circle";
 		this.$el.find(this.labelSelector).text(this.texteDict[answer.title]);
 		this.$el.css({top:44*index});
 		this.$el.find(this.iconSelector).css({left:(33+(55*(answer.value/max)))+'%'});
 		this.$el.find(this.percentageSelector).text(answer.value);
-
-		if(index > 4)
-			this.$el.find(this.cercleSelector).css({background:"#af62b2"});
-		else
-			this.$el.find(this.cercleSelector).css({background:"#571d74"});
 	}
 });
 
