@@ -191,11 +191,14 @@
 <!-- ####====================  ====================#### -->
 <script id="question-month-template" type="text/template"><%
 	for ( var i = -1, j = App.ui.questions[type].answerTitles.length; ++i < j; ) {
-		%><li class="<%= type %>"><div class="percentage"><span style="background:<%= App.ui.colors[i] %>;"></span></div> <span class="heading"><%= App.ui.questions[type].answerTitles[i] %></span></li><%
+		%><li class="<%= type %>"><div class="percentage"><div><span style="background:<%= App.ui.colors[i] %>;"></span></div></div> <span class="heading"><%= App.ui.questions[type].answerTitles[i] %></span></li><%
 	} %>
 </script>
 <!-- ####=========================================================================#### -->
 
+<!--[if IE 8]>
+<script src="script/bpce.ui.ie8.js"></script>
+<![endif]-->
 
 <script src="script/libs/jquery.js"></script>
 <script src="script/libs/lodash.js"></script>
