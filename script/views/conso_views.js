@@ -74,7 +74,7 @@ views.ConsoQuestionMonthAllView = Backbone.View.extend({
 	},
 
 	hookUp: function(answer,index,max) {
-		var tmp = this.$el.find(this.cercleSelector).text((''+(index+1)).length < 2 ? "\u2009"+(index+1)+"\u2009" : index+1);
+		var tmp = this.$el.find(this.cercleSelector).html((''+(index+1)).length < 2 ? "&nbsp;"+(index+1)+"&nbsp;" : index+1);
 		tmp[0].className = tmp[0].className.replace(/\b\w+-circle\b/g, "") + " " + ( index > 4 ?
 				"pink" :
 				"purple"
