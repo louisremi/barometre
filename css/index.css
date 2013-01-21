@@ -36,6 +36,7 @@ body {
 
 #tabs {
 	transition: opacity .3s ease;
+	-webkit-transition: opacity .3s ease;
 }
 
 /* #tab-menu, #tab-menu .active

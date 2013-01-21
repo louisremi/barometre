@@ -2,19 +2,7 @@
 
 var views = App.views = (App.views || {});
 
-views.ConsoAnswerMonthView =Backbone.View.extend({
-	template: _.template($("#bm-conso-answer-month-template").html()),
-
-	//Element Selector ------------------------------------------------#
-	graphSelector: ".conso-graph",
-	logoSelector: ".logo-conso",
-	texteSelector: ".texte-conso",
-	cercleSelector: ".cercle-conso",
-	labelSelector: ".label-conso",
-	percentageSelector: "#percentage-conso-value",
-	//-----------------------------------------------------------------#
-
-	texteDict: {
+views.texteDict = {
 		alim:"l'alimentation",
 		essence:"l'essence",
 		impot:"les impôts",
@@ -31,7 +19,19 @@ views.ConsoAnswerMonthView =Backbone.View.extend({
 		aucun:"aucun",
 		ordi:"les technologies (ordinateur,internet…)",
 		nsp:"ne se prononce pas"
-	},
+	};
+
+views.ConsoAnswerMonthView =Backbone.View.extend({
+	template: _.template($("#bm-conso-answer-month-template").html()),
+
+	//Element Selector ------------------------------------------------#
+	graphSelector: ".conso-graph",
+	logoSelector: ".logo-conso",
+	texteSelector: ".texte-conso",
+	cercleSelector: ".cercle-conso",
+	labelSelector: ".label-conso",
+	percentageSelector: "#percentage-conso-value",
+	//-----------------------------------------------------------------#
 
 
 	render: function() {
@@ -46,7 +46,7 @@ views.ConsoAnswerMonthView =Backbone.View.extend({
 
 	hookUp: function(answer,position,max) {;
 		this.$el.find(this.percentageSelector).text(answer.value);
-		this.$el.find(this.labelSelector).text(this.texteDict[answer.title]);
+		this.$el.find(this.labelSelector).text(App.views.texteDict[answer.title]);
 		this.$el.find(this.cercleSelector).text(position+1);
 		this.$el.find(this.graphSelector).css({height: (10+(5-position)*13)+'%'});
 
@@ -64,25 +64,6 @@ views.ConsoQuestionMonthAllView = Backbone.View.extend({
 	percentageSelector: "#percentage-conso-value",
 	//-----------------------------------------------------------------#
 
-	texteDict: {
-		alim:"l'alimentation",
-		essence:"l'essence",
-		impot:"les impôts",
-		elec:"l'électricité",
-		sante:"la santé",
-		gaz:"le gaz",
-		logement:"le logement",
-		entretien:"les travaux et l'entretien de la maison",
-		voiture:"l'achat de la voiture",
-		ecole:"l'école",
-		autres:"autres",
-		habillement:"l'habillement",
-		transport:"les transports en commun",
-		aucun:"aucun",
-		ordi:"les technologies (ordinateur,internet…)",
-		nsp:"ne se prononce pas"
-	},
-
 	toggle: function() {
 		this.$el.fadeToggle(300);
 	},
@@ -94,7 +75,7 @@ views.ConsoQuestionMonthAllView = Backbone.View.extend({
 
 	hookUp: function(answer,index,max) {
 		this.$el.find(this.cercleSelector).text((''+(index+1)).length < 2 ? "\u2009"+(index+1)+"\u2009" : index+1);
-		this.$el.find(this.labelSelector).text(this.texteDict[answer.title]);
+		this.$el.find(this.labelSelector).text(App.views.texteDict[answer.title]);
 		this.$el.css({top:44*index});
 		this.$el.find(this.iconSelector).css({left:(33+(55*(answer.value/max)))+'%'});
 		this.$el.find(this.percentageSelector).text(answer.value);

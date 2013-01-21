@@ -6,7 +6,8 @@ views.Manager = {
 
 	draw: function(questionViews) {
 		_.each(questionViews,function(view,slug) {
-			view.setElement($('#question-'+slug+' .answers')).render().el;
+			if (view.setElement)
+				view.setElement($('#question-'+slug+' .answers')).render(['a','b','c']).el;
 		});
 	},
 };

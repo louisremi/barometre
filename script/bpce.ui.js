@@ -59,6 +59,12 @@ ui.questions = {
 			"<b>…rester stable (%)</b>",
 			"…ne se prononce pas (%)"
 		],
+		answerSlugs: [
+			"augmenter",
+			"descendre",
+			"egale",
+			"nsp",
+		],
 		display: {
 			month: App.Views.QuestionMonth,
 			year: App.Views.QuestionYear,
@@ -85,6 +91,12 @@ ui.questions = {
 			"<b>…rester stable (%)</b>",
 			"…ne se prononce pas (%)"
 		],
+		answerSlugs: [
+			"augmenter",
+			"descendre",
+			"egale",
+			"nsp",
+		],
 		display: {
 			month: App.Views.QuestionMonth,
 			year: App.Views.QuestionYear,
@@ -100,6 +112,12 @@ ui.questions = {
 			"<b>…diminuer (%)</b>",
 			"<b>…rester stable (%)</b>",
 			"…ne se prononce pas (%)"
+		],
+		answerSlugs: [
+			"augmenter",
+			"descendre",
+			"egale",
+			"nsp",
 		],
 		display: {
 			month: App.Views.QuestionMonth,
@@ -117,6 +135,12 @@ ui.questions = {
 			"<b>…rester stable (%)</b>",
 			"…ne se prononce pas (%)"
 		],
+		answerSlugs: [
+			"augmenter",
+			"descendre",
+			"egale",
+			"nsp",
+		],
 		display: {
 			month: App.Views.QuestionMonth,
 			year: App.Views.QuestionYear,
@@ -132,6 +156,12 @@ ui.questions = {
 			"<b>…diminuer (%)</b>",
 			"<b>…rester stable (%)</b>",
 			"…ne se prononce pas (%)"
+		],
+		answerSlugs: [
+			"augmenter",
+			"descendre",
+			"egale",
+			"nsp",
 		],
 		display: {
 			month: App.Views.QuestionMonth,
