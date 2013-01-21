@@ -22,10 +22,13 @@ var now = new Date(),
 
 ui.now = usefulDate;
 
+/* Franck doesn't want smart dates
 ui.years = [];
 while ( i-- ) {
 	ui.years[2 - i] = currentYear--;
-}
+}*/
+// be stupid and hard code it
+ui.years = [2013, 2012, 2011];
 
 ui.months = {
 	1: [ "Jan", "Janvier" ],
@@ -50,14 +53,23 @@ ui.displays = {
 
 ui.questions = {
 	pouvoir: {
+		tab: "pouvoir",
 		question: "Au cours des trois prochains mois, votre pouvoir d'achat va-t-il…",
 		moreClassName: "compare",
 		moreLabel: "Comparer ce même mois sur les autres années",
-		answerTitles: [
-			"<b>…augmenter (%)</b>",
-			"<b>…diminuer (%)</b>",
-			"<b>…rester stable (%)</b>",
-			"…ne se prononce pas (%)"
+		answers: [{
+				className: "increase",
+				label: "<b>…augmenter (%)</b>"
+			}, {
+				className: "stable",
+				label: "<b>…rester stable (%)</b>"
+			}, {
+				className: "decrease",
+				label: "<b>…diminuer (%)</b>"
+			}, {
+				className: "nspp",
+				label: "…ne se prononce pas (%)"
+			}
 		],
 		display: {
 			month: App.Views.QuestionMonth,
@@ -66,6 +78,7 @@ ui.questions = {
 		}
 	},
 	conso: {
+		tab: "pouvoir",
 		question: "Postes de dépenses les plus préoccupants",
 		moreClassName: "all conso-all",
 		moreLabel: "Voir l'ensemble des résultats",
@@ -76,14 +89,26 @@ ui.questions = {
 		}
 	},
 	epargne: {
+		tab: "epargne",
 		question: "Envisagez-vous de…",
 		moreClassName: "compare",
 		moreLabel: "Comparer ce même mois sur les autres années",
-		answerTitles: [
-			"<b>…augmenter (%)</b>",
-			"<b>…diminuer (%)</b>",
-			"<b>…rester stable (%)</b>",
-			"…ne se prononce pas (%)"
+		answers: [{
+				className: "increase",
+				label: "mettre <b>plus d'argent de côté</b> que ces derniers mois (%)"
+			}, {
+				className: "stable",
+				label: "mettre <b>autant d'argent de côté</b> que ces derniers mois"
+			}, {
+				className: "decrease",
+				label: "mettre <b>moins d'argent de côté</b> que ces derniers mois (%)"
+			}, {
+				className: "irrelevant",
+				label: "je ne met pas d'argent de côté (%)"
+			}, {
+				className: "nspp",
+				label: "…ne se prononce pas (%)"
+			}
 		],
 		display: {
 			month: App.Views.QuestionMonth,
@@ -92,14 +117,23 @@ ui.questions = {
 		}
 	},
 	consocourante: {
+		tab: "consocourante",
 		question: "Au cours des trois prochains mois, pour l'alimentation ou l'habillement, envisagez vous de…",
 		moreClassName: "compare",
 		moreLabel: "Comparer ce même mois sur les autres années",
-		answerTitles: [
-			"<b>…augmenter (%)</b>",
-			"<b>…diminuer (%)</b>",
-			"<b>…rester stable (%)</b>",
-			"…ne se prononce pas (%)"
+		answers: [{
+				className: "increase",
+				label: "dépenser <b>plus d'argent</b> que ces derniers mois (%)"
+			}, {
+				className: "stable",
+				label: "dépenser <b>autant d'argent</b> que ces derniers mois"
+			}, {
+				className: "decrease",
+				label: "dépenser <b>moins d'argent</b> que ces derniers mois (%)"
+			}, {
+				className: "nspp",
+				label: "…ne se prononce pas (%)"
+			}
 		],
 		display: {
 			month: App.Views.QuestionMonth,
@@ -108,14 +142,20 @@ ui.questions = {
 		}
 	},
 	immo: {
+		tab: "immo",
 		question: "Au cours des trois prochains mois, envisagez vous d'acheter une maison ou un appartement ?",
 		moreClassName: "compare",
 		moreLabel: "Comparer ce même mois sur les autres années",
-		answerTitles: [
-			"<b>…augmenter (%)</b>",
-			"<b>…diminuer (%)</b>",
-			"<b>…rester stable (%)</b>",
-			"…ne se prononce pas (%)"
+		answers: [{
+				className: "yes",
+				label: "<b>oui</b>"
+			}, {
+				className: "no",
+				label: "<b>non</b>"
+			}, {
+				className: "nspp",
+				label: "…ne se prononce pas (%)"
+			}
 		],
 		display: {
 			month: App.Views.QuestionMonth,
@@ -124,14 +164,20 @@ ui.questions = {
 		}
 	},
 	auto: {
+		tab: "auto",
 		question: "Au cours des trois prochains mois, envisagez vous d'acheter ou de changer de voiture ?",
 		moreClassName: "compare",
 		moreLabel: "Comparer ce même mois sur les autres années",
-		answerTitles: [
-			"<b>…augmenter (%)</b>",
-			"<b>…diminuer (%)</b>",
-			"<b>…rester stable (%)</b>",
-			"…ne se prononce pas (%)"
+		answers: [{
+				className: "yes",
+				label: "<b>oui</b>"
+			}, {
+				className: "no",
+				label: "<b>non</b>"
+			}, {
+				className: "nspp",
+				label: "…ne se prononce pas (%)"
+			}
 		],
 		display: {
 			month: App.Views.QuestionMonth,
@@ -140,6 +186,7 @@ ui.questions = {
 		}
 	},
 	actu: {
+		tab: "actu",
 		question: "",
 		moreClassName: "",
 		moreLabel: "Voir la question précédente",
@@ -152,7 +199,7 @@ ui.questions = {
 	apropos: {
 		question: "",
 		moreClassName: "",
-		moreLabel: "Voir la question précédente",
+		moreLabel: "",
 		display: {
 			month: App.views.AproposView,
 			year: App.views.AproposView,

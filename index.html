@@ -104,14 +104,14 @@
 
 <script type="text/template" id="question-template">
 	<ul class="display-menu">
-		<li class="year-display"><a href="#" data-href="year/:tab/:year/:month">Affichage par année</a></li>
-		<li class="month-display"><a href="#" data-href="month/:tab/:year/:month">Affichage par mois</a></li>
-		<li class="evolution-display"><a href="#" data-href="evolution/:tab/:year/:month">Affichage par évolution</a></li>
+		<li class="year-display"><a href="#" data-href="year/<%= tab %>/:year/:month">Affichage par année</a></li>
+		<li class="month-display"><a href="#" data-href="month/<%= tab %>/:year/:month">Affichage par mois</a></li>
+		<li class="evolution-display"><a href="#" data-href="evolution/<%= tab %>/:year/:month">Affichage par évolution</a></li>
 	</ul>
 
 	<ul class="year-menu"><%
 		for ( var i=0,j=years.length;i<j;i++ ) {
-			%><li class="year-<%= years[i] %>"><a href="" data-href=":display/:tab/<%= years[i] %>/:month"><%= years[i] %></a></li><%
+			%><li class="year-<%= years[i] %>"><a href="" data-href=":display/<%= tab %>/<%= years[i] %>/:month"><%= years[i] %></a></li><%
 		}
 	%></ul>
 
@@ -122,14 +122,14 @@
 		</div>
 		<ul class="months"><%
 			for ( var month in months ) {
-				%><li class="month-<%= month %>"><div class="handle"></div><a href="#" data-href=":display/:tab/:year/<%= month %>"><abbr title="<%= months[month][1] %>"><%= months[month][0] %>.</abbr></a></li><%
+				%><li class="month-<%= month %>"><div class="handle"></div><a href="#" data-href=":display/<%= tab %>/:year/<%= month %>"><abbr title="<%= months[month][1] %>"><%= months[month][0] %>.</abbr></a></li><%
 			}
 		%></ul>
 	</div>
 
 	<ul class="answers"></ul>
 
-	<p class="more"><a class="<%= moreClassName %>"><%= moreLabel %></a></p>
+	<p class="more"><a href="" data-href=":display/<%= tab %>/:year/:month" class="<%= moreClassName %>"><%= moreLabel %></a></p>
 </script>
 
 <script type="text/template" id="years-style-template"><%
@@ -137,7 +137,6 @@
 		%>.year-<%= years[i] %> .year-<%= years[i] %> > a,<%
 	} %> #null {
 		background: #651878;
-		font-weight: bold;
 		color: #FFF;
 	}
 </script>
@@ -190,8 +189,8 @@
 
 <!-- ####====================  ====================#### -->
 <script id="question-month-template" type="text/template"><%
-	for ( var i = -1, j = App.ui.questions[type].answerTitles.length; ++i < j; ) {
-		%><li class="<%= type %>"><div class="percentage"><div><span style="background:<%= App.ui.colors[i] %>;"></span></div></div> <span class="heading"><%= App.ui.questions[type].answerTitles[i] %></span></li><%
+	for ( var i = -1, j = App.ui.questions[type].answers.length; ++i < j; ) {
+		%><li class="<%= App.ui.questions[type].answers[i].className %>"><div class="percentage"><div><span style="background:<%= App.ui.colors[i] %>;"></span></div></div> <span class="heading"><%= App.ui.questions[type].answers[i].label %></span></li><%
 	} %>
 </script>
 <!-- ####=========================================================================#### -->

@@ -92,7 +92,7 @@
 					display: "month",
 					tab: "courant",
 					year: App.ui.now.getFullYear(),
-					month: ( "0" + App.ui.now.getMonth() ).slice(-2)
+					month: ( "0" + ( App.ui.now.getMonth() + 1 ) ).slice(-2)
 				});
 			} else {
 				this.model.set({

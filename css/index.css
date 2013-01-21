@@ -15,7 +15,7 @@ body {
 	overflow-y: scroll;
 }
 
-.visuallyhidden {
+/*.visuallyhidden {
     border: 0;
     clip: rect(0 0 0 0);
     height: 1px;
@@ -24,7 +24,7 @@ body {
     padding: 0;
     position: absolute;
     width: 1px;
-}
+}*/
 
 #center {
 	width: 730px;
@@ -50,8 +50,8 @@ body {
 	height: 35px;
 	width: 100%;
 
-	font-size: .9em;
-	/*font-size: 14px*/;
+	font-size: 1em;
+	/*font-size: 16?px*/;
 	color: #FFF;
 	text-decoration: none;
 
@@ -80,7 +80,7 @@ body {
 
 #tab-menu a {
 	display: inline-block;
-	padding: 9px 12px 6px;
+	padding: 9px 6px 4px;
 	
 	color: inherit;
 	text-decoration: inherit;
@@ -89,6 +89,7 @@ body {
 #tab-menu .active {
 	background-color: #fff;
 	color: #551F73;
+	font-weight: bold;
 	text-decoration: underline;
 }
 
@@ -208,6 +209,10 @@ body {
 	border-color: #581E75;
 }
 
+#question-actu .display-menu {
+	display: none;
+}
+
 /* .year-menu
 ----------------------------------------------------------------------------- */
 
@@ -270,6 +275,9 @@ h3 {
 }
 
 .months {
+	position: relative;
+	top: -10px;
+
 	display: table;
 	table-layout: fixed;
 	width: 550px;
@@ -278,15 +286,15 @@ h3 {
 
 	color: #BBB;
 	text-align: center;
-	/*font-size: 14px;*/
-	font-size: .9em;
+	/*font-size: 12?px;*/
+	font-size: .8em;
 	list-style: none;
 	font-weight: bold;
 }
 
 .months li {
 	display: table-cell;
-	height: 34px;
+	height: 48px;
 	vertical-align: bottom;
 }
 
@@ -296,7 +304,7 @@ h3 {
 
 .months a {
 	position: relative;
-	padding-top: 14px;
+	padding: 30px 5px 0;
 	
 	text-decoration: none;
 	color: inherit;
@@ -307,7 +315,7 @@ h3 {
 	display: block;
 	content: "";
 	height: 12px;
-	top: 0;
+	top: 12px;
 	left: 50%;
 
 	border-left: 1px solid #bcbcbc;
@@ -321,7 +329,7 @@ h3 {
 	z-index: 1;
 
 	position: relative;
-	top: -12px;
+	top: -18px;
 	left: 20px;
 
 	cursor: pointer;
@@ -339,6 +347,19 @@ h3 {
 .month-11 .month-11 > .handle,
 .month-12 .month-12 > .handle {
 	display: block;
+}
+
+.month-1 .month-1,
+.month-2 .month-2,
+.month-3 .month-3,
+.month-4 .month-4,
+.month-5 .month-5,
+.month-8 .month-8,
+.month-9 .month-9,
+.month-10 .month-10,
+.month-11 .month-11,
+.month-12 .month-12 {
+	color: #000;
 }
 
 #tabs .month-menu {
