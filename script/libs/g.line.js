@@ -196,7 +196,12 @@
                             path = ["M", X, Y, "C", X, Y];
                         }
                     } else {
-                        path = path.concat([valuesy[i][j-1] ? "L" : "M", X, Y]);
+                        var moveTo = false;
+                        for (var h = 0;h<j;h++) {
+                            if(valuesy[i][h])
+                                moveTo = true;
+                        }
+                        path = path.concat([moveTo ? "L" : "M", X, Y]);
                     }
                 }
             }
@@ -273,19 +278,21 @@
 
             for (var i = 0, ii = valuesy.length; i < ii; i++) {
                 for (var j = 0, jj = valuesy[i].length; j < jj; j++) {
-                    var X = x + gutter + ((valuesx[i] || valuesx[0])[j] - minx) * kx,
-                        nearX = x + gutter + ((valuesx[i] || valuesx[0])[j ? j - 1 : 1] - minx) * kx,
-                        Y = y + height - gutter - (valuesy[i][j] - miny) * ky;
-                    f ? (C = {}) : cvrs.push(C = paper.circle(X, Y, Math.abs(nearX - X) / 2).attr({ stroke: "#000", fill: "#000", opacity: 1 }));
-                    C.x = X;
-                    C.y = Y;
-                    C.value = valuesy[i][j];
-                    C.line = chart.lines[i];
-                    C.shade = chart.shades[i];
-                    C.symbol = chart.symbols[i][j];
-                    C.symbols = chart.symbols[i];
-                    C.axis = (valuesx[i] || valuesx[0])[j];
-                    f && f.call(C);
+                    if (valuesy[i][j]) {
+                        var X = x + gutter + ((valuesx[i] || valuesx[0])[j] - minx) * kx,
+                            nearX = x + gutter + ((valuesx[i] || valuesx[0])[j ? j - 1 : 1] - minx) * kx,
+                            Y = y + height - gutter - (valuesy[i][j] - miny) * ky;
+                        f ? (C = {}) : cvrs.push(C = paper.circle(X, Y, 15).attr({ stroke: "#000", fill: "#000", opacity: 0 }));
+                        C.x = X;
+                        C.y = Y;
+                        C.value = valuesy[i][j];
+                        C.line = chart.lines[i];
+                        C.shade = chart.shades[i];
+                        C.symbol = chart.symbols[i][j];
+                        C.symbols = chart.symbols[i];
+                        C.axis = (valuesx[i] || valuesx[0])[j];
+                        f && f.call(C);
+                    }
                 }
             }
 
@@ -383,7 +390,9 @@
  **
  \*/
         chart.hover = function (fin, fout) {
-            !dots && createDots();
+            if (dots)
+                dots.remove();
+            createDots();
             dots.mouseover(fin).mouseout(fout);
             return this;
         };

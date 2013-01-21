@@ -713,6 +713,7 @@ ul.conso-list-container {
 	width:100%;
 	height:100%;
 	clear:both;
+	background-position:0px 30px;
 	background-repeat: repeat-x;
 	background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAD3CAYAAADRwE7KAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3QEVDxEVDYurigAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAwSURBVFjD7dIxAQAwDAOgxL/o9W4V7AANNMnL1sDf6i3egrfgLd6Ct+At3oK34O01184LDE2I8y4AAAAASUVORK5CYII=');
 }

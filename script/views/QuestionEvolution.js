@@ -49,7 +49,7 @@
 		render: function() {
 			this.$el.html(this.template());
 
-			this.r = Raphael(this.$el.find(".evo-raphael-paper")[0],706,309);	
+			this.r = Raphael(this.$el.find(".evo-raphael-paper")[0],706,349);	
 
 			return this;
 		},
@@ -80,10 +80,10 @@
 			if (self.lines)
 				self.lines.remove();
 
-			self.lines = self.r.linechart(30,0,676,260,
+			self.lines = self.r.linechart(30,30,666,260,
 					_.range(_.keys(App.ui.months).length),
 					coordY,
-					{nostroke:false,axis:"0 0 1 1",symbol:"circle",axisxstep:9,axisystep:10,colors:App.ui.colors});
+					{nostroke:false,axis:"0 0 1 1",width:3,symbol:"circle",axisxstep:9,axisystep:10,colors:App.ui.colors});
 
 			self.$el.find(".evo-lines-buttons").empty();
 			_.each(self.lines[0],function(line,index) {
@@ -93,12 +93,17 @@
 					line:line,
 					dots:self.lines[2][index]});
 
-				_.each(line,function(el,index){
-					console.log(el);
-				});
-
 				self.$el.find(".evo-lines-buttons").append(view.render().el);
 			});
+
+			self.lines.hover(function () {
+
+				var symbol = this.symbols ? this.symbols[0] : this.symbol;
+               	this.tag = self.r.tag(this.x, this.y, this.value+"%", 160, 10).insertBefore(this).attr([{ fill: "#fff" ,opacity:symbol.attr("opacity")}, { fill: symbol.attr("fill"),opacity:symbol.attr("opacity")}]);
+            }, function () {
+                this.tag && this.tag.remove();
+            });
+
 
 
 			var axisItems = self.lines.axis[0].text.items;
