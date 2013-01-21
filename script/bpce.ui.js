@@ -71,6 +71,12 @@ ui.questions = {
 				label: "…ne se prononce pas (%)"
 			}
 		],
+		answerSlugs: [
+			"augmenter",
+			"descendre",
+			"egale",
+			"nsp",
+		],
 		display: {
 			month: App.Views.QuestionMonth,
 			year: App.Views.QuestionYear,
@@ -110,6 +116,12 @@ ui.questions = {
 				label: "…ne se prononce pas (%)"
 			}
 		],
+		answerSlugs: [
+			"augmenter",
+			"descendre",
+			"egale",
+			"nsp",
+		],
 		display: {
 			month: App.Views.QuestionMonth,
 			year: App.Views.QuestionYear,
@@ -135,6 +147,12 @@ ui.questions = {
 				label: "…ne se prononce pas (%)"
 			}
 		],
+		answerSlugs: [
+			"augmenter",
+			"descendre",
+			"egale",
+			"nsp",
+		],
 		display: {
 			month: App.Views.QuestionMonth,
 			year: App.Views.QuestionYear,
@@ -157,6 +175,12 @@ ui.questions = {
 				label: "…ne se prononce pas (%)"
 			}
 		],
+		answerSlugs: [
+			"augmenter",
+			"descendre",
+			"egale",
+			"nsp",
+		],
 		display: {
 			month: App.Views.QuestionMonth,
 			year: App.Views.QuestionYear,
@@ -178,6 +202,12 @@ ui.questions = {
 				className: "nspp",
 				label: "…ne se prononce pas (%)"
 			}
+		],
+		answerSlugs: [
+			"augmenter",
+			"descendre",
+			"egale",
+			"nsp",
 		],
 		display: {
 			month: App.Views.QuestionMonth,

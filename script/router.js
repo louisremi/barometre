@@ -61,22 +61,23 @@
 				App.collections.questions.setUrl(
 					App.ui.tabs[self.model.get("tab")].join("/"),
 					self.model.get("year"),
-					("0"+self.model.get("month")).slice(-2)
+					(self.model.get("display") == "month" ? "0"+self.model.get("month") : "").slice(-2)
 				);
 				App.collections.questions.fetch();
 
-				App.collections.questions.bind('add',function() {
-					App.collections.questions.each(function(question) {
-					if (!!self.questionViews[question.get('type')])
-						self.questionViews[question.get('type')].hookUp(question);
-					})
-				});
-
 				App.collections.questions.bind('reset',function() {
-					App.collections.questions.each(function(question) {
-					if (!!self.questionViews[question.get('type')] && self.questionViews[question.get('type')].hookUp)
-						self.questionViews[question.get('type')].hookUp(question);
-					})
+					if (self.model.get("display") === "month") {
+						App.collections.questions.each(function(question) {
+						if (!!self.questionViews[question.get('type')] && self.questionViews[question.get('type')].hookUp)
+							self.questionViews[question.get('type')].hookUp(question);
+						})
+					} else {
+						var questionGroup = App.collections.questions.groupBy(function(question) {return question.get('type')});
+						_.each(questionGroup,function(questions,type) {
+						if (!!self.questionViews[type] && self.questionViews[type].hookUp)
+							self.questionViews[type].hookUp(questions,self.model.get("display") === "evolution" ? App.ui.questions[type].answerSlugs : undefined);
+						})
+					}
 				});
 			});
 		},
