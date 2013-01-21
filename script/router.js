@@ -18,7 +18,7 @@
 
 			App.collections.questions = new App.collections.QuestionCollection();
 
-			App.collections.questions.bind('reset',function() {
+			App.collections.questions.bind('reset',function() {//console.log("zob");console.log(App.collections.toJSON())
 				if (self.model.get("display") === "month") {
 					App.collections.questions.each(function(question) {
 					if (!!self.questionViews[question.get('type')] && self.questionViews[question.get('type')].hookUp)

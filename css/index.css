@@ -634,7 +634,7 @@ ul.conso-list-container {
 .conso-all-place {
 	font-size:14px;
 	color:#fff;
-	padding: .39em .5em .45em;
+	padding: .39em .5em .7em;
 	font-family:"Sentinel",serif;
 	top:5px;
 	vertical-align: -2px;
@@ -728,4 +728,42 @@ ul.conso-list-container {
 	margin-bottom: 10px;
 }
 
-/*--------------------------------------------------------------------------- */
+/* #tab-apropos
+----------------------------------------------------------------------------- */
+
+#tab-apropos .wrapper {
+	padding: 10px 0 10px 10px;
+	
+	background: #b3dddc;
+	font-size: .77em;
+}
+
+#tab-apropos .logos {
+	padding: 0;
+	margin: 0;
+}
+
+#tab-apropos li {
+	display: inline-block;
+	width: 165px;
+	height: 102px;
+	margin-right: 9px;
+
+	background: url(../images/logos-nq8.png);
+}
+
+#tab-apropos .logo-echos {
+	background-position: -165px 0;
+}
+
+#tab-apropos .logo-fi {
+	background-position: -330px 0;
+}
+
+#tab-apropos .logo-via {
+	background-position: -495px 0;
+}
+
+#tab-apropos p {
+	padding-right: 10px;
+}
