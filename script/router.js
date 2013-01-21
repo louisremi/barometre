@@ -16,6 +16,23 @@
 				month: null
 			});
 
+			App.collections.questions = new App.collections.QuestionCollection();
+
+			App.collections.questions.bind('reset',function() {
+				if (self.model.get("display") === "month") {
+					App.collections.questions.each(function(question) {
+					if (!!self.questionViews[question.get('type')] && self.questionViews[question.get('type')].hookUp)
+						self.questionViews[question.get('type')].hookUp(question);
+					})
+				} else {
+					var questionGroup = App.collections.questions.groupBy(function(question) {return question.get('type')});
+					_.each(questionGroup,function(questions,type) {
+					if (!!self.questionViews[type] && self.questionViews[type].hookUp)
+						self.questionViews[type].hookUp(questions,self.model.get("display") === "evolution" ? App.ui.questions[type].answerSlugs : undefined);
+					})
+				}
+			});
+
 			// we use a model as a router because we want to now what changed
 			model.on("change", function() {
 				App.dispatcher.trigger("routeChanged");
@@ -43,7 +60,7 @@
 
 					$('.answers').empty();
 
-					_.each(App.ui.tabs[model.get('tab')],function(value) {
+					_.each(App.ui.tabs["courant"],function(value) {
 						self.questionViews[value] = new (App.ui.questions[value].display[model.get('display')])({type:value});
 					});
 
@@ -57,28 +74,12 @@
 
 				}
 
-				App.collections.questions = new App.collections.QuestionCollection();
 				App.collections.questions.setUrl(
 					App.ui.tabs[self.model.get("tab")].join("/"),
 					self.model.get("year"),
 					(self.model.get("display") == "month" ? "0"+self.model.get("month") : "").slice(-2)
 				);
 				App.collections.questions.fetch();
-
-				App.collections.questions.bind('reset',function() {
-					if (self.model.get("display") === "month") {
-						App.collections.questions.each(function(question) {
-						if (!!self.questionViews[question.get('type')] && self.questionViews[question.get('type')].hookUp)
-							self.questionViews[question.get('type')].hookUp(question);
-						})
-					} else {
-						var questionGroup = App.collections.questions.groupBy(function(question) {return question.get('type')});
-						_.each(questionGroup,function(questions,type) {
-						if (!!self.questionViews[type] && self.questionViews[type].hookUp)
-							self.questionViews[type].hookUp(questions,self.model.get("display") === "evolution" ? App.ui.questions[type].answerSlugs : undefined);
-						})
-					}
-				});
 			});
 		},
 
