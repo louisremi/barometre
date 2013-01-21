@@ -67,7 +67,7 @@
 			if (this.lines)
 				this.lines.remove();
 
-			this.lines = this.r.linechart(10,0,666,235,
+			this.lines = this.r.linechart(10,0,666,255,
 					_.range(_.keys(App.ui.months).length),
 					coordY,
 					{nostroke:false,axis:"0 0 1 1",symbol:"circle",axisxstep:9,axisystep:10,colors:App.ui.colors});
