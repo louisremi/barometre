@@ -189,8 +189,8 @@
 
 <!-- ####====================  ====================#### -->
 <script id="question-month-template" type="text/template"><%
-	for ( var i = -1, j = App.ui.questions[type].answers.length; ++i < j; ) {
-		%><li class="<%= App.ui.questions[type].answers[i].className %>"><div class="percentage"><div><span style="background:<%= App.ui.colors[i] %>;"></span></div></div> <span class="heading"><%= App.ui.questions[type].answers[i].label %></span></li><%
+	for ( var i = -1, l = App.ui.questions[type].answers.length; ++i < l; ) {
+		%><li class="<%= App.ui.questions[type].answers[i].className %>"><div class="percentage"><div><span style="background:<%= App.ui.colors[ i == l - 1 ? App.ui.colors.length - 1 : i ] %>;"></span></div></div> <span class="heading"><%= App.ui.questions[type].answers[i].label %></span></li><%
 	} %>
 </script>
 <!-- ####=========================================================================#### -->
@@ -200,10 +200,6 @@
 	<div></div>
 </script>
 <!-- ####=========================================================================#### -->
-
-<!--[if IE 8]>
-<script src="script/bpce.ui.ie8.js"></script>
-<![endif]-->
 
 <script src="script/libs/jquery.js"></script>
 <script src="script/libs/lodash.js"></script>
@@ -231,6 +227,9 @@
 
 <script src="script/views/manager.js"></script>
 <script src="script/bpce.ui.js"></script>
+<!--[if IE 8]>
+<script src="script/bpce.ui.ie8.js"></script>
+<![endif]-->
 <script src="script/bpce.slider.js"></script>
 <script src="script/model.js"></script>
 <!--<script src="script/app.js"></script>-->
