@@ -120,6 +120,7 @@ ui.questions = {
 			"augmenter",
 			"descendre",
 			"egale",
+			"pasdecote",
 			"nsp",
 		],
 		display: {
@@ -176,9 +177,8 @@ ui.questions = {
 			}
 		],
 		answerSlugs: [
-			"augmenter",
-			"descendre",
-			"egale",
+			"oui",
+			"non",
 			"nsp",
 		],
 		display: {
@@ -204,9 +204,8 @@ ui.questions = {
 			}
 		],
 		answerSlugs: [
-			"augmenter",
-			"descendre",
-			"egale",
+			"oui",
+			"non",
 			"nsp",
 		],
 		display: {
