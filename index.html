@@ -129,7 +129,7 @@
 
 	<ul class="answers"></ul>
 
-	<p class="more"><a href="#here" class="<%= moreClassName %>"><%= moreLabel %></a></p>
+	<p class="more"><a class="<%= moreClassName %>"><%= moreLabel %></a></p>
 </script>
 
 <script type="text/template" id="years-style-template"><%
@@ -163,7 +163,7 @@
 	<div class="conso-graph" >
 		<img class="logo-conso" src="" alt=""></img>
 		<div class="texte-conso">
-			<span class="cercle-conso"></span>
+			<span class="cercle-conso purple-circle"></span>
 			<div class="percentage-conso"><span id="percentage-conso-value"></span><span class="percentage-conso-small">%</span></div>
 			<div class="label-conso"></div>
 		</div>
@@ -191,16 +191,20 @@
 <!-- ####====================  ====================#### -->
 <script id="question-month-template" type="text/template"><%
 	for ( var i = -1, j = App.ui.questions[type].answerTitles.length; ++i < j; ) {
-		%><li class="<%= type %>"><div class="percentage"><span style="background:<%= App.ui.colors[i] %>;"></span></div> <span class="heading"><%= App.ui.questions[type].answerTitles[i] %></span></li><%
+		%><li class="<%= type %>"><div class="percentage"><div><span style="background:<%= App.ui.colors[i] %>;"></span></div></div> <span class="heading"><%= App.ui.questions[type].answerTitles[i] %></span></li><%
 	} %>
 </script>
 <!-- ####=========================================================================#### -->
 
-<!-- ####====================  ====================#### -->
+<!-- ####==================== EVOLUTION QUESTION TEMPALTE ====================#### -->
 <script id="graphic-year-template" type="text/template">
 	<div></div>
 </script>
 <!-- ####=========================================================================#### -->
+
+<!--[if IE 8]>
+<script src="script/bpce.ui.ie8.js"></script>
+<![endif]-->
 
 <script src="script/libs/jquery.js"></script>
 <script src="script/libs/lodash.js"></script>

@@ -214,7 +214,9 @@ ui.initialize = function() {
 		$(this).html( ( _.template( $("#question-template").html() ) )( data ) );
 	});
 
-	$("#years-style").html( ( _.template( $("#years-style-template").html() ) )( { years: ui.years } ) );
+	$("#years-style")[0].styleSheet ?
+		$("#years-style")[0].styleSheet.cssText = ( _.template( $("#years-style-template").html() ) )( { years: ui.years } ) :
+		$("#years-style").html( ( _.template( $("#years-style-template").html() ) )( { years: ui.years } ) );
 };
 
 })( window, window.App, jQuery, _ );

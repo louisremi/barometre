@@ -13,11 +13,28 @@ App.Views.QuestionMonth = Backbone.View.extend({
 
 	render: function() {
 		this.$el.html( this.template({type:this.type}) );
+		this.$percentages = this.$el.find(".percentage span");
+
 		return this;
 	},
 
-	hookUp: function(question) {
-		
+	hookUp: function( question ) {
+		var self = this;
+
+		_.each(question.get("answers"), function(answer, i) {//console.log(i, self.$percentages[i])
+			$( self.$percentages[i] ).html(
+				( answer.value < 10 ? "\u2008" : "" ) +
+				//( /^1/.test( answer.value) ? "\u2009" : "" ) +*/
+				( answer.value || "-" ) +
+				//( /1$/.test( answer.value) ? "\u2009" : "" ) +
+				( answer.value < 10 ? "\u2008" : "" )
+			);
+
+			var wrapper = self.$percentages[i].parentNode;
+
+			wrapper.style.fontSize = Math.round( ( answer.value || 1 ) * 0.7 + 14 ) + "px";
+			wrapper.style.top = Math.round( 85 - ( answer.value || 1 ) * 0.4 ) + "px";
+		});
 	}
 });
 
