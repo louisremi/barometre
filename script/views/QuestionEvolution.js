@@ -12,30 +12,14 @@
 		render: function() {
 			this.$el.html(this.template());
 
+			this.r = Raphael(this.el);
+
 			return this;
 		},
 
 		hookUp: function(questions,answerTitles) {
 
 			var self = this;
-
-			if (!this.lines) {
-				this.r = Raphael(this.el);
-
-				var titles = _.map(App.ui.months,function(g) {return 0});
-
-				this.lines = this.r.linechart(10,10,this.$el.width()-20,this.$el.height()-20,
-					_.range(_.keys(App.ui.months).length),
-					_.map(answerTitles,function(v){return titles;}),
-					{nostroke:false,axis:"0 0 1 1",symbol:"circle"});
-				for(title in answerTitles) {
-					for(month in App.ui.months) {
-						if (!this.dotsMap[answerTitles[title]])
-							this.dotsMap[answerTitles[title]] = {};
-						this.dotsMap[answerTitles[title]][month]  = this.lines[title][month];
-					}
-				}
-			}
 
 			var coordY = [];
 			_.each(questions, function(question,idxQuestion) {
@@ -45,21 +29,26 @@
 					coordY[_.indexOf(answerTitles,answer.title)].push(answer.value);
 				})
 			});
+			if (this.lines)
+				this.lines.remove();
 
-			this.newllines = this.r.linechart(10,10,this.$el.width()-20,this.$el.height()-20,
+			this.lines = this.r.linechart(25,0,this.$el.width()-30,this.$el.height()-40,
 					_.range(_.keys(App.ui.months).length),
 					coordY,
-					{nostroke:false,axis:"0 0 1 1",symbol:"circle"});
+					{nostroke:false,axis:"0 0 1 1",symbol:"circle",axisxstep:8,axisystep:10});
 
-			_.each(this.lines,function(line,i) {
-				line.animate({path:self.newllines[i].attr("path")},200);
-			});
+			var axisItems = this.lines.axis[0].text.items;
+			for (var i = 0,j=axisItems.length;i<j;i++) {
+				var index = parseInt(axisItems[i].attr("text"));
+				axisItems[i].attr("y",axisItems[i].attr("y")+10);
+				axisItems[i].attr("text",(_.map(App.ui.months,function(month) {return month}))[index][0]+"\r\n"+App.ui.model.get("year"));
+			}
 
-			_.each(this.lines.symbols[0],function(symbol,i){
-            	symbol.animate({ cx: self.newllines.symbols[0][i].attr("cx"),cy: self.newllines.symbols[0][i].attr("cy") }, 200);
-        	});
-
-        	this.newllines.remove();
+			var axisItems = this.lines.axis[1].text.items;
+			for (var i = 0,j=axisItems.length;i<j;i++) {
+				axisItems[i].attr("x",axisItems[i].attr("x")-5);
+				axisItems[i].attr("text",axisItems[i].attr("text") + "%");
+			}
 		},
 	});
 })(Backbone,window,$,_,window.App,Raphael)
