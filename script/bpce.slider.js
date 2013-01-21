@@ -1,6 +1,7 @@
 (function($, window) {
 
-var $hiddenHandle,
+var docElem = document.documentElement,
+	$hiddenHandle,
 	$draggedHandle,
 	monthsOffsetLeft,
 	monthsWidth = 530;
@@ -46,7 +47,7 @@ $(document).on("mouseup", function() {
 	if (!$draggedHandle) { return; }
 
 	var offset = $draggedHandle.offset(),
-		a = document.elementFromPoint( offset.left + 8, offset.top + 20 );
+		a = document.elementFromPoint( offset.left + 8, offset.top + 20 - docElem.scrollTop );
 
 	if ( a.nodeName == "LI" ) {
 		a = a.childNodes[1];
