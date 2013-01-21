@@ -21,7 +21,7 @@
 }
 
 body {
-	font-family: "UniversLTW01-57Condense 723821", serif;
+	font-family: "UniversLTW01-57Condense 723821", "Univers", serif;
 	background: #5b6694;
 	/*overflow-y: hidden;*/
 	overflow-y: scroll;
