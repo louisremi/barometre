@@ -105,11 +105,16 @@
         }
 
         var allx = Array.prototype.concat.apply([], valuesx),
-            ally = Array.prototype.concat.apply([], valuesy),
-            xdim = chartinst.snapEnds(Math.min.apply(Math, allx), Math.max.apply(Math, allx), valuesx[0].length - 1),
+            ally = Array.prototype.concat.apply([], valuesy);
+
+        var //allmaxx = _.map(allx,function(num) {return num ? num : 0}),
+            allmaxy = _.map(ally,function(num) {return num ? num : 0}),
+            //allminx = _.map(allx,function(num) {return num ? num : 101}),
+            allminy = _.map(allx,function(num) {return num ? num : 101});
+        var xdim = chartinst.snapEnds(Math.min.apply(Math, allx), Math.max.apply(Math, allx), valuesx[0].length - 1),
             minx = xdim.from,
             maxx = xdim.to,
-            ydim = chartinst.snapEnds(Math.min.apply(Math, ally), Math.max.apply(Math, ally), valuesy[0].length - 1),
+            ydim = chartinst.snapEnds(Math.min.apply(Math, allminy), Math.max.apply(Math, allmaxy), valuesy[0].length - 1),
             miny = ydim.from,
             maxy = ydim.to,
             kx = (width - gutter * 2) / ((maxx - minx) || 1),
@@ -170,27 +175,29 @@
             path = [];
 
             for (var j = 0, jj = valuesy[i].length; j < jj; j++) {
-                var X = x + gutter + ((valuesx[i] || valuesx[0])[j] - minx) * kx,
-                    Y = y + height - gutter - (valuesy[i][j] - miny) * ky;
+                if(valuesy[i][j]) {
+                    var X = x + gutter + ((valuesx[i] || valuesx[0])[j] - minx) * kx,
+                        Y = y + height - gutter - (valuesy[i][j] - miny) * ky;
 
-                (Raphael.is(sym, "array") ? sym[j] : sym) && symset.push(paper[Raphael.is(sym, "array") ? sym[j] : sym](X, Y, (opts.width || 2) * 3).attr({ fill: colors[i], stroke: "none" }));
+                    (Raphael.is(sym, "array") ? sym[j] : sym) && symset.push(paper[Raphael.is(sym, "array") ? sym[j] : sym](X, Y, (opts.width || 2) * 3).attr({ fill: colors[i], stroke: "none" }));
 
-                if (opts.smooth) {
-                    if (j && j != jj - 1) {
-                        var X0 = x + gutter + ((valuesx[i] || valuesx[0])[j - 1] - minx) * kx,
-                            Y0 = y + height - gutter - (valuesy[i][j - 1] - miny) * ky,
-                            X2 = x + gutter + ((valuesx[i] || valuesx[0])[j + 1] - minx) * kx,
-                            Y2 = y + height - gutter - (valuesy[i][j + 1] - miny) * ky,
-                            a = getAnchors(X0, Y0, X, Y, X2, Y2);
+                    if (opts.smooth) {
+                        if (j && j != jj - 1) {
+                            var X0 = x + gutter + ((valuesx[i] || valuesx[0])[j - 1] - minx) * kx,
+                                Y0 = y + height - gutter - (valuesy[i][j - 1] - miny) * ky,
+                                X2 = x + gutter + ((valuesx[i] || valuesx[0])[j + 1] - minx) * kx,
+                                Y2 = y + height - gutter - (valuesy[i][j + 1] - miny) * ky,
+                                a = getAnchors(X0, Y0, X, Y, X2, Y2);
 
-                        path = path.concat([a.x1, a.y1, X, Y, a.x2, a.y2]);
+                            path = path.concat([a.x1, a.y1, X, Y, a.x2, a.y2]);
+                        }
+
+                        if (!j) {
+                            path = ["M", X, Y, "C", X, Y];
+                        }
+                    } else {
+                        path = path.concat([valuesy[i][j-1] ? "L" : "M", X, Y]);
                     }
-
-                    if (!j) {
-                        path = ["M", X, Y, "C", X, Y];
-                    }
-                } else {
-                    path = path.concat([j ? "L" : "M", X, Y]);
                 }
             }
 

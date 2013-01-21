@@ -73,8 +73,8 @@ ui.questions = {
 		],
 		answerSlugs: [
 			"augmenter",
-			"descendre",
 			"egale",
+			"descendre",
 			"nsp",
 		],
 		display: {
@@ -118,8 +118,8 @@ ui.questions = {
 		],
 		answerSlugs: [
 			"augmenter",
-			"descendre",
 			"egale",
+			"descendre",
 			"pasdecote",
 			"nsp",
 		],
@@ -150,8 +150,8 @@ ui.questions = {
 		],
 		answerSlugs: [
 			"augmenter",
-			"descendre",
 			"egale",
+			"descendre",
 			"nsp",
 		],
 		display: {
