@@ -805,12 +805,18 @@ ul.conso-list-container {
 	bottom: 0;
 	left: 0;
 
+	display: none;
+
 	font-family: "Icons", serif;
 	font-size: 250px;
 	color: #d6d6d6;
 	text-align: center;
 
 	cursor: default;
+}
+
+.month-display .question:before {
+	display: block;
 }
 
 #question-pouvoir:before {

@@ -154,7 +154,7 @@ views.ConsoQuestionMonthView = Backbone.View.extend({
 
 		_.each(sortedAnswer,function(answer,index) {
 			self.answerViewsAll[answer.title].hookUp(answer,index,max);
-		})
+		});
 	},
 
 	noData: function() {
@@ -178,4 +178,4 @@ views.ConsoQuestionYearView = Backbone.View.extend({
 	}
 });
 
-})(Backbone,window,$,_,window.App)
+})(Backbone,window,$,_,window.App);
