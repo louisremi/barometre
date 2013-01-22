@@ -50,13 +50,14 @@
 		render: function() {
 			this.$el.html(this.template());
 
-			this.r = Raphael(this.$el.find(".evo-raphael-paper")[0],706,349);	
+			this.r = Raphael(this.$el.find(".evo-raphael-paper")[0],706,349);
+			
+			this.noDataContainer = this.$el.parent().find(".no-data");
 
 			return this;
 		},
 
 		noData: function() {
-			this.noDataContainer = this.$el.parent().find(".no-data");
 			this.noDataContainer.html(this.noDataTemplate());
 			this.noDataContainer.show();
 			this.$el.hide();

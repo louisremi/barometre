@@ -15,6 +15,7 @@ App.Views.QuestionMonth = Backbone.View.extend({
 	render: function() {
 		this.$el.html( this.template({type:this.type}) );
 		this.$percentages = this.$el.find(".percentage span");
+		this.noDataContainer = this.$el.parent().find(".no-data");
 
 		return this;
 	},
@@ -45,7 +46,6 @@ App.Views.QuestionMonth = Backbone.View.extend({
 	},
 
 	noData: function() {
-		this.noDataContainer = this.$el.parent().find(".no-data");
 		this.noDataContainer.html(this.noDataTemplate());
 		this.noDataContainer.show();
 		this.$el.hide();

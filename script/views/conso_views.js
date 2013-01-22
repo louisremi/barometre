@@ -133,6 +133,7 @@ views.ConsoQuestionMonthView = Backbone.View.extend({
 			view.toggle();
 			view.render(depense);
 		});
+		this.noDataContainer = this.$el.parent().find(".no-data");
 
 		return this;
 	},
@@ -162,7 +163,6 @@ views.ConsoQuestionMonthView = Backbone.View.extend({
 	},
 
 	noData: function() {
-		this.noDataContainer = this.$el.parent().find(".no-data");
 		this.noDataContainer.html(this.noDataTemplate());
 		this.noDataContainer.show();
 		this.$el.hide();

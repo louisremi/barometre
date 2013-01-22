@@ -53,8 +53,9 @@
 					if(model.hasChanged("display")) {
 						_.each(App.ui.tabs[ "courant" ],function(value) {
 							if (value !="apropos" && App.views.question[value]) {
-								App.views.question[value].remove();
-								App.views.question[value] = undefined
+								if(App.views.question[value].$el)
+								App.views.question[value].$el.empty();
+								delete App.views.question[value];
 							}
 					});
 					}
