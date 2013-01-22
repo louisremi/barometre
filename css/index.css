@@ -14,12 +14,6 @@
 	src: url(UniversLTStd-Cn.otf);
 }
 
-@font-face{
-	font-family:"UniversLTW01-57Condense 723821";
-	src:url("//fast.fonts.com/d/aefefc4e-9cb8-4e8e-8599-dda705456734.eot?d44f19a684109620e484147ca090e8189bdf03e88ef07e0022ae1590208dea82b32e9c26879297416b0a901e93a3f0a9f38c9609724f9fb40a&projectId=2552d89d-2c54-490c-a920-27807cb7420a");
-	src:url("//fast.fonts.com/d/1eaf27c0-f4de-4273-9f4c-1b3236ad2f3c.woff?d44f19a684109620e484147ca090e8189bdf03e88ef07e0022ae1590208dea82b32e9c26879297416b0a901e93a3f0a9f38c9609724f9fb40a&projectId=2552d89d-2c54-490c-a920-27807cb7420a") format("woff"),url("//fast.fonts.com/d/9b913baf-b1f0-47d2-8c76-42f59650058f.ttf?d44f19a684109620e484147ca090e8189bdf03e88ef07e0022ae1590208dea82b32e9c26879297416b0a901e93a3f0a9f38c9609724f9fb40a&projectId=2552d89d-2c54-490c-a920-27807cb7420a") format("truetype"),url("//fast.fonts.com/d/0abcce12-2274-4ee7-b6d5-0066b5f5f670.svg?d44f19a684109620e484147ca090e8189bdf03e88ef07e0022ae1590208dea82b32e9c26879297416b0a901e93a3f0a9f38c9609724f9fb40a&projectId=2552d89d-2c54-490c-a920-27807cb7420a#0abcce12-2274-4ee7-b6d5-0066b5f5f670") format("svg");
-}
-
 body {
 	font-family: "UniversLTW01-57Condense 723821", "Univers", serif;
 	background: #5b6694;
@@ -521,6 +515,14 @@ h3 {
 	cursor: pointer;
 }
 
+#tabs .more {
+	display: none;
+}
+
+#tabs.month-display .more {
+	display: block;
+}
+
 /* .conso-*, .purple-circle, .pink-circle
 ----------------------------------------------------------------------------- */
 
@@ -766,4 +768,34 @@ ul.conso-list-container {
 
 #tab-apropos p {
 	padding-right: 10px;
+}
+
+/* .child-frame
+----------------------------------------------------------------------------- */
+
+.child-frame #tab-menu,
+.child-frame .banner,
+.child-frame hr,
+.child-frame h3,
+.child-frame .display-menu,
+.child-frame #tabs .month-menu,
+.child-frame #tabs .more {
+	display: none;
+}
+
+.child-frame .year-menu {
+	visibility: hidden;
+}
+
+.child-frame .tab {
+	padding: 0;
+}
+
+.child-frame #center {
+	width: 706px;
+}
+
+.child-frame body {
+	overflow: hidden;
+	background: #fff;
 }

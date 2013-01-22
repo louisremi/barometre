@@ -30,10 +30,13 @@ App.Views.QuestionMonth = Backbone.View.extend({
 				( answer.value < 10 ? "&nbsp;" : "" )
 			);
 
-			var wrapper = self.$percentages[i].parentNode;
+			// if we are in compare.html, the dom node might not exist
+			if ( self.$percentages[i] ) {
+				var wrapper = self.$percentages[i].parentNode;
 
-			wrapper.style.fontSize = Math.round( ( answer.value || 1 ) * 0.7 + 14 ) + "px";
-			wrapper.style.top = Math.round( 85 - ( answer.value || 1 ) * 0.4 ) + "px";
+				wrapper.style.fontSize = Math.round( ( answer.value || 1 ) * 0.7 + 14 ) + "px";
+				wrapper.style.top = Math.round( 85 - ( answer.value || 1 ) * 0.4 ) + "px";
+			}
 		});
 	}
 });

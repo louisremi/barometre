@@ -18,7 +18,7 @@
 
 			App.collections.questions = new App.collections.QuestionCollection();
 
-			App.collections.questions.bind('reset',function() {//console.log("zob");console.log(App.collections.toJSON())
+			App.collections.questions.bind('reset',function() {
 				if (self.model.get("display") === "month") {
 					App.collections.questions.each(function(question) {
 					if (!!self.questionViews[question.get('type')] && self.questionViews[question.get('type')].hookUp)
@@ -51,16 +51,23 @@
 
 				if ( model.hasChanged("month") ) {
 					App.dispatcher.trigger("monthChanged");
+
+					// update children on month update
+					if ( App.children && App.children.length ) {
+						_( App.children ).each(function(child) {
+							child.postMessage("/" + model.get("month"), "*");
+						});
+					}
 				}
 
-				if ( model.hasChanged("display") ) {
+				if ( model.hasChanged("display") || model.hasChanged("tab") ) {
 					// supprimer toutes le contenu des .question
 					// trouver quel mode de display.
 					// pour chaque type question on doit retrouver quelle objet vue correpond a ce mode de display
 
 					$('.answers').empty();
 
-					_.each(App.ui.tabs["courant"],function(value) {
+					_.each(App.ui.tabs[ model.get("tab") ],function(value) {
 						self.questionViews[value] = new (App.ui.questions[value].display[model.get('display')])({type:value});
 					});
 
