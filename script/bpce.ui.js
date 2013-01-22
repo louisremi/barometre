@@ -106,7 +106,7 @@ ui.questions = {
 		question: "Postes de dépenses les plus préoccupants",
 		moreClassName: "all conso-all",
 		moreLabel: "Voir l'ensemble des résultats",
-		/*answerSlug: [
+		answerSlug: [
 			"alim",
 			"essence",
 			"impot",
@@ -123,7 +123,7 @@ ui.questions = {
 			"aucun",
 			"ordi",
 			"nsp"
-		],*/
+		],
 		display: {
 			month: App.views.ConsoQuestionMonthView,
 			year: App.views.ConsoQuestionYearView,

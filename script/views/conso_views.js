@@ -112,6 +112,8 @@ views.ConsoQuestionMonthView = Backbone.View.extend({
 	answerViews: {},
 	answerViewsAll: {},
 	allModifierSelector: ".conso-all",
+	allText:"Voir l'ensemble des résultats",
+	rankingText:"Retour au top 5 des résultats",
 
 	initialize: function() {
 		var self = this;
@@ -126,6 +128,8 @@ views.ConsoQuestionMonthView = Backbone.View.extend({
 				});
 
 				self.toggleSize();
+
+				$(this).text($(this).text() == self.allText ? self.rankingText : self.allText);
 			});
 
 			$(this.allModifierSelector).data("listenerInitialized",true);

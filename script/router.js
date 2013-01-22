@@ -75,6 +75,15 @@
 					// trouver quel mode de display.
 					// pour chaque type question on doit retrouver quelle objet vue correpond a ce mode de display
 
+					if(model.hasChanged("display")) {
+						_.each(App.ui.tabs[ "courant" ],function(value) {
+							if (value !="apropos" && self.questionViews[value]) {
+								self.questionViews[value].remove();
+								self.questionViews[value] = undefined
+							}
+					});
+					}
+
 					_.each(App.ui.tabs[ model.get("tab") ],function(value) {
 						if((!self.questionViews[value] && model.hasChanged("tab")) || model.hasChanged("display")) {
 							self.questionViews[value] = new (App.ui.questions[value].display[model.get('display')])({type:value});
