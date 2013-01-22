@@ -24,8 +24,8 @@
 body {
 	font-family: "UniversLTW01-57Condense 723821", "Univers", serif;
 	background: #5b6694;
-	/*overflow-y: hidden;*/
-	overflow-y: scroll;
+	overflow-y: hidden;
+	/*overflow-y: scroll;*/
 }
 
 /*.visuallyhidden {
@@ -802,7 +802,7 @@ ul.conso-list-container {
 	position: absolute;
 	top: 200px;
 	right: 0;
-	bottom: 0;
+	bottom: 30px;
 	left: 0;
 
 	display: none;
@@ -850,7 +850,8 @@ ul.conso-list-container {
 .child-frame h3,
 .child-frame .display-menu,
 .child-frame #tabs .month-menu,
-.child-frame #tabs .more {
+.child-frame #tabs .more,
+.child-frame #question-conso {
 	display: none;
 }
 
@@ -873,4 +874,8 @@ ul.conso-list-container {
 
 .no-data {
 	display:none;
+}
+
+.child-frame .question:before {
+	top: 55px;
 }
