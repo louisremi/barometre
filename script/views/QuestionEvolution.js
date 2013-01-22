@@ -96,13 +96,13 @@
 				self.$el.find(".evo-lines-buttons").append(view.render().el);
 			});
 
-			self.lines.hover(function () {
+			self.lines/*.hover(function () {
 
 				var symbol = this.symbols ? this.symbols[0] : this.symbol;
                	this.tag = self.r.tag(this.x, this.y, this.value+"%", 160, 10).insertBefore(this).attr([{ fill: "#fff" ,opacity:symbol.attr("opacity")}, { fill: symbol.attr("fill"),opacity:symbol.attr("opacity")}]);
             }, function () {
                 this.tag && this.tag.remove();
-            });
+            })*/;
 
 
 

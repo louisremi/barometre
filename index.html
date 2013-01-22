@@ -227,6 +227,12 @@
 		%><li class="<%= App.ui.questions[type].answers[i].className %>"><div class="percentage"><div><span style="background:<%= App.ui.colors[ i == l - 1 ? App.ui.colors.length - 1 : i ] %>;"></span></div></div> <span class="heading"><%= App.ui.questions[type].answers[i].label %></span></li><%
 	} %>
 </script>
+
+<script id="question-actu-month-template" type="text/template"><%
+	for ( var i = -1, l = App.ui.questions[type].answersMaxLength; ++i < l; ) {
+		%><li id="<%= i %>-element"><div class="percentage"><div><span style="background:<%= App.ui.colors[ i == l - 1 ? App.ui.colors.length - 1 : i ] %>;"></span></div></div> <span class="heading"></span></li><%
+	} %>
+</script>
 <!-- ####=========================================================================#### -->
 
 <!-- ####==================== EVOLUTION QUESTION TEMPALTE ====================#### -->

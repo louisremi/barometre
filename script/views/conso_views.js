@@ -114,17 +114,21 @@ views.ConsoQuestionMonthView = Backbone.View.extend({
 
 	initialize: function() {
 		var self = this;
-		$(this.allModifierSelector).click(function() {
-			_.each(self.answerViews,function(view) {
-				view.toggle();
+		if (!$(this.allModifierSelector).data("listenerInitialized")) {
+			$(this.allModifierSelector).click(function() {
+				_.each(self.answerViews,function(view) {
+					view.toggle();
+				});
+
+				_.each(self.answerViewsAll,function(view) {
+					view.toggle();
+				});
+
+				self.toggleSize();
 			});
 
-			_.each(self.answerViewsAll,function(view) {
-				view.toggle();
-			});
-
-			self.toggleSize();
-		});
+			$(this.allModifierSelector).data("listenerInitialized",true);
+		}
 	},
 
 	toggleSize: function() {

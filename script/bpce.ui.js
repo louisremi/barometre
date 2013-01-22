@@ -13,6 +13,24 @@ ui.tabs = {
 	apropos: ["apropos"]
 };
 
+ui.picClass = {
+	"plus":"increase",
+	"moins":"decrease",
+	"egale":"stable",
+	"nsp":"nspp",
+	"oui":"yes",
+	"non":"no",
+};
+
+ui.actuText = {
+	"plus":"<b>…augmenter (%)</b>",
+	"moins":"<b>…diminuer (%)</b>",
+	"egale":"<b>…rester stable (%)</b>",
+	"nsp":"…ne se prononce pas (%)",
+	"oui":"<b>oui</b>",
+	"non":"<b>non</b>",
+}
+
 // find current month:
 // we only have data for last month, and we don't have data for June and July
 var now = new Date(),
@@ -215,7 +233,7 @@ ui.questions = {
 				label: "<b>oui</b>"
 			}, {
 				className: "no",
-				label: "<b>non</b>"
+				label: "<b>non	</b>"
 			}, {
 				className: "nspp",
 				label: "…ne se prononce pas (%)"
@@ -236,6 +254,7 @@ ui.questions = {
 		tab: "actu",
 		question: "",
 		moreClassName: "",
+		answersMaxLength: 5,
 		moreLabel: "Voir la question précédente",
 		display: {
 			month: App.views.ActualiteQuestionMonthView,
