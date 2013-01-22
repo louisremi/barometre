@@ -800,3 +800,7 @@ ul.conso-list-container {
 	overflow: hidden;
 	background: #fff;
 }
+
+.no-data {
+	display:none;
+}

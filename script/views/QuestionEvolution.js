@@ -42,6 +42,7 @@
 
 	Views.QuestionEvolution = Backbone.View.extend({
 		template:_.template($('#graphic-year-template').html()),
+		noDataTemplate: _.template($("#no-data-year-template").html()),
 
 		initialize: function() {
 		},
@@ -54,8 +55,19 @@
 			return this;
 		},
 
+		noData: function() {
+			this.noDataContainer = this.$el.parent().find(".no-data");
+			this.noDataContainer.html(this.noDataTemplate());
+			this.noDataContainer.show();
+			this.$el.hide();
+		},
+
 		hookUp: function(questions,answerTitles) {
 			var self = this,type = questions[0].get("type");
+
+			if (this.noDataContainer)
+				this.noDataContainer.hide();
+			this.$el.show();
 
 			this.el.parentNode.parentNode.style.display = "block";
 
@@ -69,13 +81,6 @@
 						coordY[_.indexOf(answerTitles,answer.title)][questionMonth < 8 ? questionMonth-1 : questionMonth-3] = answer.value;
 				})
 			});
-
-			/*for (var i = 0,j = coordY.length;i<j;i++) {
-				for(var x = 0,y = coordY[i].length;x<y;x++) {
-					if (!coordY[i][x])
-						coordY[i][x]=0.1;
-				}
-			}*/
 
 			if (self.lines)
 				self.lines.remove();

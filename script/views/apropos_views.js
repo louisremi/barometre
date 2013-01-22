@@ -8,6 +8,10 @@ views.AproposView = Backbone.View.extend({
 	initialize: function() {
 
 	},
+
+	noData:function() {
+
+	},
 });
 
 })(Backbone,window,$,_,window.App)

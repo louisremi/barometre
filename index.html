@@ -34,7 +34,7 @@
 		<style id="years-style">
 		</style>
 		
-		<div id="tabs">
+		<div id="tabs" role="navigation">
 			<div id="tab-pouvoir" class="tab">
 				<div class="banner">
 					<h2><span>&Eacute;volution du pouvoir d'achat</span></h2>
@@ -160,7 +160,8 @@
 		%></ul>
 	</div>
 
-	<ul class="answers"></ul>
+	<ul class="answers" aria-live="assertive"></ul>
+	<span class="no-data"></span>
 
 	<p class="more"><a href="" data-href=":display/<%= tab %>/:year/:month" class="<%= moreClassName %>"><%= moreLabel %></a></p>
 </script>
@@ -224,7 +225,7 @@
 <!-- ####====================  ====================#### -->
 <script id="question-month-template" type="text/template"><%
 	for ( var i = -1, l = App.ui.questions[type].answers.length; ++i < l; ) {
-		%><li class="<%= App.ui.questions[type].answers[i].className %>"><div class="percentage"><div><span style="background:<%= App.ui.colors[ i == l - 1 ? App.ui.colors.length - 1 : i ] %>;"></span></div></div> <span class="heading"><%= App.ui.questions[type].answers[i].label %></span></li><%
+		%><li role="group" class="<%= App.ui.questions[type].answers[i].className %>"><div class="percentage"><div><span style="background:<%= App.ui.colors[ i == l - 1 ? App.ui.colors.length - 1 : i ] %>;"></span></div></div> <span class="heading"><%= App.ui.questions[type].answers[i].label %></span></li><%
 	} %>
 </script>
 
@@ -243,6 +244,15 @@
 
 <script id="evo-line-button" type="text/template">
 	<span><%= text %></span>
+</script>
+<!-- ####=========================================================================#### -->
+
+<!-- ####==================== EVOLUTION QUESTION TEMPALTE ====================#### -->
+<script id="no-data-template" type="text/template">
+Aucune donnée disponible pour ce mois.
+</script>
+<script id="no-data-year-template" type="text/template">
+Aucune donnée disponible pour cette année.
 </script>
 <!-- ####=========================================================================#### -->
 
