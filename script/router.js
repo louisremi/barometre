@@ -71,10 +71,6 @@
 				}
 
 				if ( model.hasChanged("display") || model.hasChanged("tab") ) {
-					// supprimer toutes le contenu des .question
-					// trouver quel mode de display.
-					// pour chaque type question on doit retrouver quelle objet vue correpond a ce mode de display
-
 					_.each(App.ui.tabs[ model.get("tab") ],function(value) {
 						if((!self.questionViews[value] && model.hasChanged("tab")) || model.hasChanged("display")) {
 							self.questionViews[value] = new (App.ui.questions[value].display[model.get('display')])({type:value});
@@ -82,13 +78,6 @@
 					});
 
 					App.views.Manager.draw(self.questionViews);
-
-				} else if ( model.hasChanged("tab") ) {
-					//App.ui.selectTab();
-
-				} else if ( model.hasChanged("year") || model.hasChanged("month") ) {
-					// I don't know, find something to do!
-
 				}
 
 				App.collections.questions.setUrl(

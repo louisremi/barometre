@@ -2,73 +2,6 @@
 
 var views = App.views = (App.views || {});
 
-views.texteDict = {
-		alim: {
-			label: "l'alimentation",
-			icon: "\u202FB"
-		},
-		essence: {
-			label: "l'essence",
-			icon: "U"
-		},
-		impot: {
-			label: "les impôts",
-			icon: "P"
-		},
-		elec: {
-			label: "l'électricité",
-			icon: "H"
-		},
-		sante: {
-			label: "la santé",
-			icon: "N"
-		},
-		gaz: {
-			label: "le gaz",
-			icon: "K"
-		},
-		logement: {
-			label: "le logement",
-			icon: "I"
-		},
-		entretien: {
-			label: "les travaux et l'entretien de la maison",
-			icon: "R"
-		},
-		voiture: {
-			label: "l'achat de la voiture",
-			icon: "L"
-		},
-		ecole: {
-			label: "l'école",
-			icon: "D"
-		},
-		autres: {
-			label: "autres",
-			icon: "O"
-		},
-		habillement: {
-			label: "l'habillement",
-			icon: "Q"
-		},
-		transport: {
-			label: "les transports en commun",
-			icon: "J"
-		},
-		aucun: {
-			label: "aucun",
-			icon: "S"
-		},
-		ordi: {
-			label: "les technologies (ordinateur,internet…)",
-			icon: "E"
-		},
-		nsp: {
-			label: "ne se prononce pas",
-			icon: "T"
-		}
-	};
-
 views.ConsoAnswerMonthView =Backbone.View.extend({
 	template: _.template($("#bm-conso-answer-month-template").html()),
 
@@ -102,8 +35,8 @@ views.ConsoAnswerMonthView =Backbone.View.extend({
 
 	hookUp: function(answer,position,max) {
 		this.$percentage.text(answer.value);
-		this.$label.text( App.views.texteDict[answer.title].label );
-		this.$icon.html( App.views.texteDict[answer.title].icon );
+		this.$label.text( App.ui.depenses[answer.title].label );
+		this.$icon.html( App.ui.depenses[answer.title].icon );
 
 		return this;
 	}
@@ -152,24 +85,6 @@ views.ConsoQuestionMonthView = Backbone.View.extend({
 	noDataTemplate: _.template($("#no-data-template").html()),
 	containerSelector: "#question-conso .answers",
 	answers: ["first","second","third","fourth","fifth"],
-	answersAll: [
-		"alim",
-		"essence",
-		"impot",
-		"elec",
-		"sante",
-		"gaz",
-		"logement",
-		"entretien",
-		"voiture",
-		"ecole",
-		"autres",
-		"habillement",
-		"transport",
-		"aucun",
-		"ordi",
-		"nsp"
-	],
 	answerViews: {},
 	answerViewsAll: {},
 	allModifierSelector: ".conso-all",
@@ -200,7 +115,7 @@ views.ConsoQuestionMonthView = Backbone.View.extend({
 	render: function() {
 		var self = this;
 
-		this.$el.html(this.template({places: this.answers,types:this.answersAll}));
+		this.$el.html(this.template({places: this.answers,types:App.ui.depenses}));
 
 		this.$el.addClass('conso-list-container');
 
@@ -209,10 +124,10 @@ views.ConsoQuestionMonthView = Backbone.View.extend({
 			view.render(i);
 		});
 
-		_( this.answersAll ).each(function(answer, i) {
-			var view = self.answerViewsAll[answer] = new views.ConsoQuestionMonthAllView({el:self.$("#"+answer)});
+		_( App.ui.depenses ).each(function(depense, slug) {
+			var view = self.answerViewsAll[slug] = new views.ConsoQuestionMonthAllView({el:self.$("#"+slug)});
 			view.toggle();
-			view.render(App.views.texteDict[answer]);
+			view.render(depense);
 		});
 
 		return this;
