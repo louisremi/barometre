@@ -274,6 +274,73 @@ ui.questions = {
 	}
 };
 
+ui.depenses = {
+	alim: {
+		label: "l'alimentation",
+		icon: "\u202FB"
+	},
+	essence: {
+		label: "l'essence",
+		icon: "U"
+	},
+	impot: {
+		label: "les impôts",
+		icon: "P"
+	},
+	elec: {
+		label: "l'électricité",
+		icon: "H"
+	},
+	sante: {
+		label: "la santé",
+		icon: "N"
+	},
+	gaz: {
+		label: "le gaz",
+		icon: "K"
+	},
+	logement: {
+		label: "le logement",
+		icon: "I"
+	},
+	entretien: {
+		label: "les travaux et l'entretien de la maison",
+		icon: "R"
+	},
+	voiture: {
+		label: "l'achat de la voiture",
+		icon: "L"
+	},
+	ecole: {
+		label: "l'école",
+		icon: "D"
+	},
+	autres: {
+		label: "autres",
+		icon: "O"
+	},
+	habillement: {
+		label: "l'habillement",
+		icon: "Q"
+	},
+	transport: {
+		label: "les transports en commun",
+		icon: "J"
+	},
+	aucun: {
+		label: "aucun",
+		icon: "S"
+	},
+	ordi: {
+		label: "les technologies (ordinateur,internet…)",
+		icon: "E"
+	},
+	nsp: {
+		label: "ne se prononce pas",
+		icon: "T"
+	}
+};
+
 ui.colors = [
 	"#427324",
 	"#f6a800",

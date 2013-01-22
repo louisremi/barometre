@@ -10,9 +10,9 @@
 	<script>
 		window.App = {};
 		// inline script/frame-bridge.js
-		// remove following script and inline here
+		(function(b,c,d,e){function f(a){"hashRequest"==a.data?App.children.push(a.source):a.source==d&&/^#/.test(a.data)?(App.hashFound=b.location=a.data,App.initialize()):/^\//.test(a.data)?b.location=b.location.hash.replace(/\/\d+$/,a.data):a.source==d&&(a.data&&!isNaN(a.data))&&(document.body.style.fontSize=a.data+"px")}if(b==c||c!=d){App.hashFound=b.location.hash;if(b==c)return;e.className=e.className+=" child-frame"}App.children=[];c.postMessage("hashRequest","*");"addEventListener"in b?b.addEventListener("message", f,!1):b.attachEvent("onmessage",f)})(window,window.parent,window.top,document.documentElement);
 	</script>
-	<script src="script/frame-bridge.js"></script>
+	<!--<script src="script/frame-bridge.js"></script>-->
 </head>
 <body>
 
@@ -42,8 +42,6 @@
 
 				<div id="question-pouvoir" class="question">
 				</div><!-- .question -->
-
-				<!--<iframe src="compare.html#bm/month/immo/2012/11" frameborder=0 style="width:100%;height:335px;"></iframe>-->
 
 				<hr style="border-width: 1px 0 0 0; margin-top: 20px;" />
 
@@ -184,7 +182,7 @@
 <script id="bm-conso-question-month-template" type="text/template">
 <% for (place in places) { %><li id="<%= places[place] %>" class="graph-container">
 </li><% } %>
-<% for (type in types) { %><li id="<%= types[type] %>" class="line-container">
+<% for (type in types) { %><li id="<%= type %>" class="line-container">
 </li><% } %>
 <div class="conso-first-bar">
 </div>
@@ -195,7 +193,7 @@
 <script id="bm-conso-answer-month-template" type="text/template">
 <div class="conso-graph-shell">
 	<div class="conso-graph" >
-		<img class="logo-conso" src="" alt=""></img>
+		<span class="icon-conso"></span>
 		<div class="texte-conso">
 			<span class="cercle-conso purple-circle"></span>
 			<div class="percentage-conso"><span id="percentage-conso-value"></span><span class="percentage-conso-small">%</span></div>
@@ -290,55 +288,8 @@ Aucune donnée disponible pour cette année.
 <![endif]-->
 <script src="script/bpce.slider.js"></script>
 <script src="script/model.js"></script>
-<!--<script src="script/app.js"></script>-->
 <script src="script/router.js"></script>
-<script>
+<script src="script/app.js"></script>
 
-$(function() {
-	App.domLoaded = 1;
-	App.initialize();
-});
-
-App.initialize = function() {
-
-// wait for both events before initializing the app
-if ( App.domLoaded === undefined || App.hashFound === undefined ) {
-	return;
-}
-
-App.ui.initialize();
-
-App.router = new App.BarometreRouter({appView:App.view});
-
-App.views.links = new App.Views.Links({
-	model: App.ui.model,
-	el: $("#center")[0]
-});
-
-App.views.tabMenu = new App.Views.TabMenu({
-	model: App.ui.model,
-	el: $("#tab-menu")[0]
-});
-
-App.views.displayMenu = new App.Views.DisplayMenu({
-	model: App.ui.model,
-	el: $("#tabs")[0]
-});
-
-App.views.yearMenu = new App.Views.YearMenu({
-	model: App.ui.model,
-	el: $("#tabs")[0]
-});
-
-App.views.monthMenu = new App.Views.MonthMenu({
-	model: App.ui.model,
-	el: $("#tabs")[0]
-});
-
-Backbone.history.start();
-
-};
-
-</script>
 </body>
 </html>

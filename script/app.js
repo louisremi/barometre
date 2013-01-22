@@ -1,151 +1,75 @@
-(function($, Backbone, _, window) {
+(function($, Backbone, _, App, window) {
 
-var YearMenuView = Backbone.View.extend({
-	template: _.template( $("#item-year-menu-template").html() ),
-	model: Backbone.Model,
-	events: {
-		"click a": "switchDisplay"
-	},
-	switchDisplay: function(e) {
-		console.log(e.currentTarget);
-	},
-	render: function() {
-		this.$el.html( this.template( this.model.toJSON() ) );
-		return this;
+$(function() {
+	App.domLoaded = 1;
+	App.initialize();
+});
+
+App.initialize = function() {
+
+	// wait for both events before initializing the app
+	if ( App.domLoaded === undefined || App.hashFound === undefined ) {
+		return;
 	}
-});
 
-var AnswerModel = Backbone.Model.extend({});
+	App.ui.initialize();
 
-var AnswerView = Backbone.View.extend({
-	template: _.template( $("#answer-template").html() ),
-	model: AnswerModel,
-	initialize: function() {
-		// initial render
-		this.$el.html( this.template( this.model.toJSON() ) );
+	App.router = new App.BarometreRouter({appView:App.view});
 
-		return this;
-	}
-});
+	App.views.links = new App.Views.Links({
+		model: App.ui.model,
+		el: $("#center")[0]
+	});
 
-var AnswerCollection = Backbone.Collection.extend({
-	model: AnswerModel
-});
+	App.views.tabMenu = new App.Views.TabMenu({
+		model: App.ui.model,
+		el: $("#tab-menu")[0]
+	});
 
-var AnswerCollectionView = Backbone.View.extend({
-	initialize: function() {
-		var self = this;
+	App.views.displayMenu = new App.Views.DisplayMenu({
+		model: App.ui.model,
+		el: $("#tabs")[0]
+	});
 
-		this._answerViews = [];
+	App.views.yearMenu = new App.Views.YearMenu({
+		model: App.ui.model,
+		el: $("#tabs")[0]
+	});
 
-		this.collection.each(function( answer ) {
-			var answerView = new AnswerView({
-				model: answer,
-				tagName: "li",
-				className: answer.get("className")
-			});
+	App.views.monthMenu = new App.Views.MonthMenu({
+		model: App.ui.model,
+		el: $("#tabs")[0]
+	});
 
-			self._answerViews.push( answerView );
+	App.collections.questions = new App.collections.QuestionCollection();
+
+	App.collections.questions.bind('reset',function() {
+		var typeAvailable = [];
+		if (App.ui.model.get("display") === "month") {
+			App.collections.questions.each(function(question) {
+				if (!!App.views.question[question.get('type')] && App.views.question[question.get('type')].hookUp) {
+					App.views.question[question.get('type')].hookUp(question);
+					typeAvailable.push(question.get('type'));
+				}
+			})
+		} else {
+			var questionGroup = App.collections.questions.groupBy(function(question) {return question.get('type')});
+			_.each(questionGroup,function(questions,type) {
+				if (!!App.views.question[type] && App.views.question[type].hookUp) {
+					App.views.question[type].hookUp(questions,App.ui.model.get("display") === "evolution" ? App.ui.questions[type].answerSlugs : undefined);
+					typeAvailable.push(type);
+				}
+			})
+		}
+
+		_.each(_.difference(App.ui.tabs["courant"],typeAvailable),function(type) {
+			if (App.views.question[type])
+				App.views.question[type].noData();
 		});
+	});
 
-		this.collection.bind("reset", this.render);
+	Backbone.history.start();
 
-		// initial render
-		this.$el.empty();
+};
 
-		_(this._answerViews).each(function( answerView ) {
-			self.$el.append( answerView.el );
-		});
-
-	}
-});
-
-var PercentageView = Backbone.View.extend({
-	model: AnswerModel,
-	render: function( percentage, wrapper ) {
-		var data = this.model.toJSON();
-
-		percentage.innerHTML = data.value < 10 ?
-			"\u2008" + data.value + "\u2008" :
-			data.value;
-
-		wrapper.style.fontSize = Math.round( data.value * 0.7 + 14 ) + "px";
-		wrapper.style.top = Math.round( 85 - data.value * 0.4 ) + "px";
-
-		return this;
-	}
-});
-
-var PercentageCollectionView = Backbone.View.extend({
-	initialize: function() {
-		var self= this;
-
-		this.collection.on( "reset", this.render, this );
-	},
-	render: function() {
-		var self = this;
-
-		this.$el.children().each(function( i, el ) {
-			var span = el.querySelector("span");
-			new PercentageView({
-				model: self.collection.at( i )
-			}).render( span, span.parentNode );
-		});
-	}
-});
-
-var QuestionView = Backbone.View.extend({
-	initialize: function() {
-		var answerCollection = new AnswerCollection( this.model.answers );
-
-		new YearMenuView({
-			model: new Backbone.Model({
-				years: App.years
-			}),
-			el: this.el.querySelector(".year-menu")
-		}).render();
-
-		new AnswerCollectionView({
-			collection: answerCollection,
-			el: this.el.querySelector(".answers")
-		});
-
-		new PercentageCollectionView({
-			collection: answerCollection,
-			el: this.el.querySelector(".answers")
-		}).render();
-	}
-});
-
-var AppView = Backbone.View.extend({
-	el : $("body"),
-
-	initialize: function() {
-		var self = this;
-
-		/*_( App.questionData ).each(function( questionData, type ) {
-			new QuestionView({
-				el: document.querySelector( "#question-" + type ),
-				model: questionData
-			}).render();
-		});*/
-	},
-
-	render: function() {
-	},
-
-	displayQuestion: function(type,year,month) {
-		this.type = type;
-		this.year = year;
-		this.month = month;
-
-		/*this.questions.setUrl( type, year, month );
-		this.questions.fetch();
-
-		this.render();*/
-	}
-});
-
-window.App.AppView = AppView;
-
-})(jQuery, Backbone, _, window);
+})(jQuery, Backbone, _, App, window);
