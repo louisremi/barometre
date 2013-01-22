@@ -3,22 +3,70 @@
 var views = App.views = (App.views || {});
 
 views.texteDict = {
-		alim:"l'alimentation",
-		essence:"l'essence",
-		impot:"les impôts",
-		elec:"l'électricité",
-		sante:"la santé",
-		gaz:"le gaz",
-		logement:"le logement",
-		entretien:"les travaux et l'entretien de la maison",
-		voiture:"l'achat de la voiture",
-		ecole:"l'école",
-		autres:"autres",
-		habillement:"l'habillement",
-		transport:"les transports en commun",
-		aucun:"aucun",
-		ordi:"les technologies (ordinateur,internet…)",
-		nsp:"ne se prononce pas"
+		alim: {
+			label: "l'alimentation",
+			icon: "\u202FB"
+		},
+		essence: {
+			label: "l'essence",
+			icon: "U"
+		},
+		impot: {
+			label: "les impôts",
+			icon: "P"
+		},
+		elec: {
+			label: "l'électricité",
+			icon: "H"
+		},
+		sante: {
+			label: "la santé",
+			icon: "N"
+		},
+		gaz: {
+			label: "le gaz",
+			icon: "K"
+		},
+		logement: {
+			label: "le logement",
+			icon: "I"
+		},
+		entretien: {
+			label: "les travaux et l'entretien de la maison",
+			icon: "R"
+		},
+		voiture: {
+			label: "l'achat de la voiture",
+			icon: "L"
+		},
+		ecole: {
+			label: "l'école",
+			icon: "D"
+		},
+		autres: {
+			label: "autres",
+			icon: "O"
+		},
+		habillement: {
+			label: "l'habillement",
+			icon: "Q"
+		},
+		transport: {
+			label: "les transports en commun",
+			icon: "J"
+		},
+		aucun: {
+			label: "aucun",
+			icon: "S"
+		},
+		ordi: {
+			label: "les technologies (ordinateur,internet…)",
+			icon: "E"
+		},
+		nsp: {
+			label: "ne se prononce pas",
+			icon: "T"
+		}
 	};
 
 views.ConsoAnswerMonthView =Backbone.View.extend({
@@ -30,12 +78,20 @@ views.ConsoAnswerMonthView =Backbone.View.extend({
 	texteSelector: ".texte-conso",
 	cercleSelector: ".cercle-conso",
 	labelSelector: ".label-conso",
+	iconSelector: ".icon-conso",
 	percentageSelector: "#percentage-conso-value",
 	//-----------------------------------------------------------------#
 
 
-	render: function() {
+	render: function(position) {
 		this.$el.html(this.template());
+
+		this.$percentage = this.$el.find(this.percentageSelector);
+		this.$label = this.$el.find(this.labelSelector);
+		this.$icon = this.$el.find(this.iconSelector);
+		this.$el.find(this.cercleSelector).text(position+1);
+		this.$el.find(this.graphSelector).css({height: (10+(5-position)*13)+'%'});
+
 		return this;
 	},
 
@@ -44,11 +100,10 @@ views.ConsoAnswerMonthView =Backbone.View.extend({
 		return this;
 	},
 
-	hookUp: function(answer,position,max) {;
-		this.$el.find(this.percentageSelector).text(answer.value);
-		this.$el.find(this.labelSelector).text(App.views.texteDict[answer.title]);
-		this.$el.find(this.cercleSelector).text(position+1);
-		this.$el.find(this.graphSelector).css({height: (10+(5-position)*13)+'%'});
+	hookUp: function(answer,position,max) {
+		this.$percentage.text(answer.value);
+		this.$label.text( App.views.texteDict[answer.title].label );
+		this.$icon.html( App.views.texteDict[answer.title].icon );
 
 		return this;
 	}
@@ -68,21 +123,27 @@ views.ConsoQuestionMonthAllView = Backbone.View.extend({
 		this.$el.fadeToggle(300);
 	},
 
-	render: function() {
+	render: function(answer) {
 		this.$el.html(this.template());
+
+		this.$cercle = this.$el.find(this.cercleSelector);
+		this.$el.find(this.labelSelector).text(answer.label);
+		this.$icon = this.$el.find(this.iconSelector).html(answer.icon);
+		this.$percentage = this.$el.find(this.percentageSelector);
+
 		return this;
 	},
 
 	hookUp: function(answer,index,max) {
-		var tmp = this.$el.find(this.cercleSelector).html((''+(index+1)).length < 2 ? "&nbsp;"+(index+1)+"&nbsp;" : index+1);
+		var tmp = this.$cercle.html((''+(index+1)).length < 2 ? "&nbsp;"+(index+1)+"&nbsp;" : index+1);
 		tmp[0].className = tmp[0].className.replace(/\b\w+-circle\b/g, "") + " " + ( index > 4 ?
 				"pink" :
 				"purple"
 			) + "-circle";
-		this.$el.find(this.labelSelector).text(App.views.texteDict[answer.title]);
+
 		this.$el.css({top:44*index});
-		this.$el.find(this.iconSelector).css({left:(33+(55*(answer.value/max)))+'%'});
-		this.$el.find(this.percentageSelector).text(answer.value);
+		this.$icon.css({left:(33+(55*(answer.value/max)))+'%'});
+		this.$percentage.text(answer.value);
 	}
 });
 
@@ -132,20 +193,22 @@ views.ConsoQuestionMonthView = Backbone.View.extend({
 	},
 
 	render: function() {
+		var self = this;
+
 		this.$el.html(this.template({places: this.answers,types:this.answersAll}));
 
 		this.$el.addClass('conso-list-container');
 
-		for ( answer in this.answers ) {
-			var view = this.answerViews[this.answers[answer]] = new views.ConsoAnswerMonthView({el:this.$("#"+this.answers[answer])});
-			view.render();
-		}
+		_( this.answers ).each(function(answer, i) {
+			var view = self.answerViews[answer] = new views.ConsoAnswerMonthView({el:self.$("#"+answer)});
+			view.render(i);
+		});
 
-		for ( answer in this.answersAll) {
-			var view = this.answerViewsAll[this.answersAll[answer]] = new views.ConsoQuestionMonthAllView({el:this.$("#"+this.answersAll[answer])});
+		_( this.answersAll ).each(function(answer, i) {
+			var view = self.answerViewsAll[answer] = new views.ConsoQuestionMonthAllView({el:self.$("#"+answer)});
 			view.toggle();
-			view.render();
-		}
+			view.render(App.views.texteDict[answer]);
+		});
 
 		return this;
 	},
