@@ -416,7 +416,7 @@ h3 {
 	height: 48px;
 	margin: 90px auto 0;
 
-	background: url(../images/symbols.png);
+	background: url(../images/symbols.png) 48px 0 no-repeat;
 }
 
 .answers .percentage {
@@ -863,4 +863,8 @@ ul.conso-list-container {
 .child-frame body {
 	overflow: hidden;
 	background: #fff;
+}
+
+.no-data {
+	display:none;
 }

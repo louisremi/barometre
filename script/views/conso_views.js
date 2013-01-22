@@ -149,6 +149,7 @@ views.ConsoQuestionMonthAllView = Backbone.View.extend({
 
 views.ConsoQuestionMonthView = Backbone.View.extend({
 	template: _.template($("#bm-conso-question-month-template").html()),
+	noDataTemplate: _.template($("#no-data-template").html()),
 	containerSelector: "#question-conso .answers",
 	answers: ["first","second","third","fourth","fifth"],
 	answersAll: [
@@ -175,17 +176,21 @@ views.ConsoQuestionMonthView = Backbone.View.extend({
 
 	initialize: function() {
 		var self = this;
-		$(this.allModifierSelector).click(function() {
-			_.each(self.answerViews,function(view) {
-				view.toggle();
+		if (!$(this.allModifierSelector).data("listenerInitialized")) {
+			$(this.allModifierSelector).click(function() {
+				_.each(self.answerViews,function(view) {
+					view.toggle();
+				});
+
+				_.each(self.answerViewsAll,function(view) {
+					view.toggle();
+				});
+
+				self.toggleSize();
 			});
 
-			_.each(self.answerViewsAll,function(view) {
-				view.toggle();
-			});
-
-			self.toggleSize();
-		});
+			$(this.allModifierSelector).data("listenerInitialized",true);
+		}
 	},
 
 	toggleSize: function() {
@@ -214,6 +219,10 @@ views.ConsoQuestionMonthView = Backbone.View.extend({
 	},
 
 	hookUp: function(question) {
+		if (this.noDataContainer)
+			this.noDataContainer.hide();
+		this.$el.show();
+		
 		var sortedAnswer = _.sortBy(question.get("answers"), function(answer) {
 			return -answer.value;
 		});
@@ -233,8 +242,11 @@ views.ConsoQuestionMonthView = Backbone.View.extend({
 		})
 	},
 
-	changeDisplay: function() {
-		console.log("modify");
+	noData: function() {
+		this.noDataContainer = this.$el.parent().find(".no-data");
+		this.noDataContainer.html(this.noDataTemplate());
+		this.noDataContainer.show();
+		this.$el.hide();
 	}
 });
 

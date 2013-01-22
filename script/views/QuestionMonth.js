@@ -6,6 +6,7 @@ if ( !App.Views ) {
 
 App.Views.QuestionMonth = Backbone.View.extend({
 	template: _.template($("#question-month-template").html()),
+	noDataTemplate: _.template($("#no-data-template").html()),
 
 	initialize: function(options) {
 		this.type = options.type;
@@ -20,6 +21,9 @@ App.Views.QuestionMonth = Backbone.View.extend({
 
 	hookUp: function( question ) {
 		var self = this;
+		if (this.noDataContainer)
+			this.noDataContainer.hide();
+		this.$el.show();
 
 		_.each(question.get("answers"), function(answer, i) {
 			$( self.$percentages[i] ).html(
@@ -38,6 +42,13 @@ App.Views.QuestionMonth = Backbone.View.extend({
 				wrapper.style.top = Math.round( 85 - ( answer.value || 1 ) * 0.4 ) + "px";
 			}
 		});
+	},
+
+	noData: function() {
+		this.noDataContainer = this.$el.parent().find(".no-data");
+		this.noDataContainer.html(this.noDataTemplate());
+		this.noDataContainer.show();
+		this.$el.hide();
 	}
 });
 
