@@ -391,7 +391,7 @@ h3 {
 /* .answers
 ----------------------------------------------------------------------------- */
 
-.answers {
+.answers, .no-data {
 	display: table;
 	table-layout: fixed;
 	height: 300px;

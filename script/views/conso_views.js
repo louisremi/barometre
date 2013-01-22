@@ -88,6 +88,8 @@ views.ConsoQuestionMonthView = Backbone.View.extend({
 	answerViews: {},
 	answerViewsAll: {},
 	allModifierSelector: ".conso-all",
+	allText:"Voir l'ensemble des résultats",
+	rankingText:"Retour au top 5 des résultats",
 
 	initialize: function() {
 		var self = this;
@@ -102,6 +104,8 @@ views.ConsoQuestionMonthView = Backbone.View.extend({
 				});
 
 				self.toggleSize();
+
+				$(this).text($(this).text() == self.allText ? self.rankingText : self.allText);
 			});
 
 			$(this.allModifierSelector).data("listenerInitialized",true);
@@ -129,6 +133,7 @@ views.ConsoQuestionMonthView = Backbone.View.extend({
 			view.toggle();
 			view.render(depense);
 		});
+		this.noDataContainer = this.$el.parent().find(".no-data");
 
 		return this;
 	},
@@ -158,7 +163,6 @@ views.ConsoQuestionMonthView = Backbone.View.extend({
 	},
 
 	noData: function() {
-		this.noDataContainer = this.$el.parent().find(".no-data");
 		this.noDataContainer.html(this.noDataTemplate());
 		this.noDataContainer.show();
 		this.$el.hide();

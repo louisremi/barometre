@@ -46,6 +46,19 @@
 				}
 
 				if ( model.hasChanged("display") || model.hasChanged("tab") ) {
+					// supprimer toutes le contenu des .question
+					// trouver quel mode de display.
+					// pour chaque type question on doit retrouver quelle objet vue correpond a ce mode de display
+
+					if(model.hasChanged("display")) {
+						_.each(App.ui.tabs[ "courant" ],function(value) {
+							if (value !="apropos" && App.views.question[value]) {
+								if(App.views.question[value].$el)
+								App.views.question[value].$el.empty();
+								delete App.views.question[value];
+							}
+					});
+					}
 					_.each(App.ui.tabs[ model.get("tab") ],function(value) {
 						if((!App.views.question[value] && model.hasChanged("tab")) || model.hasChanged("display")) {
 							App.views.question[value] = new (App.ui.questions[value].display[model.get('display')])({type:value});

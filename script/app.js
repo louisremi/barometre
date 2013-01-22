@@ -65,8 +65,12 @@ App.initialize = function() {
 		}
 
 		_.each(_.difference(App.ui.tabs["courant"],typeAvailable),function(type) {
-			if (App.views.question[type])
-				App.views.question[type].noData();
+			if (App.views.question[type]) {
+				if (!App.views.question[type].rendered)
+					App.views.Manager.draw([App.views.question[type]]);
+				if (App.views.question[type].noData)
+					App.views.question[type].noData();
+			}
 		});
 	});
 
