@@ -73,8 +73,8 @@ ui.questions = {
 		],
 		answerSlugs: [
 			"augmenter",
-			"descendre",
 			"egale",
+			"descendre",
 			"nsp",
 		],
 		display: {
@@ -88,10 +88,28 @@ ui.questions = {
 		question: "Postes de dépenses les plus préoccupants",
 		moreClassName: "all conso-all",
 		moreLabel: "Voir l'ensemble des résultats",
+		/*answerSlug: [
+			"alim",
+			"essence",
+			"impot",
+			"elec",
+			"sante",
+			"gaz",
+			"logement",
+			"entretien",
+			"voiture",
+			"ecole",
+			"autres",
+			"habillement",
+			"transport",
+			"aucun",
+			"ordi",
+			"nsp"
+		],*/
 		display: {
 			month: App.views.ConsoQuestionMonthView,
 			year: App.views.ConsoQuestionYearView,
-			evolution: $
+			evolution: $//App.Views.QuestionEvolution,
 		}
 	},
 	epargne: {
@@ -118,8 +136,8 @@ ui.questions = {
 		],
 		answerSlugs: [
 			"augmenter",
-			"descendre",
 			"egale",
+			"descendre",
 			"pasdecote",
 			"nsp",
 		],
@@ -150,8 +168,8 @@ ui.questions = {
 		],
 		answerSlugs: [
 			"augmenter",
-			"descendre",
 			"egale",
+			"descendre",
 			"nsp",
 		],
 		display: {
