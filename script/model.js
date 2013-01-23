@@ -31,6 +31,8 @@
 
 	collections.QuestionCollection = Backbone.Collection.extend({
 		setUrl: function(type,year,month) {
+			this.year = year;
+			this.month = month;
 			this.url = baseUrl+'/'+type+'/'+year+'/'+(!!month ? month+'/' : '');
 		}
 	});

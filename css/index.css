@@ -428,7 +428,7 @@ h3 {
 	display: block;
 	position: relative;
 	z-index: 1;
-	height: 150px;
+	height: 180px;
 
 	font-family: "Sentinel", serif;
 }
@@ -949,6 +949,9 @@ li.year-answer {
 
 #question-pouvoir:before {
 	content: "F";
+	right:23px;
+	font-size:285px;
+	top:175px;
 }
 
 #question-epargne:before {
@@ -1002,6 +1005,8 @@ li.year-answer {
 
 .no-data {
 	display:none;
+	position:relative;
+	z-index:3;
 }
 
 .child-frame .question:before {

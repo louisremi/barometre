@@ -106,7 +106,25 @@ ui.questions = {
 		question: "Postes de dépenses les plus préoccupants",
 		moreClassName: "all conso-all",
 		moreLabel: "Voir l'ensemble des résultats",
-		answerSlug: [
+		answers: [
+			{label:"L'alimentation"},
+			{label:"L'essence"},
+			{label:"Les impôts"},
+			{label:"L'électricité"},
+			{label:"La santé"},
+			{label:"Le gaz"},
+			{label:"Le logement"},
+			{label:"L'entretien"},
+			{label:"La voiture"},
+			{label:"l'école"},
+			{label:"Autres"},
+			{label:"L'habillement"},
+			{label:"Le transport"},
+			{label:"Aucun"},
+			{label:"Ordinateur"},
+			{label:"Ne se prononce pas"}
+		],
+		answerSlugs: [
 			"alim",
 			"essence",
 			"impot",
@@ -127,7 +145,7 @@ ui.questions = {
 		display: {
 			month: App.views.ConsoQuestionMonthView,
 			year: App.views.ConsoQuestionYearView,
-			evolution: $//App.Views.QuestionEvolution,
+			evolution: App.Views.QuestionEvolution,
 		}
 	},
 	epargne: {
@@ -341,13 +359,40 @@ ui.depenses = {
 	}
 };
 
-ui.colors = [
-	"#427324",
-	"#f6a800",
-	"#f7c9d6",
-	"#afd7d7",
-	"#571d74"
-];
+ui.colors = {
+	conso: [
+		"#427324",
+		"#f6a800",
+		"#f7c9d6",
+		"#afd7d7",
+		"#571d74",
+		"#a6a6a6",
+		"#a6a6a6",
+		"#a6a6a6",
+		"#a6a6a6",
+		"#a6a6a6",
+		"#a6a6a6",
+		"#a6a6a6",
+		"#a6a6a6",
+		"#a6a6a6",
+		"#a6a6a6",
+		"#a6a6a6",
+	],
+	_default: [
+		"#427324",
+		"#f6a800",
+		"#f7c9d6",
+		"#afd7d7",
+		"#571d74"
+	],
+	font:[
+		"#fff",
+		"#000",
+		"#000",
+		"#000",
+		"#fff"
+	]
+};
 
 ui.transitionDuration = 300;
 

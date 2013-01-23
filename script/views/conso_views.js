@@ -37,6 +37,7 @@ views.ConsoAnswerMonthView =Backbone.View.extend({
 		this.$percentage.text(answer.value);
 		this.$label.text( App.ui.depenses[answer.title].label );
 		this.$icon.html( App.ui.depenses[answer.title].icon );
+		this.$icon.css({color:App.ui.colors.conso[position]});
 
 		return this;
 	}
@@ -77,6 +78,7 @@ views.ConsoQuestionMonthAllView = Backbone.View.extend({
 		this.$el.css({top:44*index});
 		this.$icon.css({left:(33+(55*(answer.value/max)))+'%'});
 		this.$percentage.text(answer.value);
+		this.$icon.css({color:index < 5 ? App.ui.colors.conso[index] : "#d6d6d6"});
 	}
 });
 
