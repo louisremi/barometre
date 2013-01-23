@@ -932,6 +932,8 @@ li.year-answer {
 
 .no-data {
 	display:none;
+	position:relative;
+	z-index:3;
 }
 
 .child-frame .question:before {

@@ -85,10 +85,28 @@
 				})
 			});
 
+			if (answerTitles.length == App.ui.questions.conso.answerSlugs.length) {
+				var averageIndex = [];
+				_.each(coordY,function(coord,index) {
+					average = _.reduce(coord,function(memo,num) {memo + num})/coord.length;
+					averageIndex.push([index,average]);
+				});
+				_.sortBy(averageIndex,function(value) {
+					return value[1];
+				});
+
+				var newCoordY = new Array(5)
+				for (var i = 0,j=newCoordY.length; i < j;i++) {
+					newCoordY[i] = coordY[averageIndex[i][0]];
+				}
+
+				coordY = newCoordY;
+			}
+
 			if (self.lines)
 				self.lines.remove();
 
-			var colors = answerTitles.length > 6 ? App.ui.colors.conso : App.ui.colors._default;
+			var colors = answerTitles.length == App.ui.questions.conso.answerSlugs.length ? App.ui.colors.conso : App.ui.colors._default;
 
 			self.lines = self.r.linechart(30,30,666,260,
 					_.range(_.keys(App.ui.months).length),
@@ -97,8 +115,13 @@
 
 			self.$el.find(".evo-lines-buttons").empty();
 			_.each(self.lines[0],function(line,index) {
+				var textLine = "";
+				if (answerTitles == App.ui.questions.conso.answerSlugs.length)
+					textLine = App.ui.questions[type].answers[averageIndex[index][0]].label
+				else
+					textLine = App.ui.questions[type].answers[index].label
 				var view = new App.Views.QuestionEvolutionLineButton(
-					{model: new Backbone.Model({text:App.ui.questions[type].answers[index].label}),
+					{model: new Backbone.Model({text:textLine}),
 					widthPercentage: 31,
 					line:line,
 					dots:self.lines[2][index]});
