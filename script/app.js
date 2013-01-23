@@ -95,6 +95,8 @@ App.ui.initialize = function() {
 		$("#years-style").html( ( _.template( $("#years-style-template").html() ) )( { years: App.ui.years } ) );
 };
 
+
+App.collections.more = [];
 $(document.body).on("click", ".compare", function() {
 	var self = this,
 		more = this.parentNode;

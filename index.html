@@ -10,9 +10,8 @@
 	<script>
 		window.App = {};
 		// inline script/frame-bridge.js
-		(function(b,c,d,e){function f(a){"hashRequest"==a.data?App.children.push(a.source):a.source==d&&/^#/.test(a.data)?(App.hashFound=b.location=a.data,App.initialize()):/^\//.test(a.data)?b.location=b.location.hash.replace(/\/\d+$/,a.data):a.source==d&&(a.data&&!isNaN(a.data))&&(document.body.style.fontSize=a.data+"px")}if(b==c||c!=d){App.hashFound=b.location.hash;if(b==c)return;e.className=e.className+=" child-frame"}App.children=[];c.postMessage("hashRequest","*");"addEventListener"in b?b.addEventListener("message", f,!1):b.attachEvent("onmessage",f)})(window,window.parent,window.top,document.documentElement);
 	</script>
-	<!--<script src="script/frame-bridge.js"></script>-->
+	<script src="script/frame-bridge.js"></script>
 </head>
 <body>
 
@@ -126,7 +125,7 @@
 					<p>
 						A ces questions s’ajoute chaque mois une question liée à l’actualité.
 					</p>
-				</div>
+				</div><!-- .wrapper -->
 			</div><!-- .tab -->
 		</div><!-- #bm-tabs -->
 
@@ -149,8 +148,7 @@
 	<h3><%= question %></h3>
 
 	<div class="month-menu">
-		<div class="slider">
-		</div>
+		<div class="slider"></div>
 		<ul class="months"><%
 			for ( var month in months ) {
 				%><li class="month-<%= month %>"><div class="handle"></div><a href="#" data-href=":display/<%= tab %>/:year/<%= month %>"><abbr title="<%= months[month][1] %>"><%= months[month][0] %>.</abbr></a></li><%
@@ -158,8 +156,10 @@
 		%></ul>
 	</div>
 
-	<ul class="answers" aria-live="assertive"></ul>
-	<div class="no-data"></div>
+	<div class="visualization">
+		<ul class="answers" aria-live="assertive"></ul>
+		<div class="no-data"></div>
+	</div>
 
 	<p class="more"><a href="" data-href=":display/<%= tab %>/:year/:month" class="<%= moreClassName %>"><%= moreLabel %></a></p>
 </script>
@@ -236,8 +236,8 @@
 
 <!-- ####==================== EVOLUTION QUESTION TEMPALTE ====================#### -->
 <script id="graphic-year-template" type="text/template">
-	<ul class="evo-lines-buttons"></ul>
-	<div class="evo-raphael-paper"></div>
+<ul class="evo-lines-buttons"></ul>
+<div class="evo-raphael-paper"></div>
 </script>
 
 <script id="evo-line-button" type="text/template">
