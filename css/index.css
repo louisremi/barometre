@@ -936,6 +936,10 @@ li.year-answer {
 	z-index:3;
 }
 
+.conso-list-container .no-data{
+	display:block;
+}
+
 .child-frame .question:before {
 	top: 55px;
 }

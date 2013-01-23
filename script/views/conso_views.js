@@ -95,8 +95,11 @@ views.ConsoQuestionMonthView = Backbone.View.extend({
 
 	initialize: function() {
 		var self = this;
-		if (!$(this.allModifierSelector).data("listenerInitialized")) {
-			$(this.allModifierSelector).click(function() {
+		this.all = false;
+		this.isWithData = true;
+		$(this.allModifierSelector).unbind("click");
+		$(this.allModifierSelector).click(function() {
+			if (self.isWithData) {
 				_.each(self.answerViews,function(view) {
 					view.toggle();
 				});
@@ -106,22 +109,23 @@ views.ConsoQuestionMonthView = Backbone.View.extend({
 				});
 
 				self.toggleSize();
+				self.all = !self.all;
 
 				$(this).text($(this).text() == self.allText ? self.rankingText : self.allText);
-			});
-
-			$(this.allModifierSelector).data("listenerInitialized",true);
-		}
+			}
+		});
 	},
 
 	toggleSize: function() {
-		$(this.containerSelector).css($(this.containerSelector).height() > 600 ? {height:"500px"} : {height:"700px"} );
+		$(this.containerSelector).css(!this.all ? {height:"500px"} : {height:"700px"} );
 	},
 
 	render: function() {
 		var self = this;
-
 		this.$el.html(this.template({places: this.answers,types:App.ui.depenses}));
+		this.$el.append(this.noDataTemplate());
+		this.$noData = this.$el.find(".no-data");
+		this.$noData.hide();
 
 		this.$el.addClass('conso-list-container');
 
@@ -135,15 +139,23 @@ views.ConsoQuestionMonthView = Backbone.View.extend({
 			view.toggle();
 			view.render(depense);
 		});
-		this.noDataContainer = this.$el.parent().find(".no-data");
+
+		this.$graph = this.$el.find(".graph-container");
+		this.$line = this.$el.find(".line-container");
 
 		return this;
 	},
 
 	hookUp: function(question) {
-		if (this.noDataContainer)
-			this.noDataContainer.hide();
-		this.$el.show();
+		this.$noData.hide();
+		if (this.all)
+			this.$line.show();
+		else
+			this.$graph.show();
+
+		$(this.containerSelector).css(!this.all ? {height:"500px"} : {height:"700px"} );
+		
+		this.isWithData = true;
 		
 		var sortedAnswer = _.sortBy(question.get("answers"), function(answer) {
 			return -answer.value;
@@ -165,9 +177,11 @@ views.ConsoQuestionMonthView = Backbone.View.extend({
 	},
 
 	noData: function() {
-		this.noDataContainer.html(this.noDataTemplate());
-		this.noDataContainer.show();
-		this.$el.hide();
+		this.$noData.show();
+		this.$noData.css({display:"block"});
+		this.$line.hide();
+		this.$graph.hide();
+		this.isWithData = false;
 	}
 });
 

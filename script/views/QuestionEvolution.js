@@ -55,6 +55,7 @@
 			this.$lines = this.$el.find(".evo-raphael-paper");
 			this.$el.append(this.noDataTemplate());
 			this.$noData = this.$el.find(".no-data");
+			this.$noData.hide();
 
 			return this;
 		},
@@ -71,8 +72,9 @@
 
 			this.$lineMenu.show();
 			this.$lines.show();
+			this.$noData.hide();
 
-			this.el.parentNode.parentNode.style.display = "block";
+			this.el.parentNode.parentNode.parentNode.style.display = "block";
 
 			var coordY = [];
 

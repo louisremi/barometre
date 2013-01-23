@@ -114,14 +114,14 @@ ui.questions = {
 			{label:"La santé"},
 			{label:"Le gaz"},
 			{label:"Le logement"},
-			{label:"L'entretien"},
-			{label:"La voiture"},
-			{label:"l'école"},
+			{label:"Les travaux et l'entretien de la maison"},
+			{label:"L'achat de la voiture"},
+			{label:"L'école"},
 			{label:"Autres"},
 			{label:"L'habillement"},
-			{label:"Le transport"},
+			{label:"Les transport en commun"},
 			{label:"Aucun"},
-			{label:"Ordinateur"},
+			{label:"Les technologies (ordinateur, internet…)"},
 			{label:"Ne se prononce pas"}
 		],
 		answerSlugs: [
@@ -361,11 +361,11 @@ ui.depenses = {
 
 ui.colors = {
 	conso: [
-		"#427324",
+		"#becd43",
+		"#b3dddc",
+		"#ec7a94",
+		"#e7d4e7",
 		"#f6a800",
-		"#f7c9d6",
-		"#afd7d7",
-		"#571d74",
 		"#a6a6a6",
 		"#a6a6a6",
 		"#a6a6a6",
