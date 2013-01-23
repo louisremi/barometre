@@ -735,26 +735,6 @@ ul.conso-list-container {
 /* .evolution-display
 ----------------------------------------------------------------------------- */
 
-/*.evolution-display .answers {
-	height: auto;
-}
-
-.evolution-paper {
-	width:100%;
-	height:100%;
-	clear:both;
-	background-position:0px 30px;
-	background-repeat: repeat-x;
-}
-
-.answers li.evo-button-container {
-	display: inline-block;
-	padding: 3px 0px;
-	margin-right: 1%;
-	float:left;
-	margin-bottom: 10px;
-}*/
-
 .evo-raphael-paper {
 	width:100%;
 	height:100%;
@@ -785,6 +765,7 @@ ul.conso-list-container {
 #tabs.year-display ul.answers {
 	height: auto;
 	padding: 0;
+	margin-bottom: 0;
 
 	text-align: left;
 }
@@ -875,8 +856,8 @@ li.year-answer {
 	border-radius: 50%;
 	padding: .3em;
 
-	transition: font-size .3s ease;
-	-webkit-transition: font-size .3s ease;
+	transition: font-size .3s ease, top .3s ease, left .3s ease;
+	-webkit-transition: font-size .3s ease, top .3s ease, left .3s ease;
 }
 
 /* #tab-apropos
