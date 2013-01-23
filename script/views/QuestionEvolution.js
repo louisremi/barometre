@@ -88,10 +88,12 @@
 			if (self.lines)
 				self.lines.remove();
 
+			var colors = answerTitles.length > 6 ? App.ui.colors.conso : App.ui.colors._default;
+
 			self.lines = self.r.linechart(30,30,666,260,
 					_.range(_.keys(App.ui.months).length),
 					coordY,
-					{nostroke:false,axis:"0 0 1 1",width:3,symbol:"circle",axisxstep:9,axisystep:10,colors:App.ui.colors});
+					{nostroke:false,axis:"0 0 1 1",width:3,symbol:"circle",axisxstep:9,axisystep:10,colors:colors});
 
 			self.$el.find(".evo-lines-buttons").empty();
 			_.each(self.lines[0],function(line,index) {

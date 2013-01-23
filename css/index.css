@@ -876,6 +876,9 @@ li.year-answer {
 
 #question-pouvoir:before {
 	content: "F";
+	right:23px;
+	font-size:285px;
+	top:175px;
 }
 
 #question-epargne:before {

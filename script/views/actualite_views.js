@@ -22,7 +22,7 @@ views.ActualiteQuestionMonthView = App.Views.QuestionMonth.extend({
 				( answer.value < 10 ? "&nbsp;" : "" )
 			);
 
-			self.$el.find("#"+i+"-element .percentage span").css({"background-color":App.ui.colors[i]});
+			self.$el.find("#"+i+"-element .percentage span").css({"background-color":App.ui.colors._default[i]});
 			if (App.ui.picClass[answer.attribute])
 				self.$el.find("#"+i+"-element")[0].className = App.ui.picClass[answer.attribute];
 			else
@@ -42,7 +42,7 @@ views.ActualiteQuestionMonthView = App.Views.QuestionMonth.extend({
 			}
 		});
 
-		self.$el.find("#"+(answersToHook.length-1)+"-element .percentage span").css({"background-color":App.ui.colors[App.ui.colors.length-1]});
+		self.$el.find("#"+(answersToHook.length-1)+"-element .percentage span").css({"background-color":App.ui.colors._default[App.ui.colors._default.length-1]});
 
 		for (var i = this.answerShown;i<answersToHook.length;i++) {
 			self.$el.find("#"+i+"-element").show();
