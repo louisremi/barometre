@@ -95,18 +95,4 @@ App.ui.initialize = function() {
 		$("#years-style").html( ( _.template( $("#years-style-template").html() ) )( { years: App.ui.years } ) );
 };
 
-
-App.collections.more = [];
-$(document.body).on("click", ".compare", function() {
-	var self = this,
-		more = this.parentNode;
-
-	_( App.ui.years ).each(function(year) {
-		if ( year != App.ui.model.get("year") ) {
-			more.insertAdjacentHTML("afterend", "<iframe src='" + ( self.href ).replace(/\/20\d\d\//, "/" + year + "/") + "' frameborder=0 style='width: 100%; height: 330px;'></iframe>");
-		}
-	});
-	more.style.display = "none";
-});
-
 })(jQuery, Backbone, _, App, window);

@@ -42,7 +42,7 @@
 
 	Views.QuestionEvolution = Backbone.View.extend({
 		template:_.template($('#graphic-year-template').html()),
-		noDataTemplate: _.template($("#no-data-year-template").html()),
+		noDataTemplate: _.template($("#no-data-year-evolution-template").html()),
 
 		initialize: function() {
 		},
@@ -51,24 +51,26 @@
 			this.$el.html(this.template());
 
 			this.r = Raphael(this.$el.find(".evo-raphael-paper")[0],706,349);
-			
-			this.noDataContainer = this.$el.parent().find(".no-data");
+			this.$lineMenu = this.$el.find(".evo-lines-buttons");
+			this.$lines = this.$el.find(".evo-raphael-paper");
+			this.$el.append(this.noDataTemplate());
+			this.$noData = this.$el.find(".no-data");
 
 			return this;
 		},
 
 		noData: function() {
-			this.noDataContainer.html(this.noDataTemplate());
-			this.noDataContainer.show();
-			this.$el.hide();
+			this.$lineMenu.hide();
+			this.$lines.hide();
+
+			this.$noData.show();
 		},
 
 		hookUp: function(questions,answerTitles) {
 			var self = this,type = questions[0].get("type");
 
-			if (this.noDataContainer)
-				this.noDataContainer.hide();
-			this.$el.show();
+			this.$lineMenu.show();
+			this.$lines.show();
 
 			this.el.parentNode.parentNode.style.display = "block";
 

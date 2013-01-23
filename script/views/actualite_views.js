@@ -6,9 +6,8 @@ views.ActualiteQuestionMonthView = App.Views.QuestionMonth.extend({
 	template: _.template($("#question-actu-month-template").html()),
 
 	hookUp: function(question) {
-		if (this.noDataContainer)
-			this.noDataContainer.hide();
-		this.$el.show();
+		this.$noData.hide();
+		this.$percentages.parent().parent().parent().show();
 		
 		var self = this, answersToHook = _.filter(question.get("answers"),function(answer){ return answer.attribute });
 		if (!this.answerShown)
@@ -57,9 +56,8 @@ views.ActualiteQuestionMonthView = App.Views.QuestionMonth.extend({
 	},
 
 	noData: function() {
-		this.noDataContainer.html(this.noDataTemplate());
-		this.noDataContainer.show();
-		this.$el.hide();
+		this.$noData.show();
+		this.$percentages.parent().parent().parent().hide();
 	}
 });
 
