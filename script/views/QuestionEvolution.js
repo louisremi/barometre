@@ -47,7 +47,7 @@
 		initialize: function() {
 		},
 
-		render: function() {console.log(this.$el)
+		render: function() {
 			var $paperWrapper = $("<div class='evo-raphael-paper'></div>").insertAfter( this.$el );
 			
 			this.r = Raphael( $paperWrapper[0], 706, 349 );

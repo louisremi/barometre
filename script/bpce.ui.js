@@ -276,8 +276,8 @@ ui.questions = {
 		moreLabel: "Voir la question précédente",
 		display: {
 			month: App.views.ActualiteQuestionMonthView,
-			year: $,
-			evolution: $
+			year: $.fn.init,
+			evolution: $.fn.init
 		}
 	},
 	apropos: {
@@ -287,7 +287,7 @@ ui.questions = {
 		display: {
 			month: App.views.AproposView,
 			year: App.views.AproposView,
-			evolution: $
+			evolution: $.fn.init
 		}
 	}
 };
