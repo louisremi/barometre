@@ -258,8 +258,8 @@
 <!-- ####=========================================================================#### -->
 
 <script id="question-year-template" type="text/template"><%
-	for ( var i = -1, l = App.ui.questions[type].answers.length; ++i < l; ) {
-		%><li class="year-answer"><div class="year-answer-circle" style="color:<%= App.ui.colors[ i == l - 1 ? App.ui.colors.length - 1 : i ] %>;">⬤</div><div class="year-answer-label"><%= App.ui.questions[type].answers[i].label %></div></li><%
+	for ( var i = -1, l = Math.min(App.ui.questions[type].answers.length, 5); ++i < l; ) {
+		%><li class="year-answer"><div class="year-answer-circle" style="color:<%= type == 'conso' ? App.ui.colors.conso[i] : App.ui.colors._default[ i == l - 1 ? App.ui.colors._default.length - 1 : i ] %>;">⬤</div><div class="year-answer-label"><%= App.ui.questions[type].answers[i].label %></div></li><%
 	} %>
 </script>
 

@@ -144,8 +144,8 @@ ui.questions = {
 		],
 		display: {
 			month: App.views.ConsoQuestionMonthView,
-			year: App.views.ConsoQuestionYearView,
-			evolution: App.Views.QuestionEvolution,
+			year: App.Views.QuestionYear,
+			evolution: App.Views.QuestionEvolution
 		}
 	},
 	epargne: {
@@ -276,7 +276,7 @@ ui.questions = {
 		moreLabel: "Voir la question précédente",
 		display: {
 			month: App.views.ActualiteQuestionMonthView,
-			year: App.views.ActualiteQuestionYearView,
+			year: $,
 			evolution: $
 		}
 	},

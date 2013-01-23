@@ -782,7 +782,7 @@ ul.conso-list-container {
 	margin: 10px 25px 15px 0;
 }
 
-.year-display .answers {
+#tabs.year-display ul.answers {
 	height: auto;
 	padding: 0;
 

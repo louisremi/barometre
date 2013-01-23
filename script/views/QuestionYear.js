@@ -35,11 +35,14 @@ App.Views.QuestionYearMonth = Backbone.View.extend({
 		this.$el.html( this.template( options ) );
 
 		this.$year = this.$el.find("span");
-
+//console.log(this.$el)
 		this.$answers = this.$el.find("li");
+//console.log(this.$answers)
 
 		this.$answers.each(function( i ) {
-			this.style.background = App.ui.colors[ i == options.answersLength - 1 ? App.ui.colors.length - 1 : i ];
+			this.style.background = options.type == "conso" ?
+				App.ui.colors.conso[i] :
+				App.ui.colors._default[ i == options.answersLength - 1 ? App.ui.colors._default.length - 1 : i ];
 			this.style.left = self.positions[i].x + "px";
 			this.style.top = self.positions[i].y + "px";
 		});
@@ -49,8 +52,8 @@ App.Views.QuestionYearMonth = Backbone.View.extend({
 
 	hookUp: function( answers ) {
 		var self = this;
-
-		_( answers ).each(function( answer, i ) {
+//console.log(self.$answers)
+		_( answers ).each(function( answer, i ) {//console.log(answer, self.$answers.get(i))
 			var li = self.$answers.get(i);
 			li.innerHTML =
 				( answer.value < 10 ? "&nbsp;" : "" ) +
@@ -58,8 +61,8 @@ App.Views.QuestionYearMonth = Backbone.View.extend({
 				( answer.value < 10 ? "&nbsp;" : "" );
 
 			li.style.fontSize = Math.round( ( answer.value || 1 ) * 0.43 + 12 ) + "px";
-			li.style.left = self.positions[i].x - ( answer.value || 1 ) * .40 + "px";
-			li.style.top = self.positions[i].y - ( answer.value || 1 ) * .23 + "px";
+			li.style.left = self.positions[i].x - ( answer.value || 1 ) * 0.40 + "px";
+			li.style.top = self.positions[i].y - ( answer.value || 1 ) * 0.23 + "px";
 		});
 	}
 });
@@ -73,7 +76,7 @@ App.Views.QuestionYear = Backbone.View.extend({
 		this.type = options.type;
 	},
 
-	render: function() {
+	render: function() {//console.log("render", this.type)
 		var self = this;
 
 		this.$el.html( this.template({type:this.type}) );
@@ -85,7 +88,8 @@ App.Views.QuestionYear = Backbone.View.extend({
 
 			view.render({
 				month: month[1],
-				answersLength: App.ui.questions[self.type].answers.length
+				answersLength: Math.min( App.ui.questions[self.type].answers.length, 5 ),
+				type: self.type
 			});
 
 			$visualization.append( view.$el );
@@ -96,7 +100,7 @@ App.Views.QuestionYear = Backbone.View.extend({
 		return this;
 	},
 
-	hookUp: function( questions ) {
+	hookUp: function( questions ) {//console.log("hookUp", this.type)
 		var self = this,
 			year = App.ui.model.get("year");
 
@@ -109,7 +113,7 @@ App.Views.QuestionYear = Backbone.View.extend({
 			var month = question.get("month"),
 				monthView = self.monthViews[ month ];
 
-			monthView.hookUp( question.get("answers") );
+			monthView.hookUp( question.get("answers").slice(0,5) );
 			monthView.el.style.display = "block";
 		});
 	},
