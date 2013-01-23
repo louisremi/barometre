@@ -18,9 +18,7 @@ views.ActualiteQuestionMonthView = App.Views.QuestionMonth.extend({
 		_.each(answersToHook, function(answer, i) {
 			$( self.$percentages[i] ).html(
 				( answer.value < 10 ? "&nbsp;" : "" ) +
-				//( /^1/.test( answer.value) ? "\u2009" : "" ) +*/
 				( answer.value || "-" ) +
-				//( /1$/.test( answer.value) ? "\u2009" : "" ) +
 				( answer.value < 10 ? "&nbsp;" : "" )
 			);
 

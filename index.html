@@ -256,6 +256,21 @@
 </script>
 <!-- ####=========================================================================#### -->
 
+<script id="question-year-template" type="text/template"><%
+	for ( var i = -1, l = Math.min(App.ui.questions[type].answers.length, 5); ++i < l; ) {
+		%><li class="year-answer"><div class="year-answer-circle" style="color:<%= type == 'conso' ? App.ui.colors.conso[i] : App.ui.colors._default[ i == l - 1 ? App.ui.colors._default.length - 1 : i ] %>;">⬤</div><div class="year-answer-label"><%= App.ui.questions[type].answers[i].label %></div></li><%
+	} %>
+</script>
+
+<script id="question-year-month-template" type="text/template">
+	<h4><%= month %> <span></span></h4>
+	<ul class="month-percentages"><%
+		for ( var i = -1; ++i < answersLength; ) {
+			%><li></li><%
+		}
+	%></ul>
+</script>
+
 <script src="script/libs/jquery.js"></script>
 <!--[if IE 8]>
 <script src="script/libs/jQuery.XDomainRequest.js"></script>
@@ -278,6 +293,8 @@
 <script src="script/views/QuestionMonth.js"></script>
 <!-- Evolution Views -->
 <script src="script/views/QuestionEvolution.js"></script>
+<!-- Year Views -->
+<script src="script/views/QuestionYear.js"></script>
 
 <script src="script/views/actualite_views.js"></script>
 <script src="script/views/conso_views.js"></script>

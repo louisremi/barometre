@@ -7,7 +7,7 @@ if ( !App.Views ) {
 App.Views.YearMenu = Backbone.View.extend({
 	model: Backbone.Model,
 	render: function() {
-		this.el.className = this.el.className.replace(/\byear-\w+\b/g, "") +
+		this.el.className = this.el.className.replace(/\byear-\d+\b/g, "") +
 		" " + "year-" + App.ui.model.get("year");
 	}
 });
