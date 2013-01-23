@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="fr">
+<!--[if IE 8]><html class="ie8" lang="fr"><![endif]-->
+<!--[if gt IE 8]><!--><html lang="fr"><!--<![endif]-->
 <head>
 	<meta charset="utf-8" />
 	<title>Le baromètre des projets des français</title>
@@ -253,7 +254,7 @@
 
 <script id="question-year-template" type="text/template"><%
 	for ( var i = -1, l = Math.min(App.ui.questions[type].answers.length, 5); ++i < l; ) {
-		%><li class="year-answer"><div class="year-answer-circle" style="color:<%= type == 'conso' ? App.ui.colors.conso[i] : App.ui.colors._default[ i == l - 1 ? App.ui.colors._default.length - 1 : i ] %>;">⬤</div><div class="year-answer-label"><%= App.ui.questions[type].answers[i].label %></div></li><%
+		%><li class="year-answer"><div class="year-answer-circle" style="color:<%= type == 'conso' ? App.ui.colors.conso[i] : App.ui.colors._default[ i == l - 1 ? App.ui.colors._default.length - 1 : i ] %>;"></div><div class="year-answer-label"><%= App.ui.questions[type].answers[i].label %></div></li><%
 	} %>
 </script>
 

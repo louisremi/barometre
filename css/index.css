@@ -815,6 +815,16 @@ li.year-answer {
 	font-weight: bold;
 }
 
+.year-answer-circle:before {
+	content: "⬤";
+	display: table-cell;
+}
+
+.ie8 .year-answer-circle:before {
+	content: "l";
+	font-family: "Wingdings";
+}
+
 .year-answer-label {
 	text-transform: uppercase;
 	font-size: .8em;
