@@ -70,7 +70,7 @@ App.Views.QuestionYearMonth = Backbone.View.extend({
 
 App.Views.QuestionYear = Backbone.View.extend({
 	template: _.template($("#question-year-template").html()),
-	noDataTemplate: _.template($("#no-data-template").html()),
+	noDataTemplate: _.template($("#no-data-year-template").html()),
 
 	initialize: function(options) {
 		this.type = options.type;
@@ -81,6 +81,9 @@ App.Views.QuestionYear = Backbone.View.extend({
 		var self = this;
 
 		this.$el.html( this.template({type:this.type}) );
+		this.$el.append(this.noDataTemplate());
+		this.$noData = this.$el.find(".no-data");
+		this.$noData.hide();
 
 		var $visualization = this.$el.parent();
 		_( App.ui.months ).each(function(month, i) {
@@ -96,7 +99,8 @@ App.Views.QuestionYear = Backbone.View.extend({
 			$visualization.append( view.$el );
 		});
 
-		this.noDataContainer = this.$el.parent().find(".no-data");
+		this.$yearMonth = $visualization.find(".year-month");
+		this.$answers = this.$el.find(".year-answer");
 
 		return this;
 	},
@@ -104,6 +108,10 @@ App.Views.QuestionYear = Backbone.View.extend({
 	hookUp: function( questions ) {
 		var self = this,
 			year = App.ui.model.get("year");
+
+		this.$noData.hide();
+		this.$yearMonth.show();
+		this.$answers.show();
 
 		_( this.monthViews ).each(function( monthView ) {
 			monthView.el.style.display = "none";
@@ -123,9 +131,10 @@ App.Views.QuestionYear = Backbone.View.extend({
 	},
 
 	noData: function() {
-		this.noDataContainer.html(this.noDataTemplate());
-		this.noDataContainer.show();
-		this.$el.hide();
+		var self = this;
+		this.$noData.show().css({display:"block"});
+		this.$yearMonth.hide();
+		this.$answers.hide();
 	}
 });
 

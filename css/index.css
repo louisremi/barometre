@@ -793,6 +793,10 @@ li.year-answer {
 	vertical-align: middle;
 }
 
+.year-display .answers .no-data {
+	width:700px;
+}
+
 .year-answer-circle {
 	width: 1.5em;
 	font-weight: bold;
