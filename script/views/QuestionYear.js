@@ -35,6 +35,7 @@ App.Views.QuestionYearMonth = Backbone.View.extend({
 		this.$el.html( this.template( options ) );
 
 		this.$year = this.$el.find("span");
+
 		this.$answers = this.$el.find("li");
 
 		this.$answers.each(function( i ) {
@@ -73,7 +74,7 @@ App.Views.QuestionYear = Backbone.View.extend({
 		this.monthViews = {};
 	},
 
-	render: function() {//console.log("render", this.type)
+	render: function() {
 		var self = this;
 
 		this.$el.html( this.template({type:this.type}) );
@@ -97,7 +98,7 @@ App.Views.QuestionYear = Backbone.View.extend({
 		return this;
 	},
 
-	hookUp: function( questions ) {//console.log("hookUp", this.type)
+	hookUp: function( questions ) {
 		var self = this,
 			year = App.ui.model.get("year");
 
@@ -110,8 +111,11 @@ App.Views.QuestionYear = Backbone.View.extend({
 			var month = question.get("month"),
 				monthView = self.monthViews[ month ];
 
-			monthView.hookUp( question.get("answers").slice(0,5) );
-			monthView.el.style.display = "block";
+			// sometime we receive data for month that don't exist, ignore it
+			if ( monthView ) {
+				monthView.hookUp( question.get("answers").slice(0,5) );
+				monthView.el.style.display = "block";
+			}
 		});
 	},
 
