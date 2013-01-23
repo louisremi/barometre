@@ -42,6 +42,9 @@ App.Views.QuestionYearMonth = Backbone.View.extend({
 			this.style.background = options.type == "conso" ?
 				App.ui.colors.conso[i] :
 				App.ui.colors._default[ i == options.answersLength - 1 ? App.ui.colors._default.length - 1 : i ];
+			if ( options.type != "conso" ) {
+				this.style.color = App.ui.colors.font[ i == options.answersLength - 1 ? App.ui.colors._default.length - 1 : i ];
+			}
 			this.style.left = self.positions[i].x + "px";
 			this.style.top = self.positions[i].y + "px";
 		});

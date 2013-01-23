@@ -55,7 +55,7 @@
 							if (value !="apropos" && App.views.question[value]) {
 								if(App.views.question[value].$el) {
 									App.views.question[value].$el.empty();
-									//App.views.question[value].$el.next().empty();
+									App.views.question[value].$el.nextAll().remove();
 								}
 								delete App.views.question[value];
 							}
