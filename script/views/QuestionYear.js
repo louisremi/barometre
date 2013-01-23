@@ -35,9 +35,7 @@ App.Views.QuestionYearMonth = Backbone.View.extend({
 		this.$el.html( this.template( options ) );
 
 		this.$year = this.$el.find("span");
-//console.log(this.$el)
 		this.$answers = this.$el.find("li");
-//console.log(this.$answers)
 
 		this.$answers.each(function( i ) {
 			this.style.background = options.type == "conso" ?
@@ -52,8 +50,7 @@ App.Views.QuestionYearMonth = Backbone.View.extend({
 
 	hookUp: function( answers ) {
 		var self = this;
-//console.log(self.$answers)
-		_( answers ).each(function( answer, i ) {//console.log(answer, self.$answers.get(i))
+		_( answers ).each(function( answer, i ) {
 			var li = self.$answers.get(i);
 			li.innerHTML =
 				( answer.value < 10 ? "&nbsp;" : "" ) +
@@ -70,10 +67,10 @@ App.Views.QuestionYearMonth = Backbone.View.extend({
 App.Views.QuestionYear = Backbone.View.extend({
 	template: _.template($("#question-year-template").html()),
 	noDataTemplate: _.template($("#no-data-template").html()),
-	monthViews: {},
 
 	initialize: function(options) {
 		this.type = options.type;
+		this.monthViews = {};
 	},
 
 	render: function() {//console.log("render", this.type)
