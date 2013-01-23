@@ -84,8 +84,8 @@ App.Views.QuestionMonth = Backbone.View.extend({
 			if ( self.$percentages[i] ) {
 				var wrapper = self.$percentages[i].parentNode;
 
-				wrapper.style.fontSize = Math.round( ( answer.value || 1 ) * 0.7 + 14 ) + "px";
-				wrapper.style.top = Math.round( 85 - ( answer.value || 1 ) * 0.4 ) + "px";
+				wrapper.style.fontSize = Math.round( ( answer.value || 1 ) * 0.58 + 14 ) + "px";
+				wrapper.style.top = Math.round( 105 - ( answer.value || 1 ) * 0.4 ) + "px";
 			}
 		});
 
