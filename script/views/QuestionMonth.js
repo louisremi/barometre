@@ -71,9 +71,7 @@ App.Views.QuestionMonth = Backbone.View.extend({
 		_.each(question.get("answers"), function(answer, i) {
 			$( self.$percentages[i] ).html(
 				( answer.value < 10 ? "&nbsp;" : "" ) +
-				//( /^1/.test( answer.value) ? "\u2009" : "" ) +*/
 				( answer.value || "-" ) +
-				//( /1$/.test( answer.value) ? "\u2009" : "" ) +
 				( answer.value < 10 ? "&nbsp;" : "" )
 			);
 

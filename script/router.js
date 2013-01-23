@@ -38,29 +38,31 @@
 					App.dispatcher.trigger("monthChanged");
 
 					// update children on month update
-					if ( App.children && App.children.length ) {
+					/*if ( App.children && App.children.length ) {
 						_( App.children ).each(function(child) {
 							child.postMessage("/" + model.get("month"), "*");
 						});
-					}
+					}*/
 				}
 
 				if ( model.hasChanged("display") || model.hasChanged("tab") ) {
-					// supprimer toutes le contenu des .question
+					// supprimer toutes le contenu des .answers
 					// trouver quel mode de display.
 					// pour chaque type question on doit retrouver quelle objet vue correpond a ce mode de display
 
-					if(model.hasChanged("display")) {
+					if ( model.hasChanged("display") ) {
 						_.each(App.ui.tabs[ "courant" ],function(value) {
 							if (value !="apropos" && App.views.question[value]) {
-								if(App.views.question[value].$el)
-								App.views.question[value].$el.empty();
+								if(App.views.question[value].$el) {
+									App.views.question[value].$el.empty();
+									//App.views.question[value].$el.next().empty();
+								}
 								delete App.views.question[value];
 							}
-					});
+						});
 					}
 					_.each(App.ui.tabs[ model.get("tab") ],function(value) {
-						if((!App.views.question[value] && model.hasChanged("tab")) || model.hasChanged("display")) {
+						if( ( !App.views.question[value] && model.hasChanged("tab") ) || model.hasChanged("display") ) {
 							App.views.question[value] = new (App.ui.questions[value].display[model.get('display')])({type:value});
 						}
 					});

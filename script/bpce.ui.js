@@ -19,7 +19,7 @@ ui.picClass = {
 	"egale":"stable",
 	"nsp":"nspp",
 	"oui":"yes",
-	"non":"no",
+	"non":"no"
 };
 
 ui.actuText = {
@@ -28,8 +28,8 @@ ui.actuText = {
 	"egale":"<b>…rester stable (%)</b>",
 	"nsp":"…ne se prononce pas (%)",
 	"oui":"<b>oui</b>",
-	"non":"<b>non</b>",
-}
+	"non":"<b>non</b>"
+};
 
 // find current month:
 // we only have data for last month, and we don't have data for June and July
@@ -66,7 +66,7 @@ ui.months = {
 ui.displays = {
 	year: "affichage par année",
 	month: "affichage par mois",
-	evolution: "affichage par évolution" 
+	evolution: "affichage par évolution"
 };
 
 ui.questions = {
@@ -93,7 +93,7 @@ ui.questions = {
 			"augmenter",
 			"egale",
 			"descendre",
-			"nsp",
+			"nsp"
 		],
 		display: {
 			month: App.Views.QuestionMonth,
@@ -157,7 +157,7 @@ ui.questions = {
 			"egale",
 			"descendre",
 			"pasdecote",
-			"nsp",
+			"nsp"
 		],
 		display: {
 			month: App.Views.QuestionMonth,
@@ -188,7 +188,7 @@ ui.questions = {
 			"augmenter",
 			"egale",
 			"descendre",
-			"nsp",
+			"nsp"
 		],
 		display: {
 			month: App.Views.QuestionMonth,
@@ -215,7 +215,7 @@ ui.questions = {
 		answerSlugs: [
 			"oui",
 			"non",
-			"nsp",
+			"nsp"
 		],
 		display: {
 			month: App.Views.QuestionMonth,
@@ -242,7 +242,7 @@ ui.questions = {
 		answerSlugs: [
 			"oui",
 			"non",
-			"nsp",
+			"nsp"
 		],
 		display: {
 			month: App.Views.QuestionMonth,
@@ -350,23 +350,5 @@ ui.colors = [
 ];
 
 ui.transitionDuration = 300;
-
-ui.initialize = function() {
-	var commonData = {
-		years: ui.years,
-		months: ui.months
-	};
-
-	$(".question").each(function() {
-		var questionSlug = this.id.split("-")[1],
-			data = $.extend({}, commonData, ui.questions[ questionSlug ] );
-
-		$(this).html( ( _.template( $("#question-template").html() ) )( data ) );
-	});
-
-	$("#years-style")[0].styleSheet ?
-		$("#years-style")[0].styleSheet.cssText = ( _.template( $("#years-style-template").html() ) )( { years: ui.years } ) :
-		$("#years-style").html( ( _.template( $("#years-style-template").html() ) )( { years: ui.years } ) );
-};
 
 })( window, window.App, jQuery, _ );
