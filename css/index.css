@@ -1,19 +1,19 @@
 @font-face {
-    font-family: "Sentinel";
-    src: url('sentinel2.ttf');
-    src: url('sentinel2-webfont.eot?#iefix') format('embedded-opentype'),
-         url('sentinel2-webfont.woff') format('woff'),
-         url('sentinel2-webfont.ttf') format('truetype'),
-         url('sentinel2-webfont.svg#untitled1medium') format('svg');
+	font-family: "Sentinel";
+	src: url('sntnl2-webfont.eot');
+	src: url('sntnl2-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('sntnl2-webfont.woff') format('woff'),
+		 url('sntnl2-webfont.ttf') format('truetype'),
+		 url('sntnl2-webfont.svg#untitled3medium') format('svg');
 }
 
 @font-face {
-    font-family: "Icons";
-    src: url('iconfont-webfont.eot');
-    src: url('iconfont-webfont.eot?#iefix') format('embedded-opentype'),
-         url('iconfont-webfont.woff') format('woff'),
-         url('iconfont-webfont.ttf') format('truetype'),
-         url('iconfont-webfont.svg#untitled1mediumregular') format('svg');
+	font-family: "Icons";
+	src: url('iconfont-webfont.eot');
+	src: url('iconfont-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('iconfont-webfont.woff') format('woff'),
+		 url('iconfont-webfont.ttf') format('truetype'),
+		 url('iconfont-webfont.svg#untitled1mediumregular') format('svg');
 }
 
 @font-face {
@@ -32,14 +32,14 @@ body {
 }
 
 .visuallyhidden {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
 }
 
 #center {
@@ -775,13 +775,28 @@ ul.conso-list-container {
 /* .year-display
 ----------------------------------------------------------------------------- */
 
-.year-display .answers {
-	padding: 0;
-	margin: 10px 0;
-	width: 220px;
+.year-display .answers,
+.year-month {
 	float: left;
+	width: 220px;
+	margin: 10px 25px 15px 0;
+}
+
+.year-display .answers {
+	height: auto;
+	padding: 0;
 
 	text-align: left;
+}
+
+.year-display .visualization {
+	width: 110%;
+}
+
+.year-display .visualization:after {
+	content: "";
+	display: block;
+	clear: both;
 }
 
 li.year-answer {
@@ -799,11 +814,69 @@ li.year-answer {
 
 .year-answer-circle {
 	width: 1.5em;
+	font-weight: bold;
 }
 
 .year-answer-label {
 	text-transform: uppercase;
 	font-size: .8em;
+}
+
+.year-month {
+	position: relative;
+	height: 165px;
+
+	font-family: "Sentinel", serif;
+}
+
+.year-month h4 {
+	margin: 0;
+	padding: 1px 0;
+	
+	font-weight: normal;
+	font-size: .9em;
+	text-align: center;
+	background: #E4E4E4;
+}
+
+.year-month h4:before,
+.year-month h4:after {
+	content: "";
+	display: block;
+	position: absolute;
+	z-index: 1;
+
+	width: 0;
+	height: 0;
+
+	border: 10px solid #E4E4E4;
+	border-width: 8.5px 8px;
+}
+
+.year-month h4:before {
+	border-left-color: #FFF;
+}
+
+.year-month h4:after {
+	border-right-color: #FFF;
+	top: 0;
+	right: 0;
+}
+
+.month-percentages {
+	margin: 0;
+	padding: 0;
+	position: relative;
+	list-style: none;
+}
+
+.month-percentages li {
+	position: absolute;
+	border-radius: 50%;
+	padding: .3em;
+
+	transition: font-size .3s ease;
+	-webkit-transition: font-size .3s ease;
 }
 
 /* #tab-apropos

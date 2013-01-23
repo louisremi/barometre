@@ -80,7 +80,7 @@
 					coordY[_.indexOf(answerTitles,answer.title)] = coordY[_.indexOf(answerTitles,answer.title)] || new Array(10);
 					if(App.ui.months[questionMonth])
 						coordY[_.indexOf(answerTitles,answer.title)][questionMonth < 8 ? questionMonth-1 : questionMonth-3] = answer.value;
-				})
+				});
 			});
 
 			if (self.lines)
