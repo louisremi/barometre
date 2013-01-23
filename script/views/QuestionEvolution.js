@@ -44,6 +44,7 @@
 		template:_.template($('#graphic-year-template').html()),
 		noDataTemplate: _.template($("#no-data-year-evolution-template").html()),
 
+
 		initialize: function() {
 		},
 
@@ -89,6 +90,7 @@
 
 			if (answerTitles.length == App.ui.questions.conso.answerSlugs.length) {
 				var averageIndex = [];
+				$("#question-conso .answers").removeClass("long-conso");
 				_.each(coordY,function(coord,index) {
 					average = _.reduce(coord,function(memo,num) {memo + num})/coord.length;
 					averageIndex.push([index,average]);

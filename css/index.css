@@ -732,6 +732,10 @@ ul.conso-list-container {
 	background-size: 100%;
 }
 
+#question-conso .visualization ul.long-conso {
+	height:700px;
+}
+
 /* .evolution-display
 ----------------------------------------------------------------------------- */
 
