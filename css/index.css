@@ -744,12 +744,19 @@ ul.conso-list-container {
 	background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAD3CAYAAADRwE7KAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3QEVDxEVDYurigAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAwSURBVFjD7dIxAQAwDAOgxL/o9W4V7AANNMnL1sDf6i3egrfgLd6Ct+At3oK34O01184LDE2I8y4AAAAASUVORK5CYII=');
 }
 
+.evolution-display .answers {
+	text-align: left;
+	height: auto;
+}
+
 .answers li.evo-button-container {
 	display: inline-block;
-	padding: 3px 0px;
+	padding: 2px 5px;
 	margin-right: 1%;
 	float:left;
 	margin-bottom: 10px;
+
+	font-size: .78em;
 }
 
 /* .year-display

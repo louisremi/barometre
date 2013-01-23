@@ -14,13 +14,12 @@
 		initialize: function(options) {
 			this.line = options.line;
 			this.dots = options.dots;
-			this.widthPercentage = options.widthPercentage;
 			this.visible = true;
 		},
 
 		render: function() {
 			this.$el.html(this.template(this.model.toJSON()));
-			this.$el.css({"background-color":this.line.attr("stroke"),width:this.widthPercentage+"%"});
+			this.$el.css({"background-color":this.line.attr("stroke")});
 			return this;
 		},
 
@@ -38,21 +37,21 @@
 			}
 			this.visible = !this.visible;
 		}
-	})
+	});
 
 	Views.QuestionEvolution = Backbone.View.extend({
-		template:_.template($('#graphic-year-template').html()),
+		//template:_.template($('#graphic-year-template').html()),
 		noDataTemplate: _.template($("#no-data-year-evolution-template").html()),
 
 		initialize: function() {
 		},
 
-		render: function() {
-			this.$el.html(this.template());
-
-			this.r = Raphael(this.$el.find(".evo-raphael-paper")[0],706,349);
-			this.$lineMenu = this.$el.find(".evo-lines-buttons");
-			this.$lines = this.$el.find(".evo-raphael-paper");
+		render: function() {console.log(this.$el)
+			var $paperWrapper = $("<div class='evo-raphael-paper'></div>").insertAfter( this.$el );
+			
+			this.r = Raphael( $paperWrapper[0], 706, 349 );
+			//this.$lineMenu = this.$el.find(".evo-lines-buttons");
+			this.$lines = $paperWrapper;
 			this.$el.append(this.noDataTemplate());
 			this.$noData = this.$el.find(".no-data");
 			this.$noData.hide();
@@ -61,7 +60,7 @@
 		},
 
 		noData: function() {
-			this.$lineMenu.hide();
+			this.$el.hide();
 			this.$lines.hide();
 
 			this.$noData.show();
@@ -70,7 +69,7 @@
 		hookUp: function(questions,answerTitles) {
 			var self = this,type = questions[0].get("type");
 
-			this.$lineMenu.show();
+			this.$el.show();
 			this.$lines.show();
 			this.$noData.hide();
 
@@ -115,7 +114,7 @@
 					coordY,
 					{nostroke:false,axis:"0 0 1 1",width:3,symbol:"circle",axisxstep:9,axisystep:10,colors:colors});
 
-			self.$el.find(".evo-lines-buttons").empty();
+			self.$el.empty();
 			_.each(self.lines[0],function(line,index) {
 				var textLine = "";
 				if (answerTitles == App.ui.questions.conso.answerSlugs.length)
@@ -124,22 +123,11 @@
 					textLine = App.ui.questions[type].answers[index].label
 				var view = new App.Views.QuestionEvolutionLineButton(
 					{model: new Backbone.Model({text:textLine}),
-					widthPercentage: 31,
 					line:line,
 					dots:self.lines[2][index]});
 
-				self.$el.find(".evo-lines-buttons").append(view.render().el);
+				self.$el.append(view.render().el);
 			});
-
-			self.lines/*.hover(function () {
-
-				var symbol = this.symbols ? this.symbols[0] : this.symbol;
-               	this.tag = self.r.tag(this.x, this.y, this.value+"%", 160, 10).insertBefore(this).attr([{ fill: "#fff" ,opacity:symbol.attr("opacity")}, { fill: symbol.attr("fill"),opacity:symbol.attr("opacity")}]);
-            }, function () {
-                this.tag && this.tag.remove();
-            })*/;
-
-
 
 			var axisItems = self.lines.axis[0].text.items;
 			for (var i = 0,j=axisItems.length;i<j;i++) {
