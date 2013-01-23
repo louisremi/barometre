@@ -117,7 +117,7 @@ views.ConsoQuestionMonthView = Backbone.View.extend({
 	},
 
 	toggleSize: function() {
-		$(this.containerSelector).css(!this.all ? {height:"500px"} : {height:"700px"} );
+		$(this.containerSelector).toggleClass("long-conso",!this.all);
 	},
 
 	render: function() {
@@ -153,8 +153,6 @@ views.ConsoQuestionMonthView = Backbone.View.extend({
 		else
 			this.$graph.show();
 
-		$(this.containerSelector).css(!this.all ? {height:"500px"} : {height:"700px"} );
-		
 		this.isWithData = true;
 		
 		var sortedAnswer = _.sortBy(question.get("answers"), function(answer) {
