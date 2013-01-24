@@ -21,7 +21,7 @@
 	<div id="center">
 
 		<ul id="tab-menu" role="menu">
-			<li><a href="#" data-href=":display/courant/:year/:month">Mois en cours</a></li
+			<li><a href="#" data-href=":display/courant/:year/:month" role="menuitem">Mois en cours</a></li
 			><li><a href="#" data-href=":display/pouvoir/:year/:month" role="menuitem" aria-controls="tab-pouvoir">Pouvoir d'achat</a></li
 			><li><a href="#" data-href=":display/epargne/:year/:month" role="menuitem" aria-controls="tab-epargne">&Eacute;pa&shy;rgne</a></li
 			><li><a href="#" data-href=":display/consocourante/:year/:month" role="menuitem" aria-controls="tab-consocourante">Cons&shy;omm&shy;ation</a></li
@@ -223,13 +223,13 @@
 <!-- ####====================  ====================#### -->
 <script id="question-month-template" type="text/template"><%
 	for ( var i = -1, l = App.ui.questions[type].answers.length; ++i < l; ) {
-		%><li role="group" class="<%= App.ui.questions[type].answers[i].className %>"><div class="percentage"><div><span style="background:<%= App.ui.colors._default[ i == l - 1 ? App.ui.colors._default.length - 1 : i ] %>;color:<%= App.ui.colors.font[ i == l - 1 ? App.ui.colors.font.length - 1 : i ] %>" role="note" aria-labelledby="<%= type %>-month-answer-text"></span></div></div> <span id="<%= type %>-month-answer-text" class="heading"><%= App.ui.questions[type].answers[i].label %></span></li><%
+		%><li role="article" aria-live="polite" aria-owns="<%= type %>-month-answer-percentage-<%= i %> <%= type %>-month-answer-text-<%= i %>" class="<%= App.ui.questions[type].answers[i].className %>"><div class="percentage"><div><span id="<%= type %>-month-answer-percentage-<%= i %>" style="background:<%= App.ui.colors._default[ i == l - 1 ? App.ui.colors._default.length - 1 : i ] %>;color:<%= App.ui.colors.font[ i == l - 1 ? App.ui.colors.font.length - 1 : i ] %>" role="note" aria-flowto="<%= type %>-month-answer-text-<%= i %>"></span></div></div> <span id="<%= type %>-month-answer-text-<%= i %>" class="heading"><%= App.ui.questions[type].answers[i].label %></span></li><%
 	} %>
 </script>
 
 <script id="question-actu-month-template" type="text/template"><%
 	for ( var i = -1, l = App.ui.questions[type].answersMaxLength; ++i < l; ) {
-		%><li id="<%= i %>-element"><div class="percentage"><div><span style="background:<%= App.ui.colors._default[ i == l - 1 ? App.ui.colors._default.length - 1 : i ] %>;color:<%= App.ui.colors.font[ i == l - 1 ? App.ui.colors.font.length - 1 : i ] %>" role="note" aria-labelledby="<%= type %>-month-answer-text"></span></div></div> <span id="<%= type %>-month-answer-text" class="heading"></span></li><%
+		%><li role="article" aria-live="polite" id="<%= i %>-element"><div class="percentage"><div><span style="background:<%= App.ui.colors._default[ i == l - 1 ? App.ui.colors._default.length - 1 : i ] %>;color:<%= App.ui.colors.font[ i == l - 1 ? App.ui.colors.font.length - 1 : i ] %>" role="note" aria-flowto="<%= type %>-month-answer-text"></span></div></div> <span id="<%= type %>-month-answer-text" class="heading"></span></li><%
 	} %>
 </script>
 <!-- ####=========================================================================#### -->
