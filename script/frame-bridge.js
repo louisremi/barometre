@@ -1,8 +1,8 @@
-(function( window, parent, html ) {
+(function( window, parent, document ) {
 
 if ( window == parent ) {
 	App.hashFound = window.location.hash;
-	html.id = "standalone";
+	document.documentElement.id = "standalone";
 
 	return;
 }
@@ -17,10 +17,13 @@ function messageHandler( e ) {
 		App.hashFound = window.location = e.data;
 		App.initialize();
 
-	// numbers sent from top are font-<size updates
+	// numbers sent from top are font-size updates
 	} else if ( e.data && !isNaN( e.data ) ) {
 		document.body.style.fontSize = e.data + "px";
+
+		// send current document height to parent frame
+		parent.postMessage( document.body.offsetHeight, "*" );
 	}
 }
 
-})( window, window.parent, document.documentElement );
+})( window, window.parent, document );

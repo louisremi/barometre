@@ -22,6 +22,8 @@ App.Views.QuestionMonth = Backbone.View.extend({
 		this.$el.append(this.noDataTemplate());
 		this.$noData = this.$el.find(".no-data");
 		this.$noData.hide();
+
+		// following is the ".more" event listener
 		this.$el.parent().parent().find(".more").unbind("click");
 		this.$el.parent().parent().find(".more").click(function() {
 			if (!self.compare) {
@@ -48,6 +50,9 @@ App.Views.QuestionMonth = Backbone.View.extend({
 							view.noData();
 						}
 						view.$el.prev().children().attr({className:"year-"+this.year}).children().text(this.year);
+
+						// send current document height to parent frame
+						window.parent.postMessage( document.body.offsetHeight, "*" );
 					},questions);
 
 					questions.fetch();
@@ -61,6 +66,9 @@ App.Views.QuestionMonth = Backbone.View.extend({
 				});
 				self.compareViews = new Array(2);
 				self.questionsCompareCollection = new Array(2);
+
+				// send current document height to parent frame
+				window.parent.postMessage( document.body.offsetHeight, "*" );
 			}
 			self.compare = !self.compare;
 		});

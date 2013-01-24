@@ -18,12 +18,13 @@
 
 body {
 	font-family: "UniversLTW01-57Condense 723821", Arial, sans-serif;
-	background: #5b6694;
+	background: #FFF;
 	overflow: hidden;
 }
 
 #standalone body {
 	overflow-y: scroll;
+	background: #5b6694;
 }
 
 .visuallyhidden {

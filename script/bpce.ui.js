@@ -1,6 +1,10 @@
 (function( window, App, jQuery, _ ) {
 
-var ui = App.ui = {};
+if ( !App.ui ) {
+	App.ui = {};
+}
+
+var ui = App.ui;
 
 ui.tabs = {
 	courant: [ "pouvoir", "conso", "epargne", "consocourante", "immo", "auto", "actu", "apropos" ],
@@ -276,8 +280,8 @@ ui.questions = {
 		moreLabel: "Voir la question précédente",
 		display: {
 			month: App.views.ActualiteQuestionMonthView,
-			year: $.fn.init,
-			evolution: $.fn.init
+			year: $,
+			evolution: $
 		}
 	},
 	apropos: {
@@ -285,9 +289,9 @@ ui.questions = {
 		moreClassName: "",
 		moreLabel: "",
 		display: {
-			month: App.views.AproposView,
-			year: App.views.AproposView,
-			evolution: $.fn.init
+			month: $,
+			year: $,
+			evolution: $
 		}
 	}
 };
@@ -376,7 +380,7 @@ ui.colors = {
 		"#a6a6a6",
 		"#a6a6a6",
 		"#a6a6a6",
-		"#a6a6a6",
+		"#a6a6a6"
 	],
 	_default: [
 		"#427324",
