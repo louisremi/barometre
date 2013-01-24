@@ -1,19 +1,21 @@
+/* Barometre specific CSS */
+
 @font-face {
 	font-family: "Sentinel";
-	src: url('sntnl2-webfont.eot');
-	src: url('sntnl2-webfont.eot?#iefix') format('embedded-opentype'),
-		 url('sntnl2-webfont.woff') format('woff'),
-		 url('sntnl2-webfont.ttf') format('truetype'),
-		 url('sntnl2-webfont.svg#untitled3medium') format('svg');
+	src: url('fonts/sntnl2-webfont.eot');
+	src: url('fonts/sntnl2-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('fonts/sntnl2-webfont.woff') format('woff'),
+		 url('fonts/sntnl2-webfont.ttf') format('truetype'),
+		 url('fonts/sntnl2-webfont.svg#untitled3medium') format('svg');
 }
 
 @font-face {
 	font-family: "Icons";
-	src: url('iconfont-webfont.eot');
-	src: url('iconfont-webfont.eot?#iefix') format('embedded-opentype'),
-		 url('iconfont-webfont.woff') format('woff'),
-		 url('iconfont-webfont.ttf') format('truetype'),
-		 url('iconfont-webfont.svg#untitled1mediumregular') format('svg');
+	src: url('fonts/iconfont-webfont.eot');
+	src: url('fonts/iconfont-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('fonts/iconfont-webfont.woff') format('woff'),
+		 url('fonts/iconfont-webfont.ttf') format('truetype'),
+		 url('fonts/iconfont-webfont.svg#untitled1mediumregular') format('svg');
 }
 
 body {
