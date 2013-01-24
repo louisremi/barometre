@@ -54,7 +54,9 @@
 						_.each(App.ui.tabs[ "courant" ],function(value) {
 							if (value !="apropos" && App.views.question[value]) {
 								if(App.views.question[value].$el) {
-									App.views.question[value].$el.empty();
+									App.views.question[value].$el.empty()
+										// ça c'est la faute à Franz!
+										.removeClass("conso-list-container");
 									App.views.question[value].$el.nextAll().remove();
 								}
 								delete App.views.question[value];

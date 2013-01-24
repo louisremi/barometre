@@ -47,7 +47,7 @@ App.Views.QuestionMonth = Backbone.View.extend({
 						} else {
 							view.noData();
 						}
-						view.$el.prev().children().attr({class:"year-"+this.year}).children().text(this.year);
+						view.$el.prev().children().attr({className:"year-"+this.year}).children().text(this.year);
 					},questions);
 
 					questions.fetch();
@@ -58,7 +58,7 @@ App.Views.QuestionMonth = Backbone.View.extend({
 				_.each(self.compareViews,function(view) {
 					view.$el.prev().remove();
 					view.remove();
-				})
+				});
 				self.compareViews = new Array(2);
 				self.questionsCompareCollection = new Array(2);
 			}

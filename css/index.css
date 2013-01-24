@@ -16,13 +16,8 @@
 		 url('iconfont-webfont.svg#untitled1mediumregular') format('svg');
 }
 
-@font-face {
-	font-family: "Univers";
-	src: url(UniversLTStd-Cn.otf);
-}
-
 body {
-	font-family: "UniversLTW01-57Condense 723821", "Univers", serif;
+	font-family: "UniversLTW01-57Condense 723821", Arial, sans-serif;
 	background: #5b6694;
 	overflow: hidden;
 }
@@ -421,7 +416,7 @@ h3 {
 	height: 48px;
 	margin: 90px auto 0;
 
-	background: url(../images/symbols.png) 48px 0 no-repeat;
+	background: url(../images/symbols-nq8.png) 48px 0 no-repeat;
 }
 
 .answers .percentage {
@@ -617,7 +612,7 @@ ul.conso-list-container {
 	height:100%;
 }
 
-#question-conso .answers {
+.month-display #question-conso .answers {
 	height:500px;
 	-webkit-transition: height .3s ease;
 	transition: height .3s ease;
@@ -748,12 +743,21 @@ ul.conso-list-container {
 	background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAD3CAYAAADRwE7KAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3QEVDxEVDYurigAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAwSURBVFjD7dIxAQAwDAOgxL/o9W4V7AANNMnL1sDf6i3egrfgLd6Ct+At3oK34O01184LDE2I8y4AAAAASUVORK5CYII=');
 }
 
+.evolution-display .answers {
+	width: 110%;
+	height: auto;
+	margin-bottom: -20px;
+}
+
 .answers li.evo-button-container {
-	display: inline-block;
-	padding: 3px 0px;
-	margin-right: 1%;
 	float:left;
+	display: inline-block;
+	width: 220px;
+	padding: 2px 5px;
+	margin-right: 10px;
 	margin-bottom: 10px;
+
+	font-size: .78em;
 }
 
 /* .year-display
@@ -804,6 +808,16 @@ li.year-answer {
 .year-answer-circle {
 	width: 1.5em;
 	font-weight: bold;
+}
+
+.year-answer-circle:before {
+	content: "⬤";
+	display: table-cell;
+}
+
+.ie8 .year-answer-circle:before {
+	content: "l";
+	font-family: "Wingdings";
 }
 
 .year-answer-label {
@@ -961,36 +975,8 @@ li.year-answer {
 	content: "L";
 }
 
-/* .child-frame
+/* .no-data
 ----------------------------------------------------------------------------- */
-
-.child-frame #tab-menu,
-.child-frame .banner,
-.child-frame hr,
-.child-frame h3,
-.child-frame .display-menu,
-.child-frame #tabs .month-menu,
-.child-frame #tabs .more,
-.child-frame #question-conso {
-	display: none;
-}
-
-.child-frame .year-menu {
-	visibility: hidden;
-}
-
-.child-frame .tab {
-	padding: 0;
-}
-
-.child-frame #center {
-	width: 706px;
-}
-
-.child-frame body {
-	overflow: hidden;
-	background: #fff;
-}
 
 .no-data {
 	display:none;
@@ -1000,8 +986,4 @@ li.year-answer {
 
 .conso-list-container .no-data{
 	display:block;
-}
-
-.child-frame .question:before {
-	top: 55px;
 }
