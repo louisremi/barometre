@@ -444,6 +444,8 @@ h3 {
 	background-color: #900;
 	border-radius: 50%;
 	padding: .3em;
+
+	-ms-behavior: url(script/libs/PIE.htc);
 }
 
 .answers .heading {
@@ -881,6 +883,8 @@ li.year-answer {
 
 	transition: font-size .3s ease, top .3s ease, left .3s ease;
 	-webkit-transition: font-size .3s ease, top .3s ease, left .3s ease;
+
+	-ms-behavior: url(script/libs/PIE.htc);
 }
 
 /* #tab-apropos
