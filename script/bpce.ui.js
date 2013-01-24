@@ -106,7 +106,25 @@ ui.questions = {
 		question: "Postes de dépenses les plus préoccupants",
 		moreClassName: "all conso-all",
 		moreLabel: "Voir l'ensemble des résultats",
-		answerSlug: [
+		answers: [
+			{label:"L'alimentation"},
+			{label:"L'essence"},
+			{label:"Les impôts"},
+			{label:"L'électricité"},
+			{label:"La santé"},
+			{label:"Le gaz"},
+			{label:"Le logement"},
+			{label:"Les travaux et l'entretien de la maison"},
+			{label:"L'achat de la voiture"},
+			{label:"L'école"},
+			{label:"Autres"},
+			{label:"L'habillement"},
+			{label:"Les transport en commun"},
+			{label:"Aucun"},
+			{label:"Les technologies (ordinateur, internet…)"},
+			{label:"Ne se prononce pas"}
+		],
+		answerSlugs: [
 			"alim",
 			"essence",
 			"impot",
@@ -126,8 +144,8 @@ ui.questions = {
 		],
 		display: {
 			month: App.views.ConsoQuestionMonthView,
-			year: App.views.ConsoQuestionYearView,
-			evolution: $//App.Views.QuestionEvolution,
+			year: App.Views.QuestionYear,
+			evolution: App.Views.QuestionEvolution
 		}
 	},
 	epargne: {
@@ -258,8 +276,8 @@ ui.questions = {
 		moreLabel: "Voir la question précédente",
 		display: {
 			month: App.views.ActualiteQuestionMonthView,
-			year: App.views.ActualiteQuestionYearView,
-			evolution: $
+			year: $.fn.init,
+			evolution: $.fn.init
 		}
 	},
 	apropos: {
@@ -269,7 +287,7 @@ ui.questions = {
 		display: {
 			month: App.views.AproposView,
 			year: App.views.AproposView,
-			evolution: $
+			evolution: $.fn.init
 		}
 	}
 };
@@ -341,13 +359,40 @@ ui.depenses = {
 	}
 };
 
-ui.colors = [
-	"#427324",
-	"#f6a800",
-	"#f7c9d6",
-	"#afd7d7",
-	"#571d74"
-];
+ui.colors = {
+	conso: [
+		"#becd43",
+		"#b3dddc",
+		"#ec7a94",
+		"#e7d4e7",
+		"#f6a800",
+		"#a6a6a6",
+		"#a6a6a6",
+		"#a6a6a6",
+		"#a6a6a6",
+		"#a6a6a6",
+		"#a6a6a6",
+		"#a6a6a6",
+		"#a6a6a6",
+		"#a6a6a6",
+		"#a6a6a6",
+		"#a6a6a6",
+	],
+	_default: [
+		"#427324",
+		"#f6a800",
+		"#f7c9d6",
+		"#afd7d7",
+		"#571d74"
+	],
+	font:[
+		"#fff",
+		"#000",
+		"#000",
+		"#000",
+		"#fff"
+	]
+};
 
 ui.transitionDuration = 300;
 

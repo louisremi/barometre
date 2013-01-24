@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="fr">
+<!--[if IE 8]><html class="ie8" lang="fr"><![endif]-->
+<!--[if gt IE 8]><!--><html lang="fr"><!--<![endif]-->
 <head>
 	<meta charset="utf-8" />
 	<title>Le baromètre des projets des français</title>
@@ -8,7 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="css/index.css" />
 	<link rel="stylesheet" type="text/css" href="http://fast.fonts.com/cssapi/2552d89d-2c54-490c-a920-27807cb7420a.css" />
 	<script>
-		window.App = {};
+		window.App = {backendUrl: "http://bpce.herokuapp.com/api"};
 		// inline script/frame-bridge.js
 	</script>
 	<script src="script/frame-bridge.js"></script>
@@ -19,15 +20,15 @@
 
 	<div id="center">
 
-		<ul id="tab-menu">
+		<ul id="tab-menu" role="menu">
 			<li><a href="#" data-href=":display/courant/:year/:month">Mois en cours</a></li
-			><li><a href="#" data-href=":display/pouvoir/:year/:month">Pouvoir d'achat</a></li
-			><li><a href="#" data-href=":display/epargne/:year/:month">&Eacute;pa&shy;rgne</a></li
-			><li><a href="#" data-href=":display/consocourante/:year/:month">Cons&shy;omm&shy;ation</a></li
-			><li><a href="#" data-href=":display/immo/:year/:month">Achat immo</a></li
-			><li><a href="#" data-href=":display/auto/:year/:month">Achat auto</a></li
-			><li><a href="#" data-href=":display/actu/:year/:month">Actu&shy;alité</a></li
-			><li><a href="#" data-href=":display/apropos/:year/:month">À pro&shy;pos</a></li>
+			><li><a href="#" data-href=":display/pouvoir/:year/:month" role="menuitem" aria-controls="tab-pouvoir">Pouvoir d'achat</a></li
+			><li><a href="#" data-href=":display/epargne/:year/:month" role="menuitem" aria-controls="tab-epargne">&Eacute;pa&shy;rgne</a></li
+			><li><a href="#" data-href=":display/consocourante/:year/:month" role="menuitem" aria-controls="tab-consocourante">Cons&shy;omm&shy;ation</a></li
+			><li><a href="#" data-href=":display/immo/:year/:month" role="menuitem" aria-controls="tab-immo">Achat immo</a></li
+			><li><a href="#" data-href=":display/auto/:year/:month" role="menuitem" aria-controls="tab-auto">Achat auto</a></li
+			><li><a href="#" data-href="month/actu/:year/:month" role="menuitem" aria-controls="tab-actu">Actu&shy;alité</a></li
+			><li><a href="#" data-href=":display/apropos/:year/:month" role="menuitem" aria-controls="tab-apropos">À pro&shy;pos</a></li>
 		</ul>
 
 		<style id="years-style">
@@ -96,7 +97,7 @@
 
 			<div id="tab-apropos" class="tab">
 				<div class="wrapper">
-					<ul class="logos"
+					<ul class="logos" aria-hidden="true"
 						><li class="logo-bpce"></li
 						><li class="logo-echos"></li
 						><li class="logo-fi"></li
@@ -158,7 +159,6 @@
 
 	<div class="visualization">
 		<ul class="answers" aria-live="assertive"></ul>
-		<div class="no-data"></div>
 	</div>
 
 	<p class="more"><a href="" data-href=":display/<%= tab %>/:year/:month" class="<%= moreClassName %>"><%= moreLabel %></a></p>
@@ -195,7 +195,7 @@
 	<div class="conso-graph" >
 		<span class="icon-conso"></span>
 		<div class="texte-conso">
-			<span class="cercle-conso purple-circle"></span>
+			<span class="cercle-conso purple-circle" aria-hidden="true" ></span>
 			<div class="percentage-conso"><span id="percentage-conso-value"></span><span class="percentage-conso-small">%</span></div>
 			<div class="label-conso"></div>
 		</div>
@@ -213,7 +213,7 @@
 		</div>
 	</div>
 	<div class="ruler">
-		<span class="conso-icon-ranking"></span>
+		<span class="conso-icon-ranking" aria-hidden="true" ></span>
 	</div>
 	<div class="percentage-conso-all"><span id="percentage-conso-value"></span><span class="percentage-conso-small">%</span></div>
 </div>
@@ -223,23 +223,18 @@
 <!-- ####====================  ====================#### -->
 <script id="question-month-template" type="text/template"><%
 	for ( var i = -1, l = App.ui.questions[type].answers.length; ++i < l; ) {
-		%><li role="group" class="<%= App.ui.questions[type].answers[i].className %>"><div class="percentage"><div><span style="background:<%= App.ui.colors[ i == l - 1 ? App.ui.colors.length - 1 : i ] %>;"></span></div></div> <span class="heading"><%= App.ui.questions[type].answers[i].label %></span></li><%
+		%><li role="group" class="<%= App.ui.questions[type].answers[i].className %>"><div class="percentage"><div><span style="background:<%= App.ui.colors._default[ i == l - 1 ? App.ui.colors._default.length - 1 : i ] %>;color:<%= App.ui.colors.font[ i == l - 1 ? App.ui.colors.font.length - 1 : i ] %>" role="note" aria-labelledby="<%= type %>-month-answer-text"></span></div></div> <span id="<%= type %>-month-answer-text" class="heading"><%= App.ui.questions[type].answers[i].label %></span></li><%
 	} %>
 </script>
 
 <script id="question-actu-month-template" type="text/template"><%
 	for ( var i = -1, l = App.ui.questions[type].answersMaxLength; ++i < l; ) {
-		%><li id="<%= i %>-element"><div class="percentage"><div><span style="background:<%= App.ui.colors[ i == l - 1 ? App.ui.colors.length - 1 : i ] %>;"></span></div></div> <span class="heading"></span></li><%
+		%><li id="<%= i %>-element"><div class="percentage"><div><span style="background:<%= App.ui.colors._default[ i == l - 1 ? App.ui.colors._default.length - 1 : i ] %>;color:<%= App.ui.colors.font[ i == l - 1 ? App.ui.colors.font.length - 1 : i ] %>" role="note" aria-labelledby="<%= type %>-month-answer-text"></span></div></div> <span id="<%= type %>-month-answer-text" class="heading"></span></li><%
 	} %>
 </script>
 <!-- ####=========================================================================#### -->
 
 <!-- ####==================== EVOLUTION QUESTION TEMPALTE ====================#### -->
-<script id="graphic-year-template" type="text/template">
-<ul class="evo-lines-buttons"></ul>
-<div class="evo-raphael-paper"></div>
-</script>
-
 <script id="evo-line-button" type="text/template">
 	<span><%= text %></span>
 </script>
@@ -256,6 +251,21 @@
 <li class="no-data">Aucune donnée disponible pour cette année.</li>
 </script>
 <!-- ####=========================================================================#### -->
+
+<script id="question-year-template" type="text/template"><%
+	for ( var i = -1, l = Math.min(App.ui.questions[type].answers.length, 5); ++i < l; ) {
+		%><li class="year-answer"><div class="year-answer-circle" style="color:<%= type == 'conso' ? App.ui.colors.conso[i] : App.ui.colors._default[ i == l - 1 ? App.ui.colors._default.length - 1 : i ] %>;"></div><div class="year-answer-label"><%= App.ui.questions[type].answers[i].label %></div></li><%
+	} %>
+</script>
+
+<script id="question-year-month-template" type="text/template">
+	<h4><%= month %> <span></span></h4>
+	<ul class="month-percentages"><%
+		for ( var i = -1; ++i < answersLength; ) {
+			%><li></li><%
+		}
+	%></ul>
+</script>
 
 <script src="script/libs/jquery.js"></script>
 <!--[if IE 8]>
@@ -279,6 +289,8 @@
 <script src="script/views/QuestionMonth.js"></script>
 <!-- Evolution Views -->
 <script src="script/views/QuestionEvolution.js"></script>
+<!-- Year Views -->
+<script src="script/views/QuestionYear.js"></script>
 
 <script src="script/views/actualite_views.js"></script>
 <script src="script/views/conso_views.js"></script>

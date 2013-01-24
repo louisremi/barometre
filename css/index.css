@@ -1,28 +1,23 @@
 @font-face {
-    font-family: "Sentinel";
-    src: url('sentinel2.ttf');
-    src: url('sentinel2-webfont.eot?#iefix') format('embedded-opentype'),
-         url('sentinel2-webfont.woff') format('woff'),
-         url('sentinel2-webfont.ttf') format('truetype'),
-         url('sentinel2-webfont.svg#untitled1medium') format('svg');
+	font-family: "Sentinel";
+	src: url('sntnl2-webfont.eot');
+	src: url('sntnl2-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('sntnl2-webfont.woff') format('woff'),
+		 url('sntnl2-webfont.ttf') format('truetype'),
+		 url('sntnl2-webfont.svg#untitled3medium') format('svg');
 }
 
 @font-face {
-    font-family: "Icons";
-    src: url('iconfont-webfont.eot');
-    src: url('iconfont-webfont.eot?#iefix') format('embedded-opentype'),
-         url('iconfont-webfont.woff') format('woff'),
-         url('iconfont-webfont.ttf') format('truetype'),
-         url('iconfont-webfont.svg#untitled1mediumregular') format('svg');
-}
-
-@font-face {
-	font-family: "Univers";
-	src: url(UniversLTStd-Cn.otf);
+	font-family: "Icons";
+	src: url('iconfont-webfont.eot');
+	src: url('iconfont-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('iconfont-webfont.woff') format('woff'),
+		 url('iconfont-webfont.ttf') format('truetype'),
+		 url('iconfont-webfont.svg#untitled1mediumregular') format('svg');
 }
 
 body {
-	font-family: "UniversLTW01-57Condense 723821", "Univers", serif;
+	font-family: "UniversLTW01-57Condense 723821", Arial, sans-serif;
 	background: #5b6694;
 	overflow: hidden;
 }
@@ -32,14 +27,14 @@ body {
 }
 
 .visuallyhidden {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
 }
 
 #center {
@@ -421,14 +416,14 @@ h3 {
 	height: 48px;
 	margin: 90px auto 0;
 
-	background: url(../images/symbols.png) 48px 0 no-repeat;
+	background: url(../images/symbols-nq8.png) 48px 0 no-repeat;
 }
 
 .answers .percentage {
 	display: block;
 	position: relative;
 	z-index: 1;
-	height: 150px;
+	height: 180px;
 
 	font-family: "Sentinel", serif;
 }
@@ -617,7 +612,7 @@ ul.conso-list-container {
 	height:100%;
 }
 
-#question-conso .answers {
+.month-display #question-conso .answers {
 	height:500px;
 	-webkit-transition: height .3s ease;
 	transition: height .3s ease;
@@ -732,28 +727,12 @@ ul.conso-list-container {
 	background-size: 100%;
 }
 
+#question-conso .visualization ul.long-conso {
+	height:700px;
+}
+
 /* .evolution-display
 ----------------------------------------------------------------------------- */
-
-/*.evolution-display .answers {
-	height: auto;
-}
-
-.evolution-paper {
-	width:100%;
-	height:100%;
-	clear:both;
-	background-position:0px 30px;
-	background-repeat: repeat-x;
-}
-
-.answers li.evo-button-container {
-	display: inline-block;
-	padding: 3px 0px;
-	margin-right: 1%;
-	float:left;
-	margin-bottom: 10px;
-}*/
 
 .evo-raphael-paper {
 	width:100%;
@@ -764,24 +743,49 @@ ul.conso-list-container {
 	background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAD3CAYAAADRwE7KAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3QEVDxEVDYurigAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAwSURBVFjD7dIxAQAwDAOgxL/o9W4V7AANNMnL1sDf6i3egrfgLd6Ct+At3oK34O01184LDE2I8y4AAAAASUVORK5CYII=');
 }
 
+.evolution-display .answers {
+	width: 110%;
+	height: auto;
+	margin-bottom: -20px;
+}
+
 .answers li.evo-button-container {
-	display: inline-block;
-	padding: 3px 0px;
-	margin-right: 1%;
 	float:left;
+	display: inline-block;
+	width: 220px;
+	padding: 2px 5px;
+	margin-right: 10px;
 	margin-bottom: 10px;
+
+	font-size: .78em;
 }
 
 /* .year-display
 ----------------------------------------------------------------------------- */
 
-.year-display .answers {
-	padding: 0;
-	margin: 10px 0;
-	width: 220px;
+.year-display .answers,
+.year-month {
 	float: left;
+	width: 220px;
+	margin: 10px 25px 15px 0;
+}
+
+#tabs.year-display ul.answers {
+	height: auto;
+	padding: 0;
+	margin-bottom: 0;
 
 	text-align: left;
+}
+
+.year-display .visualization {
+	width: 110%;
+}
+
+.year-display .visualization:after {
+	content: "";
+	display: block;
+	clear: both;
 }
 
 li.year-answer {
@@ -797,13 +801,85 @@ li.year-answer {
 	vertical-align: middle;
 }
 
+.year-display .answers .no-data {
+	width:700px;
+}
+
 .year-answer-circle {
 	width: 1.5em;
+	font-weight: bold;
+}
+
+.year-answer-circle:before {
+	content: "⬤";
+	display: table-cell;
+}
+
+.ie8 .year-answer-circle:before {
+	content: "l";
+	font-family: "Wingdings";
 }
 
 .year-answer-label {
 	text-transform: uppercase;
 	font-size: .8em;
+}
+
+.year-month {
+	position: relative;
+	height: 165px;
+
+	font-family: "Sentinel", serif;
+}
+
+.year-month h4 {
+	margin: 0;
+	padding: 1px 0;
+	
+	font-weight: normal;
+	font-size: .9em;
+	text-align: center;
+	background: #E4E4E4;
+}
+
+.year-month h4:before,
+.year-month h4:after {
+	content: "";
+	display: block;
+	position: absolute;
+	z-index: 1;
+
+	width: 0;
+	height: 0;
+
+	border: 10px solid #E4E4E4;
+	border-width: 8.5px 8px;
+}
+
+.year-month h4:before {
+	border-left-color: #FFF;
+}
+
+.year-month h4:after {
+	border-right-color: #FFF;
+	top: 0;
+	right: 0;
+}
+
+.month-percentages {
+	margin: 0;
+	padding: 0;
+	position: relative;
+	list-style: none;
+}
+
+.month-percentages li {
+	position: absolute;
+	border-radius: 50%;
+	padding: .3em;
+
+	transition: font-size .3s ease, top .3s ease, left .3s ease;
+	-webkit-transition: font-size .3s ease, top .3s ease, left .3s ease;
 }
 
 /* #tab-apropos
@@ -876,6 +952,9 @@ li.year-answer {
 
 #question-pouvoir:before {
 	content: "F";
+	right:23px;
+	font-size:285px;
+	top:175px;
 }
 
 #question-epargne:before {
@@ -896,41 +975,15 @@ li.year-answer {
 	content: "L";
 }
 
-/* .child-frame
+/* .no-data
 ----------------------------------------------------------------------------- */
-
-.child-frame #tab-menu,
-.child-frame .banner,
-.child-frame hr,
-.child-frame h3,
-.child-frame .display-menu,
-.child-frame #tabs .month-menu,
-.child-frame #tabs .more,
-.child-frame #question-conso {
-	display: none;
-}
-
-.child-frame .year-menu {
-	visibility: hidden;
-}
-
-.child-frame .tab {
-	padding: 0;
-}
-
-.child-frame #center {
-	width: 706px;
-}
-
-.child-frame body {
-	overflow: hidden;
-	background: #fff;
-}
 
 .no-data {
 	display:none;
+	position:relative;
+	z-index:3;
 }
 
-.child-frame .question:before {
-	top: 55px;
+.conso-list-container .no-data{
+	display:block;
 }

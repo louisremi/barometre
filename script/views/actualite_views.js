@@ -8,6 +8,8 @@ views.ActualiteQuestionMonthView = App.Views.QuestionMonth.extend({
 	hookUp: function(question) {
 		this.$noData.hide();
 		this.$percentages.parent().parent().parent().show();
+
+		var numberMaxAnswer = 5;
 		
 		var self = this, answersToHook = _.filter(question.get("answers"),function(answer){ return answer.attribute });
 		if (!this.answerShown)
@@ -16,13 +18,11 @@ views.ActualiteQuestionMonthView = App.Views.QuestionMonth.extend({
 		_.each(answersToHook, function(answer, i) {
 			$( self.$percentages[i] ).html(
 				( answer.value < 10 ? "&nbsp;" : "" ) +
-				//( /^1/.test( answer.value) ? "\u2009" : "" ) +*/
 				( answer.value || "-" ) +
-				//( /1$/.test( answer.value) ? "\u2009" : "" ) +
 				( answer.value < 10 ? "&nbsp;" : "" )
 			);
 
-			self.$el.find("#"+i+"-element .percentage span").css({"background-color":App.ui.colors[i]});
+			self.$el.find("#"+i+"-element .percentage span").css({"background-color":App.ui.colors._default[i],color:App.ui.colors.font[i]});
 			if (App.ui.picClass[answer.attribute])
 				self.$el.find("#"+i+"-element")[0].className = App.ui.picClass[answer.attribute];
 			else
@@ -42,13 +42,13 @@ views.ActualiteQuestionMonthView = App.Views.QuestionMonth.extend({
 			}
 		});
 
-		self.$el.find("#"+(answersToHook.length-1)+"-element .percentage span").css({"background-color":App.ui.colors[App.ui.colors.length-1]});
+		self.$el.find("#"+(answersToHook.length-1)+"-element .percentage span").css({"background-color":App.ui.colors._default[App.ui.colors._default.length-1],color:App.ui.colors.font[App.ui.colors._default.length-1]});
 
 		for (var i = this.answerShown;i<answersToHook.length;i++) {
 			self.$el.find("#"+i+"-element").show();
 		}
 
-		for (var i = answersToHook.length;i<this.answerShown;i++) {
+		for (var i = answersToHook.length;i<numberMaxAnswer;i++) {
 			self.$el.find("#"+i+"-element").hide();
 		}
 
