@@ -134,15 +134,15 @@
 </div><!-- #main -->
 
 <script type="text/template" id="question-template">
-	<ul class="display-menu">
-		<li class="year-display"><a href="#" data-href="year/<%= tab %>/:year/:month">Affichage par année</a></li>
-		<li class="month-display"><a href="#" data-href="month/<%= tab %>/:year/:month">Affichage par mois</a></li>
-		<li class="evolution-display"><a href="#" data-href="evolution/<%= tab %>/:year/:month">Affichage par évolution</a></li>
+	<ul class="display-menu" role="menu">
+		<li class="year-display" role="menuitem"><a href="#" data-href="year/<%= tab %>/:year/:month">Affichage par année</a></li>
+		<li class="month-display" role="menuitem"><a href="#" data-href="month/<%= tab %>/:year/:month">Affichage par mois</a></li>
+		<li class="evolution-display" role="menuitem"><a href="#" data-href="evolution/<%= tab %>/:year/:month">Affichage par évolution</a></li>
 	</ul>
 
-	<ul class="year-menu"><%
+	<ul class="year-menu" role="menu"><%
 		for ( var i=0,j=years.length;i<j;i++ ) {
-			%><li class="year-<%= years[i] %>"><a href="" data-href=":display/<%= tab %>/<%= years[i] %>/:month"><%= years[i] %></a></li><%
+			%><li class="year-<%= years[i] %>" role="menuitem"><a href="" data-href=":display/<%= tab %>/<%= years[i] %>/:month"><%= years[i] %></a></li><%
 		}
 	%></ul>
 
@@ -150,9 +150,9 @@
 
 	<div class="month-menu">
 		<div class="slider"></div>
-		<ul class="months"><%
+		<ul class="months" role="menu"><%
 			for ( var month in months ) {
-				%><li class="month-<%= month %>"><div class="handle"></div><a href="#" data-href=":display/<%= tab %>/:year/<%= month %>"><abbr title="<%= months[month][1] %>"><%= months[month][0] %>.</abbr></a></li><%
+				%><li class="month-<%= month %>" role="menuitem"><div class="handle"></div><a href="#" data-href=":display/<%= tab %>/:year/<%= month %>"><abbr title="<%= months[month][1] %>"><%= months[month][0] %>.</abbr></a></li><%
 			}
 		%></ul>
 	</div>
