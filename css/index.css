@@ -16,13 +16,8 @@
 		 url('iconfont-webfont.svg#untitled1mediumregular') format('svg');
 }
 
-@font-face {
-	font-family: "Univers";
-	src: url(UniversLTStd-Cn.otf);
-}
-
 body {
-	font-family: "UniversLTW01-57Condense 723821", "Univers", Arial, sans-serif;
+	font-family: "UniversLTW01-57Condense 723821", Arial, sans-serif;
 	background: #5b6694;
 	overflow: hidden;
 }
@@ -421,7 +416,7 @@ h3 {
 	height: 48px;
 	margin: 90px auto 0;
 
-	background: url(../images/symbols.png) 48px 0 no-repeat;
+	background: url(../images/symbols-nq8.png) 48px 0 no-repeat;
 }
 
 .answers .percentage {
@@ -980,36 +975,8 @@ li.year-answer {
 	content: "L";
 }
 
-/* .child-frame
+/* .no-data
 ----------------------------------------------------------------------------- */
-
-.child-frame #tab-menu,
-.child-frame .banner,
-.child-frame hr,
-.child-frame h3,
-.child-frame .display-menu,
-.child-frame #tabs .month-menu,
-.child-frame #tabs .more,
-.child-frame #question-conso {
-	display: none;
-}
-
-.child-frame .year-menu {
-	visibility: hidden;
-}
-
-.child-frame .tab {
-	padding: 0;
-}
-
-.child-frame #center {
-	width: 706px;
-}
-
-.child-frame body {
-	overflow: hidden;
-	background: #fff;
-}
 
 .no-data {
 	display:none;
@@ -1019,8 +986,4 @@ li.year-answer {
 
 .conso-list-container .no-data{
 	display:block;
-}
-
-.child-frame .question:before {
-	top: 55px;
 }
