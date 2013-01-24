@@ -158,7 +158,7 @@
 	</div>
 
 	<div class="visualization">
-		<ul class="answers" aria-live="assertive"></ul>
+		<ul class="answers" aria-live="assertive" role="list"></ul>
 	</div>
 
 	<p class="more"><a href="" data-href=":display/<%= tab %>/:year/:month" class="<%= moreClassName %>"><%= moreLabel %></a></p>
@@ -223,13 +223,13 @@
 <!-- ####====================  ====================#### -->
 <script id="question-month-template" type="text/template"><%
 	for ( var i = -1, l = App.ui.questions[type].answers.length; ++i < l; ) {
-		%><li role="article" aria-live="polite" aria-owns="<%= type %>-month-answer-percentage-<%= i %> <%= type %>-month-answer-text-<%= i %>" class="<%= App.ui.questions[type].answers[i].className %>"><div class="percentage"><div><span id="<%= type %>-month-answer-percentage-<%= i %>" style="background:<%= App.ui.colors._default[ i == l - 1 ? App.ui.colors._default.length - 1 : i ] %>;color:<%= App.ui.colors.font[ i == l - 1 ? App.ui.colors.font.length - 1 : i ] %>" role="note" aria-flowto="<%= type %>-month-answer-text-<%= i %>"></span></div></div> <span id="<%= type %>-month-answer-text-<%= i %>" class="heading"><%= App.ui.questions[type].answers[i].label %></span></li><%
+		%><li role="listitem" class="<%= App.ui.questions[type].answers[i].className %>"><div class="percentage"><div><span style="background:<%= App.ui.colors._default[ i == l - 1 ? App.ui.colors._default.length - 1 : i ] %>;color:<%= App.ui.colors.font[ i == l - 1 ? App.ui.colors.font.length - 1 : i ] %>"></span></div></div> <span class="heading"><%= App.ui.questions[type].answers[i].label %></span></li><%
 	} %>
 </script>
 
 <script id="question-actu-month-template" type="text/template"><%
 	for ( var i = -1, l = App.ui.questions[type].answersMaxLength; ++i < l; ) {
-		%><li role="article" aria-live="polite" id="<%= i %>-element"><div class="percentage"><div><span style="background:<%= App.ui.colors._default[ i == l - 1 ? App.ui.colors._default.length - 1 : i ] %>;color:<%= App.ui.colors.font[ i == l - 1 ? App.ui.colors.font.length - 1 : i ] %>" role="note" aria-flowto="<%= type %>-month-answer-text"></span></div></div> <span id="<%= type %>-month-answer-text" class="heading"></span></li><%
+		%><li id="<%= i %>-element" role="listitem"><div class="percentage"><div><span style="background:<%= App.ui.colors._default[ i == l - 1 ? App.ui.colors._default.length - 1 : i ] %>;color:<%= App.ui.colors.font[ i == l - 1 ? App.ui.colors.font.length - 1 : i ] %>"></span></div></div> <span id="<%= type %>-month-answer-text" class="heading"></span></li><%
 	} %>
 </script>
 <!-- ####=========================================================================#### -->
