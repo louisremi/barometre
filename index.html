@@ -24,15 +24,15 @@
 
 	<div id="center">
 
-		<ul id="tab-menu">
-			<li><a href="#" data-href=":display/courant/:year/:month">Mois en cours</a></li
-			><li><a href="#" data-href=":display/pouvoir/:year/:month">Pouvoir d'achat</a></li
-			><li><a href="#" data-href=":display/epargne/:year/:month">&Eacute;pa&shy;rgne</a></li
-			><li><a href="#" data-href=":display/consocourante/:year/:month">Cons&shy;omm&shy;ation</a></li
-			><li><a href="#" data-href=":display/immo/:year/:month">Achat immo</a></li
-			><li><a href="#" data-href=":display/auto/:year/:month">Achat auto</a></li
-			><li><a href="#" data-href="month/actu/:year/:month">Actu&shy;alité</a></li
-			><li><a href="#" data-href=":display/apropos/:year/:month">À pro&shy;pos</a></li>
+		<ul id="tab-menu" role="menu">
+			<li><a href="#" data-href=":display/courant/:year/:month" role="menuitem">Mois en cours</a></li
+			><li><a href="#" data-href=":display/pouvoir/:year/:month" role="menuitem" aria-controls="tab-pouvoir">Pouvoir d'achat</a></li
+			><li><a href="#" data-href=":display/epargne/:year/:month" role="menuitem" aria-controls="tab-epargne">&Eacute;pa&shy;rgne</a></li
+			><li><a href="#" data-href=":display/consocourante/:year/:month" role="menuitem" aria-controls="tab-consocourante">Cons&shy;omm&shy;ation</a></li
+			><li><a href="#" data-href=":display/immo/:year/:month" role="menuitem" aria-controls="tab-immo">Achat immo</a></li
+			><li><a href="#" data-href=":display/auto/:year/:month" role="menuitem" aria-controls="tab-auto">Achat auto</a></li
+			><li><a href="#" data-href="month/actu/:year/:month" role="menuitem" aria-controls="tab-actu">Actu&shy;alité</a></li
+			><li><a href="#" data-href=":display/apropos/:year/:month" role="menuitem" aria-controls="tab-apropos">À pro&shy;pos</a></li>
 		</ul>
 
 		<style id="years-style">
@@ -101,7 +101,7 @@
 
 			<div id="tab-apropos" class="tab">
 				<div class="wrapper">
-					<ul class="logos"
+					<ul class="logos" aria-hidden="true"
 						><li class="logo-bpce"></li
 						><li class="logo-echos"></li
 						><li class="logo-fi"></li
@@ -138,15 +138,15 @@
 </div><!-- #main -->
 
 <script type="text/template" id="question-template">
-	<ul class="display-menu">
-		<li class="year-display"><a href="#" data-href="year/<%= tab %>/:year/:month">Affichage par année</a></li>
-		<li class="month-display"><a href="#" data-href="month/<%= tab %>/:year/:month">Affichage par mois</a></li>
-		<li class="evolution-display"><a href="#" data-href="evolution/<%= tab %>/:year/:month">Affichage par évolution</a></li>
+	<ul class="display-menu" role="menu">
+		<li class="year-display" role="menuitem"><a href="#" data-href="year/<%= tab %>/:year/:month">Affichage par année</a></li>
+		<li class="month-display" role="menuitem"><a href="#" data-href="month/<%= tab %>/:year/:month">Affichage par mois</a></li>
+		<li class="evolution-display" role="menuitem"><a href="#" data-href="evolution/<%= tab %>/:year/:month">Affichage par évolution</a></li>
 	</ul>
 
-	<ul class="year-menu"><%
+	<ul class="year-menu" role="menu"><%
 		for ( var i=0,j=years.length;i<j;i++ ) {
-			%><li class="year-<%= years[i] %>"><a href="" data-href=":display/<%= tab %>/<%= years[i] %>/:month"><%= years[i] %></a></li><%
+			%><li class="year-<%= years[i] %>" role="menuitem"><a href="" data-href=":display/<%= tab %>/<%= years[i] %>/:month"><%= years[i] %></a></li><%
 		}
 	%></ul>
 
@@ -154,15 +154,15 @@
 
 	<div class="month-menu">
 		<div class="slider"></div>
-		<ul class="months"><%
+		<ul class="months" role="menu"><%
 			for ( var month in months ) {
-				%><li class="month-<%= month %>"><div class="handle"></div><a href="#" data-href=":display/<%= tab %>/:year/<%= month %>"><abbr title="<%= months[month][1] %>"><%= months[month][0] %>.</abbr></a></li><%
+				%><li class="month-<%= month %>" role="menuitem"><div class="handle"></div><a href="#" data-href=":display/<%= tab %>/:year/<%= month %>"><abbr title="<%= months[month][1] %>"><%= months[month][0] %>.</abbr></a></li><%
 			}
 		%></ul>
 	</div>
 
 	<div class="visualization">
-		<ul class="answers" aria-live="assertive"></ul>
+		<ul class="answers" aria-live="assertive" role="list"></ul>
 	</div>
 
 	<p class="more"><a href="" data-href=":display/<%= tab %>/:year/:month" class="<%= moreClassName %>"><%= moreLabel %></a></p>
@@ -199,7 +199,7 @@
 	<div class="conso-graph" >
 		<span class="icon-conso"></span>
 		<div class="texte-conso">
-			<span class="cercle-conso purple-circle"></span>
+			<span class="cercle-conso purple-circle" aria-hidden="true" ></span>
 			<div class="percentage-conso"><span id="percentage-conso-value"></span><span class="percentage-conso-small">%</span></div>
 			<div class="label-conso"></div>
 		</div>
@@ -217,7 +217,7 @@
 		</div>
 	</div>
 	<div class="ruler">
-		<span class="conso-icon-ranking"></span>
+		<span class="conso-icon-ranking" aria-hidden="true" ></span>
 	</div>
 	<div class="percentage-conso-all"><span id="percentage-conso-value"></span><span class="percentage-conso-small">%</span></div>
 </div>
@@ -227,13 +227,13 @@
 <!-- ####====================  ====================#### -->
 <script id="question-month-template" type="text/template"><%
 	for ( var i = -1, l = App.ui.questions[type].answers.length; ++i < l; ) {
-		%><li role="group" class="<%= App.ui.questions[type].answers[i].className %>"><div class="percentage"><div><span style="background:<%= App.ui.colors._default[ i == l - 1 ? App.ui.colors._default.length - 1 : i ] %>;color:<%= App.ui.colors.font[ i == l - 1 ? App.ui.colors.font.length - 1 : i ] %>"></span></div></div> <span class="heading"><%= App.ui.questions[type].answers[i].label %></span></li><%
+		%><li role="listitem" class="<%= App.ui.questions[type].answers[i].className %>"><div class="percentage"><div><span style="background:<%= App.ui.colors._default[ i == l - 1 ? App.ui.colors._default.length - 1 : i ] %>;color:<%= App.ui.colors.font[ i == l - 1 ? App.ui.colors.font.length - 1 : i ] %>"></span></div></div> <span class="heading"><%= App.ui.questions[type].answers[i].label %></span></li><%
 	} %>
 </script>
 
 <script id="question-actu-month-template" type="text/template"><%
 	for ( var i = -1, l = App.ui.questions[type].answersMaxLength; ++i < l; ) {
-		%><li id="<%= i %>-element"><div class="percentage"><div><span style="background:<%= App.ui.colors._default[ i == l - 1 ? App.ui.colors._default.length - 1 : i ] %>;color:<%= App.ui.colors.font[ i == l - 1 ? App.ui.colors.font.length - 1 : i ] %>"></span></div></div> <span class="heading"></span></li><%
+		%><li id="<%= i %>-element" role="listitem"><div class="percentage"><div><span style="background:<%= App.ui.colors._default[ i == l - 1 ? App.ui.colors._default.length - 1 : i ] %>;color:<%= App.ui.colors.font[ i == l - 1 ? App.ui.colors.font.length - 1 : i ] %>"></span></div></div> <span id="<%= type %>-month-answer-text" class="heading"></span></li><%
 	} %>
 </script>
 <!-- ####=========================================================================#### -->
