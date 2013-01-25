@@ -3,16 +3,20 @@
 <!--[if gt IE 8]><!--><html lang="fr"><!--<![endif]-->
 <head>
 	<meta charset="utf-8" />
-	<title>Le baromètre des projets des français</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title>Le barometre des projets des français</title>
 
 	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
 	<link rel="stylesheet" type="text/css" href="css/index.css" />
+	<!--<link rel="stylesheet" type="text/css" href="css/barometre.all.css" />-->
 	<link rel="stylesheet" type="text/css" href="http://fast.fonts.com/cssapi/2552d89d-2c54-490c-a920-27807cb7420a.css" />
 	<script>
-		window.App = {};
+		window.App = {backendUrl: "http://bpceback.herokuapp.com/api"};
 		// inline script/frame-bridge.js
+		(function(a,c,d){function e(b){/^#/.test(b.data)?(App.hashFound=a.location=b.data,App.initialize()):b.data&&!isNaN(b.data)&&(d.body.style.fontSize=b.data+"px",c.postMessage(d.body.offsetHeight,"*"))}a==c?(App.hashFound=a.location.hash,d.documentElement.id="standalone"):(c.postMessage("hashRequest","*"),"addEventListener"in a?a.addEventListener("message",e,!1):a.attachEvent("onmessage",e))})(window,window.parent,document);
 	</script>
-	<script src="script/frame-bridge.js"></script>
+	<!--<script src="script/frame-bridge.js"></script>-->
 </head>
 <body>
 
@@ -268,43 +272,39 @@
 </script>
 
 <script src="script/libs/jquery.js"></script>
-<!--[if IE 8]>
-<script src="script/libs/jQuery.XDomainRequest.js"></script>
-<![endif]-->
+
 <script src="script/libs/lodash.js"></script>
 <script src="script/libs/backbone.js"></script>
-<script src="script/bpce.backbone.js"></script>
 <script src="script/libs/raphael.js"></script>
 <script src="script/libs/g.raphael.js"></script>
-<script src="script/libs/g.dot.js"></script>
 <script src="script/libs/g.line.js"></script>
 
-<!-- Menu views -->
+<script src="script/app.js"></script>
+
 <script src="script/views/Links.js"></script>
 <script src="script/views/TabMenu.js"></script>
 <script src="script/views/DisplayMenu.js"></script>
 <script src="script/views/YearMenu.js"></script>
 <script src="script/views/MonthMenu.js"></script>
-<!-- Question Views -->
-<script src="script/views/QuestionMonth.js"></script>
-<!-- Evolution Views -->
-<script src="script/views/QuestionEvolution.js"></script>
-<!-- Year Views -->
-<script src="script/views/QuestionYear.js"></script>
 
+<script src="script/views/QuestionMonth.js"></script>
+<script src="script/views/QuestionEvolution.js"></script>
+<script src="script/views/QuestionYear.js"></script>
 <script src="script/views/actualite_views.js"></script>
 <script src="script/views/conso_views.js"></script>
-<script src="script/views/apropos_views.js"></script>
 
-<script src="script/views/manager.js"></script>
 <script src="script/bpce.ui.js"></script>
-<!--[if IE 8]>
-<script src="script/bpce.ui.ie8.js"></script>
-<![endif]-->
+<script src="script/views/manager.js"></script>
 <script src="script/bpce.slider.js"></script>
 <script src="script/model.js"></script>
 <script src="script/router.js"></script>
-<script src="script/app.js"></script>
+
+<!--<script src="script/barometre.all.min.js"></script>-->
+
+<!--[if IE 8]>
+<script src="script/libs/jQuery.XDomainRequest.js"></script>
+<script src="script/libs/PIE.js"></script>
+<![endif]-->
 
 </body>
 </html>

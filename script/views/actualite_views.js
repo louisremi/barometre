@@ -61,4 +61,4 @@ views.ActualiteQuestionMonthView = App.Views.QuestionMonth.extend({
 	}
 });
 
-})(Backbone,window,$,_,window.App)
+})(Backbone,window,$,_,window.App);

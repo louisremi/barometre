@@ -146,4 +146,5 @@
 			}
 		},
 	});
-})(Backbone,window,$,_,window.App,Raphael)
+
+})(Backbone,window,$,_,window.App,Raphael);

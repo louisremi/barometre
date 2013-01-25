@@ -24,4 +24,4 @@ views.Manager = {
 	},
 };
 
-})(Backbone,window,$,_,window.App)
+})(Backbone,window,$,_,window.App);
