@@ -817,9 +817,13 @@ li.year-answer {
 
 .year-answer-circle:before {
 	content: "●";
-	transform-origin: center;
-	transform: translate(-5px) scale(2.3);
 	display: table-cell;
+
+	-webkit-transform-origin: center;
+	-webkit-transform: translateY(-4px) scale(2.3);
+
+	transform-origin: center;
+	transform: translateY(-4px) scale(2.3);
 }
 
 .ie8 .year-answer-circle:before {
