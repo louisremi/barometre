@@ -816,7 +816,13 @@ li.year-answer {
 }
 
 .year-answer-circle:before {
-	content: "⬤";
+	content: "●";
+
+	-webkit-transform-origin: center;
+	-webkit-transform: translateY(-4px) scale(2.3);
+
+	transform-origin: center;
+	transform: translateY(-4px) scale(2.3);
 	display: table-cell;
 }
 
