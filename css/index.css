@@ -816,7 +816,9 @@ li.year-answer {
 }
 
 .year-answer-circle:before {
-	content: "⬤";
+	content: "●";
+	transform-origin: center;
+	transform: translate(-5px) scale(2.3);
 	display: table-cell;
 }
 
