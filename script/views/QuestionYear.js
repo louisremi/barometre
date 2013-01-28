@@ -25,8 +25,8 @@ App.Views.QuestionYearMonth = Backbone.View.extend({
 		y: 62
 	}],
 
-	initialize: function() {
-
+	initialize: function( options ) {
+		this.type = options.type;
 	},
 
 	render: function( options ) {
@@ -39,14 +39,15 @@ App.Views.QuestionYearMonth = Backbone.View.extend({
 		this.$answers = this.$el.find("li");
 
 		this.$answers.each(function( i ) {
-			this.style.background = options.type == "conso" ?
+			this.style.background = self.type == "conso" ?
 				App.ui.colors.conso[i] :
 				App.ui.colors._default[ i == options.answersLength - 1 ? App.ui.colors._default.length - 1 : i ];
 			if ( options.type != "conso" ) {
 				this.style.color = App.ui.colors.font[ i == options.answersLength - 1 ? App.ui.colors._default.length - 1 : i ];
 			}
-			this.style.left = self.positions[i].x + "px";
-			this.style.top = self.positions[i].y + "px";
+			
+			this.style.left = App.ui.questions[ self.type ].answers[i].position[0] + "px";
+			this.style.top = App.ui.questions[ self.type ].answers[i].position[1] + "px";
 		});
 
 		return this;
@@ -62,8 +63,11 @@ App.Views.QuestionYearMonth = Backbone.View.extend({
 				( answer.value < 10 ? "&nbsp;" : "" );
 
 			li.style.fontSize = Math.round( ( answer.value || 1 ) * 0.43 + 12 ) + "px";
-			li.style.left = self.positions[i].x - ( answer.value || 1 ) * 0.40 + "px";
-			li.style.top = self.positions[i].y - ( answer.value || 1 ) * 0.23 + "px";
+
+			if ( App.ui.questions[ self.type ].answers[i].centered ) {
+				li.style.left = App.ui.questions[ self.type ].answers[i].position[0] - ( answer.value || 1 ) * 0.40 + "px";
+				li.style.top = App.ui.questions[ self.type ].answers[i].position[1] - ( answer.value || 1 ) * 0.23 + "px";
+			}
 		});
 	}
 });
@@ -87,7 +91,7 @@ App.Views.QuestionYear = Backbone.View.extend({
 
 		var $visualization = this.$el.parent();
 		_( App.ui.months ).each(function(month, i) {
-			var view = self.monthViews[i] = new App.Views.QuestionYearMonth(),
+			var view = self.monthViews[i] = new App.Views.QuestionYearMonth( {type: self.type} ),
 				year = App.ui.model.get("year");
 
 			view.render({
