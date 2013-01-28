@@ -1,5 +1,9 @@
 (function($, Backbone, _, App, window) {
 
+App.dispatcher = _.extend({}, Backbone.Events, {
+	cid: "dispatcher"
+});
+
 $(function() {
 	App.domLoaded = 1;
 	App.initialize();
@@ -76,6 +80,10 @@ App.initialize = function() {
 
 	Backbone.history.start();
 };
+
+if ( !App.ui ) {
+	App.ui = {};
+}
 
 App.ui.initialize = function() {
 	var commonData = {

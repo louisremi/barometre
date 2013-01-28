@@ -36,13 +36,6 @@
 
 				if ( model.hasChanged("month") ) {
 					App.dispatcher.trigger("monthChanged");
-
-					// update children on month update
-					/*if ( App.children && App.children.length ) {
-						_( App.children ).each(function(child) {
-							child.postMessage("/" + model.get("month"), "*");
-						});
-					}*/
 				}
 
 				if ( model.hasChanged("display") || model.hasChanged("tab") ) {
@@ -105,6 +98,10 @@
 
 			// proxy url to parent frame
 			window.parent.postMessage( window.location.hash + "", "*" );
+			setTimeout(function() {
+				// send current document height to parent frame
+				window.parent.postMessage( document.body.offsetHeight, "*" );
+			}, App.ui.transitionDuration + 50 );
 		}
 	});
 

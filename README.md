@@ -5,16 +5,15 @@ Les données affichées dans la page du baromètre sont extraites d'une base de 
 
 FICHIERS SOURCE
 
-Deux versions des fichiers source sont fournis :
-- une version de développement contenant l'ensemble des fichiers sources de la page présenté de manière lisible par un développeur et utiles pour débugger l'application
-- une version de production contenant les fichiers sources de la page "compilés" pour améliorer les temps de chargement de la page.
-
 Les fichiers sources sont composés :
 - d'une page html (index.html)
 - de fichiers javascripts
 - de fichiers css
 - d'images
 - de polices d'écriture
+
+Le fichier index.html charge des versions "compilées" des ressources javascript et css afin d'améliorer le temps de chargement de la page, mais des versions de développement de ces fichiers sont fournies.
+Si les fichiers sources devaient être modifiés, les versions compilées peuvent être re-générées avec les tâches grunt[4] "$ grunt concat" puis "$ grunt min".
 
 PRÉPARATION DE LA PAGE HÔTE
 
@@ -28,4 +27,10 @@ l'attribut "src" de cet élément devant évidemment être remplacé par l'URL �
 
 CONFIGURATION DE L’URL D’ACCES À LA BASE DE DONNEES
 
-À la 11 ligne du fichier index.html de la page du baromètre se trouve une balise script permettant de configurer l’adresse de l’API de la base de données. Après “backendUrl:”, Il faut remplacer l’URL de test par l’URL finale de la base de données.
+À la ligne 11 du fichier index.html de la page du baromètre se trouve une balise script permettant de configurer l’adresse de l’API de la base de données, si celle-ci était amenée à changer.
+
+
+[1] https://developer.mozilla.org/en-US/docs/DOM/window.postMessage
+[2] https://developer.mozilla.org/en-US/docs/DOM/XMLHttpRequest
+[3] https://developer.mozilla.org/en-US/docs/HTTP/Access_control_CORS
+[4] voir http://gruntjs.com/ pour les instructions d'installation et d'utilisation

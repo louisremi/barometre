@@ -1,6 +1,10 @@
 (function( window, App, jQuery, _ ) {
 
-var ui = App.ui = {};
+if ( !App.ui ) {
+	App.ui = {};
+}
+
+var ui = App.ui;
 
 ui.tabs = {
 	courant: [ "pouvoir", "conso", "epargne", "consocourante", "immo", "auto", "actu", "apropos" ],
@@ -77,16 +81,24 @@ ui.questions = {
 		moreLabel: "Comparer ce même mois sur les autres années",
 		answers: [{
 				className: "increase",
-				label: "<b>…augmenter (%)</b>"
+				label: "<b>…augmenter (%)</b>",
+				position: [140, 60],
+				centered: 0
 			}, {
 				className: "stable",
-				label: "<b>…rester stable (%)</b>"
+				label: "<b>…rester stable (%)</b>",
+				position: [140, 100],
+				centered: 0
 			}, {
 				className: "decrease",
-				label: "<b>…diminuer (%)</b>"
+				label: "<b>…diminuer (%)</b>",
+				position: [60, 60],
+				centered: 1
 			}, {
 				className: "nspp",
-				label: "…ne se prononce pas (%)"
+				label: "…ne se prononce pas (%)",
+				position: [140, 20],
+				centered: 0
 			}
 		],
 		answerSlugs: [
@@ -106,24 +118,49 @@ ui.questions = {
 		question: "Postes de dépenses les plus préoccupants",
 		moreClassName: "all conso-all",
 		moreLabel: "Voir l'ensemble des résultats",
-		answers: [
-			{label:"L'alimentation"},
-			{label:"L'essence"},
-			{label:"Les impôts"},
-			{label:"L'électricité"},
-			{label:"La santé"},
-			{label:"Le gaz"},
-			{label:"Le logement"},
-			{label:"Les travaux et l'entretien de la maison"},
-			{label:"L'achat de la voiture"},
-			{label:"L'école"},
-			{label:"Autres"},
-			{label:"L'habillement"},
-			{label:"Les transport en commun"},
-			{label:"Aucun"},
-			{label:"Les technologies (ordinateur, internet…)"},
-			{label:"Ne se prononce pas"}
-		],
+		answers: [{
+			label:"L'alimentation",
+			position: [60, 30],
+			centered: 1
+		}, {
+			label:"L'essence",
+			position: [60, 100],
+			centered: 1
+		}, {
+			label:"Les impôts",
+			position: [140, 120],
+			centered: 0
+		}, {
+			label:"L'électricité",
+			position: [140, 60],
+			centered: 0
+		}, {
+			label:"La santé",
+			position: [140, 10],
+			centered: 0
+		}, {
+			label:"Le gaz"
+		}, {
+			label:"Le logement"
+		}, {
+			label:"Les travaux et l'entretien de la maison"
+		}, {
+			label:"L'achat de la voiture"
+		}, {
+			label:"L'école"
+		}, {
+			label:"Autres"
+		}, {
+			label:"L'habillement"
+		}, {
+			label:"Les transport en commun"
+		}, {
+			label:"Aucun"
+		}, {
+			label:"Les technologies (ordinateur, internet…)"
+		}, {
+			label:"Ne se prononce pas"
+		}],
 		answerSlugs: [
 			"alim",
 			"essence",
@@ -155,19 +192,29 @@ ui.questions = {
 		moreLabel: "Comparer ce même mois sur les autres années",
 		answers: [{
 				className: "increase",
-				label: "mettre <b>plus d'argent de côté</b> que ces derniers mois (%)"
+				label: "mettre <b>plus d'argent de côté</b> que ces derniers mois (%)",
+				position: [140, 60],
+				centered: 0
 			}, {
 				className: "stable",
-				label: "mettre <b>autant d'argent de côté</b> que ces derniers mois"
+				label: "mettre <b>autant d'argent de côté</b> que ces derniers mois",
+				position: [60, 90],
+				centered: 1
 			}, {
 				className: "decrease",
-				label: "mettre <b>moins d'argent de côté</b> que ces derniers mois (%)"
+				label: "mettre <b>moins d'argent de côté</b> que ces derniers mois (%)",
+				position: [140, 100],
+				centered: 0
 			}, {
 				className: "irrelevant",
-				label: "je ne met pas d'argent de côté (%)"
+				label: "je ne met pas d'argent de côté (%)",
+				position: [60, 30],
+				centered: 1
 			}, {
 				className: "nspp",
-				label: "…ne se prononce pas (%)"
+				label: "…ne se prononce pas (%)",
+				position: [140, 20],
+				centered: 0
 			}
 		],
 		answerSlugs: [
@@ -190,16 +237,24 @@ ui.questions = {
 		moreLabel: "Comparer ce même mois sur les autres années",
 		answers: [{
 				className: "increase",
-				label: "dépenser <b>plus d'argent</b> que ces derniers mois (%)"
+				label: "dépenser <b>plus d'argent</b> que ces derniers mois (%)",
+				position: [140, 60],
+				centered: 0
 			}, {
 				className: "stable",
-				label: "dépenser <b>autant d'argent</b> que ces derniers mois"
+				label: "dépenser <b>autant d'argent</b> que ces derniers mois",
+				position: [60, 60],
+				centered: 1
 			}, {
 				className: "decrease",
-				label: "dépenser <b>moins d'argent</b> que ces derniers mois (%)"
+				label: "dépenser <b>moins d'argent</b> que ces derniers mois (%)",
+				position: [140, 100],
+				centered: 0
 			}, {
 				className: "nspp",
-				label: "…ne se prononce pas (%)"
+				label: "…ne se prononce pas (%)",
+				position: [140, 20],
+				centered: 0
 			}
 		],
 		answerSlugs: [
@@ -221,13 +276,19 @@ ui.questions = {
 		moreLabel: "Comparer ce même mois sur les autres années",
 		answers: [{
 				className: "yes",
-				label: "<b>oui</b>"
+				label: "<b>oui</b>",
+				position: [140, 70],
+				centered: 0
 			}, {
 				className: "no",
-				label: "<b>non</b>"
+				label: "<b>non</b>",
+				position: [60, 40],
+				centered: 1
 			}, {
 				className: "nspp",
-				label: "…ne se prononce pas (%)"
+				label: "…ne se prononce pas (%)",
+				position: [140, 40],
+				centered: 0
 			}
 		],
 		answerSlugs: [
@@ -248,13 +309,19 @@ ui.questions = {
 		moreLabel: "Comparer ce même mois sur les autres années",
 		answers: [{
 				className: "yes",
-				label: "<b>oui</b>"
+				label: "<b>oui</b>",
+				position: [140, 70],
+				centered: 0
 			}, {
 				className: "no",
-				label: "<b>non	</b>"
+				label: "<b>non	</b>",
+				position: [60, 40],
+				centered: 1
 			}, {
 				className: "nspp",
-				label: "…ne se prononce pas (%)"
+				label: "…ne se prononce pas (%)",
+				position: [140, 40],
+				centered: 0
 			}
 		],
 		answerSlugs: [
@@ -276,8 +343,8 @@ ui.questions = {
 		moreLabel: "Voir la question précédente",
 		display: {
 			month: App.views.ActualiteQuestionMonthView,
-			year: $.fn.init,
-			evolution: $.fn.init
+			year: $,
+			evolution: $
 		}
 	},
 	apropos: {
@@ -285,9 +352,9 @@ ui.questions = {
 		moreClassName: "",
 		moreLabel: "",
 		display: {
-			month: App.views.AproposView,
-			year: App.views.AproposView,
-			evolution: $.fn.init
+			month: $,
+			year: $,
+			evolution: $
 		}
 	}
 };
@@ -376,7 +443,7 @@ ui.colors = {
 		"#a6a6a6",
 		"#a6a6a6",
 		"#a6a6a6",
-		"#a6a6a6",
+		"#a6a6a6"
 	],
 	_default: [
 		"#427324",
