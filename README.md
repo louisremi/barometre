@@ -13,7 +13,7 @@ Les fichiers sources sont composés :
 - de polices d'écriture
 
 Le fichier index.html charge des versions "compilées" des ressources javascript et css afin d'améliorer le temps de chargement de la page, mais des versions de développement de ces fichiers sont fournies.
-Une tâche grunt[4] permet de regénérer les versions compilées si les fichiers sources devaient être modifiés.
+Si les fichiers sources devaient être modifiés, les versions compilées peuvent être re-générées avec les tâches grunt[4] "$ grunt concat" puis "$ grunt min".
 
 PRÉPARATION DE LA PAGE HÔTE
 
