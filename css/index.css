@@ -942,11 +942,15 @@ li.year-answer {
 	position: relative;
 }
 
-.question:before {
+.answers {
+	position: relative;
+}
+
+.answers li:first-child:before {
 	position: absolute;
-	top: 200px;
+	top: 0;
 	right: 0;
-	bottom: 30px;
+	bottom: 40px;
 	left: 0;
 
 	display: none;
@@ -957,34 +961,35 @@ li.year-answer {
 	text-align: center;
 
 	cursor: default;
+	pointer-events: none;
 }
 
-.month-display .question:before {
+.month-display .answers li:first-child:before {
 	display: block;
 }
 
-#question-pouvoir:before {
+#question-pouvoir .answers li:first-child:before {
 	content: "F";
 	right:23px;
 	font-size:285px;
-	top:175px;
 }
 
-#question-epargne:before {
+#question-epargne .answers li:first-child:before {
 	content: "A";
+	top: 20px;
 }
 
-#question-consocourante:before {
+#question-consocourante .answers li:first-child:before {
 	content: "C";
-	top: 150px;
+	top: -60px;
 	font-size: 400px;
 }
 
-#question-immo:before {
+#question-immo .answers li:first-child:before {
 	content: "M";
 }
 
-#question-auto:before {
+#question-auto .answers li:first-child:before {
 	content: "L";
 }
 
