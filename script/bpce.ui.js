@@ -30,7 +30,7 @@ ui.actuText = {
 	"plus":"<b>…augmenter (%)</b>",
 	"moins":"<b>…diminuer (%)</b>",
 	"egale":"<b>…rester stable (%)</b>",
-	"nsp":"…ne se prononce pas (%)",
+	"nsp":"ne se prononce pas (%)",
 	"oui":"<b>oui</b>",
 	"non":"<b>non</b>"
 };
@@ -96,7 +96,7 @@ ui.questions = {
 				centered: 1
 			}, {
 				className: "nspp",
-				label: "…ne se prononce pas (%)",
+				label: "ne se prononce pas (%)",
 				position: [140, 20],
 				centered: 0
 			}
@@ -192,27 +192,27 @@ ui.questions = {
 		moreLabel: "Comparer ce même mois sur les autres années",
 		answers: [{
 				className: "increase",
-				label: "mettre <b>plus d'argent de côté</b> que ces derniers mois (%)",
+				label: "…mettre <b>plus d'argent de côté</b> que ces derniers mois (%)",
 				position: [140, 60],
 				centered: 0
 			}, {
 				className: "stable",
-				label: "mettre <b>autant d'argent de côté</b> que ces derniers mois",
+				label: "…mettre <b>autant d'argent de côté</b> que ces derniers mois",
 				position: [60, 90],
 				centered: 1
 			}, {
 				className: "decrease",
-				label: "mettre <b>moins d'argent de côté</b> que ces derniers mois (%)",
+				label: "…mettre <b>moins d'argent de côté</b> que ces derniers mois (%)",
 				position: [140, 100],
 				centered: 0
 			}, {
 				className: "irrelevant",
-				label: "je ne met pas d'argent de côté (%)",
+				label: "je ne mets pas d'argent de côté (%)",
 				position: [60, 30],
 				centered: 1
 			}, {
 				className: "nspp",
-				label: "…ne se prononce pas (%)",
+				label: "ne se prononce pas (%)",
 				position: [140, 20],
 				centered: 0
 			}
@@ -237,22 +237,22 @@ ui.questions = {
 		moreLabel: "Comparer ce même mois sur les autres années",
 		answers: [{
 				className: "increase",
-				label: "dépenser <b>plus d'argent</b> que ces derniers mois (%)",
+				label: "…dépenser <b>plus d'argent</b> que ces derniers mois (%)",
 				position: [140, 60],
 				centered: 0
 			}, {
 				className: "stable",
-				label: "dépenser <b>autant d'argent</b> que ces derniers mois",
+				label: "…dépenser <b>autant d'argent</b> que ces derniers mois",
 				position: [60, 60],
 				centered: 1
 			}, {
 				className: "decrease",
-				label: "dépenser <b>moins d'argent</b> que ces derniers mois (%)",
+				label: "…dépenser <b>moins d'argent</b> que ces derniers mois (%)",
 				position: [140, 100],
 				centered: 0
 			}, {
 				className: "nspp",
-				label: "…ne se prononce pas (%)",
+				label: "ne se prononce pas (%)",
 				position: [140, 20],
 				centered: 0
 			}
@@ -271,7 +271,7 @@ ui.questions = {
 	},
 	immo: {
 		tab: "immo",
-		question: "Au cours des trois prochains mois, envisagez vous d'acheter une maison ou un appartement ?",
+		question: "Au cours des trois prochains mois, envisagez vous d'acheter<br/>une maison ou un appartement ?",
 		moreClassName: "compare",
 		moreLabel: "Comparer ce même mois sur les autres années",
 		answers: [{
@@ -286,7 +286,7 @@ ui.questions = {
 				centered: 1
 			}, {
 				className: "nspp",
-				label: "…ne se prononce pas (%)",
+				label: "ne se prononce pas (%)",
 				position: [140, 40],
 				centered: 0
 			}
@@ -304,7 +304,7 @@ ui.questions = {
 	},
 	auto: {
 		tab: "auto",
-		question: "Au cours des trois prochains mois, envisagez vous d'acheter ou de changer de voiture ?",
+		question: "Au cours des trois prochains mois, envisagez vous d'acheter<br/>ou de changer de voiture ?",
 		moreClassName: "compare",
 		moreLabel: "Comparer ce même mois sur les autres années",
 		answers: [{
@@ -314,12 +314,12 @@ ui.questions = {
 				centered: 0
 			}, {
 				className: "no",
-				label: "<b>non	</b>",
+				label: "<b>non</b>",
 				position: [60, 40],
 				centered: 1
 			}, {
 				className: "nspp",
-				label: "…ne se prononce pas (%)",
+				label: "ne se prononce pas (%)",
 				position: [140, 40],
 				centered: 0
 			}

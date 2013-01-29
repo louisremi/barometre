@@ -18,6 +18,15 @@
 		 url('fonts/iconfont-webfont.svg#untitled1mediumregular') format('svg');
 }
 
+@font-face {
+	font-family:"UniversLTW01-57Condense 723821";
+	src:url("http://fast.fonts.com/d/aefefc4e-9cb8-4e8e-8599-dda705456734.eot?d44f19a684109620e484147ca090e8189bdf03e88ef07e0022ae1590208dea82b32e9c26879297416b0a901e93a3f0a9f38c9609724f9fb40a&projectId=2552d89d-2c54-490c-a920-27807cb7420a");
+	src:url("http://fast.fonts.com/d/aefefc4e-9cb8-4e8e-8599-dda705456734.eot?d44f19a684109620e484147ca090e8189bdf03e88ef07e0022ae1590208dea82b32e9c26879297416b0a901e93a3f0a9f38c9609724f9fb40a&projectId=2552d89d-2c54-490c-a920-27807cb7420a#iefix") format("embedded-opentype"),
+		url("http://fast.fonts.com/d/1eaf27c0-f4de-4273-9f4c-1b3236ad2f3c.woff?d44f19a684109620e484147ca090e8189bdf03e88ef07e0022ae1590208dea82b32e9c26879297416b0a901e93a3f0a9f38c9609724f9fb40a&projectId=2552d89d-2c54-490c-a920-27807cb7420a") format("woff"),
+		url("http://fast.fonts.com/d/9b913baf-b1f0-47d2-8c76-42f59650058f.ttf?d44f19a684109620e484147ca090e8189bdf03e88ef07e0022ae1590208dea82b32e9c26879297416b0a901e93a3f0a9f38c9609724f9fb40a&projectId=2552d89d-2c54-490c-a920-27807cb7420a") format("truetype"),
+		url("http://fast.fonts.com/d/0abcce12-2274-4ee7-b6d5-0066b5f5f670.svg?d44f19a684109620e484147ca090e8189bdf03e88ef07e0022ae1590208dea82b32e9c26879297416b0a901e93a3f0a9f38c9609724f9fb40a&projectId=2552d89d-2c54-490c-a920-27807cb7420a#0abcce12-2274-4ee7-b6d5-0066b5f5f670") format("svg");
+}
+
 body {
 	font-family: "UniversLTW01-57Condense 723821", Arial, sans-serif;
 	background: #FFF;
@@ -821,7 +830,8 @@ li.year-answer {
 
 	-webkit-transform-origin: center;
 	-webkit-transform: translateY(-4px) scale(2.3);
-
+	-moz-transform-origin: center;
+	-moz-transform: translateY(-4px) scale(2.3);
 	transform-origin: center;
 	transform: translateY(-4px) scale(2.3);
 }
