@@ -11,11 +11,11 @@
 
 @font-face {
 	font-family: "Icons";
-	src: url('fonts/icnfont-webfont.eot');
-	src: url('fonts/icnfont-webfont.eot?#iefix') format('embedded-opentype'),
-		 url('fonts/icnfont-webfont.woff') format('woff'),
-		 url('fonts/icnfont-webfont.ttf') format('truetype'),
-		 url('fonts/icnfont-webfont.svg#untitled1mediumregular') format('svg');
+	src: url('fonts/iconfont_op-webfont.eot');
+	src: url('fonts/iconfont_op-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('fonts/iconfont_op-webfont.woff') format('woff'),
+		 url('fonts/iconfont_op-webfont.ttf') format('truetype'),
+		 url('fonts/iconfont_op-webfont.svg#untitled1mediumregular') format('svg');
 }
 
 body {
@@ -449,7 +449,7 @@ h3 {
 
 .answers div.percentage span:first-child {
 	position: absolute;
-	top: 0;
+	top: -.1em;
 	display: block;
 	width: 100%;
 
@@ -691,7 +691,7 @@ ul.conso-list-container {
 	display: block;
 	position: absolute;
 	width: 5%;
-	top: 7px;
+	top: 5px;
 	
 	font-size: 28px;
 	text-align: center;
