@@ -10,6 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
 	<link rel="stylesheet" type="text/css" href="css/index.css" />
 	<!--<link rel="stylesheet" type="text/css" href="css/barometre.all.css" />-->
+	<link type="text/css" rel="stylesheet" href="http://fast.fonts.com/cssapi/5efd7689-559a-4616-b8c1-ef6b594dd6f6.css"/>
 	<!--<link rel="stylesheet" type="text/css" href="http://fast.fonts.com/cssapi/2552d89d-2c54-490c-a920-27807cb7420a.css" />-->
 	<script>
 		window.App = {backendUrl: "http://bpceback.herokuapp.com/api"};
@@ -25,7 +26,7 @@
 	<div id="center">
 
 		<ul id="tab-menu" role="menu">
-			<li><a href="#" data-href=":display/courant/:year/:month" role="menuitem">Mois en cours</a></li
+			<li><a href="#" data-href=":display/courant/:year/:month" role="menuitem" id="mois-en-cours">Mois en cours</a></li
 			><li><a href="#" data-href=":display/pouvoir/:year/:month" role="menuitem" aria-controls="tab-pouvoir">Pouvoir d'achat</a></li
 			><li><a href="#" data-href=":display/epargne/:year/:month" role="menuitem" aria-controls="tab-epargne">&Eacute;pa&shy;rgne</a></li
 			><li><a href="#" data-href=":display/consocourante/:year/:month" role="menuitem" aria-controls="tab-consocourante">Cons&shy;omm&shy;ation</a></li
@@ -156,7 +157,7 @@
 		<div class="slider"></div>
 		<ul class="months" role="menu"><%
 			for ( var month in months ) {
-				%><li class="month-<%= month %>" role="menuitem"><div class="handle"></div><a href="#" data-href=":display/<%= tab %>/:year/<%= month %>"><abbr title="<%= months[month][1] %>"><%= months[month][0] %>.</abbr></a></li><%
+				%><li class="month-<%= month %>" role="menuitem"><div class="handle"></div><a href="#" data-href=":display/<%= tab %>/:year/<%= month %>"><abbr title="<%= months[month][1] %>"><%= months[month][0] %></abbr></a></li><%
 			}
 		%></ul>
 	</div>
@@ -176,10 +177,6 @@
 		color: #FFF;
 		visibility: visible;
 	}
-</script>
-
-<script type="text/template" id="answer-template">
-	<div class="percentage"><div><span style="background:<%= background %>;">&nbsp;</span></div></div> <span class="heading"><%= title %></span>
 </script>
 
 <!-- ####==================== CONSO QUESTION & ANSWER TEMPLATE ====================#### -->
@@ -210,6 +207,7 @@
 <script id="bm-conso-answer-all-template" type="text/template">
 <div class="sub-line-container">
 	<div class="conso-place-cell">
+		<span class="conso-all-circle" aria-hidden>W</span>
 		<span class="conso-all-place"></span>
 	</div>
 	<div class="conso-background-label">
@@ -227,13 +225,13 @@
 <!-- ####====================  ====================#### -->
 <script id="question-month-template" type="text/template"><%
 	for ( var i = -1, l = App.ui.questions[type].answers.length; ++i < l; ) {
-		%><li role="listitem" class="<%= App.ui.questions[type].answers[i].className %>"><div class="percentage"><div><span style="background:<%= App.ui.colors._default[ i == l - 1 ? App.ui.colors._default.length - 1 : i ] %>;color:<%= App.ui.colors.font[ i == l - 1 ? App.ui.colors.font.length - 1 : i ] %>"></span></div></div> <span class="heading"><%= App.ui.questions[type].answers[i].label %></span></li><%
+		%><li role="listitem" class="<%= App.ui.questions[type].answers[i].className %>"><div class="percentage"><div><span aria-hidden style="color:<%= App.ui.colors._default[ i == l - 1 ? App.ui.colors._default.length - 1 : i ] %>;">W</span><span style="color:<%= App.ui.colors.font[ i == l - 1 ? App.ui.colors.font.length - 1 : i ] %>"></span></div></div> <span class="heading"><%= App.ui.questions[type].answers[i].label %></span></li><%
 	} %>
 </script>
 
 <script id="question-actu-month-template" type="text/template"><%
 	for ( var i = -1, l = App.ui.questions[type].answersMaxLength; ++i < l; ) {
-		%><li id="<%= i %>-element" role="listitem"><div class="percentage"><div><span style="background:<%= App.ui.colors._default[ i == l - 1 ? App.ui.colors._default.length - 1 : i ] %>;color:<%= App.ui.colors.font[ i == l - 1 ? App.ui.colors.font.length - 1 : i ] %>"></span></div></div> <span id="<%= type %>-month-answer-text" class="heading"></span></li><%
+		%><li id="<%= i %>-element" role="listitem"><div class="percentage"><div><span aria-hidden style="color:<%= App.ui.colors._default[ i == l - 1 ? App.ui.colors._default.length - 1 : i ] %>;">W</span><span style="color:<%= App.ui.colors.font[ i == l - 1 ? App.ui.colors.font.length - 1 : i ] %>"></span></div></div> <span id="<%= type %>-month-answer-text" class="heading"></span></li><%
 	} %>
 </script>
 <!-- ####=========================================================================#### -->
@@ -303,7 +301,6 @@
 
 <!--[if IE 8]>
 <script src="script/libs/jQuery.XDomainRequest.js"></script>
-<script src="script/libs/PIE.js"></script>
 <![endif]-->
 
 </body>

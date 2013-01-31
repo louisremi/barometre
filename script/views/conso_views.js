@@ -47,7 +47,8 @@ views.ConsoAnswerMonthView =Backbone.View.extend({
 views.ConsoQuestionMonthAllView = Backbone.View.extend({
 	template: _.template($("#bm-conso-answer-all-template").html()),
 	//Element Selector ------------------------------------------------#
-	cercleSelector: ".conso-all-place",
+	placeSelector: ".conso-all-place",
+	cercleSelector: ".conso-all-circle",
 	labelSelector: ".conso-label",
 	iconSelector: ".conso-icon-ranking",
 	percentageSelector: "#percentage-conso-value",
@@ -60,6 +61,7 @@ views.ConsoQuestionMonthAllView = Backbone.View.extend({
 	render: function(answer) {
 		this.$el.html(this.template());
 
+		this.$place = this.$el.find(this.placeSelector);
 		this.$cercle = this.$el.find(this.cercleSelector);
 		this.$el.find(this.labelSelector).text(answer.label);
 		this.$icon = this.$el.find(this.iconSelector).html(answer.icon);
@@ -69,12 +71,8 @@ views.ConsoQuestionMonthAllView = Backbone.View.extend({
 	},
 
 	hookUp: function(answer,index,max) {
-		var tmp = this.$cercle.html((''+(index+1)).length < 2 ? "&nbsp;"+(index+1)+"&nbsp;" : index+1);
-		tmp[0].className = tmp[0].className.replace(/\b\w+-circle\b/g, "") + " " + ( index > 4 ?
-				"pink" :
-				"purple"
-			) + "-circle";
-
+		this.$place.html( index + 1 );
+		this.$cercle.css("color", index > 4 ? "#AE61B3" : "#641777" );
 		this.$el.css({top:44*index});
 		this.$icon.css({left:(33+(55*(answer.value/max)))+'%'});
 		this.$percentage.text(answer.value);

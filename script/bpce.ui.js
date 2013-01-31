@@ -53,18 +53,18 @@ while ( i-- ) {
 ui.years = [2013, 2012, 2011];
 
 ui.months = {
-	1: [ "Jan", "Janvier" ],
-	2: [ "Fev", "Février" ],
-	3: [ "Mar", "Mars" ],
-	4: [ "Avr", "Avril" ],
+	1: [ "Jan.", "Janvier" ],
+	2: [ "Fév.", "Février" ],
+	3: [ "Mar.", "Mars" ],
+	4: [ "Avr.", "Avril" ],
 	5: [ "Mai", "Mai" ],
 	//5: [ "Jun", "Juin" ],
 	//6: [ "Jul", "Juillet" ],
-	8: [ "Aou", "Août" ],
-	9: [ "Sep", "Septembre" ],
-	10: [ "Oct", "Octobre" ],
-	11: [ "Nov", "Novembre" ],
-	12: [ "Dec", "Décembre" ]
+	8: [ "Août", "Août" ],
+	9: [ "Sept.", "Septembre" ],
+	10: [ "Oct.", "Octobre" ],
+	11: [ "Nov.", "Novembre" ],
+	12: [ "Déc.", "Décembre" ]
 };
 
 ui.displays = {
@@ -76,7 +76,7 @@ ui.displays = {
 ui.questions = {
 	pouvoir: {
 		tab: "pouvoir",
-		question: "Au cours des trois prochains mois, votre pouvoir d'achat va-t-il…",
+		question: "Au cours des trois prochains mois,<br/>votre pouvoir d'achat va-t-il…",
 		moreClassName: "compare",
 		moreLabel: "Comparer ce même mois sur les autres années",
 		answers: [{

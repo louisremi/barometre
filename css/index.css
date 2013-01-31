@@ -2,33 +2,24 @@
 
 @font-face {
 	font-family: "Sentinel";
-	src: url('fonts/sntnl2-webfont.eot');
-	src: url('fonts/sntnl2-webfont.eot?#iefix') format('embedded-opentype'),
-		 url('fonts/sntnl2-webfont.woff') format('woff'),
-		 url('fonts/sntnl2-webfont.ttf') format('truetype'),
-		 url('fonts/sntnl2-webfont.svg#untitled3medium') format('svg');
+	src: url('fonts/sntnl3-webfont.eot');
+	src: url('fonts/sntnl3-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('fonts/sntnl3-webfont.woff') format('woff'),
+		 url('fonts/sntnl3-webfont.ttf') format('truetype'),
+		 url('fonts/sntnl3-webfont.svg#untitled3medium') format('svg');
 }
 
 @font-face {
 	font-family: "Icons";
-	src: url('fonts/iconfont-webfont.eot');
-	src: url('fonts/iconfont-webfont.eot?#iefix') format('embedded-opentype'),
-		 url('fonts/iconfont-webfont.woff') format('woff'),
-		 url('fonts/iconfont-webfont.ttf') format('truetype'),
-		 url('fonts/iconfont-webfont.svg#untitled1mediumregular') format('svg');
-}
-
-@font-face {
-	font-family:"UniversLTW01-57Condense 723821";
-	src:url("http://fast.fonts.com/d/aefefc4e-9cb8-4e8e-8599-dda705456734.eot?d44f19a684109620e484147ca090e8189bdf03e88ef07e0022ae1590208dea82b32e9c26879297416b0a901e93a3f0a9f38c9609724f9fb40a&projectId=2552d89d-2c54-490c-a920-27807cb7420a");
-	src:url("http://fast.fonts.com/d/aefefc4e-9cb8-4e8e-8599-dda705456734.eot?d44f19a684109620e484147ca090e8189bdf03e88ef07e0022ae1590208dea82b32e9c26879297416b0a901e93a3f0a9f38c9609724f9fb40a&projectId=2552d89d-2c54-490c-a920-27807cb7420a#iefix") format("embedded-opentype"),
-		url("http://fast.fonts.com/d/1eaf27c0-f4de-4273-9f4c-1b3236ad2f3c.woff?d44f19a684109620e484147ca090e8189bdf03e88ef07e0022ae1590208dea82b32e9c26879297416b0a901e93a3f0a9f38c9609724f9fb40a&projectId=2552d89d-2c54-490c-a920-27807cb7420a") format("woff"),
-		url("http://fast.fonts.com/d/9b913baf-b1f0-47d2-8c76-42f59650058f.ttf?d44f19a684109620e484147ca090e8189bdf03e88ef07e0022ae1590208dea82b32e9c26879297416b0a901e93a3f0a9f38c9609724f9fb40a&projectId=2552d89d-2c54-490c-a920-27807cb7420a") format("truetype"),
-		url("http://fast.fonts.com/d/0abcce12-2274-4ee7-b6d5-0066b5f5f670.svg?d44f19a684109620e484147ca090e8189bdf03e88ef07e0022ae1590208dea82b32e9c26879297416b0a901e93a3f0a9f38c9609724f9fb40a&projectId=2552d89d-2c54-490c-a920-27807cb7420a#0abcce12-2274-4ee7-b6d5-0066b5f5f670") format("svg");
+	src: url('fonts/icnfont-webfont.eot');
+	src: url('fonts/icnfont-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('fonts/icnfont-webfont.woff') format('woff'),
+		 url('fonts/icnfont-webfont.ttf') format('truetype'),
+		 url('fonts/icnfont-webfont.svg#untitled1mediumregular') format('svg');
 }
 
 body {
-	font-family: "UniversLTW01-57Condense 723821", Arial, sans-serif;
+	font-family: "UniversLTW01-57Condense 723821", "Arial", sans-serif;
 	background: #FFF;
 	overflow: hidden;
 }
@@ -74,7 +65,7 @@ body {
 	height: 35px;
 	width: 100%;
 
-	font-size: 1em;
+	font-size: .95em;
 	/*font-size: 16?px*/;
 	color: #FFF;
 	text-decoration: none;
@@ -105,17 +96,22 @@ body {
 #tab-menu a {
 	display: inline-block;
 	/*padding: 9px 6px 4px;*/
-	padding: 6px 6px 7px;
+	padding: 8px 0 6px;
+	width: 100%;
 	
+	text-align: center;
 	color: inherit;
 	text-decoration: inherit;
+}
+
+#tab-menu a:hover {
+	text-decoration: underline;
 }
 
 #tab-menu .active {
 	background-color: #fff;
 	color: #551F73;
 	font-weight: bold;
-	text-decoration: underline;
 }
 
 /* .tab, .banner, h2
@@ -149,6 +145,7 @@ body {
 	background-color: #581e75;
 
 	font-weight: normal;
+	line-height: 1.3em;
 }
 
 .banner h2:before, .banner h2:after {
@@ -249,7 +246,7 @@ body {
 	padding: 0;
 
 	/*font-size: 16?px;*/
-	font-size: 1em;
+	font-size: .9em;
 
 }
 
@@ -315,7 +312,6 @@ h3 {
 	/*font-size: 12?px;*/
 	font-size: .8em;
 	list-style: none;
-	font-weight: bold;
 }
 
 .months li {
@@ -451,12 +447,25 @@ h3 {
 	transition: font-size .5s ease, top .5s ease;
 }
 
-.answers .percentage span {
-	background-color: #900;
-	border-radius: 50%;
-	padding: .3em;
+.answers div.percentage span:first-child {
+	position: absolute;
+	top: 0;
+	display: block;
+	width: 100%;
 
-	-ms-behavior: url(script/libs/PIE.htc);
+	font-family: "Icons", sans-serif;
+	text-align: center;
+	font-size: 1.6em;
+}
+
+.answers .percentage span:last-child {
+	position: relative;
+	top: 0.2em;
+}
+
+.ie8 .answers .percentage span {
+	position: relative;
+	top: 0.3em;
 }
 
 .answers .heading {
@@ -534,6 +543,10 @@ h3 {
 	color: #000;
 	text-decoration: none;
 	cursor: pointer;
+}
+
+.more a:hover {
+	text-decoration: underline;
 }
 
 #tabs .more {
@@ -664,12 +677,25 @@ ul.conso-list-container {
 }
 
 .conso-all-place {
+	position: relative;
+	display: block;
+	width: 100%;
+	
+	text-align: center;
 	font-size:14px;
 	color:#fff;
-	padding: .39em .5em .7em;
 	font-family:"Sentinel",serif;
-	top:5px;
-	vertical-align: -2px;
+}
+
+.conso-all-circle {
+	display: block;
+	position: absolute;
+	width: 5%;
+	top: 7px;
+	
+	font-size: 28px;
+	text-align: center;
+	font-family: "Icons";
 }
 
 .conso-place-cell {
@@ -732,15 +758,6 @@ ul.conso-list-container {
 	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAAMFBMVEUAAAAAAAAAAAAOBBMNBBFAFVVYHnVYHnVYHnVYHnRYHnRYHnRYHnRYHnRYHnRYHnQL9YQ0AAAACXRSTlMAAAANJ2Oty/Wh8eWjAAAABnRFWHRUaXRsZQCo7tInAAAAB3RFWHRBdXRob3IAqa7MSAAAAAx0RVh0RGVzY3JpcHRpb24AEwkhIwAAAAp0RVh0Q29weXJpZ2h0AKwPzDoAAAAHdEVYdEUtbWFpbAB9CJvVAAAABHRFWHRVUkwAeKPTDwAAAMVJREFUSMe1luEOhSAIRj/nBH3/F77lammu9Nwt/sbxA0NA4W4xmbnn7G6W4vBZg3cujeWBUe/eeR9Mj2jiPiAXEL08mscReDr+FLkD7/4NcQCpTC21wOz8RqMCccF/I+IJvN3PcFdaS+BKQ6sBnUEJCFQJAYEqISKwSygYASyIRLTHJBTRFpOMAcYBZ4BzIDMgc+D7HL7/D7g0cPHh8uYPCD9R3AR4m8GNjLdK3Ix5u+cDhY8sPhT52OWDna8OfywnK+vPDyOTQYlL2RZBAAAAAElFTkSuQmCC) no-repeat;
 }
 
-.pink-circle {
-	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAAYFBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAACAQIGAwZIJkiBR4OmXKisX6+uYbGuYbGuYbGuYbGuYbGuYbGuYbGuYbGuYbGuYbGuYbGuYbGuYbGuYbGuYbGuYbGuYbGuYbGuYbFClAZwAAAAEnRSTlMAAAAAAAAAAQEVRlmLrM/u/f0qO23WAAAABnRFWHRUaXRsZQCo7tInAAAAB3RFWHRBdXRob3IAqa7MSAAAAAx0RVh0RGVzY3JpcHRpb24AEwkhIwAAAAp0RVh0Q29weXJpZ2h0AKwPzDoAAAAHdEVYdEUtbWFpbAB9CJvVAAAABHRFWHRVUkwAeKPTDwAAANdJREFUSMe1lskOwzAIRJFywmwK//+xbbOojtM0TKXONTyDHTyYplEsauYRbqbCp880Rltkp7CROQCsh+iNUb4AWD6EL0if5Q00z0t5OwNXy+9JRkDm/KpZjoDkraQH7tbvcixAiywo2g6wZ0nOGyBZlKwARxUIXgDNsvQF1BMsKai+g3UXNBkC2ERIRa+aCKroWRMpBigZBhgOOAY4BQYEDsAl/f+U4B8HtwbcfHB74xcIvqKwCeA2AxsZbpWwGeN2jw8UfGThQxEfu/hgx58OPzxOKs+fB6bshVURkuu7AAAAAElFTkSuQmCC) no-repeat;
-}
-
-.conso-all-place.purple-circle,
-.conso-all-place.pink-circle {
-	background-size: 100%;
-}
-
 #question-conso .visualization ul.long-conso {
 	height:700px;
 }
@@ -761,6 +778,8 @@ ul.conso-list-container {
 	width: 110%;
 	height: auto;
 	margin-bottom: -20px;
+
+	z-index: 1;
 }
 
 .answers li.evo-button-container {
@@ -772,6 +791,7 @@ ul.conso-list-container {
 	margin-bottom: 10px;
 
 	font-size: .78em;
+	cursor: pointer;
 }
 
 /* .year-display
