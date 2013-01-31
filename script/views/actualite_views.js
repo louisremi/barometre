@@ -16,11 +16,7 @@ views.ActualiteQuestionMonthView = App.Views.QuestionMonth.extend({
 			this.answerShown = 5;
 
 		_.each(answersToHook, function(answer, i) {
-			$( self.$percentages[i] ).html(
-				( answer.value < 10 ? "&nbsp;" : "" ) +
-				( answer.value || "-" ) +
-				( answer.value < 10 ? "&nbsp;" : "" )
-			);
+			$( self.$percentages[i] ).html( answer.value );
 
 			self.$el.find("#"+i+"-element .percentage span").css({"background-color":App.ui.colors._default[i],color:App.ui.colors.font[i]});
 			if (App.ui.picClass[answer.attribute])
@@ -48,7 +44,7 @@ views.ActualiteQuestionMonthView = App.Views.QuestionMonth.extend({
 			self.$el.find("#"+i+"-element").show();
 		}
 
-		for (var i = answersToHook.length;i<numberMaxAnswer;i++) {
+		for ( var i = answersToHook.length;i<numberMaxAnswer;i++ ) {
 			self.$el.find("#"+i+"-element").hide();
 		}
 

@@ -18,7 +18,7 @@ App.Views.QuestionMonth = Backbone.View.extend({
 	render: function() {
 		var self = this;
 		this.$el.html( this.template({type:this.type}) );
-		this.$percentages = this.$el.find(".percentage span");
+		this.$percentages = this.$el.find(".percentage span:last-child");
 		this.$el.append(this.noDataTemplate());
 		this.$noData = this.$el.find(".no-data");
 		this.$noData.hide();
@@ -82,11 +82,7 @@ App.Views.QuestionMonth = Backbone.View.extend({
 		this.$percentages.parent().parent().parent().show();
 
 		_.each(question.get("answers"), function(answer, i) {
-			$( self.$percentages[i] ).html(
-				( answer.value < 10 ? "&nbsp;" : "" ) +
-				( answer.value || "-" ) +
-				( answer.value < 10 ? "&nbsp;" : "" )
-			);
+			$( self.$percentages[i] ).html( answer.value );
 
 			// if we are in compare.html, the dom node might not exist
 			if ( self.$percentages[i] ) {

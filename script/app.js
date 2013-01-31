@@ -101,6 +101,10 @@ App.ui.initialize = function() {
 	$("#years-style")[0].styleSheet ?
 		$("#years-style")[0].styleSheet.cssText = ( _.template( $("#years-style-template").html() ) )( { years: App.ui.years } ) :
 		$("#years-style").html( ( _.template( $("#years-style-template").html() ) )( { years: App.ui.years } ) );
+
+	$("#mois-en-cours")
+		.html( App.ui.months[ App.ui.now.getMonth() + 1 ][1] + " " + App.ui.now.getFullYear() )
+		.attr("data-href", ":display/courant/" + App.ui.now.getFullYear() + "/" + ( App.ui.now.getMonth() + 1 ) );
 };
 
 })(jQuery, Backbone, _, App, window);
