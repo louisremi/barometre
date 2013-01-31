@@ -775,9 +775,9 @@ ul.conso-list-container {
 }
 
 .evolution-display .answers {
+	display: block;
 	width: 110%;
 	height: auto;
-	margin-bottom: -20px;
 
 	z-index: 1;
 }
@@ -879,6 +879,7 @@ li.year-answer {
 	
 	font-weight: normal;
 	font-size: .9em;
+	line-height: 1.1em;
 	text-align: center;
 	background: #E4E4E4;
 }
@@ -912,17 +913,29 @@ li.year-answer {
 	padding: 0;
 	position: relative;
 	list-style: none;
+
+	text-align: center;
 }
 
 .month-percentages li {
 	position: absolute;
 	border-radius: 50%;
-	padding: .3em;
+	padding: .29em;
 
 	transition: font-size .3s ease, top .3s ease, left .3s ease;
 	-webkit-transition: font-size .3s ease, top .3s ease, left .3s ease;
+}
 
-	-ms-behavior: url(script/libs/PIE.htc);
+.year-month-circle {
+	position: absolute;
+
+	font-size: 1.8em;
+	margin: -.3em 0 .2em -.37em;
+	font-family: "Icons";
+}
+
+.year-month-percentage {
+	position: relative;
 }
 
 /* #tab-apropos

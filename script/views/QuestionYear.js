@@ -39,11 +39,11 @@ App.Views.QuestionYearMonth = Backbone.View.extend({
 		this.$answers = this.$el.find("li");
 
 		this.$answers.each(function( i ) {
-			this.style.background = self.type == "conso" ?
+			this.childNodes[0].style.color = self.type == "conso" ?
 				App.ui.colors.conso[i] :
 				App.ui.colors._default[ i == options.answersLength - 1 ? App.ui.colors._default.length - 1 : i ];
 			if ( options.type != "conso" ) {
-				this.style.color = App.ui.colors.font[ i == options.answersLength - 1 ? App.ui.colors._default.length - 1 : i ];
+				this.childNodes[1].style.color = App.ui.colors.font[ i == options.answersLength - 1 ? App.ui.colors._default.length - 1 : i ];
 			}
 			
 			this.style.left = App.ui.questions[ self.type ].answers[i].position[0] + "px";
@@ -57,9 +57,9 @@ App.Views.QuestionYearMonth = Backbone.View.extend({
 		var self = this;
 		_( answers ).each(function( answer, i ) {
 			var li = self.$answers.get(i);
-			li.innerHTML =
+			li.childNodes[1].innerHTML =
 				( answer.value < 10 ? "&nbsp;" : "" ) +
-				( answer.value || "-" ) +
+				( answer.value || "-" ) +
 				( answer.value < 10 ? "&nbsp;" : "" );
 
 			li.style.fontSize = Math.round( ( answer.value || 1 ) * 0.43 + 12 ) + "px";
