@@ -61,6 +61,7 @@
 		},
 
 		noData: function() {
+			this.$el.find("li").hide();
 			this.$lines.hide();
 
 			this.$noData.show();
@@ -70,6 +71,7 @@
 			var self = this,type = questions[0].get("type");
 
 			this.$el.show();
+			this.$el.find("li").show();
 			this.$lines.show();
 			this.$noData.hide();
 
@@ -116,6 +118,10 @@
 					{nostroke:false,axis:"0 0 1 1",width:3,symbol:"circle",axisxstep:9,axisystep:10,colors:colors});
 
 			self.$el.empty();
+			self.$el.append(this.noDataTemplate());
+			self.$noData = this.$el.find(".no-data");
+			self.$noData.hide();
+			
 			_.each(self.lines[0],function(line,index) {
 				var textLine = "";
 				if (answerTitles == App.ui.questions.conso.answerSlugs.length)
