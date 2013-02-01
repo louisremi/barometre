@@ -61,7 +61,6 @@
 		},
 
 		noData: function() {
-			this.$el.hide();
 			this.$lines.hide();
 
 			this.$noData.show();
