@@ -112,7 +112,8 @@ ui.questions = {
 		display: {
 			month: App.Views.QuestionMonth,
 			year: App.Views.QuestionYear,
-			evolution: App.Views.QuestionEvolution
+			evolution: App.Views.QuestionEvolution,
+			compare: App.Views.QuestionCompare
 		}
 	},
 	conso: {
@@ -184,7 +185,8 @@ ui.questions = {
 		display: {
 			month: App.views.ConsoQuestionMonthView,
 			year: App.Views.QuestionYear,
-			evolution: App.Views.QuestionEvolution
+			evolution: App.Views.QuestionEvolution,
+			compare: App.Views.QuestionCompare
 		}
 	},
 	epargne: {
@@ -229,7 +231,8 @@ ui.questions = {
 		display: {
 			month: App.Views.QuestionMonth,
 			year: App.Views.QuestionYear,
-			evolution: App.Views.QuestionEvolution
+			evolution: App.Views.QuestionEvolution,
+			compare: App.Views.QuestionCompare
 		}
 	},
 	consocourante: {
@@ -268,7 +271,8 @@ ui.questions = {
 		display: {
 			month: App.Views.QuestionMonth,
 			year: App.Views.QuestionYear,
-			evolution: App.Views.QuestionEvolution
+			evolution: App.Views.QuestionEvolution,
+			compare: App.Views.QuestionCompare
 		}
 	},
 	immo: {
@@ -301,7 +305,8 @@ ui.questions = {
 		display: {
 			month: App.Views.QuestionMonth,
 			year: App.Views.QuestionYear,
-			evolution: App.Views.QuestionEvolution
+			evolution: App.Views.QuestionEvolution,
+			compare: App.Views.QuestionCompare
 		}
 	},
 	auto: {
@@ -334,7 +339,8 @@ ui.questions = {
 		display: {
 			month: App.Views.QuestionMonth,
 			year: App.Views.QuestionYear,
-			evolution: App.Views.QuestionEvolution
+			evolution: App.Views.QuestionEvolution,
+			compare: App.Views.QuestionCompare
 		}
 	},
 	actu: {

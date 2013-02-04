@@ -66,7 +66,7 @@
 				App.collections.questions.setUrl(
 					App.ui.tabs[self.model.get("tab")].join("/"),
 					self.model.get("year"),
-					(self.model.get("display") == "month" ? "0"+self.model.get("month") : "").slice(-2)
+					(self.model.get("display") == "month" || self.model.get("display") == "compare" ? "0"+self.model.get("month") : "").slice(-2)
 				);
 				App.collections.questions.fetch();
 			});

@@ -278,6 +278,10 @@ body {
 	letter-spacing: .8em;
 }
 
+.compare-display .year-menu {
+	display: none;
+}
+
 /* h3
 ----------------------------------------------------------------------------- */
 
@@ -393,7 +397,8 @@ h3 {
 	display: none;
 }
 
-#tabs.month-display .month-menu {
+#tabs.month-display .month-menu,
+#tabs.compare-display .month-menu {
 	/*opacity: 1;*/
 	display: block;
 }
@@ -793,17 +798,19 @@ h3 {
 	cursor: pointer;
 }
 
-/* .year-display
+/* .year-display, .compare-display
 ----------------------------------------------------------------------------- */
 
 .year-display .answers,
+.compare-display .answers,
 .year-month {
 	float: left;
 	width: 220px;
 	margin: 10px 25px 15px 0;
 }
 
-#tabs.year-display ul.answers {
+#tabs.year-display ul.answers,
+#tabs.compare-display ul.answers {
 	height: auto;
 	padding: 0;
 	margin-bottom: 0;
@@ -811,11 +818,17 @@ h3 {
 	text-align: left;
 }
 
-.year-display .visualization {
+#tabs.compare-display ul.answers {
+	height: 220px;
+}
+
+.year-display .visualization,
+.compare-display .visualization {
 	width: 110%;
 }
 
-.year-display .visualization:after {
+.year-display .visualization:after,
+.compare-display .visualization:after {
 	content: "";
 	display: block;
 	clear: both;
@@ -834,7 +847,8 @@ li.year-answer {
 	vertical-align: middle;
 }
 
-.year-display .answers .no-data {
+.year-display .answers .no-data,
+.compare-display .answers .no-data {
 	width:700px;
 }
 

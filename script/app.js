@@ -56,6 +56,7 @@ App.initialize = function() {
 					typeAvailable.push(question.get('type'));
 				}
 			});
+
 		} else {
 			var questionGroup = App.collections.questions.groupBy(function(question) {
 				return question.get('type');
@@ -77,7 +78,7 @@ App.initialize = function() {
 					
 					if ( App.views.question[type].el ) {
 						App.views.question[type].$el.children(":first").css({display: ""})
-							.nextAll().css({display: ""});
+							.nextAll(":not(.year-month)").css({display: ""});
 					}
 				}
 			

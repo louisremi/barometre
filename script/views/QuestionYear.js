@@ -6,6 +6,7 @@ if ( !App.Views ) {
 
 App.Views.QuestionYearMonth = Backbone.View.extend({
 	template: _.template($("#question-year-month-template").html()),
+	compareTemplate: _.template($("#question-compare-template").html()),
 	tagName: "div",
 	className: "year-month",
 
@@ -16,7 +17,7 @@ App.Views.QuestionYearMonth = Backbone.View.extend({
 	render: function( options ) {
 		var self = this;
 
-		this.$el.html( this.template( options ) );
+		this.$el.html( this[ options.compare ? "compareTemplate" : "template" ]( options ) );
 
 		this.$year = this.$el.find("span");
 
@@ -26,10 +27,11 @@ App.Views.QuestionYearMonth = Backbone.View.extend({
 			this.childNodes[0].style.color = self.type == "conso" ?
 				App.ui.colors.conso[i] :
 				App.ui.colors._default[ i == options.answersLength - 1 ? App.ui.colors._default.length - 1 : i ];
+
 			if ( options.type != "conso" ) {
 				this.childNodes[1].style.color = App.ui.colors.font[ i == options.answersLength - 1 ? App.ui.colors._default.length - 1 : i ];
 			}
-			
+
 			this.style.left = App.ui.questions[ self.type ].answers[i].position[0] + "px";
 			this.style.top = App.ui.questions[ self.type ].answers[i].position[1] + "px";
 		});

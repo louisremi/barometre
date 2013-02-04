@@ -27,6 +27,7 @@ module.exports = function(grunt) {
           'script/views/QuestionMonth.js',
           'script/views/QuestionEvolution.js',
           'script/views/QuestionYear.js',
+          'script/views/QuestionCompare.js',
           'script/views/actualite_views.js',
           'script/views/conso_views.js',
 

@@ -11,6 +11,7 @@ App.Views.Links = Backbone.View.extend({
 
 		this.$el.find("a").each(function() {
 			var dataHref = this.getAttribute("data-href"),
+				year =  self.model.get("year"),
 				href;
 
 			if ( !dataHref ) {
@@ -20,7 +21,7 @@ App.Views.Links = Backbone.View.extend({
 			this.href = "#bm/" + dataHref
 				.replace( ":display", self.model.get("display") )
 				.replace( ":tab", self.model.get("tab") )
-				.replace( ":year", self.model.get("year") )
+				.replace( ":year", this.parentNode.parentNode.className == "display-menu" ? App.ui.years[0] : year )
 				.replace( ":month", self.model.get("month") );
 		});
 	}
