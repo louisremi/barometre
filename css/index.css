@@ -146,6 +146,8 @@ body {
 
 	font-weight: normal;
 	line-height: 1.3em;
+	/* this prevents Sentinel to appear bold in MacOS */
+	-webkit-font-smoothing: antialiased;
 }
 
 .banner h2:before, .banner h2:after {
@@ -577,12 +579,6 @@ h3 {
 	width:20%;
 }
 
-ul.conso-list-container {
-	display:block;
-	list-style-type: none;
-	position: relative;
-}
-
 .logo-conso {
 	position:relative;
 	top:-110px;
@@ -640,7 +636,10 @@ ul.conso-list-container {
 }
 
 .month-display #question-conso .answers {
+	display: block;
+	position: relative;
 	height:500px;
+
 	-webkit-transition: height .3s ease;
 	transition: height .3s ease;
 }
@@ -1041,10 +1040,7 @@ li.year-answer {
 
 .no-data {
 	display:none;
+	width: 90%;
 	position:relative;
 	z-index:3;
-}
-
-.conso-list-container .no-data{
-	display:block;
 }

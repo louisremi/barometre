@@ -8,22 +8,6 @@ App.Views.QuestionYearMonth = Backbone.View.extend({
 	template: _.template($("#question-year-month-template").html()),
 	tagName: "div",
 	className: "year-month",
-	positions: [{
-		x: 45,
-		y: 26
-	}, {
-		x: 155,
-		y: 26
-	}, {
-		x: 45,
-		y: 98
-	}, {
-		x: 155,
-		y: 98
-	}, {
-		x: 100,
-		y: 62
-	}],
 
 	initialize: function( options ) {
 		this.type = options.type;
@@ -58,9 +42,9 @@ App.Views.QuestionYearMonth = Backbone.View.extend({
 		_( answers ).each(function( answer, i ) {
 			var li = self.$answers.get(i);
 			li.childNodes[1].innerHTML =
-				( answer.value < 10 ? "&nbsp;" : "" ) +
+				( answer.value < 10 ? "&nbsp;&nbsp;" : "" ) +
 				( answer.value || "-" ) +
-				( answer.value < 10 ? "&nbsp;" : "" );
+				( answer.value < 10 ? "&nbsp;&nbsp;" : "" );
 
 			li.style.fontSize = Math.round( ( answer.value || 1 ) * 0.43 + 12 ) + "px";
 
@@ -74,7 +58,6 @@ App.Views.QuestionYearMonth = Backbone.View.extend({
 
 App.Views.QuestionYear = Backbone.View.extend({
 	template: _.template($("#question-year-template").html()),
-	noDataTemplate: _.template($("#no-data-year-template").html()),
 
 	initialize: function(options) {
 		this.type = options.type;
@@ -84,12 +67,9 @@ App.Views.QuestionYear = Backbone.View.extend({
 	render: function() {
 		var self = this;
 
-		this.$el.html( this.template({type:this.type}) );
-		this.$el.append(this.noDataTemplate());
-		this.$noData = this.$el.find(".no-data");
-		this.$noData.hide();
+		this.$el.children(".answers").html( this.template({type:this.type}) );
 
-		var $visualization = this.$el.parent();
+		var $visualization = this.$el;
 		_( App.ui.months ).each(function(month, i) {
 			var view = self.monthViews[i] = new App.Views.QuestionYearMonth( {type: self.type} ),
 				year = App.ui.model.get("year");
@@ -113,10 +93,6 @@ App.Views.QuestionYear = Backbone.View.extend({
 		var self = this,
 			year = App.ui.model.get("year");
 
-		this.$noData.hide();
-		this.$yearMonth.show();
-		this.$answers.show();
-
 		_( this.monthViews ).each(function( monthView ) {
 			monthView.el.style.display = "none";
 			monthView.$year.html( year );
@@ -132,13 +108,6 @@ App.Views.QuestionYear = Backbone.View.extend({
 				monthView.el.style.display = "block";
 			}
 		});
-	},
-
-	noData: function() {
-		var self = this;
-		this.$noData.show().css({display:"block"});
-		this.$yearMonth.hide();
-		this.$answers.hide();
 	}
 });
 

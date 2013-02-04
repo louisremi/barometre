@@ -18,19 +18,21 @@
 		},
 
 		render: function() {
-			this.$el.html(this.template(this.model.toJSON()));
-			this.$el.css({"background-color":this.line.attr("stroke")});
+			this.$el.html(this.template(this.model.toJSON()))
+				.css({"background-color":this.line.attr("stroke")});
 			return this;
 		},
 
 		toggleLine: function() {
+			var anim;
+
 			if(this.visible) {
-				var anim = Raphael.animation({opacity:0},300);
+				anim = Raphael.animation({opacity:0},300);
 				this.line.animate(anim);
 				this.dots.animate(anim);
 				this.$el.css({"background-color":"#ddd"});
 			} else {
-				var anim = Raphael.animation({opacity:100},300);
+				anim = Raphael.animation({opacity:100},300);
 				this.line.animate(anim);
 				this.dots.animate(anim);
 				this.$el.css({"background-color":this.line.attr("stroke")});
@@ -40,40 +42,19 @@
 	});
 
 	Views.QuestionEvolution = Backbone.View.extend({
-		//template:_.template($('#graphic-year-template').html()),
-		noDataTemplate: _.template($("#no-data-year-evolution-template").html()),
-
-
-		initialize: function() {
-		},
 
 		render: function() {
-			var $paperWrapper = $("<div class='evo-raphael-paper'></div>").insertAfter( this.$el );
+			var $paperWrapper = $("<div class='evo-raphael-paper'></div>").appendTo( this.$el );
 			
 			this.r = Raphael( $paperWrapper[0], 706, 349 );
-			//this.$lineMenu = this.$el.find(".evo-lines-buttons");
 			this.$lines = $paperWrapper;
-			this.$el.append(this.noDataTemplate());
-			this.$noData = this.$el.find(".no-data");
-			this.$noData.hide();
+			this.$answers = this.$el.children(".answers");
 
 			return this;
 		},
 
-		noData: function() {
-			this.$lines.hide();
-
-			this.$noData.show();
-		},
-
 		hookUp: function(questions,answerTitles) {
 			var self = this,type = questions[0].get("type");
-
-			this.$el.show();
-			this.$lines.show();
-			this.$noData.hide();
-
-			this.el.parentNode.parentNode.parentNode.style.display = "block";
 
 			var coordY = [];
 
@@ -89,15 +70,17 @@
 			if (answerTitles.length == App.ui.questions.conso.answerSlugs.length) {
 				var averageIndex = [];
 				$("#question-conso .answers").removeClass("long-conso");
+
 				_.each(coordY,function(coord,index) {
-					average = _.reduce(coord,function(memo,num) {memo + num})/coord.length;
+					var average = _.reduce(coord,function(memo,num) { return memo + num; }) / coord.length;
 					averageIndex.push([index,average]);
 				});
+
 				_.sortBy(averageIndex,function(value) {
 					return value[1];
 				});
 
-				var newCoordY = new Array(5)
+				var newCoordY = new Array(5);
 				for (var i = 0,j=newCoordY.length; i < j;i++) {
 					newCoordY[i] = coordY[averageIndex[i][0]];
 				}
@@ -115,7 +98,7 @@
 					coordY,
 					{nostroke:false,axis:"0 0 1 1",width:3,symbol:"circle",axisxstep:9,axisystep:10,colors:colors});
 
-			self.$el.empty();
+			self.$answers.empty();
 			_.each(self.lines[0],function(line,index) {
 				var textLine = "";
 				if (answerTitles == App.ui.questions.conso.answerSlugs.length)
@@ -127,7 +110,7 @@
 					line:line,
 					dots:self.lines[2][index]});
 
-				self.$el.append(view.render().el);
+				self.$answers.append(view.render().el);
 			});
 
 			var axisItems = self.lines.axis[0].text.items;

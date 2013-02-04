@@ -6,8 +6,6 @@ views.ActualiteQuestionMonthView = App.Views.QuestionMonth.extend({
 	template: _.template($("#question-actu-month-template").html()),
 
 	hookUp: function(question) {
-		this.$noData.hide();
-		this.$percentages.parent().parent().parent().show();
 
 		var numberMaxAnswer = 5;
 		
@@ -49,11 +47,6 @@ views.ActualiteQuestionMonthView = App.Views.QuestionMonth.extend({
 		}
 
 		this.answerShown = answersToHook.length;
-	},
-
-	noData: function() {
-		this.$noData.show();
-		this.$percentages.parent().parent().parent().hide();
 	}
 });
 

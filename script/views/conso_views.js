@@ -82,7 +82,6 @@ views.ConsoQuestionMonthAllView = Backbone.View.extend({
 
 views.ConsoQuestionMonthView = Backbone.View.extend({
 	template: _.template($("#bm-conso-question-month-template").html()),
-	noDataTemplate: _.template($("#no-data-template").html()),
 	containerSelector: "#question-conso .answers",
 	answers: ["first","second","third","fourth","fifth"],
 	answerViews: {},
@@ -111,6 +110,8 @@ views.ConsoQuestionMonthView = Backbone.View.extend({
 
 				$(this).text($(this).text() == self.allText ? self.rankingText : self.allText);
 			}
+
+			return false;
 		});
 	},
 
@@ -120,12 +121,7 @@ views.ConsoQuestionMonthView = Backbone.View.extend({
 
 	render: function() {
 		var self = this;
-		this.$el.html(this.template({places: this.answers,types:App.ui.depenses}));
-		this.$el.append(this.noDataTemplate());
-		this.$noData = this.$el.find(".no-data");
-		this.$noData.hide();
-
-		this.$el.addClass('conso-list-container');
+		this.$el.children(".answers").html(this.template({places: this.answers,types:App.ui.depenses}));
 
 		_( this.answers ).each(function(answer, i) {
 			var view = self.answerViews[answer] = new views.ConsoAnswerMonthView({el:self.$("#"+answer)});
@@ -145,7 +141,6 @@ views.ConsoQuestionMonthView = Backbone.View.extend({
 	},
 
 	hookUp: function(question) {
-		this.$noData.hide();
 		if (this.all)
 			this.$line.show();
 		else
@@ -170,27 +165,6 @@ views.ConsoQuestionMonthView = Backbone.View.extend({
 		_.each(sortedAnswer,function(answer,index) {
 			self.answerViewsAll[answer.title].hookUp(answer,index,max);
 		});
-	},
-
-	noData: function() {
-		this.$noData.show();
-		this.$noData.css({display:"block"});
-		this.$line.hide();
-		this.$graph.hide();
-		this.isWithData = false;
-	}
-});
-
-views.ConsoQuestionYearView = Backbone.View.extend({
-	template: _.template($("#bm-conso-question-year-template").html()),
-
-	initialize: function() {
-
-	},
-
-	render: function() {
-		this.$el.html(this.template());
-		return this;
 	}
 });
 

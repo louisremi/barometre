@@ -11,17 +11,14 @@ views.Manager = {
 					var el = $('#question-'+slug+' .answers:not(:first)');
 					el.prev().remove();
 					el.remove();
-					view.compare =false;
-					view.compareViews = new Array(2);
-					view.questionsCompareCollection = new Array(2);
 				}
 				if (!view.rendered) {
-					view.setElement($('#question-'+slug+' .answers')).render(['a','b','c']).el;
+					view.setElement($('#question-'+slug+' .visualization')).render(['a','b','c']);
 					view.rendered = true;
 				}
 			}
 		});
-	},
+	}
 };
 
 })(Backbone,window,$,_,window.App);

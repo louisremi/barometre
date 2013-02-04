@@ -26,7 +26,7 @@
 	<div id="center">
 
 		<ul id="tab-menu" role="menu">
-			<li><a href="#" data-href=":display/courant/:year/:month" role="menuitem" id="mois-en-cours">Mois en cours</a></li
+			<li><a href="#" data-href="month/courant/:year/:month" role="menuitem" id="mois-en-cours">Mois en cours</a></li
 			><li><a href="#" data-href=":display/pouvoir/:year/:month" role="menuitem" aria-controls="tab-pouvoir">Pouvoir d'achat</a></li
 			><li><a href="#" data-href=":display/epargne/:year/:month" role="menuitem" aria-controls="tab-epargne">&Eacute;pa&shy;rgne</a></li
 			><li><a href="#" data-href=":display/consocourante/:year/:month" role="menuitem" aria-controls="tab-consocourante">Cons&shy;omm&shy;ation</a></li
@@ -147,7 +147,7 @@
 
 	<ul class="year-menu" role="menu"><%
 		for ( var i=0,j=years.length;i<j;i++ ) {
-			%><li class="year-<%= years[i] %>" role="menuitem"><a href="" data-href=":display/<%= tab %>/<%= years[i] %>/:month"><%= years[i] %></a></li><%
+			%><li class="year-<%= years[i] %>" role="menuitem"><a href="" data-href=":display/<%= tab %>/<%= years[i] %>/<%= lastMonthOfYear[i] %>"><%= years[i] %></a></li><%
 		}
 	%></ul>
 
@@ -163,10 +163,11 @@
 	</div>
 
 	<div class="visualization">
+		<div class="no-data">Aucune donnée disponible pour cette période</div>
 		<ul class="answers" aria-live="assertive" role="list"></ul>
 	</div>
 
-	<p class="more"><a href="" data-href=":display/<%= tab %>/:year/:month" class="<%= moreClassName %>"><%= moreLabel %></a></p>
+	<p class="more"><a href="" data-href="compare/<%= tab %>/all/:month" class="<%= moreClassName %>"><%= moreLabel %></a></p>
 </script>
 
 <script type="text/template" id="years-style-template"><%

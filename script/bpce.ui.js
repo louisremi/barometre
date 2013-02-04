@@ -44,13 +44,15 @@ var now = new Date(),
 
 ui.now = usefulDate;
 
-/* Franck doesn't want smart dates
 ui.years = [];
+ui.lastMonthOfYear = [];
 while ( i-- ) {
 	ui.years[2 - i] = currentYear--;
-}*/
-// be stupid and hard code it
-ui.years = [2013, 2012, 2011];
+	
+	ui.lastMonthOfYear[2 - i] = i == 2 ?
+		ui.now.getMonth() + 1 :
+		12;
+}
 
 ui.months = {
 	1: [ "Jan.", "Janvier" ],

@@ -68,12 +68,25 @@ App.initialize = function() {
 			});
 		}
 
-		_.each(_.difference(App.ui.tabs["courant"],typeAvailable),function(type) {
-			if (App.views.question[type]) {
-				if (!App.views.question[type].rendered)
-					App.views.Manager.draw([App.views.question[type]]);
-				if (App.views.question[type].noData)
-					App.views.question[type].noData();
+		_.each( App.ui.tabs["courant"], function(type) {
+			// we have data for the question
+			if ( _( typeAvailable ).indexOf( type ) !== -1 ) {
+				if ( App.views.question[type] ) {
+					if (!App.views.question[type].rendered)
+						App.views.Manager.draw([App.views.question[type]]);
+					
+					if ( App.views.question[type].el ) {
+						App.views.question[type].$el.children(":first").css({display: ""})
+							.nextAll().css({display: ""});
+					}
+				}
+			
+			// we don't have data for that question
+			} else {
+				if ( App.views.question[type] && App.views.question[type].el ) {
+					App.views.question[type].$el.children(":first").css({display: "block"})
+						.nextAll().css({display: "none"});
+				}
 			}
 		});
 	});
@@ -88,7 +101,8 @@ if ( !App.ui ) {
 App.ui.initialize = function() {
 	var commonData = {
 		years: App.ui.years,
-		months: App.ui.months
+		months: App.ui.months,
+		lastMonthOfYear: App.ui.lastMonthOfYear
 	};
 
 	$(".question").each(function() {
