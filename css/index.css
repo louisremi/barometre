@@ -1040,7 +1040,6 @@ li.year-answer {
 
 .no-data {
 	display:none;
-	width: 90%;
 	position:relative;
 	z-index:3;
 }

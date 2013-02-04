@@ -55,7 +55,6 @@
 
 		hookUp: function(questions,answerTitles) {
 			var self = this,type = questions[0].get("type");
-
 			var coordY = [];
 
 			_.each(questions, function(question,idxQuestion) {
@@ -99,6 +98,7 @@
 					{nostroke:false,axis:"0 0 1 1",width:3,symbol:"circle",axisxstep:9,axisystep:10,colors:colors});
 
 			self.$answers.empty();
+
 			_.each(self.lines[0],function(line,index) {
 				var textLine = "";
 				if (answerTitles == App.ui.questions.conso.answerSlugs.length)
