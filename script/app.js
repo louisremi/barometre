@@ -73,11 +73,13 @@ App.initialize = function() {
 			// we have data for the question
 			if ( _( typeAvailable ).indexOf( type ) !== -1 ) {
 				if ( App.views.question[type] ) {
-					if (!App.views.question[type].rendered)
+					if (!App.views.question[type].rendered) {
 						App.views.Manager.draw([App.views.question[type]]);
+					}
 					
 					if ( App.views.question[type].el ) {
-						App.views.question[type].$el.children(":first").css({display: ""})
+						App.views.question[type].$el.css({opacity: ""})
+							.children(":first").css({display: ""})
 							.nextAll(":not(.year-month)").css({display: ""});
 					}
 				}
@@ -85,7 +87,8 @@ App.initialize = function() {
 			// we don't have data for that question
 			} else {
 				if ( App.views.question[type] && App.views.question[type].el ) {
-					App.views.question[type].$el.children(":first").css({display: "block"})
+					App.views.question[type].$el.css({opacity: ""})
+						.children(":first").css({display: "block"})
 						.nextAll().css({display: "none"});
 				}
 			}

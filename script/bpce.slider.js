@@ -61,7 +61,7 @@ $(document).on("mouseup", function() {
 		$draggedHandle = $hiddenHandle = null;
 	}, 50);
 
-	a.click();
+	window.location = a.href;
 });
 
 })(jQuery, window);

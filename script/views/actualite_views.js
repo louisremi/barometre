@@ -9,7 +9,9 @@ views.ActualiteQuestionMonthView = App.Views.QuestionMonth.extend({
 
 		var numberMaxAnswer = 5;
 		
-		var self = this, answersToHook = _.filter(question.get("answers"),function(answer){ return answer.attribute });
+		var self = this, answersToHook = _.filter(question.get("answers"), function(answer) {
+			return answer.attribute;
+		});
 		if (!this.answerShown)
 			this.answerShown = 5;
 

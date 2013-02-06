@@ -395,6 +395,8 @@ h3 {
 	-webkit-transition: opacity .3s ease;
 	transition: opacity .3s ease;*/
 	display: none;
+	position: relative;
+	z-index: 1;
 }
 
 #tabs.month-display .month-menu,
@@ -558,6 +560,8 @@ h3 {
 
 #tabs .more {
 	display: none;
+	position: relative;
+	background: #fff;
 }
 
 #tabs.month-display .more {
@@ -943,7 +947,9 @@ li.year-answer {
 	position: absolute;
 
 	font-size: 1.8em;
-	margin: -.3em 0 .2em -.37em;
+	margin: -.3em -.2em .2em -.28em;
+	border: .2em solid transparent;
+	border-width: 0 .2em;
 	font-family: "Icons";
 }
 

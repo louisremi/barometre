@@ -6,14 +6,19 @@ views.Manager = {
 
 	draw: function(questionViews) {
 		_.each(questionViews,function(view,slug) {
+			var el;
+
 			if (view && view.setElement) {
 				if ($('#question-'+slug+' .answers').length > 1){
-					var el = $('#question-'+slug+' .answers:not(:first)');
+					el = $('#question-'+slug+' .answers:not(:first)');
 					el.prev().remove();
 					el.remove();
 				}
 				if (!view.rendered) {
-					view.setElement($('#question-'+slug+' .visualization')).render(['a','b','c']);
+					// hide tthe view temporarily while there are no data
+					el = $('#question-'+slug+' .visualization').css({opacity: "0"});
+					
+					view.setElement( el ).render(['a','b','c']);
 					view.rendered = true;
 				}
 			}

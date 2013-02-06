@@ -101,10 +101,11 @@
 
 			_.each(self.lines[0],function(line,index) {
 				var textLine = "";
-				if (answerTitles == App.ui.questions.conso.answerSlugs.length)
-					textLine = App.ui.questions[type].answers[averageIndex[index][0]].label
-				else
-					textLine = App.ui.questions[type].answers[index].label
+				if ( answerTitles == App.ui.questions.conso.answerSlugs.length ) {
+					textLine = App.ui.questions[type].answers[averageIndex[index][0]].label;
+				} else {
+					textLine = App.ui.questions[type].answers[index].label;
+				}
 				var view = new App.Views.QuestionEvolutionLineButton(
 					{model: new Backbone.Model({text:textLine}),
 					line:line,
@@ -115,18 +116,22 @@
 
 			var axisItems = self.lines.axis[0].text.items;
 			for (var i = 0,j=axisItems.length;i<j;i++) {
-				var index = parseInt(axisItems[i].attr("text"));
+				var index = parseInt(axisItems[i].attr("text"), 10);
 				axisItems[i].attr("y",axisItems[i].attr("y")+10);
-				axisItems[i].attr("text",(_.map(App.ui.months,function(month) {return month}))[index][0]+"\r\n"+App.ui.model.get("year"));
+				axisItems[i].attr("text",( _.map( App.ui.months, returnMonth ) )[index][0]+"\r\n"+App.ui.model.get("year"));
 			}
 
-			var axisItems = self.lines.axis[1].text.items;
+			axisItems = self.lines.axis[1].text.items;
 			self.lines.axis[1].attr("opacity",0);
 			for (var i = 0,j=axisItems.length;i<j;i++) {
 				axisItems[i].attr("x",axisItems[i].attr("x")-5);
 				axisItems[i].attr("text",axisItems[i].attr("text") + "%");
 			}
-		},
+		}
 	});
+
+function returnMonth(month) {
+	return month;
+}
 
 })(Backbone,window,$,_,window.App,Raphael);
