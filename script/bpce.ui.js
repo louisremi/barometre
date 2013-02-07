@@ -532,7 +532,23 @@ ui.redirects = {
 	"auto/2012/9": "auto/2012/8",
 	"auto/2012/11": "auto/2012/10",
 
-	"auto/2013/1": "auto/2012/12"
+	"auto/2013/1": "auto/2012/12",
+
+	"immo/all/2": "immo/all/1",
+	"immo/all/4": "immo/all/3",
+	"immo/all/6": "immo/all/5",
+	"immo/all/7": "immo/all/5",
+	"immo/all/8": "immo/all/5",
+	"immo/all/10": "immo/all/9",
+	"immo/all/12": "immo/all/11",
+
+	"auto/all/1": "auto/all/2",
+	"auto/all/3": "auto/all/4",
+	"auto/all/5": "auto/all/4",
+	"auto/all/6": "auto/all/4",
+	"auto/all/7": "auto/all/4",
+	"auto/all/9": "auto/all/8",
+	"auto/all/11": "auto/all/10"
 };
 
 })( window, window.App, jQuery, _ );
