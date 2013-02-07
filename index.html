@@ -230,9 +230,9 @@
 	} %>
 </script>
 
-<script id="question-actu-month-template" type="text/template"><%
-	for ( var i = -1, l = App.ui.questions[type].answersMaxLength; ++i < l; ) {
-		%><li id="<%= i %>-element" role="listitem"><div class="percentage"><div><span aria-hidden style="color:<%= App.ui.colors._default[ i == l - 1 ? App.ui.colors._default.length - 1 : i ] %>;">W</span><span style="color:<%= App.ui.colors.font[ i == l - 1 ? App.ui.colors.font.length - 1 : i ] %>"></span></div></div> <span id="<%= type %>-month-answer-text" class="heading"></span></li><%
+<script id="question-actu-template" type="text/template"><%
+	for ( var i = -1, l = answers.length; ++i < l; ) {
+		%><li role="listitem"><div class="percentage"><div><span aria-hidden style="color:<%= App.ui.colors._default[ i == l - 1 ? App.ui.colors._default.length - 1 : i ] %>;">W</span><span style="color:<%= App.ui.colors.font[ i == l - 1 ? App.ui.colors.font.length - 1 : i ] %>"><%= answers[i].value %></span></div></div> <span class="heading"><%= answers[i].attribute %></span></li><%
 	} %>
 </script>
 <!-- ####=========================================================================#### -->
@@ -240,18 +240,6 @@
 <!-- ####==================== EVOLUTION QUESTION TEMPALTE ====================#### -->
 <script id="evo-line-button" type="text/template">
 	<span><%= text %></span>
-</script>
-<!-- ####=========================================================================#### -->
-
-<!-- ####==================== EVOLUTION QUESTION TEMPALTE ====================#### -->
-<script id="no-data-template" type="text/template">
-<li class="no-data">Aucune donnée disponible pour ce mois.</li>
-</script>
-<script id="no-data-year-evolution-template" type="text/template">
-<div class="no-data">Aucune donnée disponible pour cette année.</div>
-</script>
-<script id="no-data-year-template" type="text/template">
-<li class="no-data">Aucune donnée disponible pour cette année.</li>
 </script>
 <!-- ####=========================================================================#### -->
 
@@ -299,7 +287,7 @@
 <script src="script/views/QuestionEvolution.js"></script>
 <script src="script/views/QuestionYear.js"></script>
 <script src="script/views/QuestionCompare.js"></script>
-<script src="script/views/actualite_views.js"></script>
+<script src="script/views/QuestionActualite.js"></script>
 <script src="script/views/conso_views.js"></script>
 
 <script src="script/bpce.ui.js"></script>

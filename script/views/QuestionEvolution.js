@@ -92,6 +92,9 @@
 
 			var colors = answerTitles.length == App.ui.questions.conso.answerSlugs.length ? App.ui.colors.conso : App.ui.colors._default;
 
+			// force the container to be visible to fix axis rendering issues in Webkit
+			//var disp = self.$el.parents().css({display: "block"}); //doesn't work
+			
 			self.lines = self.r.linechart(30,30,666,260,
 					_.range(_.keys(App.ui.months).length),
 					coordY,

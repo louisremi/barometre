@@ -63,6 +63,20 @@
 					App.views.Manager.draw(App.views.question);
 				}
 
+				// redirect before fetching data, if required
+				if ( model.get("display") == "month" ) {
+					// if date is after now
+					if ( model.get("year") * 100 + ( +model.get("month") ) > App.ui.now.getFullYear() * 100 + App.ui.now.getMonth() + 1 ) {
+						return window.location = "#bm/month/" + [ model.get("tab"), App.ui.now.getFullYear(), App.ui.now.getMonth() + 1 ].join("/");
+					}
+
+					// if we know we don't have data for that path
+					var path = [ model.get("tab"), model.get("year"), model.get("month") ].join("/");
+					if ( path in App.ui.redirects ) {
+						return window.location = "#bm/month/" + App.ui.redirects[ path ];
+					}
+				}
+
 				App.collections.questions.setUrl(
 					App.ui.tabs[self.model.get("tab")].join("/"),
 					self.model.get("year"),
