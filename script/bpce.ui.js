@@ -7,7 +7,7 @@ if ( !App.ui ) {
 var ui = App.ui;
 
 ui.tabs = {
-	courant: [ "pouvoir", "conso", "epargne", "consocourante", "auto", "auto", "actu", "apropos" ],
+	courant: [ "pouvoir", "conso", "epargne", "consocourante", "immo", "auto", "actu", "apropos" ],
 	pouvoir: [ "pouvoir", "conso" ],
 	epargne: [ "epargne" ],
 	consocourante: [ "consocourante" ],
