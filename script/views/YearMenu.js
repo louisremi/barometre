@@ -6,9 +6,11 @@ if ( !App.Views ) {
 
 App.Views.YearMenu = Backbone.View.extend({
 	model: Backbone.Model,
-	render: function() {
-		this.el.className = this.el.className.replace(/\byear-\d+\b/g, "") +
-		" " + "year-" + App.ui.model.get("year");
+	render: function( year ) {
+		$( this.el.querySelectorAll(".year-menu") ).each(function() {
+			this.className = this.className.replace(/\byear-\d+\b/g, "") +
+			" " + "year-" + ( year || App.ui.model.get("year") );
+		});
 	}
 });
 

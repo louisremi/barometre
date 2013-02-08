@@ -86,12 +86,49 @@ App.initialize = function() {
 			
 			// we don't have data for that question
 			} else {
+				// special case for immo and auto on "current month" tab
+				if (
+					App.ui.model.get("tab") == "courant" &&
+					App.ui.model.get("display") == "month" &&
+					( type == "auto" || type == "immo" )
+				) {
+					var tmpDate = new Date( App.ui.model.get("year"), App.ui.model.get("month") -2 );
+					// fetch data from previous month
+					App.collections.singleQuestion.setUrl(
+						type,
+						tmpDate.getFullYear(),
+						( "0" + ( tmpDate.getMonth() + 1 ) ).slice(-2)
+					);
+					return App.collections.singleQuestion.fetch();
+				}
+
+				// normal case: display a "no-data" message
 				if ( App.views.question[type] && App.views.question[type].el ) {
 					App.views.question[type].$el.css({opacity: ""})
 						.children(":first").css({display: "block"})
 						.nextAll().css({display: "none"});
 				}
 			}
+		});
+	});
+
+	// view specific to immo and auto on the front page
+	App.collections.singleQuestion = new App.collections.QuestionCollection();
+
+	App.collections.singleQuestion.bind("reset", function() {
+		App.collections.singleQuestion.each(function(question) {
+			var view = App.views.question[question.get('type')];
+			view.$el.css({opacity: ""});
+			view.hookUp(question);
+
+			// set specific month and year for that question
+			( new App.Views.YearMenu({
+				el: view.el.parentNode
+			}) ).render( question.get("year") + "" );
+
+			( new App.Views.MonthMenu({
+				el: view.el.parentNode
+			}) ).render( question.get("month") + "" );
 		});
 	});
 
@@ -120,6 +157,7 @@ App.ui.initialize = function() {
 		$("#years-style")[0].styleSheet.cssText = ( _.template( $("#years-style-template").html() ) )( { years: App.ui.years } ) :
 		$("#years-style").html( ( _.template( $("#years-style-template").html() ) )( { years: App.ui.years } ) );
 
+	// set the labeel of the first tab
 	$("#mois-en-cours")
 		.html( App.ui.months[ App.ui.now.getMonth() + 1 ][1] + " " + App.ui.now.getFullYear() )
 		.attr("data-href", ":display/courant/" + App.ui.now.getFullYear() + "/" + ( App.ui.now.getMonth() + 1 ) );
