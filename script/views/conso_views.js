@@ -140,7 +140,9 @@ views.ConsoQuestionMonthView = Backbone.View.extend({
 		return this;
 	},
 
-	hookUp: function(question) {
+	hookUp: function( questions ) {
+		var question = questions[0];
+
 		if (this.all)
 			this.$line.show();
 		else

@@ -28,7 +28,7 @@ module.exports = function(grunt) {
           'script/views/QuestionEvolution.js',
           'script/views/QuestionYear.js',
           'script/views/QuestionCompare.js',
-          'script/views/actualite_views.js',
+          'script/views/QuestionActualite.js',
           'script/views/conso_views.js',
 
           'script/bpce.ui.js',

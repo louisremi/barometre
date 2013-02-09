@@ -348,7 +348,7 @@ ui.questions = {
 		question: "",
 		moreClassName: "",
 		answers: new Array(50),
-		moreLabel: "Voir la question précédente",
+		moreLabel: null,
 		display: {
 			month: App.Views.QuestionActualite,
 			year: $,

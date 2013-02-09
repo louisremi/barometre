@@ -294,6 +294,10 @@ h3 {
 	margin-top: 0;
 }
 
+#question-actu h3 {
+	margin-bottom: 0;
+}
+
 /* .month-menu, .slider, .handle
 ----------------------------------------------------------------------------- */
 
@@ -434,6 +438,10 @@ h3 {
 	margin: 90px auto 0;
 
 	background: url(../images/symbols-nq8.png) 48px 0 no-repeat;
+}
+
+#question-actu .answers .percentage:before {
+	margin-top: 0;
 }
 
 .answers .percentage {

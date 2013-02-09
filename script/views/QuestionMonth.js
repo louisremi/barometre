@@ -18,10 +18,11 @@ App.Views.QuestionMonth = Backbone.View.extend({
 		return this;
 	},
 
-	hookUp: function( question ) {
-		var self = this;
+	hookUp: function( questions ) {
+		var self = this,
+			question = questions[0];
 
-		_.each(question.get("answers"), function(answer, i) {
+		_( question.get("answers") ).each(function(answer, i) {
 			$( self.$percentages[i] ).html( answer.value );
 
 			// if we are in compare.html, the dom node might not exist

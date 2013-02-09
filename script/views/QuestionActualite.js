@@ -15,26 +15,44 @@ App.Views.QuestionActualite = Backbone.View.extend({
 		return this;
 	},
 
-	hookUp: function( question ) {
+	hookUp: function( questions ) {
 		var self = this;
 
-		// The questions
-		this.$el.parent().children("h3").html( question.get("title") );
+		// reset the view
+		this.$el.children(".answers").css({display: "none"})
+			.nextAll().remove();
 
-		// The answers
-		this.$el.children(".answers").html( this.template({
-			answers: question.get("answers")
-		}) );
-		this.$percentages = this.$el.find(".percentage span:last-child");
+		_( questions ).each(function( question ) {
+			var answers = question.get("answers"),
+				nbAnswers = answers.length,
+				answersByLine = nbAnswers % 5 === 0 ? 5 :
+					nbAnswers % 4 === 0 ? 4 :
+					nbAnswers % 3 === 0 ? 3 :
+					4;
 
-		// The position
-		_.each(question.get("answers"), function(answer, i) {
-			if ( self.$percentages[i] ) {
-				var wrapper = self.$percentages[i].parentNode;
+			// calculate style of answers
+			_( answers ).map(function( answer ) {
+				answer.fontSize = Math.round( ( answer.value || 1 ) * 0.58 + 14 ) + "px";
+				answer.top = Math.round( 105 - ( answer.value || 1 ) * 0.4 ) + "px";
+			});
 
-				wrapper.style.fontSize = Math.round( ( answer.value || 1 ) * 0.58 + 14 ) + "px";
-				wrapper.style.top = Math.round( 105 - ( answer.value || 1 ) * 0.4 ) + "px";
-			}
+			self.$el.append( self.template({
+				question: question.get("title"),
+				answers: answers,
+				answersByLine: answersByLine
+			}) );
+
+			/*var $percentages = self.$el.find(".answers:last .percentage span:last-child");
+
+			// The position
+			_( question.get("answers") ).each(function(answer, i) {
+				if ( $percentages[i] ) {
+					var wrapper = $percentages[i].parentNode;
+
+					wrapper.style.fontSize = Math.round( ( answer.value || 1 ) * 0.58 + 14 ) + "px";
+					wrapper.style.top = Math.round( 105 - ( answer.value || 1 ) * 0.4 ) + "px";
+				}
+			});*/
 		});
 	}
 });

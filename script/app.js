@@ -48,30 +48,22 @@ App.initialize = function() {
 	App.collections.questions = new App.collections.QuestionCollection();
 
 	App.collections.questions.bind('reset',function() {
-		var typeAvailable = [];
-		if (App.ui.model.get("display") === "month") {
-			App.collections.questions.each(function(question) {
-				if (!!App.views.question[question.get('type')] && App.views.question[question.get('type')].hookUp) {
-					App.views.question[question.get('type')].hookUp(question);
-					typeAvailable.push(question.get('type'));
-				}
-			});
+		var groupedQuestions = App.collections.questions.groupBy(function(question) {
+			return question.get('type');
+		});
 
-		} else {
-			var questionGroup = App.collections.questions.groupBy(function(question) {
-				return question.get('type');
-			});
-			_.each(questionGroup,function(questions,type) {
-				if (!!App.views.question[type] && App.views.question[type].hookUp) {
-					App.views.question[type].hookUp(questions,App.ui.model.get("display") === "evolution" ? App.ui.questions[type].answerSlugs : undefined);
-					typeAvailable.push(type);
-				}
-			});
-		}
+		_( groupedQuestions ).each(function( questions, type ) {
+			if ( App.views.question[type] && App.views.question[type].hookUp ) {
+				App.views.question[type].hookUp( questions, App.ui.model.get("display") === "evolution" ?
+					App.ui.questions[type].answerSlugs :
+					undefined
+				);
+			}
+		});
 
-		_.each( App.ui.tabs["courant"], function(type) {
+		_( App.ui.tabs["courant"] ).each(function( type ) {
 			// we have data for the question
-			if ( _( typeAvailable ).indexOf( type ) !== -1 ) {
+			if ( type in groupedQuestions ) {
 				if ( App.views.question[type] ) {
 					if (!App.views.question[type].rendered) {
 						App.views.Manager.draw([App.views.question[type]]);
@@ -80,7 +72,7 @@ App.initialize = function() {
 					if ( App.views.question[type].el ) {
 						App.views.question[type].$el.css({opacity: ""})
 							.children(":first").css({display: ""})
-							.nextAll(":not(.year-month)").css({display: ""});
+							.nextAll(":not(.year-month, #question-actu .answers)").css({display: ""});
 					}
 				}
 			
@@ -100,10 +92,9 @@ App.initialize = function() {
 						( "0" + ( tmpDate.getMonth() + 1 ) ).slice(-2)
 					);
 					return App.collections.singleQuestion.fetch();
-				}
 
 				// normal case: display a "no-data" message
-				if ( App.views.question[type] && App.views.question[type].el ) {
+				} else if ( App.views.question[type] && App.views.question[type].el ) {
 					App.views.question[type].$el.css({opacity: ""})
 						.children(":first").css({display: "block"})
 						.nextAll().css({display: "none"});
@@ -119,7 +110,9 @@ App.initialize = function() {
 		App.collections.singleQuestion.each(function(question) {
 			var view = App.views.question[question.get('type')];
 			view.$el.css({opacity: ""});
-			view.hookUp(question);
+			view.hookUp([question]);
+
+			view.$el.children(".no-data, .answers").css({display: ""});
 
 			// set specific month and year for that question
 			( new App.Views.YearMenu({
@@ -160,7 +153,7 @@ App.ui.initialize = function() {
 	// set the labeel of the first tab
 	$("#mois-en-cours")
 		.html( App.ui.months[ App.ui.now.getMonth() + 1 ][1] + " " + App.ui.now.getFullYear() )
-		.attr("data-href", ":display/courant/" + App.ui.now.getFullYear() + "/" + ( App.ui.now.getMonth() + 1 ) );
+		.attr("data-href", "month/courant/" + App.ui.now.getFullYear() + "/" + ( App.ui.now.getMonth() + 1 ) );
 };
 
 })(jQuery, Backbone, _, App, window);

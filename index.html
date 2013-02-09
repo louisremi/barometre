@@ -167,7 +167,9 @@
 		<ul class="answers" aria-live="assertive" role="list"></ul>
 	</div>
 
-	<p class="more"><a href="" data-href="compare/<%= tab %>/all/:month" class="<%= moreClassName %>"><%= moreLabel %></a></p>
+	<% if ( moreLabel ) { %>
+		<p class="more"><a href="" data-href="compare/<%= tab %>/all/:month" class="<%= moreClassName %>"><%= moreLabel %></a></p>
+	<% } %>
 </script>
 
 <script type="text/template" id="years-style-template"><%
@@ -230,10 +232,18 @@
 	} %>
 </script>
 
-<script id="question-actu-template" type="text/template"><%
+<script id="question-actu-template" type="text/template">
+	<hr/>
+	<h3><%= question %></h3>
+	<hr/>
+	<ul class="answers actualites-answers"><%
 	for ( var i = -1, l = answers.length; ++i < l; ) {
-		%><li role="listitem"><div class="percentage"><div><span aria-hidden style="color:<%= App.ui.colors._default[ i == l - 1 ? App.ui.colors._default.length - 1 : i ] %>;">W</span><span style="color:<%= App.ui.colors.font[ i == l - 1 ? App.ui.colors.font.length - 1 : i ] %>"><%= answers[i].value %></span></div></div> <span class="heading"><%= answers[i].attribute %></span></li><%
+		if ( i && i % answersByLine === 0 ) { 
+			%></ul><ul class="answers"><%
+		}
+		%><li role="listitem"><div class="percentage"><div style="font-size: <%= answers[i].fontSize %>; top: <%= answers[i].top %>;"><span aria-hidden style="color:<%= App.ui.colors._default[ i == l - 1 ? App.ui.colors._default.length - 1 : i ] %>;">W</span><span style="color:<%= App.ui.colors.font[ i == l - 1 ? App.ui.colors.font.length - 1 : i ] %>"><%= answers[i].value %></span></div></div> <span class="heading"><%= answers[i].attribute %></span></li><%
 	} %>
+	</ul>
 </script>
 <!-- ####=========================================================================#### -->
 
