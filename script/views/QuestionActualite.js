@@ -38,18 +38,23 @@ App.Views.QuestionActualite = Backbone.View.extend({
 
 			_( answers ).each(function( answer, i ) {
 				if ( isRanking ) {
+					answer.fontSize = Math.round( ( 6 - answer.value ) * 15 * 0.58 + 14 ) + "px";
+					answer.top = Math.round( 105 - ( 6 - answer.value ) * 15 * 0.4 ) + "px";
 
+					answer.color = "#000";
+					answer.background = App.ui.colors.conso[ i ];
 
 				} else {
 					answer.fontSize = Math.round( ( answer.value || 1 ) * 0.58 + 14 ) + "px";
 					answer.top = Math.round( 105 - ( answer.value || 1 ) * 0.4 ) + "px";
+
 					if ( nbAnswers < 6 ) {
-						answer.color = App.ui.colors.font[ i == nbAnswers - 1 ? App.ui.colors.font.length - 1 : i ];
-						answer.background = App.ui.colors._default[ i == nbAnswers - 1 ? App.ui.colors._default.length - 1 : i ];
+					answer.color = App.ui.colors.font[ i == nbAnswers - 1 ? App.ui.colors.font.length - 1 : i ];
+					answer.background = App.ui.colors._default[ i == nbAnswers - 1 ? App.ui.colors._default.length - 1 : i ];
 
 					} else {
 						answer.color = "#000";
-						answer.background = "#D6D6D6";
+						answer.background = "#C0C0C0";
 					}
 				}
 			});
@@ -57,7 +62,8 @@ App.Views.QuestionActualite = Backbone.View.extend({
 			self.$el.append( self.template({
 				question: question.get("title"),
 				answers: answers,
-				answersByLine: answersByLine
+				answersByLine: answersByLine,
+				img: question.get("image")
 			}) );
 		});
 	}

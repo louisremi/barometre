@@ -234,7 +234,12 @@
 
 <script id="question-actu-template" type="text/template">
 	<hr/>
-	<h3><%= question %></h3>
+	<h3>
+		<%= question %>
+		<% if ( img ) { %>
+			<img src="<%= img %>" />
+		<% } %>
+	</h3>
 	<hr/>
 	<ul class="answers actualites-answers"><%
 	for ( var i = -1, l = answers.length; ++i < l; ) {

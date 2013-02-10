@@ -296,6 +296,15 @@ h3 {
 
 #question-actu h3 {
 	margin-bottom: 0;
+	position: relative;
+}
+
+#question-actu h3 img {
+	position: absolute;
+	width: 150px;
+
+	left: 276px;
+	top: 70px;
 }
 
 /* .month-menu, .slider, .handle
