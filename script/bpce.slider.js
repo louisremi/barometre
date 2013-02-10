@@ -47,7 +47,7 @@ $(document).on("mouseup", function() {
 	if (!$draggedHandle) { return; }
 
 	var offset = $draggedHandle.offset(),
-		a = document.elementFromPoint( offset.left + 8, offset.top + 20 - html.scrollTop );
+		a = document.elementFromPoint( offset.left + 8, offset.top + 20 - ( html.scrollTop || document.body.scrollTop ) );
 
 	if ( a.nodeName == "LI" ) {
 		a = a.childNodes[1];
