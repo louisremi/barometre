@@ -23,18 +23,36 @@ App.Views.QuestionActualite = Backbone.View.extend({
 			.nextAll().remove();
 
 		_( questions ).each(function( question ) {
-			var answers = _.filter( question.get("answers"), function( answer ) {
-					if ( answer.value ) {
-						answer.fontSize = Math.round( ( answer.value || 1 ) * 0.58 + 14 ) + "px";
-						answer.top = Math.round( 105 - ( answer.value || 1 ) * 0.4 ) + "px";
-						return true;
+			var isRanking = true,
+				answers = _.filter( question.get("answers"), function( answer ) {
+					if ( answer.value > 5 ) {
+						isRanking = false;
 					}
+					return answer.value;
 				}),
 				nbAnswers = answers.length,
 				answersByLine = nbAnswers % 5 === 0 ? 5 :
 					nbAnswers % 4 === 0 ? 4 :
 					nbAnswers % 3 === 0 ? 3 :
 					4;
+
+			_( answers ).each(function( answer, i ) {
+				if ( isRanking ) {
+
+
+				} else {
+					answer.fontSize = Math.round( ( answer.value || 1 ) * 0.58 + 14 ) + "px";
+					answer.top = Math.round( 105 - ( answer.value || 1 ) * 0.4 ) + "px";
+					if ( nbAnswers < 6 ) {
+						answer.color = App.ui.colors.font[ i == nbAnswers - 1 ? App.ui.colors.font.length - 1 : i ];
+						answer.background = App.ui.colors._default[ i == nbAnswers - 1 ? App.ui.colors._default.length - 1 : i ];
+
+					} else {
+						answer.color = "#000";
+						answer.background = "#D6D6D6";
+					}
+				}
+			});
 
 			self.$el.append( self.template({
 				question: question.get("title"),
