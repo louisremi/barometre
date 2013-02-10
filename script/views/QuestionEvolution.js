@@ -60,9 +60,15 @@
 			_.each(questions, function(question,idxQuestion) {
 				var questionMonth = question.get("month");
 				_.each(question.get("answers"),function(answer) {
+					// hack to fix "epargne" returns "non" instead of "pasdecote" in 2013
+					if ( answer.title == "non" && type == "epargne" ) {
+						answer.title = "pasdecote";
+					}
+
 					coordY[_.indexOf(answerTitles,answer.title)] = coordY[_.indexOf(answerTitles,answer.title)] || new Array(10);
-					if(App.ui.months[questionMonth])
+					if(App.ui.months[questionMonth]) {
 						coordY[_.indexOf(answerTitles,answer.title)][questionMonth < 8 ? questionMonth-1 : questionMonth-3] = answer.value;
+					}
 				});
 			});
 
