@@ -60,7 +60,7 @@ ui.months = {
 	3: [ "Mar.", "Mars" ],
 	4: [ "Avr.", "Avril" ],
 	5: [ "Mai", "Mai" ],
-	//6: [ "Juin", "Juin" ],
+	6: [ "Juin", "Juin" ],
 	//7: [ "Jul", "Juillet" ],
 	8: [ "Août", "Août" ],
 	9: [ "Sept.", "Septembre" ],
@@ -482,16 +482,22 @@ ui.redirects = {
 	"epargne/2011/3": "epargne/2011/10",
 	"epargne/2011/4": "epargne/2011/10",
 	"epargne/2011/5": "epargne/2011/10",
+	"epargne/2011/6": "epargne/2011/10",
 	"epargne/2011/8": "epargne/2011/10",
 	"epargne/2011/9": "epargne/2011/10",
+
+	"epargne/2012/6": "epargne/2012/5",
 
 	"consocourante/2011/1": "consocourante/2011/10",
 	"consocourante/2011/2": "consocourante/2011/10",
 	"consocourante/2011/3": "consocourante/2011/10",
 	"consocourante/2011/4": "consocourante/2011/10",
 	"consocourante/2011/5": "consocourante/2011/10",
+	"consocourante/2011/6": "consocourante/2011/10",
 	"consocourante/2011/8": "consocourante/2011/10",
 	"consocourante/2011/9": "consocourante/2011/10",
+
+	"consocourante/2012/6": "consocourante/2012/5",
 
 	"immo/2011/1": "immo/2011/11",
 	"immo/2011/2": "immo/2011/11",
@@ -548,7 +554,9 @@ ui.redirects = {
 	"auto/all/6": "auto/all/4",
 	"auto/all/7": "auto/all/4",
 	"auto/all/9": "auto/all/8",
-	"auto/all/11": "auto/all/10"
+	"auto/all/11": "auto/all/10",
+
+	"actu/2012/6": "actu/2012/5"
 };
 
 })( window, window.App, jQuery, _ );

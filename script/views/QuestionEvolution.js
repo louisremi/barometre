@@ -60,15 +60,12 @@
 			_.each(questions, function(question,idxQuestion) {
 				var questionMonth = question.get("month");
 				_.each(question.get("answers"),function(answer) {
-					// hack to fix "epargne" returns "non" instead of "pasdecote" in 2013
-					//if ( answer.title == "non" && type == "epargne" ) {
-					//	answer.title = "pasdecote";
-					//}
-
+					
 					coordY[_.indexOf(answerTitles,answer.title)] = coordY[_.indexOf(answerTitles,answer.title)] || new Array(11);
 					if(App.ui.months[questionMonth]) {
-						coordY[_.indexOf(answerTitles,answer.title)][questionMonth < 8 ? questionMonth-1 : questionMonth-3] = answer.value;
+						coordY[_.indexOf(answerTitles,answer.title)][questionMonth < 7 ? questionMonth-1 : questionMonth-2] = answer.value;
 					}
+
 				});
 			});
 
@@ -100,11 +97,10 @@
 
 			// force the container to be visible to fix axis rendering issues in Webkit
 			//var disp = self.$el.parents().css({display: "block"}); //doesn't work
-			
 			self.lines = self.r.linechart(30,30,666,260,
 					_.range(_.keys(App.ui.months).length),
 					coordY,
-					{nostroke:false,axis:"0 0 1 1",width:3,symbol:"circle",axisxstep:9,axisystep:10,colors:colors});
+					{nostroke:false,axis:"0 0 1 1",width:3,symbol:"circle",axisxstep:10,axisystep:10,colors:colors});
 
 			self.$answers.empty();
 
@@ -123,11 +119,15 @@
 				self.$answers.append(view.render().el);
 			});
 
+			var monthTable = _.map( App.ui.months, function(month) {
+				return month;
+			});
+
 			var axisItems = self.lines.axis[0].text.items;
 			for (var i = 0,j=axisItems.length;i<j;i++) {
 				var index = parseInt(axisItems[i].attr("text"), 10);
 				axisItems[i].attr("y",axisItems[i].attr("y")+10);
-				axisItems[i].attr("text",( _.map( App.ui.months, returnMonth ) )[index][0]+"\r\n"+App.ui.model.get("year"));
+				axisItems[i].attr("text", monthTable[index][0]+"\r\n"+App.ui.model.get("year"));
 			}
 
 			axisItems = self.lines.axis[1].text.items;
@@ -138,9 +138,5 @@
 			}
 		}
 	});
-
-function returnMonth(month) {
-	return month;
-}
 
 })(Backbone,window,$,_,window.App,Raphael);
