@@ -61,11 +61,11 @@
 				var questionMonth = question.get("month");
 				_.each(question.get("answers"),function(answer) {
 					// hack to fix "epargne" returns "non" instead of "pasdecote" in 2013
-					if ( answer.title == "non" && type == "epargne" ) {
-						answer.title = "pasdecote";
-					}
+					//if ( answer.title == "non" && type == "epargne" ) {
+					//	answer.title = "pasdecote";
+					//}
 
-					coordY[_.indexOf(answerTitles,answer.title)] = coordY[_.indexOf(answerTitles,answer.title)] || new Array(10);
+					coordY[_.indexOf(answerTitles,answer.title)] = coordY[_.indexOf(answerTitles,answer.title)] || new Array(11);
 					if(App.ui.months[questionMonth]) {
 						coordY[_.indexOf(answerTitles,answer.title)][questionMonth < 8 ? questionMonth-1 : questionMonth-3] = answer.value;
 					}

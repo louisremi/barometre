@@ -296,6 +296,9 @@ h3 {
 
 #question-actu h3 {
 	margin-bottom: 0;
+}
+
+#question-actu h3 div {
 	position: relative;
 }
 
@@ -304,7 +307,7 @@ h3 {
 	width: 150px;
 
 	left: 276px;
-	top: 70px;
+	top: 30px;
 }
 
 /* .month-menu, .slider, .handle
@@ -382,6 +385,8 @@ h3 {
 .month-3 .month-3 > .handle,
 .month-4 .month-4 > .handle,
 .month-5 .month-5 > .handle,
+.month-6 .month-6 > .handle,
+.month-7 .month-7 > .handle,
 .month-8 .month-8 > .handle,
 .month-9 .month-9 > .handle,
 .month-10 .month-10 > .handle,
@@ -395,6 +400,8 @@ h3 {
 .month-3 .month-3,
 .month-4 .month-4,
 .month-5 .month-5,
+.month-6 .month-6,
+.month-7 .month-7,
 .month-8 .month-8,
 .month-9 .month-9,
 .month-10 .month-10,
