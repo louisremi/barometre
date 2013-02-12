@@ -139,12 +139,14 @@ App.ui.initialize = function() {
 		months: App.ui.months,
 		lastMonthOfYear: App.ui.lastMonthOfYear,
 		noDataLabel: "Pas de donnée disponible pour ce mois",
-		moreHref: "compare/<%= tab %>/all/:month"
+		moreHref: "compare/:tab/all/:month"
 	};
 
 	$(".question").each(function() {
 		var questionSlug = this.id.split("-")[1],
 			data = $.extend({}, commonData, App.ui.questions[ questionSlug ] );
+
+		data.moreHref.replace( ":tab", questionSlug );
 
 		$(this).html( ( _.template( $("#question-template").html() ) )( data ) );
 	});
