@@ -25,10 +25,12 @@ App.Views.QuestionActualite = Backbone.View.extend({
 		_( questions ).each(function( question ) {
 			var isRanking = true,
 				answers = _.filter( question.get("answers"), function( answer ) {
+					answer.value = parseInt( answer.value, 10 );
+
 					if ( answer.value > 5 ) {
 						isRanking = false;
 					}
-					return answer.value;
+					return !isNaN(answer.value);
 				}),
 				nbAnswers = answers.length,
 				answersByLine = nbAnswers % 5 === 0 ? 5 :

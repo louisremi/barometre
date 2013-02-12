@@ -57,7 +57,7 @@ while ( i-- ) {
 ui.months = {
 	1: [ "Jan.", "Janvier" ],
 	2: [ "Fév.", "Février" ],
-	3: [ "Mar.", "Mars" ],
+	3: [ "Mars", "Mars" ],
 	4: [ "Avr.", "Avril" ],
 	5: [ "Mai", "Mai" ],
 	6: [ "Juin", "Juin" ],
@@ -121,6 +121,7 @@ ui.questions = {
 		question: "Postes de dépenses les plus préoccupants",
 		moreClassName: "all conso-all",
 		moreLabel: "Voir l'ensemble des résultats",
+		moreHref: "month/pouvoir/:year/:month",
 		answers: [{
 			label:"L'alimentation",
 			position: [60, 30],
@@ -280,6 +281,7 @@ ui.questions = {
 		question: "Au cours des trois prochains mois, envisagez vous d'acheter<br/>une maison ou un appartement ?",
 		moreClassName: "compare",
 		moreLabel: "Comparer ce même mois sur les autres années",
+		noDataLabel: "Sondage réalisé un mois sur deux",
 		answers: [{
 				className: "yes",
 				label: "<b>oui</b>",
@@ -314,6 +316,7 @@ ui.questions = {
 		question: "Au cours des trois prochains mois, envisagez vous d'acheter<br/>ou de changer de voiture ?",
 		moreClassName: "compare",
 		moreLabel: "Comparer ce même mois sur les autres années",
+		noDataLabel: "Sondage réalisé un mois sur deux",
 		answers: [{
 				className: "yes",
 				label: "<b>oui</b>",
@@ -466,7 +469,14 @@ ui.colors = {
 		"#000",
 		"#000",
 		"#fff"
-	]
+	],
+	fontTable: {
+		"#427324": "#fff",
+		"#f6a800": "#000",
+		"#f7c9d6": "#000",
+		"#afd7d7": "#000",
+		"#571d74": "#fff"
+	}
 };
 
 ui.transitionDuration = 300;

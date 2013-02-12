@@ -78,8 +78,9 @@ App.initialize = function() {
 			
 			// we don't have data for that question
 			} else {
+				// THE CLIENT CHANGED IS MIND ONCE AGAIN
 				// special case for immo and auto on "current month" tab
-				if (
+				/*if (
 					App.ui.model.get("tab") == "courant" &&
 					App.ui.model.get("display") == "month" &&
 					( type == "auto" || type == "immo" )
@@ -94,7 +95,7 @@ App.initialize = function() {
 					return App.collections.singleQuestion.fetch();
 
 				// normal case: display a "no-data" message
-				} else if ( App.views.question[type] && App.views.question[type].el ) {
+				} else*/ if ( App.views.question[type] && App.views.question[type].el ) {
 					App.views.question[type].$el.css({opacity: ""})
 						.children(":first").css({display: "block"})
 						.nextAll().css({display: "none"});
@@ -136,7 +137,9 @@ App.ui.initialize = function() {
 	var commonData = {
 		years: App.ui.years,
 		months: App.ui.months,
-		lastMonthOfYear: App.ui.lastMonthOfYear
+		lastMonthOfYear: App.ui.lastMonthOfYear,
+		noDataLabel: "Pas de donnée disponible pour ce mois",
+		moreHref: "compare/<%= tab %>/all/:month"
 	};
 
 	$(".question").each(function() {

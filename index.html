@@ -163,12 +163,12 @@
 	</div>
 
 	<div class="visualization">
-		<div class="no-data">Aucune donnée disponible pour cette période</div>
+		<div class="no-data"><%= noDataLabel %></div>
 		<ul class="answers" aria-live="assertive" role="list"></ul>
 	</div>
 
 	<% if ( moreLabel ) { %>
-		<p class="more"><a href="" data-href="compare/<%= tab %>/all/:month" class="<%= moreClassName %>"><%= moreLabel %></a></p>
+		<p class="more"><a href="" data-href="<%= moreHref %>" class="<%= moreClassName %>"><%= moreLabel %></a></p>
 	<% } %>
 </script>
 

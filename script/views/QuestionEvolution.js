@@ -17,9 +17,12 @@
 			this.visible = true;
 		},
 
-		render: function() {
+		render: function( color ) {
 			this.$el.html(this.template(this.model.toJSON()))
-				.css({"background-color":this.line.attr("stroke")});
+				.css({
+					backgroundColor: this.line.attr("stroke"),
+					color: color
+				});
 			return this;
 		},
 
@@ -93,7 +96,11 @@
 			if (self.lines)
 				self.lines.remove();
 
-			var colors = answerTitles.length == App.ui.questions.conso.answerSlugs.length ? App.ui.colors.conso : App.ui.colors._default;
+			var colors = ( App.ui.colors[ type ] || App.ui.colors._default ).join().split(",");
+			// "ne se prononce pas" doit toujours avoir la même couleur
+			if ( type != "conso" ) {
+				colors[ answerTitles.length - 1 ] = colors[ colors.length -1 ];
+			}
 
 			// force the container to be visible to fix axis rendering issues in Webkit
 			//var disp = self.$el.parents().css({display: "block"}); //doesn't work
@@ -116,7 +123,7 @@
 					line:line,
 					dots:self.lines[2][index]});
 
-				self.$answers.append(view.render().el);
+				self.$answers.append(view.render( type == "conso" ? "#000" : App.ui.colors.fontTable[colors[index]] ).el);
 			});
 
 			var monthTable = _.map( App.ui.months, function(month) {

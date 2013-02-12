@@ -1021,6 +1021,10 @@ li.year-answer {
 	padding-right: 10px;
 }
 
+#tab-apropos b {
+	font-family: "UniversLTW01-67BoldCn", sans-serif;
+}
+
 /* .question
 ----------------------------------------------------------------------------- */
 

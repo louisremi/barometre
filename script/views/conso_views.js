@@ -111,7 +111,8 @@ views.ConsoQuestionMonthView = Backbone.View.extend({
 				$(this).text($(this).text() == self.allText ? self.rankingText : self.allText);
 			}
 
-			return false;
+			// only return false when not on tab "courant"
+			return App.ui.model.get("tab") == "courant";
 		});
 	},
 
