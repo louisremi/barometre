@@ -15,7 +15,7 @@
 	<script>
 		window.App = {backendUrl: "http://bpceback.herokuapp.com/api"};
 		// inline script/frame-bridge.js
-		(function(a,c,d){function e(b){/^#/.test(b.data)?(App.hashFound=a.location=b.data,App.initialize()):b.data&&!isNaN(b.data)&&(d.body.style.fontSize=b.data+"px",c.postMessage(d.body.offsetHeight,"*"))}a==c?(App.hashFound=a.location.hash,d.documentElement.id="standalone"):(c.postMessage("hashRequest","*"),"addEventListener"in a?a.addEventListener("message",e,!1):a.attachEvent("onmessage",e))})(window,window.parent,document);
+		(function(a,c,d){function e(b){/^#/.test(b.data)?(App.hashFound=a.location=b.data,App.initialize&&App.initialize()):b.data&&!isNaN(b.data)&&(d.body.style.fontSize=b.data+"px",c.postMessage(d.body.offsetHeight,"*"))}a==c?(App.hashFound=a.location.hash,d.documentElement.id="standalone"):("addEventListener"in a?a.addEventListener("message",e,!1):a.attachEvent("onmessage",e,!1),c.postMessage("hashRequest","*"))})(window,window.parent,document);
 	</script>
 	<!--<script src="script/frame-bridge.js"></script>-->
 </head>
