@@ -118,6 +118,11 @@ views.ConsoQuestionMonthView = Backbone.View.extend({
 
 	toggleSize: function() {
 		$(this.containerSelector).toggleClass("long-conso",!this.all);
+		
+		setTimeout(function() {
+			// send current document height to parent frame
+			window.parent.postMessage( document.body.offsetHeight, "*" );
+		}, 350);
 	},
 
 	render: function() {

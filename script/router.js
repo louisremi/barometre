@@ -110,10 +110,10 @@
 
 			// proxy url to parent frame
 			window.parent.postMessage( window.location.hash + "", "*" );
-			setTimeout(function() {
+			/*setTimeout(function() {
 				// send current document height to parent frame
 				window.parent.postMessage( document.body.offsetHeight, "*" );
-			}, App.ui.transitionDuration + 50 );
+			}, App.ui.transitionDuration + 250 );*/
 		}
 	});
 

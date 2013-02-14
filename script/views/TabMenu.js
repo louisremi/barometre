@@ -26,6 +26,9 @@ App.Views.TabMenu = Backbone.View.extend({
 
 			$("#tabs").css({opacity: 1});
 
+			// send current document height to parent frame
+			window.parent.postMessage( document.body.offsetHeight, "*" );
+
 		}, App.ui.transitionDuration + 50 );
 
 		var self = this,

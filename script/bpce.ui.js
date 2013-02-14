@@ -355,7 +355,8 @@ ui.questions = {
 		display: {
 			month: App.Views.QuestionActualite,
 			year: $,
-			evolution: $
+			evolution: $,
+			compare: $
 		}
 	},
 	apropos: {
@@ -365,7 +366,8 @@ ui.questions = {
 		display: {
 			month: $,
 			year: $,
-			evolution: $
+			evolution: $,
+			compare: $
 		}
 	}
 };
@@ -456,6 +458,20 @@ ui.colors = {
 		"#a6a6a6",
 		"#a6a6a6"
 	],
+	actu: [
+		"#b8ca36",
+		"#a1cdd2",
+		"#d37495",
+		"#ecd3e6",
+		"#e09d26",
+		"#a1a0ce",
+		"#93c19e",
+		"#fff280",
+		"#a6a6a6",
+		"#a6a6a6",
+		"#a6a6a6",
+		"#a6a6a6"
+	],
 	_default: [
 		"#427324",
 		"#f6a800",
@@ -540,8 +556,8 @@ ui.redirects = {
 	"auto/2011/9": "auto/2011/10",
 	"auto/2011/11": "auto/2011/10",
 
-	"auto/2012/1": "auto/2012/2",
-	"auto/2012/3": "auto/2012/4",
+	"auto/2012/1": "auto/2011/12",
+	"auto/2012/3": "auto/2012/2",
 	"auto/2012/5": "auto/2012/4",
 	"auto/2012/6": "auto/2012/4",
 	"auto/2012/7": "auto/2012/4",

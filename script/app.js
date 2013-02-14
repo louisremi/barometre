@@ -102,6 +102,9 @@ App.initialize = function() {
 				}
 			}
 		});
+
+		// send current document height to parent frame
+		window.parent.postMessage( document.body.offsetHeight, "*" );
 	});
 
 	// view specific to immo and auto on the front page
@@ -146,7 +149,7 @@ App.ui.initialize = function() {
 		var questionSlug = this.id.split("-")[1],
 			data = $.extend({}, commonData, App.ui.questions[ questionSlug ] );
 
-		data.moreHref.replace( ":tab", questionSlug );
+		data.moreHref = data.moreHref.replace( ":tab", questionSlug );
 
 		$(this).html( ( _.template( $("#question-template").html() ) )( data ) );
 	});
@@ -155,7 +158,7 @@ App.ui.initialize = function() {
 		$("#years-style")[0].styleSheet.cssText = ( _.template( $("#years-style-template").html() ) )( { years: App.ui.years } ) :
 		$("#years-style").html( ( _.template( $("#years-style-template").html() ) )( { years: App.ui.years } ) );
 
-	// set the labeel of the first tab
+	// set the label of the first tab
 	$("#mois-en-cours")
 		.html( App.ui.months[ App.ui.now.getMonth() + 1 ][1] + " " + App.ui.now.getFullYear() )
 		.attr("data-href", "month/courant/" + App.ui.now.getFullYear() + "/" + ( App.ui.now.getMonth() + 1 ) );
