@@ -173,6 +173,8 @@ views.ConsoQuestionMonthView = Backbone.View.extend({
 		_.each(sortedAnswer,function(answer,index) {
 			self.answerViewsAll[answer.title].hookUp(answer,index,max);
 		});
+
+		$(this.allModifierSelector).text(self.all ? self.rankingText : self.allText)
 	}
 });
 
