@@ -246,7 +246,7 @@
 		if ( i && i % answersByLine === 0 ) { 
 			%></ul><ul class="answers"><%
 		}
-		%><li role="listitem"><div class="percentage"><div style="font-size: <%= answers[i].fontSize %>; top: <%= answers[i].top %>;"><span aria-hidden style="color:<%= answers[i].background %>;">W</span><span><%= answers[i].value %></span></div></div> <span class="heading"><%= answers[i].attribute %></span></li><%
+		%><li role="listitem"><div class="percentage"><div style="font-size: <%= answers[i].fontSize %>; top: <%= answers[i].top %>;"><span aria-hidden style="color:<%= answers[i].background %>;">W</span><span style="color:<%= answers[i].color %>"><%= answers[i].value %></span></div></div> <span class="heading"><%= answers[i].attribute %></span></li><%
 	} %>
 	</ul>
 </script>

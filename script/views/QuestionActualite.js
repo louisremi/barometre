@@ -56,6 +56,8 @@ App.Views.QuestionActualite = Backbone.View.extend({
 						answer.background = App.ui.colors.actu[ i ];
 					}
 				}
+
+				answer.color = App.ui.colors.fontTable[ answer.background ] || "#000";
 			});
 
 			self.$el.append( self.template({
