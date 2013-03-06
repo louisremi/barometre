@@ -191,7 +191,7 @@ App.ui.initialize = function() {
 	$(document).on("change", ".month-display .year-select", function() {
 		var selectedYear = $(this).val(),
 			$wrapper = $(this).closest("div"),
-			$monthOptions = $wrapper.find(".month-select > option"),
+			$monthOptions = $wrapper.find(".month-select option"),
 			question = $wrapper.closest(".tab")[0].id.split("-")[1],
 			currentYear = App.ui.now.getFullYear(),
 			currentMonth = App.ui.now.getMonth() + 1,
@@ -206,12 +206,13 @@ App.ui.initialize = function() {
 				( selectedYear > 2012 && question == "immo" && +value % 2 === 0 ) ||
 				( selectedYear > 2012 && question == "auto" && +value % 2 === 1 )
 			) {
-				this.style.display = "none";
+				if ( this.parentNode.nodeName == "SELECT" ) {
+					$(this).wrap("<span>").parent().hide();
+				}
 				this.removeAttribute("selected");
-				this.setAttribute("disabled", "");
-			} else {
-				this.style.display = "";
-				this.removeAttribute("disabled");
+
+			} else if ( this.parentNode.nodeName == "SPAN" ) {
+				$(this).unwrap();
 			}
 		});
 	});

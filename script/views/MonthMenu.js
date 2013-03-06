@@ -7,12 +7,13 @@ if ( !App.Views ) {
 App.Views.MonthMenu = Backbone.View.extend({
 	model: Backbone.Model,
 	render: function( month ) {
-		$(".month-select :checked").removeAttr("selected");
+		$(".month-select option:selected").each(function() {
+			// the jQuery method doesn't work
+			this.removeAttribute("selected");
+		});
 
 		$(".month-select [value='"+ App.ui.model.get("month") +"']").each(function() {
-			if ( this.style.display != "none" ) {
-				this.setAttribute("selected", "");
-			}
+			this.setAttribute("selected", "");
 		});
 	}
 });

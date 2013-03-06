@@ -163,7 +163,7 @@
 			<select class="month-select"><%
 				for ( var month in months ) {
 					var selected = month == currentMonth ? "selected" : "";
-					%><option value="<%= month %>" <%= selected %> <%= month > currentMonth ? "style='display:none'" : "" %>><%= months[ month ][1] %></option><%
+					%><option value="<%= month %>" <%= selected %>><%= months[ month ][1] %></option><%
 				}
 			%></select>
 		</span>
