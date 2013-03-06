@@ -229,10 +229,18 @@ body {
 	color: inherit;
 }
 
-.month-display .month-display, .year-display .year-display, .evolution-display .evolution-display {
+.month-display .month-display span,
+.year-display .year-display span,
+.evolution-display .evolution-display span {
 	font-weight: bold;
 	color: #581E75;
 	border-color: #581E75;
+}
+
+.month-display .month-display a,
+.year-display .year-display a,
+.evolution-display .evolution-display a {
+	background: #581E75;
 }
 
 #question-actu .display-menu {
@@ -1023,6 +1031,7 @@ li.year-answer {
 
 #tab-apropos b {
 	font-family: "UniversLTW01-67BoldCn", sans-serif;
+	font-weight: normal;
 }
 
 /* .question
@@ -1069,4 +1078,61 @@ li.year-answer {
 	display:none;
 	position:relative;
 	z-index:3;
+}
+
+.menus {
+	margin-bottom: 10px;
+
+	border-bottom: 1px solid #666;
+}
+
+.menus > div {
+	position: relative;
+
+	padding: 5px 0;
+
+	border-top: 1px solid #666;
+}
+
+.menus select {
+	display: inline-block;
+	width: 150px;
+	font-size: 11px;
+	height: 23px;
+}
+
+.menus .selected {
+	color: #581E75;
+}
+
+.menus a {
+	position: absolute;
+	right: 0;
+	top: 6px;
+
+	text-decoration: none;
+	font-weight: bold;
+	padding: 1px 8px;
+
+	background: #747474;
+	color: white;
+}
+
+.display-label {
+	display: inline-block;
+	text-transform: uppercase;
+	width: 200px;
+	padding-left: 10px;
+	color: #bcbcbc;
+	font-size: 13px;
+}
+
+.select-wrapper {
+	display: inline-block;
+	width: 450px;
+}
+
+#tab-actu .year-display,
+#tab-actu .evolution-display {
+	display: none;
 }

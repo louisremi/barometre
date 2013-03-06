@@ -68,14 +68,14 @@ App.initialize = function() {
 					if (!App.views.question[type].rendered) {
 						App.views.Manager.draw([App.views.question[type]]);
 					}
-					
+
 					if ( App.views.question[type].el ) {
 						App.views.question[type].$el.css({opacity: ""})
 							.children(":first").css({display: ""})
 							.nextAll(":not(.year-month, #question-actu .answers)").css({display: ""});
 					}
 				}
-			
+
 			// we don't have data for that question
 			} else {
 				// THE CLIENT CHANGED IS MIND ONCE AGAIN
@@ -138,12 +138,24 @@ if ( !App.ui ) {
 
 App.ui.initialize = function() {
 	var commonData = {
-		years: App.ui.years,
-		months: App.ui.months,
-		lastMonthOfYear: App.ui.lastMonthOfYear,
-		noDataLabel: "Pas de donnée disponible pour ce mois",
-		moreHref: "compare/:tab/all/:month"
-	};
+			noDataLabel: "Pas de donnée disponible pour ce mois",
+			moreHref: "compare/:tab/all/:month"
+		},
+		questionTemplate = _.template( $("#question-template").html() ),
+		menusTemplate = _.template( $("#menus-template").html() );
+
+	$(".menus").each(function() {
+		var questionSlug = this.parentNode.id.split("-")[1],
+			data = $.extend({}, {
+				years: App.ui.years,
+				months: App.ui.months,
+				lastMonthOfYear: App.ui.lastMonthOfYear,
+				currentYear: App.ui.now.getFullYear(),
+				currentMonth: App.ui.now.getMonth() + 1
+			}, App.ui.questions[ questionSlug ] );
+
+		$(this).html( menusTemplate( data ) );
+	});
 
 	$(".question").each(function() {
 		var questionSlug = this.id.split("-")[1],
@@ -151,7 +163,7 @@ App.ui.initialize = function() {
 
 		data.moreHref = data.moreHref.replace( ":tab", questionSlug );
 
-		$(this).html( ( _.template( $("#question-template").html() ) )( data ) );
+		$(this).html( questionTemplate( data ) );
 	});
 
 	$("#years-style")[0].styleSheet ?
@@ -162,6 +174,47 @@ App.ui.initialize = function() {
 	$("#mois-en-cours")
 		.html( App.ui.months[ App.ui.now.getMonth() + 1 ][1] + " " + App.ui.now.getFullYear() )
 		.attr("data-href", "month/courant/" + App.ui.now.getFullYear() + "/" + ( App.ui.now.getMonth() + 1 ) );
+
+	$(document).on("change", ".menus select", function() {
+		var $wrapper = $(this).closest("div"),
+			$yearSelect = $wrapper.find(".year-select"),
+			$monthSelect = $wrapper.find(".month-select"),
+			$a = $wrapper.children("a");
+
+		$a.attr("href",
+			"#bm/" + $a.data("href")
+				.replace(":year", $yearSelect.val() )
+				.replace(":month", $monthSelect.val() || App.ui.model.get("month") )
+		);
+	});
+
+	$(document).on("change", ".month-display .year-select", function() {
+		var selectedYear = $(this).val(),
+			$wrapper = $(this).closest("div"),
+			$monthOptions = $wrapper.find(".month-select > option"),
+			question = $wrapper.closest(".tab")[0].id.split("-")[1],
+			currentYear = App.ui.now.getFullYear(),
+			currentMonth = App.ui.now.getMonth() + 1,
+			empty = App.ui.empty;
+
+		$monthOptions.each(function() {
+			var value = this.getAttribute("value");
+
+			if (
+				( selectedYear == currentYear && value > currentMonth ) ||
+				( empty && empty[question] && empty[question][selectedYear] && empty[question][selectedYear].indexOf(","+ value +",") != - 1 ) ||
+				( selectedYear > 2012 && question == "immo" && +value % 2 === 0 ) ||
+				( selectedYear > 2012 && question == "auto" && +value % 2 === 1 )
+			) {
+				this.style.display = "none";
+				this.removeAttribute("selected");
+				this.setAttribute("disabled", "");
+			} else {
+				this.style.display = "";
+				this.removeAttribute("disabled");
+			}
+		});
+	});
 };
 
 })(jQuery, Backbone, _, App, window);

@@ -38,9 +38,11 @@
 
 		<style id="years-style">
 		</style>
-		
+
 		<div id="tabs" role="navigation">
 			<div id="tab-pouvoir" class="tab">
+				<div class="menus"></div>
+
 				<div class="banner">
 					<h2><span>&Eacute;volution du pouvoir d'achat</span></h2>
 				</div>
@@ -55,6 +57,8 @@
 			</div><!-- .tab -->
 
 			<div id="tab-epargne" class="tab">
+				<div class="menus"></div>
+
 				<div class="banner">
 					<h2><span>Intentions d'épargne</span></h2>
 				</div>
@@ -65,6 +69,8 @@
 			</div><!-- .tab -->
 
 			<div id="tab-consocourante" class="tab">
+				<div class="menus"></div>
+
 				<div class="banner">
 					<h2><span>Intention de consommation courante</span></h2>
 				</div>
@@ -74,6 +80,8 @@
 			</div><!-- .tab -->
 
 			<div id="tab-immo" class="tab">
+				<div class="menus"></div>
+
 				<div class="banner">
 					<h2><span>Intention achat immobilier</span></h2>
 				</div>
@@ -83,6 +91,8 @@
 			</div><!-- .tab -->
 
 			<div id="tab-auto" class="tab">
+				<div class="menus"></div>
+
 				<div class="banner">
 					<h2><span>Intention achat automobile</span></h2>
 				</div>
@@ -92,6 +102,8 @@
 			</div><!-- .tab -->
 
 			<div id="tab-actu" class="tab">
+				<div class="menus"></div>
+
 				<div class="banner alt">
 					<h2><span>Actualité</span></h2>
 				</div>
@@ -103,10 +115,10 @@
 			<div id="tab-apropos" class="tab">
 				<div class="wrapper">
 					<ul class="logos" aria-hidden="true"
+					><li class="logo-via"></li
 						><li class="logo-bpce"></li
 						><li class="logo-echos"></li
 						><li class="logo-fi"></li
-						><li class="logo-via"></li
 					></ul>
 					<p>
 						BPCE, Les Echos, France Info et Viavoice créent le baromètre mensuel des projets des Français
@@ -138,29 +150,55 @@
 	</div><!-- #center -->
 </div><!-- #main -->
 
-<script type="text/template" id="question-template">
-	<ul class="display-menu" role="menu">
-		<li class="year-display" role="menuitem"><a href="#" data-href="year/<%= tab %>/:year/:month">Affichage par année</a></li>
-		<li class="month-display" role="menuitem"><a href="#" data-href="month/<%= tab %>/:year/:month">Affichage par mois</a></li>
-		<li class="evolution-display" role="menuitem"><a href="#" data-href="evolution/<%= tab %>/:year/:month">Affichage par évolution</a></li>
-	</ul>
-
-	<ul class="year-menu" role="menu"><%
-		for ( var i=0,j=years.length;i<j;i++ ) {
-			%><li class="year-<%= years[i] %>" role="menuitem"><a href="" data-href=":display/<%= tab %>/<%= years[i] %>/<%= lastMonthOfYear[i] %>"><%= years[i] %></a></li><%
-		}
-	%></ul>
-
-	<h3><%= question %></h3>
-
-	<div class="month-menu">
-		<div class="slider"></div>
-		<ul class="months" role="menu"><%
-			for ( var month in months ) {
-				%><li class="month-<%= month %>" role="menuitem"><div class="handle"></div><a href="#" data-href=":display/<%= tab %>/:year/<%= month %>"><abbr title="<%= months[month][1] %>"><%= months[month][0] %></abbr></a></li><%
-			}
-		%></ul>
+<script type="text/template" id="menus-template">
+	<div class="month-display">
+		<span class="display-label">Affichage par mois</span>
+		<span class="select-wrapper">
+			<select class="year-select"><%
+				for ( var i = 0, l = years.length; i < l; i++ ) {
+					var selected = years[i] == currentYear ? "selected" : "";
+					%><option value="<%= years[i] %>" <%= selected %>><%= years[i] %></option><%
+				}
+			%></select>
+			<select class="month-select"><%
+				for ( var month in months ) {
+					var selected = month == currentMonth ? "selected" : "";
+					%><option value="<%= month %>" <%= selected %> <%= month > currentMonth ? "style='display:none'" : "" %>><%= months[ month ][1] %></option><%
+				}
+			%></select>
+		</span>
+		<a href="#" data-href="month/<%= tab %>/:year/:month">OK</a>
 	</div>
+
+	<div class="year-display">
+		<span class="display-label">Affichage par année</span>
+		<span class="select-wrapper">
+			<select class="year-select"><%
+				for ( var i = 0, l = years.length; i < l; i++ ) {
+					var selected = years[i] == currentYear ? "selected" : "";
+					%><option value="<%= years[i] %>" <%= selected %>><%= years[i] %></option><%
+				}
+			%></select>
+		</span>
+		<a href="#" data-href="year/<%= tab %>/:year/:month">OK</a>
+	</div>
+
+	<div class="evolution-display">
+		<span class="display-label">Affichage par évolution</span>
+		<span class="select-wrapper">
+			<select class="year-select"><%
+				for ( var i = 0, l = years.length; i < l; i++ ) {
+					var selected = years[i] == currentYear ? "selected" : "";
+					%><option value="<%= years[i] %>" <%= selected %>><%= years[i] %></option><%
+				}
+			%></select>
+		</span>
+		<a href="#" data-href="evolution/<%= tab %>/:year/:month">OK</a>
+	</div>
+</script>
+
+<script type="text/template" id="question-template">
+	<h3><%= question %></h3>
 
 	<div class="visualization">
 		<div class="no-data"><%= noDataLabel %></div>
@@ -243,7 +281,7 @@
 	<hr/>
 	<ul class="answers actualites-answers"><%
 	for ( var i = -1, l = answers.length; ++i < l; ) {
-		if ( i && i % answersByLine === 0 ) { 
+		if ( i && i % answersByLine === 0 ) {
 			%></ul><ul class="answers"><%
 		}
 		%><li role="listitem"><div class="percentage"><div style="font-size: <%= answers[i].fontSize %>; top: <%= answers[i].top %>;"><span aria-hidden style="color:<%= answers[i].background %>;">W</span><span style="color:<%= answers[i].color %>"><%= answers[i].value %></span></div></div> <span class="heading"><%= answers[i].attribute %></span></li><%
