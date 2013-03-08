@@ -209,7 +209,6 @@ App.ui.initialize = function() {
 				if ( this.parentNode.nodeName == "SELECT" ) {
 					$(this).wrap("<span>").parent().hide();
 				}
-				this.removeAttribute("selected");
 
 			} else if ( this.parentNode.nodeName == "SPAN" ) {
 				$(this).unwrap();

@@ -156,14 +156,12 @@
 		<span class="select-wrapper">
 			<select class="year-select"><%
 				for ( var i = 0, l = years.length; i < l; i++ ) {
-					var selected = years[i] == currentYear ? "selected" : "";
-					%><option value="<%= years[i] %>" <%= selected %>><%= years[i] %></option><%
+					%><option value="<%= years[i] %>"><%= years[i] %></option><%
 				}
 			%></select>
 			<select class="month-select"><%
 				for ( var month in months ) {
-					var selected = month == currentMonth ? "selected" : "";
-					%><option value="<%= month %>" <%= selected %>><%= months[ month ][1] %></option><%
+					%><option value="<%= month %>"><%= months[ month ][1] %></option><%
 				}
 			%></select>
 		</span>
@@ -175,8 +173,7 @@
 		<span class="select-wrapper">
 			<select class="year-select"><%
 				for ( var i = 0, l = years.length; i < l; i++ ) {
-					var selected = years[i] == currentYear ? "selected" : "";
-					%><option value="<%= years[i] %>" <%= selected %>><%= years[i] %></option><%
+					%><option value="<%= years[i] %>"><%= years[i] %></option><%
 				}
 			%></select>
 		</span>
@@ -188,8 +185,7 @@
 		<span class="select-wrapper">
 			<select class="year-select"><%
 				for ( var i = 0, l = years.length; i < l; i++ ) {
-					var selected = years[i] == currentYear ? "selected" : "";
-					%><option value="<%= years[i] %>" <%= selected %>><%= years[i] %></option><%
+					%><option value="<%= years[i] %>"><%= years[i] %></option><%
 				}
 			%></select>
 		</span>

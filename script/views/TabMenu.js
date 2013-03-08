@@ -1,5 +1,5 @@
 (function( App, Backbone ) {
-	
+
 if ( !App.Views ) {
 	App.Views = {};
 }
@@ -9,7 +9,7 @@ App.Views.TabMenu = Backbone.View.extend({
 	render: function() {
 		// desactivate previous tab
 		this.$el.find(".active").removeClass("active");
-		
+
 		// fade-out all tabs
 		$("#tabs").css({opacity: 0});
 		setTimeout(function() {
@@ -17,7 +17,7 @@ App.Views.TabMenu = Backbone.View.extend({
 			// show all active tabs, hide others
 			$(".tab").each(function() {
 				var label = this.id.split("-")[1];
-				
+
 				$(this).css({
 					display: _( activeTabs ).contains( label ) ? "block" : "none"
 				});
@@ -43,6 +43,11 @@ App.Views.TabMenu = Backbone.View.extend({
 			}
 			i++;
 		});
+
+		$(".year-select").val( App.ui.model.get("year") ).trigger("change");
+
+		// reset all month-select values
+		$(".month-select").val( App.ui.model.get("month") );
 	}
 });
 
