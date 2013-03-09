@@ -54,10 +54,14 @@ App.initialize = function() {
 
 		_( groupedQuestions ).each(function( questions, type ) {
 			if ( App.views.question[type] && App.views.question[type].hookUp ) {
-				App.views.question[type].hookUp( questions, App.ui.model.get("display") === "evolution" ?
-					App.ui.questions[type].answerSlugs :
-					undefined
-				);
+				var evolutionDisplay = App.ui.model.get("display") === "evolution";
+
+				setTimeout(function(){
+					App.views.question[type].hookUp( questions, evolutionDisplay ?
+						App.ui.questions[type].answerSlugs :
+						undefined
+					);
+				}, evolutionDisplay ? 150 : 1 );
 			}
 		});
 
