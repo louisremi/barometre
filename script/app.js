@@ -137,6 +137,7 @@ if ( !App.ui ) {
 }
 
 App.ui.initialize = function() {
+
 	var commonData = {
 			noDataLabel: "Pas de donnée disponible pour ce mois",
 			moreHref: "compare/:tab/all/:month"
@@ -191,29 +192,28 @@ App.ui.initialize = function() {
 	$(document).on("change", ".month-display .year-select", function() {
 		var selectedYear = $(this).val(),
 			$wrapper = $(this).closest("div"),
-			$monthOptions = $wrapper.find(".month-select option"),
+			$monthSelect = $wrapper.find(".month-select"),
 			question = $wrapper.closest(".tab")[0].id.split("-")[1],
 			currentYear = App.ui.now.getFullYear(),
 			currentMonth = App.ui.now.getMonth() + 1,
-			empty = App.ui.empty;
+			empty = App.ui.empty,
+			html = "",
+			month;
 
-		$monthOptions.each(function() {
-			var value = this.getAttribute("value");
-
+		for ( month in App.ui.months ) {
 			if (
-				( selectedYear == currentYear && value > currentMonth ) ||
-				( empty && empty[question] && empty[question][selectedYear] && empty[question][selectedYear].indexOf(","+ value +",") != - 1 ) ||
-				( selectedYear > 2012 && question == "immo" && +value % 2 === 0 ) ||
-				( selectedYear > 2012 && question == "auto" && +value % 2 === 1 )
+				( selectedYear == currentYear && month > currentMonth ) ||
+				( empty && empty[question] && empty[question][selectedYear] && empty[question][selectedYear].indexOf(","+ month +",") != - 1 ) ||
+				( selectedYear > 2012 && question == "immo" && +month % 2 === 0 ) ||
+				( selectedYear > 2012 && question == "auto" && +month % 2 === 1 )
 			) {
-				if ( this.parentNode.nodeName == "SELECT" ) {
-					$(this).wrap("<span>").parent().hide();
-				}
 
-			} else if ( this.parentNode.nodeName == "SPAN" ) {
-				$(this).unwrap();
+			} else {
+				html += "<option value='"+ month +"'>" + App.ui.months[month][1] + "</option>";
 			}
-		});
+		}
+
+		$monthSelect.html( html ).trigger("change");
 	});
 };
 

@@ -499,43 +499,13 @@ ui.colors = {
 ui.transitionDuration = 300;
 
 ui.redirects = {
-	"pouvoir/2011/1": "pouvoir/2011/5",
-	"pouvoir/2011/2": "pouvoir/2011/5",
-	"pouvoir/2011/3": "pouvoir/2011/5",
-	"pouvoir/2011/4": "pouvoir/2011/5",
-
-	"epargne/2011/1": "epargne/2011/10",
-	"epargne/2011/2": "epargne/2011/10",
-	"epargne/2011/3": "epargne/2011/10",
-	"epargne/2011/4": "epargne/2011/10",
-	"epargne/2011/5": "epargne/2011/10",
-	"epargne/2011/6": "epargne/2011/10",
-	"epargne/2011/8": "epargne/2011/10",
-	"epargne/2011/9": "epargne/2011/10",
-
 	"epargne/2012/6": "epargne/2012/5",
-
-	"consocourante/2011/1": "consocourante/2011/10",
-	"consocourante/2011/2": "consocourante/2011/10",
-	"consocourante/2011/3": "consocourante/2011/10",
-	"consocourante/2011/4": "consocourante/2011/10",
-	"consocourante/2011/5": "consocourante/2011/10",
-	"consocourante/2011/6": "consocourante/2011/10",
-	"consocourante/2011/8": "consocourante/2011/10",
-	"consocourante/2011/9": "consocourante/2011/10",
 
 	"consocourante/2012/6": "consocourante/2012/5",
 
-	"immo/2011/1": "immo/2011/11",
-	"immo/2011/2": "immo/2011/11",
-	"immo/2011/3": "immo/2011/11",
-	"immo/2011/4": "immo/2011/11",
-	"immo/2011/5": "immo/2011/11",
-	"immo/2011/6": "immo/2011/11",
-	"immo/2011/7": "immo/2011/11",
-	"immo/2011/8": "immo/2011/11",
-	"immo/2011/9": "immo/2011/11",
-	"immo/2011/10": "immo/2011/11",
+	"immo/2011/5": "immo/2011/4",
+	"immo/2011/8": "immo/2011/6",
+	"immo/2011/10": "immo/2011/9",
 	"immo/2011/12": "immo/2011/11",
 
 	"immo/2012/2": "immo/2012/1",
@@ -548,15 +518,9 @@ ui.redirects = {
 
 	"immo/2013/2": "immo/2013/1",
 
-	"auto/2011/1": "auto/2011/10",
-	"auto/2011/2": "auto/2011/10",
-	"auto/2011/3": "auto/2011/10",
-	"auto/2011/4": "auto/2011/10",
-	"auto/2011/5": "auto/2011/10",
-	"auto/2011/6": "auto/2011/10",
-	"auto/2011/7": "auto/2011/10",
-	"auto/2011/8": "auto/2011/10",
-	"auto/2011/9": "auto/2011/10",
+	"auto/2011/6": "auto/2011/5",
+	"auto/2011/7": "auto/2011/5",
+	"auto/2011/9": "auto/2011/8",
 	"auto/2011/11": "auto/2011/10",
 
 	"auto/2012/1": "auto/2011/12",
@@ -589,24 +553,19 @@ ui.redirects = {
 };
 
 ui.empty = {
-	pouvoir: {
-		2011: ",1,2,3,4,"
-	},
 	epargne: {
-		2011: ",1,2,3,4,5,6,8,9,",
 		2012: ",6,"
 	},
 	consocourante: {
-		2011: ",1,2,3,4,5,6,8,9,",
 		2012: ",6,"
 	},
 	immo: {
-		2011: ",5,7,8,9,10,11,12,",
+		2011: ",5,8,10,12,",
 		2012: ",2,4,6,7,8,10,12,",
 		2013: ",2,"
 	},
 	auto: {
-		2011: ",6,7,8,9,10,11,12,",
+		2011: ",6,7,9,11,",
 		2012: ",1,3,5,6,7,9,11,",
 		2013: ",1,"
 	},

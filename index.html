@@ -159,11 +159,7 @@
 					%><option value="<%= years[i] %>"><%= years[i] %></option><%
 				}
 			%></select>
-			<select class="month-select"><%
-				for ( var month in months ) {
-					%><option value="<%= month %>"><%= months[ month ][1] %></option><%
-				}
-			%></select>
+			<select class="month-select"></select>
 		</span>
 		<a href="#" data-href="month/<%= tab %>/:year/:month">OK</a>
 	</div>
