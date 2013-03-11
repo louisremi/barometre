@@ -17,7 +17,7 @@ views.Manager = {
 				if (!view.rendered) {
 					// hide tthe view temporarily while there are no data
 					el = $('#question-'+slug+' .visualization').css({opacity: "0"});
-					
+
 					view.setElement( el ).render(['a','b','c']);
 					view.rendered = true;
 				}

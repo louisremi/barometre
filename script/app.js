@@ -49,19 +49,18 @@ App.initialize = function() {
 
 	App.collections.questions.bind('reset',function() {
 		var groupedQuestions = App.collections.questions.groupBy(function(question) {
-			return question.get('type');
-		});
+				return question.get('type');
+			}),
+			evolutionDisplay = App.ui.model.get("display") === "evolution";
 
 		_( groupedQuestions ).each(function( questions, type ) {
 			if ( App.views.question[type] && App.views.question[type].hookUp ) {
-				var evolutionDisplay = App.ui.model.get("display") === "evolution";
 
-				setTimeout(function(){
-					App.views.question[type].hookUp( questions, evolutionDisplay ?
-						App.ui.questions[type].answerSlugs :
-						undefined
-					);
-				}, evolutionDisplay ? 150 : 1 );
+				evolutionDisplay ?
+					setTimeout(function(){
+						App.views.question[type].hookUp( questions, App.ui.questions[type].answerSlugs );
+					}, 50 ) :
+					App.views.question[type].hookUp( questions );
 			}
 		});
 
@@ -108,7 +107,11 @@ App.initialize = function() {
 		});
 
 		// send current document height to parent frame
-		window.parent.postMessage( document.body.offsetHeight, "*" );
+		evolutionDisplay ?
+			setTimeout(function(){
+				window.parent.postMessage( document.body.offsetHeight, "*" );
+			}, 100 ) :
+			window.parent.postMessage( document.body.offsetHeight, "*" );
 	});
 
 	// view specific to immo and auto on the front page

@@ -63,7 +63,7 @@
 			_.each(questions, function(question,idxQuestion) {
 				var questionMonth = question.get("month");
 				_.each(question.get("answers"),function(answer) {
-					
+
 					coordY[_.indexOf(answerTitles,answer.title)] = coordY[_.indexOf(answerTitles,answer.title)] || new Array(11);
 					if(App.ui.months[questionMonth]) {
 						coordY[_.indexOf(answerTitles,answer.title)][questionMonth < 7 ? questionMonth-1 : questionMonth-2] = answer.value;
