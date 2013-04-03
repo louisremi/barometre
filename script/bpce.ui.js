@@ -38,7 +38,7 @@ ui.actuText = {
 // find current month:
 // we only have data for last month, and we don't have data for June and July
 var now = new Date(),
-	usefulDate = +now > 1364446800000 ? now : new Date( now.getFullYear(), now.getMonth() - ( now.getMonth() == 7 ? 3 : now.getMonth() == 6 ? 2 : 1 ), now.getDate() ),
+	usefulDate = +now > 1364446800000 ? new Date(1364446800000) : new Date( now.getFullYear(), now.getMonth() - ( now.getMonth() == 7 ? 3 : now.getMonth() == 6 ? 2 : 1 ), now.getDate() ),
 	currentYear = usefulDate.getFullYear(),
 	firstYear = 2011,
 	i = 0;
