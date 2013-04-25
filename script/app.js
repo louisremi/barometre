@@ -4,6 +4,54 @@ App.dispatcher = _.extend({}, Backbone.Events, {
 	cid: "dispatcher"
 });
 
+if ( !App.ui ) {
+	App.ui = {};
+}
+
+var now = new Date();
+$.get( App.backendUrl + "/date/" + now.getFullYear() + "/", parseResponseDate);
+
+function parseResponseDate( response ) {
+	if ( !response.length ) {
+		return $.get( App.backendUrl + "/date/" + ( now.getFullYear() - 1 ) + "/", parseResponseDate);
+	}
+
+	var i = response.length,
+		date,
+		time;
+
+	while ( i-- ) {
+		if ( response[i].answers[0].value !== "" ) {
+			date = response[i].answers[0].value.split("/");
+			time = response[i].answers[1].value.split(":");
+
+			var tmp = new Date(date[2], +(date[1]) -1,date[0],time[0]);
+
+			if ( +(new Date()) > +tmp ) {
+				App.ui.now = new Date( response[i].year, response[i].month -1, 1 );
+
+				var currentYear = App.ui.now.getFullYear(),
+					firstYear = 2011,
+					j = 0;
+
+				App.ui.years = [];
+				App.ui.lastMonthOfYear = [];
+				while ( firstYear + j <= currentYear ) {
+					App.ui.years[j] = firstYear + j;
+					App.ui.lastMonthOfYear[j] = 12;
+					j++;
+				}
+
+				App.ui.lastMonthOfYear[ App.ui.years.length - 1 ] = App.ui.now.getMonth() + 1;
+
+				App.initialize();
+
+				break;
+			}
+		}
+	}
+}
+
 $(function() {
 	App.domLoaded = 1;
 	App.initialize();
@@ -12,7 +60,7 @@ $(function() {
 App.initialize = function() {
 
 	// wait for both events before initializing the app
-	if ( App.domLoaded === undefined || App.hashFound === undefined ) {
+	if ( App.domLoaded === undefined || App.hashFound === undefined || App.ui.now === undefined ) {
 		return;
 	}
 
@@ -138,10 +186,6 @@ App.initialize = function() {
 
 	Backbone.history.start();
 };
-
-if ( !App.ui ) {
-	App.ui = {};
-}
 
 App.ui.initialize = function() {
 
