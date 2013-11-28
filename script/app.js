@@ -16,6 +16,9 @@ function parseResponseDate( response ) {
 		return $.get( App.backendUrl + "/date/" + ( now.getFullYear() - 1 ) + "/", parseResponseDate);
 	}
 
+	// for some reason months aren't ordered by month number
+	response = _.sortBy( response, function( obj ) { return obj.month; });
+
 	var i = response.length,
 		date,
 		time;
