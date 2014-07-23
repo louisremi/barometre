@@ -238,6 +238,7 @@ App.ui.initialize = function() {
 
 		$a.attr("href",
 			"#bm/" + $a.data("href")
+				.replace(":tab", App.ui.model.get("tab") )
 				.replace(":year", $yearSelect.val() )
 				.replace(":month", $monthSelect.val() || App.ui.model.get("month") )
 		);
